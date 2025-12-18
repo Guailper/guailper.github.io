@@ -8,7 +8,7 @@
 <p>添加文件到仓库：git add 文件名 (或者 . ，代表文件夹内的全部文件)</p>
 <p>添加注释：git commit -m “注释”</p>
 <p>创建主分支：git branch -M <u>main</u>(主分支名称)</p>
-<p>连接到远程仓库：git remote add origin <a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#111;&#x6d;">&#103;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#111;&#x6d;</a>:repository名称</p>
+<p>连接到远程仓库：git remote add origin <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#111;&#x6d;</a>:repository名称</p>
 <p>上传提交的文件（第一次时）：git push -u origin main(master) (一般为main)</p>
 <p>非第一次：git push 即可</p>
 <h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
@@ -17,59 +17,51 @@
 <p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
 <p>打开id_rsa.pub文件，复制其中的密钥。</p>
 <p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;</a>(注意看出现的信息是否连接成功)</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#109;</a>(注意看出现的信息是否连接成功)</p>
 ]]></content>
       <tags>
         <tag>TeXt</tag>
       </tags>
   </entry>
   <entry>
-    <title>栈的定义及实现(C语言)</title>
-    <url>/2021/11/01/2021-11-01-%E6%A0%88/</url>
-    <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
-<p>栈顶(top)：线性表的表尾</p>
-<p>栈底(bottom)：线性表的表头</p>
-<p>操作原则：后进先出原则(LIFO)</p>
-<h3 id="1-2-栈的操作"><a href="#1-2-栈的操作" class="headerlink" title="1.2 栈的操作"></a>1.2 栈的操作</h3><p>创建栈 Init_Stack()</p>
-<p>添加元素 push()</p>
-<p>删除元素 pop()</p>
-<p>获取栈顶元素 top()</p>
-<p>获取栈实际长度 size()</p>
-<h3 id="1-3-顺序栈的实现"><a href="#1-3-顺序栈的实现" class="headerlink" title="1.3 顺序栈的实现"></a>1.3 顺序栈的实现</h3><h5 id="1-3-1-定义一个栈结构体"><a href="#1-3-1-定义一个栈结构体" class="headerlink" title="1.3.1 定义一个栈结构体"></a>1.3.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> *elem;</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125;<span class="built_in">stack</span>;</span><br></pre></td></tr></table></figure>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/2021-11-23-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
 
-<h5 id="1-3-2-初始化"><a href="#1-3-2-初始化" class="headerlink" title="1.3.2 初始化"></a>1.3.2 初始化</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq.elem = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * stack_size);</span><br><span class="line">    sq.length = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;初始化成功&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="1-3-3-将元素压入栈"><a href="#1-3-3-将元素压入栈" class="headerlink" title="1.3.3 将元素压入栈"></a>1.3.3 将元素压入栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> elem)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &gt;= stack_size) <span class="keyword">return</span>;</span><br><span class="line">    sq.elem[sq.length] = elem;</span><br><span class="line">    sq.length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="1-3-4-将元素弹出栈"><a href="#1-3-4-将元素弹出栈" class="headerlink" title="1.3.4 将元素弹出栈"></a>1.3.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sq.elem[sq.length<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">    sq.length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="1-3-5-获取栈顶元素"><a href="#1-3-5-获取栈顶元素" class="headerlink" title="1.3.5 获取栈顶元素"></a>1.3.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.elem[sq.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="1-3-6-获取栈实际长度"><a href="#1-3-6-获取栈实际长度" class="headerlink" title="1.3.6 获取栈实际长度"></a>1.3.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4-链栈的实现"><a href="#1-4-链栈的实现" class="headerlink" title="1.4 链栈的实现"></a>1.4 链栈的实现</h3><p>需要另外定义一个全局的整形变量 length 来存放栈的长度。</p>
-<h5 id="1-4-1-定义一个栈结构体"><a href="#1-4-1-定义一个栈结构体" class="headerlink" title="1.4.1 定义一个栈结构体"></a>1.4.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> elem;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*<span class="built_in">stack</span>,*node;</span><br></pre></td></tr></table></figure>
-
-<h5 id="1-4-2-初始化"><a href="#1-4-2-初始化" class="headerlink" title="1.4.2 初始化"></a>1.4.2 初始化</h5><p>需要为头结点分配空间</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq = (<span class="built_in">stack</span>)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    sq-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="1-4-3-将元素压入栈"><a href="#1-4-3-将元素压入栈" class="headerlink" title="1.4.3 将元素压入栈"></a>1.4.3 将元素压入栈</h5><p>需要为新节点分配空间</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> e)</span>&#123;</span><br><span class="line">    node p = (node)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    p-&gt;elem = e;</span><br><span class="line">    p-&gt;next = sq-&gt;next;</span><br><span class="line">    sq-&gt;next = p;</span><br><span class="line">    length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="1-4-4-将元素弹出栈"><a href="#1-4-4-将元素弹出栈" class="headerlink" title="1.4.4 将元素弹出栈"></a>1.4.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    node p = sq-&gt;next;</span><br><span class="line">   sq-&gt;next = sq-&gt;next-&gt;next;</span><br><span class="line">   delete p;</span><br><span class="line">   length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="1-4-5-获取栈顶元素"><a href="#1-4-5-获取栈顶元素" class="headerlink" title="1.4.5 获取栈顶元素"></a>1.4.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> sq-&gt;next-&gt;elem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="1-4-6-获取栈实际长度"><a href="#1-4-6-获取栈实际长度" class="headerlink" title="1.4.6 获取栈实际长度"></a>1.4.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-5-栈的问题解决"><a href="#1-5-栈的问题解决" class="headerlink" title="1.5 栈的问题解决"></a>1.5 栈的问题解决</h3><h5 id="1-5-1-括号匹配"><a href="#1-5-1-括号匹配" class="headerlink" title="1.5.1 括号匹配"></a>1.5.1 括号匹配</h5><p>苗苗今天刚刚学会使用括号，不过他分不清小括号，中括号，大括号和尖括号，不知道怎么使用这些括号，请帮助他判断括号使用是否正确。</p>
-<p>输入格式</p>
-<p>共一行，包含一个由 <code>&lt;</code>,<code>(</code>,<code>&#123;</code>,<code>[</code>,<code>&gt;</code>,<code>)</code>,<code>&#125;</code>,<code>]</code> 构成的字符串。</p>
-<p>输出格式</p>
-<p>如果输入的字符串中的括号正确匹配则输出 <code>yes</code>，否则输出 <code>no</code>。</p>
-<p>数据范围</p>
-<p>输入字符串长度不超过 1000010000。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; sq;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span> || s[i] == <span class="string">&#x27;[&#x27;</span> || s[i] == <span class="string">&#x27;&lt;&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">            sq.push(s[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果不是左括号并且栈内无元素，直接判断非法</span></span><br><span class="line">            <span class="keyword">if</span> (sq.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//接下来逐一判断是否匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&gt;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&lt;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;)&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;]&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;[&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//需要再次判断栈中是否还有字符</span></span><br><span class="line">    <span class="keyword">if</span>(sq.empty())&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;yes&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
 ]]></content>
       <tags>
-        <tag>Data Structure</tag>
+        <tag>Binary_Code</tag>
       </tags>
   </entry>
   <entry>
@@ -134,44 +126,52 @@
       </tags>
   </entry>
   <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/2021-11-23-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+    <title>栈的定义及实现(C语言)</title>
+    <url>/2021/11/01/2021-11-01-%E6%A0%88/</url>
+    <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
+<p>栈顶(top)：线性表的表尾</p>
+<p>栈底(bottom)：线性表的表头</p>
+<p>操作原则：后进先出原则(LIFO)</p>
+<h3 id="1-2-栈的操作"><a href="#1-2-栈的操作" class="headerlink" title="1.2 栈的操作"></a>1.2 栈的操作</h3><p>创建栈 Init_Stack()</p>
+<p>添加元素 push()</p>
+<p>删除元素 pop()</p>
+<p>获取栈顶元素 top()</p>
+<p>获取栈实际长度 size()</p>
+<h3 id="1-3-顺序栈的实现"><a href="#1-3-顺序栈的实现" class="headerlink" title="1.3 顺序栈的实现"></a>1.3 顺序栈的实现</h3><h5 id="1-3-1-定义一个栈结构体"><a href="#1-3-1-定义一个栈结构体" class="headerlink" title="1.3.1 定义一个栈结构体"></a>1.3.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> *elem;</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125;<span class="built_in">stack</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+<h5 id="1-3-2-初始化"><a href="#1-3-2-初始化" class="headerlink" title="1.3.2 初始化"></a>1.3.2 初始化</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq.elem = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * stack_size);</span><br><span class="line">    sq.length = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;初始化成功&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-3-将元素压入栈"><a href="#1-3-3-将元素压入栈" class="headerlink" title="1.3.3 将元素压入栈"></a>1.3.3 将元素压入栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> elem)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &gt;= stack_size) <span class="keyword">return</span>;</span><br><span class="line">    sq.elem[sq.length] = elem;</span><br><span class="line">    sq.length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-4-将元素弹出栈"><a href="#1-3-4-将元素弹出栈" class="headerlink" title="1.3.4 将元素弹出栈"></a>1.3.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sq.elem[sq.length<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">    sq.length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-5-获取栈顶元素"><a href="#1-3-5-获取栈顶元素" class="headerlink" title="1.3.5 获取栈顶元素"></a>1.3.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.elem[sq.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-6-获取栈实际长度"><a href="#1-3-6-获取栈实际长度" class="headerlink" title="1.3.6 获取栈实际长度"></a>1.3.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-链栈的实现"><a href="#1-4-链栈的实现" class="headerlink" title="1.4 链栈的实现"></a>1.4 链栈的实现</h3><p>需要另外定义一个全局的整形变量 length 来存放栈的长度。</p>
+<h5 id="1-4-1-定义一个栈结构体"><a href="#1-4-1-定义一个栈结构体" class="headerlink" title="1.4.1 定义一个栈结构体"></a>1.4.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> elem;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*<span class="built_in">stack</span>,*node;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-2-初始化"><a href="#1-4-2-初始化" class="headerlink" title="1.4.2 初始化"></a>1.4.2 初始化</h5><p>需要为头结点分配空间</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq = (<span class="built_in">stack</span>)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    sq-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-3-将元素压入栈"><a href="#1-4-3-将元素压入栈" class="headerlink" title="1.4.3 将元素压入栈"></a>1.4.3 将元素压入栈</h5><p>需要为新节点分配空间</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> e)</span>&#123;</span><br><span class="line">    node p = (node)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    p-&gt;elem = e;</span><br><span class="line">    p-&gt;next = sq-&gt;next;</span><br><span class="line">    sq-&gt;next = p;</span><br><span class="line">    length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-4-将元素弹出栈"><a href="#1-4-4-将元素弹出栈" class="headerlink" title="1.4.4 将元素弹出栈"></a>1.4.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    node p = sq-&gt;next;</span><br><span class="line">   sq-&gt;next = sq-&gt;next-&gt;next;</span><br><span class="line">   delete p;</span><br><span class="line">   length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-5-获取栈顶元素"><a href="#1-4-5-获取栈顶元素" class="headerlink" title="1.4.5 获取栈顶元素"></a>1.4.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> sq-&gt;next-&gt;elem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-6-获取栈实际长度"><a href="#1-4-6-获取栈实际长度" class="headerlink" title="1.4.6 获取栈实际长度"></a>1.4.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-栈的问题解决"><a href="#1-5-栈的问题解决" class="headerlink" title="1.5 栈的问题解决"></a>1.5 栈的问题解决</h3><h5 id="1-5-1-括号匹配"><a href="#1-5-1-括号匹配" class="headerlink" title="1.5.1 括号匹配"></a>1.5.1 括号匹配</h5><p>苗苗今天刚刚学会使用括号，不过他分不清小括号，中括号，大括号和尖括号，不知道怎么使用这些括号，请帮助他判断括号使用是否正确。</p>
+<p>输入格式</p>
+<p>共一行，包含一个由 <code>&lt;</code>,<code>(</code>,<code>&#123;</code>,<code>[</code>,<code>&gt;</code>,<code>)</code>,<code>&#125;</code>,<code>]</code> 构成的字符串。</p>
+<p>输出格式</p>
+<p>如果输入的字符串中的括号正确匹配则输出 <code>yes</code>，否则输出 <code>no</code>。</p>
+<p>数据范围</p>
+<p>输入字符串长度不超过 1000010000。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; sq;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span> || s[i] == <span class="string">&#x27;[&#x27;</span> || s[i] == <span class="string">&#x27;&lt;&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">            sq.push(s[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果不是左括号并且栈内无元素，直接判断非法</span></span><br><span class="line">            <span class="keyword">if</span> (sq.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//接下来逐一判断是否匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&gt;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&lt;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;)&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;]&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;[&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//需要再次判断栈中是否还有字符</span></span><br><span class="line">    <span class="keyword">if</span>(sq.empty())&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;yes&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
-        <tag>Binary_Code</tag>
+        <tag>Data Structure</tag>
       </tags>
   </entry>
   <entry>
@@ -283,6 +283,27 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
+<p>进入主页后点击New进入创建界面</p>
+<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
+<p>然后点击Create repository创建。</p>
+<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
+<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
+<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
+<p>复制生成的token（后面会用到）</p>
+<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
+<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
+<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
+<p>上传服务选择PicGo。路径选择你的安装路径。</p>
+<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2021/12/11/2021-12-11-%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
 <p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
@@ -353,63 +374,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
 <p>Router2</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<hr>
-<h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
-<p>进入主页后点击New进入创建界面</p>
-<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
-<p>然后点击Create repository创建。</p>
-<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
-<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
-<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
-<p>复制生成的token（后面会用到）</p>
-<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
-<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
-<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
-<p>上传服务选择PicGo。路径选择你的安装路径。</p>
-<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
-<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
-<p>③控制器：自动执行指令</p>
-<p>​	运算器：进行算术运算和逻辑运算</p>
-<p>​	存储器：存放数据和指令（都是二进制形式）</p>
-<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
-<p>④指令和数据：二进制形式</p>
-<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
-<p>​	程序：一串指令组成</p>
-<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
-<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
-<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
-<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
-<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
-<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
-<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
-<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
-<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
-<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
-<p>​							2. 取数</p>
-<p>​							3. 存数</p>
-<p>​							4. ALU运算</p>
-<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
-<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
-<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
-<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
-<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
-<p>汇编指令：机器指令对应的符号表示</p>
-<p>汇编语言程序：使用汇编语言编写的程序</p>
-<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
-<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -487,28 +451,40 @@
 ]]></content>
   </entry>
   <entry>
-    <title>C++指针</title>
-    <url>/2022/07/15/2022-8-15-C++/</url>
-    <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p>
-<p>定义：指针被释放后，还指向原来的内存空间。如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line"><span class="comment">//此时p为悬空指针</span></span><br></pre></td></tr></table></figure>
-
-<p>避免方法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line">p = <span class="literal">NULL</span>;<span class="comment">//赋值为NULL来避免悬空指针</span></span><br></pre></td></tr></table></figure>
-
-<p>2.野指针</p>
-<p>定义：指针不确定其具体指向的内存空间。如：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p;</span><br><span class="line"><span class="comment">//此时p为野指针</span></span><br></pre></td></tr></table></figure>
-
-<p>危害：可能指向任意内存段，因此它可能会损坏正常的数据，也有可能引发其他未知错误。</p>
-<p>避免方法：</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
+    <title></title>
+    <url>/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
+<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
+<p>③控制器：自动执行指令</p>
+<p>​	运算器：进行算术运算和逻辑运算</p>
+<p>​	存储器：存放数据和指令（都是二进制形式）</p>
+<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
+<p>④指令和数据：二进制形式</p>
+<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
+<p>​	程序：一串指令组成</p>
+<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
+<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
+<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
+<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
+<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
+<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
+<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
+<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
+<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
+<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
+<p>​							2. 取数</p>
+<p>​							3. 存数</p>
+<p>​							4. ALU运算</p>
+<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
+<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
+<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
+<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
+<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
+<p>汇编指令：机器指令对应的符号表示</p>
+<p>汇编语言程序：使用汇编语言编写的程序</p>
+<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
+<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
     <title></title>
@@ -813,6 +789,30 @@
       </tags>
   </entry>
   <entry>
+    <title>C++指针</title>
+    <url>/2022/07/15/2022-8-15-C++/</url>
+    <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p>
+<p>定义：指针被释放后，还指向原来的内存空间。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line"><span class="comment">//此时p为悬空指针</span></span><br></pre></td></tr></table></figure>
+
+<p>避免方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line">p = <span class="literal">NULL</span>;<span class="comment">//赋值为NULL来避免悬空指针</span></span><br></pre></td></tr></table></figure>
+
+<p>2.野指针</p>
+<p>定义：指针不确定其具体指向的内存空间。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p;</span><br><span class="line"><span class="comment">//此时p为野指针</span></span><br></pre></td></tr></table></figure>
+
+<p>危害：可能指向任意内存段，因此它可能会损坏正常的数据，也有可能引发其他未知错误。</p>
+<p>避免方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux下gdb调试</title>
     <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
     <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
@@ -830,6 +830,8 @@
     <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">函数类型 <span class="keyword">operator</span>运算符(形参列表)</span><br><span class="line">&#123;</span><br><span class="line">    重载语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>operator</code>为关键字，专门用于定义运算符重载的函数。可以将 <strong>operator运算符</strong> 看成函数名称。</p>
+<span id="more"></span>
+
 <h4 id="运算符重载规则："><a href="#运算符重载规则：" class="headerlink" title="运算符重载规则："></a>运算符重载规则：</h4><p>1.并不是所有的运算符都能被重载，如长度运算符<code>sizeof</code>、条件运算符<code>: ?</code>（三元运算符）、成员选择符<code>.</code>和域解析运算符<code>::</code>不能被重载。</p>
 <p>2.重载不能改变运算符的优先级和结合性。</p>
 <p>3.重载不改变运算符的用法（即不改变原先的使用规则）。</p>
@@ -948,8 +950,7 @@
 <p>3.将一个对象用于给另一对象进行初始化时</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="comment">//拷贝构造，形参必须为引用，一般会加const</span></span><br><span class="line">    <span class="comment">//一般拷贝构造函数为浅拷贝，当成员变量中存在指针变量时需定义一个深拷贝构造函数</span></span><br><span class="line">    <span class="built_in">Person</span>(<span class="type">const</span> Person &amp;p)&#123;</span><br><span class="line">        <span class="meta">#statement</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><span id="more"></span>
-]]></content>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3>]]></content>
       <tags>
         <tag>C++</tag>
       </tags>
