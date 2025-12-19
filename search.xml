@@ -1,288 +1,1009 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2025/12/18/hello-world/"/>
-      <url>/2025/12/18/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><span id="more"></span>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C++面经</title>
-      <link href="/2025/03/05/C++%E9%9D%A2%E7%BB%8F/"/>
-      <url>/2025/03/05/C++%E9%9D%A2%E7%BB%8F/</url>
-      
-        <content type="html"><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p><ul><li><p>函数未被使用：编译和链接时都不报错</p></li><li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p></li><li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p></li></ul><p>2.头文件循环包含问题</p><ul><li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但在源文件中需要包含具体头文件</p><ul><li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure><ul><li>解决依赖扩散问题：使用Pimpl解决</li></ul>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> C++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C++操作符重载&amp;引用</title>
-      <link href="/2024/07/25/2024-07-25-C++/"/>
-      <url>/2024/07/25/2024-07-25-C++/</url>
-      
-        <content type="html"><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数类型 <span class="keyword">operator</span>运算符(形参列表)</span><br><span class="line">&#123;</span><br><span class="line">    重载语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>operator</code>为关键字，专门用于定义运算符重载的函数。可以将 <strong>operator运算符</strong> 看成函数名称。</p><span id="more"></span><h4 id="运算符重载规则："><a href="#运算符重载规则：" class="headerlink" title="运算符重载规则："></a>运算符重载规则：</h4><p>1.并不是所有的运算符都能被重载，如长度运算符<code>sizeof</code>、条件运算符<code>: ?</code>（三元运算符）、成员选择符<code>.</code>和域解析运算符<code>::</code>不能被重载。</p><p>2.重载不能改变运算符的优先级和结合性。</p><p>3.重载不改变运算符的用法（即不改变原先的使用规则）。</p><p>4.运算符重载函数<strong>不能有默认参数</strong>，因为这会改变运算符操作数个数。</p><p>5.运算符重载函数既可以作为<strong>类的成员函数</strong>，也可以作为<strong>全局函数</strong>。</p><p>将运算符重载函数作为类的成员函数时，二元运算符的参数只有一个，一元运算符不需要参数。之所以少一个参数，是因为这个参数是隐含的。当类的对象调用重载后的运算符时，此对象就隐形作为一个参数了。</p><p>将运算符重载函数作为全局函数时，二元操作符就需要两个参数，一元操作符需要一个参数，<strong>而且其中必须有一个参数是对象</strong>，好让编译器区分这是程序员自定义的运算符，防止程序员修改用于内置类型的运算符的性质。</p><p>6.箭头运算符<code>-&gt;</code>、下标运算符<code>[ ]</code>、函数调用运算符<code>( )</code>、赋值运算符<code>=</code>只能以成员函数的形式重载。</p><h4 id="流操作符重载"><a href="#流操作符重载" class="headerlink" title="流操作符重载"></a>流操作符重载</h4><p>输入流操作符<code>&gt;&gt;</code>和输出流操作符<code>&lt;&lt;</code>。</p><p><code>cout</code>是<code>ostream类</code>对象，<code>cin</code>是<code>iostream类</code>对象。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入流操作符&gt;&gt;重载</span></span><br><span class="line">istream &amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;in, 类型 &amp;A)</span><br><span class="line">&#123;</span><br><span class="line">    in &gt;&gt; A.成员<span class="number">1</span> &gt;&gt; A.成员<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回 istream 类对象的引用，是为了能够连续读取复数，让代码书写更加漂亮</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出流操作符&lt;&lt;重载</span></span><br><span class="line">ostream &amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, 类型 &amp;A)</span><br><span class="line">&#123;</span><br><span class="line">    out &lt;&lt; A.成员<span class="number">1</span> &lt;&lt; A.成员<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="下标运算符-重载"><a href="#下标运算符-重载" class="headerlink" title="下标运算符[]重载"></a>下标运算符<code>[]</code>重载</h4><p>只能以成员函数的形式进行重载，声明格式一般为：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种方式:不仅可以访问元素，还可以修改元素。</span></span><br><span class="line">返回值类型 &amp; <span class="keyword">operator</span>[](形参);</span><br><span class="line"><span class="comment">//第二种方式:只能访问而不能修改元素</span></span><br><span class="line"><span class="type">const</span> 返回值类型 &amp; <span class="keyword">operator</span>[](形参) <span class="type">const</span>;</span><br></pre></td></tr></table></figure><p>可以通过重载<code>[]</code>来实现变长数组。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Array</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Array</span>(<span class="type">int</span> length = <span class="number">0</span>);</span><br><span class="line">    ~<span class="built_in">Array</span>();</span><br><span class="line">    <span class="type">int</span> &amp; <span class="keyword">operator</span>[](<span class="type">int</span> i);</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> &amp; <span class="keyword">operator</span>[](<span class="type">int</span> i) <span class="type">const</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_length;  <span class="comment">//数组长度</span></span><br><span class="line">    <span class="type">int</span> *m_p;  <span class="comment">//指向数组内存的指针</span></span><br><span class="line">&#125;;</span><br><span class="line">Array::~<span class="built_in">Array</span>()&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] m_p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span>&amp; Array::<span class="keyword">operator</span>[](<span class="type">int</span> i)&#123;</span><br><span class="line">    <span class="keyword">return</span> m_p[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp; Array::<span class="keyword">operator</span>[](<span class="type">int</span> i) <span class="type">const</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m_p[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h3><h4 id="（1）流操作符重载"><a href="#（1）流操作符重载" class="headerlink" title="（1）流操作符重载"></a>（1）流操作符重载</h4><p>必须作为友元函数（关键字：<strong>friend</strong>）或普通全局函数来重载。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std:ostream&amp; <span class="keyword">operator</span>&lt;&lt;(std::ostream&amp; os,<span class="type">const</span> className&amp; object)&#123;</span><br><span class="line">    os &lt;&lt; object的内容;</span><br><span class="line">    <span class="keyword">return</span> os;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std:istream&amp; <span class="keyword">operator</span>&gt;&gt;(std::istream&amp; is,className&amp; object)&#123;</span><br><span class="line">    os &gt;&gt; object的内容;</span><br><span class="line">    <span class="keyword">return</span> is;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="（2）一元运算符重载（-、–、-、-）"><a href="#（2）一元运算符重载（-、–、-、-）" class="headerlink" title="（2）一元运算符重载（++、–、-、!）"></a>（2）一元运算符重载（++、–、-、!）</h4><p>前缀形式重载调用 <strong>operator ++ ()</strong> ，后缀形式重载调用 <strong>operator ++ (int)</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重载前缀递增运算符（ ++ ）</span></span><br><span class="line">      Time <span class="keyword">operator</span>++ ()  </span><br><span class="line">      &#123;</span><br><span class="line">         ++minutes;          <span class="comment">// 对象加 1</span></span><br><span class="line">         <span class="keyword">if</span>(minutes &gt;= <span class="number">60</span>)  </span><br><span class="line">         &#123;</span><br><span class="line">            ++hours;</span><br><span class="line">            minutes -= <span class="number">60</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="built_in">Time</span>(hours, minutes);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 重载后缀递增运算符（ ++ ）</span></span><br><span class="line">      Time <span class="keyword">operator</span>++( <span class="type">int</span> )         </span><br><span class="line">      &#123;</span><br><span class="line">         <span class="comment">// 保存原始值</span></span><br><span class="line">         <span class="function">Time <span class="title">T</span><span class="params">(hours, minutes)</span></span>;</span><br><span class="line">         <span class="comment">// 对象加 1</span></span><br><span class="line">         ++minutes;                    </span><br><span class="line">         <span class="keyword">if</span>(minutes &gt;= <span class="number">60</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            ++hours;</span><br><span class="line">            minutes -= <span class="number">60</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">// 返回旧的原始值</span></span><br><span class="line">         <span class="keyword">return</span> T; </span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><h4 id="（3）二元运算符重载（-、-、-、-）"><a href="#（3）二元运算符重载（-、-、-、-）" class="headerlink" title="（3）二元运算符重载（+、-、*、&#x2F;）"></a>（3）二元运算符重载（+、-、*、&#x2F;）</h4><p>类成员函数或全局函数</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类成员函数重载 + 运算符，用于把两个 Box 对象相加</span></span><br><span class="line">   Box <span class="keyword">operator</span>+(<span class="type">const</span> Box&amp; b)</span><br><span class="line">   &#123;</span><br><span class="line">      Box box;</span><br><span class="line">      box.length = <span class="keyword">this</span>-&gt;length + b.length;</span><br><span class="line">      box.breadth = <span class="keyword">this</span>-&gt;breadth + b.breadth;</span><br><span class="line">      box.height = <span class="keyword">this</span>-&gt;height + b.height;</span><br><span class="line">      <span class="keyword">return</span> box;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//其他运算符类似</span></span><br><span class="line"><span class="comment">//全局函数重载</span></span><br><span class="line">Box <span class="keyword">operator</span>+(<span class="type">const</span> Box&amp; a, <span class="type">const</span> Box&amp; b)</span><br><span class="line">   &#123;</span><br><span class="line">      Box box;</span><br><span class="line">      box.length = a.length + b.length;</span><br><span class="line">      box.breadth = a.breadth + b.breadth;</span><br><span class="line">      box.height = a.height + b.height;</span><br><span class="line">      <span class="keyword">return</span> box;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h4 id="（4）赋值运算符"><a href="#（4）赋值运算符" class="headerlink" title="（4）赋值运算符"></a>（4）赋值运算符</h4><ul><li>参数类型：引用传参，用const修饰，即const 类&amp;<br>引用传参可以提高传参效率。</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">const</span> Distance &amp;D )</span><br><span class="line">      &#123; </span><br><span class="line">         feet = D.feet;</span><br><span class="line">         inches = D.inches;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><ul><li><p>返回值类型：引用返回，即 类&amp;<br>引用返回可以提高返回的效率，有返回值目的是为了支持连续赋值功能。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Data <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)<span class="comment">//可以提高效率</span></span><br><span class="line">&#123;</span><br><span class="line">_year = d._year;</span><br><span class="line">_month = d._month;</span><br><span class="line">_day = d._day;</span><br><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>要检查是否给自己赋值</p></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Data <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span> != &amp;d)<span class="comment">//如果两个对象的地址不相同那么就可以进行赋值</span></span><br><span class="line">&#123;</span><br><span class="line">_year = d._year;</span><br><span class="line">_month = d._month;</span><br><span class="line">_day = d._day;</span><br><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li><p>返回*this：要符合连续赋值的含义。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Data&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)<span class="comment">//用引用返回，可以提高效率,减少拷贝</span></span><br><span class="line">&#123;</span><br><span class="line">_year = d._year;</span><br><span class="line">_month = d._month;</span><br><span class="line">_day = d._day;</span><br><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h4 id="（5）函数调用运算符-重载"><a href="#（5）函数调用运算符-重载" class="headerlink" title="（5）函数调用运算符()重载"></a>（5）函数调用运算符()重载</h4><p>函数调用运算符 () 可以被重载用于类的对象。当重载 () 时，您不是创造了一种新的调用函数的方式，相反地，这是创建一个可以传递任意数目参数的运算符函数。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重载函数调用运算符</span></span><br><span class="line">      <span class="function">Distance <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         Distance D;</span><br><span class="line">         <span class="comment">// 进行随机计算</span></span><br><span class="line">         D.feet = a + c + <span class="number">10</span>;</span><br><span class="line">         D.inches = b + c + <span class="number">100</span> ;</span><br><span class="line">         <span class="keyword">return</span> D;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><h4 id="（6）下标运算符-重载"><a href="#（6）下标运算符-重载" class="headerlink" title="（6）下标运算符[]重载"></a>（6）下标运算符[]重载</h4><p>下标操作符 [] 通常用于访问数组元素。重载该运算符用于增强操作 C++ 数组的功能。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>&amp; <span class="keyword">operator</span>[](<span class="type">int</span> i)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span>( i &gt;= SIZE )</span><br><span class="line">          &#123;</span><br><span class="line">              cout &lt;&lt; <span class="string">&quot;索引超过最大值&quot;</span> &lt;&lt;endl; </span><br><span class="line">              <span class="comment">// 返回第一个元素</span></span><br><span class="line">              <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> arr[i];</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><h4 id="（7）类成员访问运算符-重载"><a href="#（7）类成员访问运算符-重载" class="headerlink" title="（7）类成员访问运算符-&gt;重载"></a>（7）类成员访问运算符-&gt;重载</h4><p>运算符 -&gt; 通常与指针引用运算符 * 结合使用，用于实现”智能指针”的功能。</p><p>语句 p-&gt;m 被解释为 (p.operator-&gt;())-&gt;m</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Obj* <span class="keyword">operator</span>-&gt;() <span class="type">const</span> </span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">if</span>(!oc.a[index])</span><br><span class="line">     &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Zero value&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> (Obj*)<span class="number">0</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> oc.a[index];</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>引用必须在声明时初始化，初始化后无法改变指向。</p><p><strong>左值、右值的区别：</strong></p><p>左值：可以取地址的对象</p><p>右值：不可以取地址的对象（如常量、表达式、函数返回值）</p><h3 id="左值引用"><a href="#左值引用" class="headerlink" title="左值引用"></a>左值引用</h3><p>就是对左值进行引用</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.左值引用只能引用左值</span></span><br><span class="line"><span class="type">int</span> t = <span class="number">8</span>;</span><br><span class="line"><span class="type">int</span>&amp; rt1 = t;</span><br><span class="line"><span class="comment">//int&amp; rt2 = 8;  // 编译报错，因为8是右值，不能直接引用右值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.但是const左值引用既可以引用左值</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rt3 = t;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rt4 = <span class="number">8</span>;  <span class="comment">// 也可以引用右值</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp; r1 = x + y;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp; r2 = <span class="built_in">fmin</span>(x, y);</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h3><p>就是对右值进行引用</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.右值引用只能引用右值</span></span><br><span class="line"><span class="type">int</span>&amp;&amp; rr1 = <span class="number">10</span>;</span><br><span class="line"><span class="type">double</span>&amp;&amp; rr2 = x + y;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp;&amp; rr3 = x + y;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//int&amp;&amp; rrt = t;  // 编译报错，不能直接引用左值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.但是右值引用可以引用被move的左值</span></span><br><span class="line"><span class="type">int</span>&amp;&amp; rrt = std::<span class="built_in">move</span>(t);</span><br><span class="line"><span class="type">int</span>*&amp;&amp; rr4 = std::<span class="built_in">move</span>(p);</span><br><span class="line"><span class="type">int</span>&amp;&amp; rr5 = std::<span class="built_in">move</span>(*p);</span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp;&amp; rr6 = std::<span class="built_in">move</span>(b);</span><br><span class="line"></span><br><span class="line"><span class="comment">//std::move移动语义：将一个对象中的资源移动到另一个对象（资源控制权的转移）</span></span><br></pre></td></tr></table></figure><h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><p>浅拷贝是创建一个新对象，新对象和原对象共享同一个底层资源，简单的赋值拷贝。浅拷贝在拷贝后对象共享同一份底层资源，可以提高效率，但是当对象<strong>析构</strong>时可能会出现不确定的行为，因为<strong>资源会被重复释放</strong>。</p><p>深拷贝则是创建一个新对象，，在堆中重新分配空间，新对象拥有原对象的全部资源，二者之间互不影响。深拷贝则会为每个对象创建独立的底层资源，避免了这个问题，但是会<strong>占用更多的内存</strong>。</p><p>当对象中有<strong>指针指向动态分配的内存</strong>时，为了安全地复制对象，需要显式地实现深拷贝，通常通过重载类的拷贝构造函数和赋值操作符来完成</p><h2 id="类与结构体"><a href="#类与结构体" class="headerlink" title="类与结构体"></a>类与结构体</h2><p>C语言中，结构体只是用来封装不同数据类型的数据，没有构造函数和成员函数。</p><p>C++中，结构体除了默认权限和继承默认权限不一样外，其他功能与类一样。（结构体默认public，类默认private）</p><p>在类定义中的<strong>定义</strong>的函数都是<strong>内联函数</strong>，即使没有使用 <strong>inline</strong> 说明符。</p><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>派生类可以访问基类中所有的<strong>非私有</strong>成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。</p><p>一个派生类继承了所有的基类方法，但下列情况除外：</p><ul><li>基类的构造函数、析构函数和拷贝构造函数。</li><li>基类的重载运算符。</li><li>基类的友元函数。</li></ul><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>C++ 多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p><p>编译时多态、静态多态（静态链接或早绑定）：函数调用在程序执行前就准备好了。有时候这也被称为<strong>早绑定</strong>，因为 area() 函数在程序编译期间就已经设置好了，如<strong>函数重载</strong>和<strong>运算符重载</strong></p><p>运行时多态、动态多态（动态链接或后期绑定）：根据所调用的对象类型来选择调用的函数，如派生类中的<strong>虚函数重写</strong></p><h5 id="虚函数与纯虚函数"><a href="#虚函数与纯虚函数" class="headerlink" title="虚函数与纯虚函数"></a>虚函数与纯虚函数</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//虚函数</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> returnType <span class="title">functionName</span><span class="params">()</span></span>&#123;</span><br><span class="line">···</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//纯虚函数,派生类必须重写纯虚函数</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> returnType <span class="title">functionName</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure><p>当类中有虚函数时，会为该类生成一个虚函数指针表（虚函数表），同时为该类添加一个虚函数表指针成员（用于访问虚函数表），表中包含一个或多个函数指针，指向该类的虚函数地址</p><h3 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a>数据抽象</h3><p>只向外界提供关键信息，并隐藏其后台的实现细节，即只表现必要的信息而不呈现细节。</p><p><strong>优势：</strong></p><ul><li>类的内部受到保护，不会因无意的用户级错误导致对象状态受损。</li><li>类实现可能随着时间的推移而发生变化，以便应对不断变化的需求，或者应对那些要求不改变用户级代码的错误报告。</li></ul><h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><p>把数据和操作数据的函数捆绑在一起，通过将数据和操作数据的函数封装在一个类中来实现。</p><p><strong>访问修饰符</strong></p><ul><li><strong>private</strong>: 私有成员只能在类的内部访问，不能被类的外部代码直接访问。</li><li><strong>public</strong>: 公有成员可以被类的外部代码直接访问。</li><li><strong>protected</strong>: 受保护成员可以被类和其派生类访问。</li></ul><p><strong>优点：</strong></p><ul><li><strong>数据隐藏</strong>: 通过将数据成员声明为私有，防止外部代码直接访问这些数据。</li><li><strong>提高代码可维护性</strong>: 提供公共方法来访问和修改数据，这使得可以在不影响外部代码的情况下修改类的内部实现。</li><li><strong>增强安全性</strong>: 防止不合法的数据输入和不当的修改操作。</li><li><strong>实现抽象</strong>: 提供了一种机制，使得用户不需要了解类的内部实现细节，只需要了解如何使用类的公共接口即可。</li></ul><h3 id="接口（抽象类ABC）"><a href="#接口（抽象类ABC）" class="headerlink" title="接口（抽象类ABC）"></a>接口（抽象类ABC）</h3><p>类中<strong>至少</strong>有一个函数被声明为<strong>纯虚函数</strong>，则这个类就是抽象类。纯虚函数是通过在声明中使用 “&#x3D; 0” 来指定的。C++的接口是通过抽象类来实现的，抽象类不能被用于实例化对象，它只能作为<strong>接口</strong>使用。</p><p>如果一个 ABC 的子类需要被实例化，则必须实现每个纯虚函数，这也意味着 C++ 支持使用 ABC 声明接口。如果没有在派生类中重写纯虚函数，就尝试实例化该类的对象，会导致编译错误。可用于实例化对象的类被称为<strong>具体类</strong>。</p><h3 id="构造函数类"><a href="#构造函数类" class="headerlink" title="构造函数类"></a>构造函数类</h3><p>按参数区分：有参、无参（默认构造函数）</p><p>按照类型区分：普通、拷贝(或复制构造)</p><p>拷贝构造调用情景：</p><p>1.对象以值的形式作为函数参数</p><p>2.对象以值的形式作为函数返回值</p><p>3.将一个对象用于给另一对象进行初始化时</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="comment">//拷贝构造，形参必须为引用，一般会加const</span></span><br><span class="line">    <span class="comment">//一般拷贝构造函数为浅拷贝，当成员变量中存在指针变量时需定义一个深拷贝构造函数</span></span><br><span class="line">    <span class="built_in">Person</span>(<span class="type">const</span> Person &amp;p)&#123;</span><br><span class="line">        <span class="meta">#statement</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> C++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux下gdb调试</title>
-      <link href="/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/"/>
-      <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure><span id="more"></span>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>C++指针</title>
-      <link href="/2022/07/15/2022-8-15-C++/"/>
-      <url>/2022/07/15/2022-8-15-C++/</url>
-      
-        <content type="html"><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p><p>定义：指针被释放后，还指向原来的内存空间。如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line"><span class="comment">//此时p为悬空指针</span></span><br></pre></td></tr></table></figure><p>避免方法：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line">p = <span class="literal">NULL</span>;<span class="comment">//赋值为NULL来避免悬空指针</span></span><br></pre></td></tr></table></figure><p>2.野指针</p><p>定义：指针不确定其具体指向的内存空间。如：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *p;</span><br><span class="line"><span class="comment">//此时p为野指针</span></span><br></pre></td></tr></table></figure><p>危害：可能指向任意内存段，因此它可能会损坏正常的数据，也有可能引发其他未知错误。</p><p>避免方法：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure><span id="more"></span>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> C++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-      <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
-      
-        <content type="html"><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p><h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p><p>②第二代晶体管计算机（1958-1964年）</p><p>③第三代集成电路计算机（1965-1977）</p><p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p><h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p><p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p><p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p><h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p><p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p><p>主存：存储正在执行的程序和数据。</p><h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p><p>特点：</p><p>①运算单元为中心，控制流由指令流产生</p><p>②存储程序原理，面向主存组织数据流</p><p>③主存按地址访问，提供线性编址空间</p><p>④操作码与地址码组成指令</p><p>⑤数据以二进制编码</p><h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p><p>按传输信息分类：控制线、数据线、地址线</p><p>三类总线：</p><p>①内部总线：CPU内部各元件的连接</p><p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p><p>③通信总线：计算机系统之间的通信</p><h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>数据库笔记</title>
-      <link href="/2022/03/02/2022-3-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/"/>
-      <url>/2022/03/02/2022-3-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="数据库笔记"><a href="#数据库笔记" class="headerlink" title="数据库笔记"></a>数据库笔记</h1><h2 id="1-数据库系统的基本原理"><a href="#1-数据库系统的基本原理" class="headerlink" title="1. 数据库系统的基本原理"></a>1. 数据库系统的基本原理</h2><p>介绍基本概念、发展阶段、数据模型、DBMS的功能及组成、DBS的组成及全局结构</p><h3 id="1-1-数据库概述"><a href="#1-1-数据库概述" class="headerlink" title="1.1 数据库概述"></a>1.1 数据库概述</h3><h4 id="1-1-1-数据库系统的应用"><a href="#1-1-1-数据库系统的应用" class="headerlink" title="1.1.1 数据库系统的应用"></a>1.1.1 数据库系统的应用</h4><p>广泛应用在电信业、银行业、金融业、销售业、电商、大学、航空业、人力资源、制造业</p><h4 id="1-1-2-数据库系统的概念"><a href="#1-1-2-数据库系统的概念" class="headerlink" title="1.1.2 数据库系统的概念"></a>1.1.2 数据库系统的概念</h4><ol><li><h5 id="数据Date"><a href="#数据Date" class="headerlink" title="数据Date"></a>数据Date</h5></li></ol><p>数据：数据库存储的基本对象，是描述现实世界中各种事物或抽象概念的、可存储并具有明确意义的符号记录。</p><p>具体事物：有形且看得见的事物抽象事物：无形且看不见的事物</p><p>记录是数据库系统表示和存储数据的一种格式</p><ol start="2"><li><h5 id="数据库DB"><a href="#数据库DB" class="headerlink" title="数据库DB"></a>数据库DB</h5></li></ol><p>简单上，数据库：相互关联的数据集合</p><p>严格上，数据库：长期存储在计算机内、有组织、可共享的大量数据的集合。</p><p>数据库具有较小的冗余度（不能杜绝数据冗余）、较高的数据独立性、易扩展性</p><ol start="3"><li><h5 id="数据库管理系统DBMS"><a href="#数据库管理系统DBMS" class="headerlink" title="数据库管理系统DBMS"></a>数据库管理系统DBMS</h5></li></ol><p>数据库系统核心部分，介于用户和OS之间。提供访问数据库的方法（数据库定义、建立、查询、更新及其他数据控制）</p><p><strong>主要</strong>功能</p><ol><li><h5 id="数据定义功能（使用数据定义语言DDL）"><a href="#数据定义功能（使用数据定义语言DDL）" class="headerlink" title="数据定义功能（使用数据定义语言DDL）"></a>数据定义功能（使用数据定义语言DDL）</h5></li></ol><p>在数据库中定义数据对象（表、视图、索引、存储过程等）、数据的完整性约束等</p><p>数据的完整性（主要）：实体完整性、参照完整性、用户定义的完整性</p><ol start="2"><li><h5 id="数据操纵功能（使用数据操纵语言，DML）"><a href="#数据操纵功能（使用数据操纵语言，DML）" class="headerlink" title="数据操纵功能（使用数据操纵语言，DML）"></a>数据操纵功能（使用数据操纵语言，DML）</h5></li></ol><p>对数据库进行增、删、改、查操作（insert、delete、update、select）</p><p>查询功能使用频率最高</p><ol start="3"><li>数据控制功能（使用数据控制语言，DCL）</li></ol><p>进行用户权限的变动，如授予或撤销，即安全性控制：解决多用户对数据库的并发使用所产生的事物处理问题（并发控制；数据库的转储、恢复功能；数据库的性能监视、分析功能）</p><ol start="4"><li><h5 id="数据库系统（DBS）"><a href="#数据库系统（DBS）" class="headerlink" title="数据库系统（DBS）"></a>数据库系统（DBS）</h5></li></ol><p>数据库系统：计算机系统引入数据库后的系统，由DB、DBMS、应用系统、数据库管理员DBA构成。</p><ol start="5"><li><h5 id="数据库应用系统（DBAS）"><a href="#数据库应用系统（DBAS）" class="headerlink" title="数据库应用系统（DBAS）"></a>数据库应用系统（DBAS）</h5></li></ol><p>DBAS：指实现业务逻辑的应用程序</p><p>要求：提供一个有好的、人性化的操作数据的GUI</p><h4 id="1-1-3-数据管理技术的发展阶段"><a href="#1-1-3-数据管理技术的发展阶段" class="headerlink" title="1.1.3 数据管理技术的发展阶段"></a>1.1.3 数据管理技术的发展阶段</h4><ol><li><h5 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h5></li></ol><p>用途：科学计算</p><p>处理方式：批处理</p><p>特点：数据不保存、不具有独立性、不共享；只有程序概念，无文件概念</p><ol start="2"><li><h5 id="文件管理系统阶段"><a href="#文件管理系统阶段" class="headerlink" title="文件管理系统阶段"></a>文件管理系统阶段</h5></li></ol><p>用途：科学计算、信息管理</p><p>处理方式：批处理、联机实时处理</p><p>缺点：数据冗余性和不一致（数据重复存储且可能有差异）、数据独立性差、数据孤立</p><ol start="3"><li><h5 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h5></li></ol><p>用途：大规模管理</p><p>处理方式：批处理、实时联机处理、分布处理</p><p>特点：数据结构化；数据共享性高、冗余度低、易扩充；数据独立性高（物理独立性、逻辑独立性）；DBMS统一管理和控制（包括数据的完整性检查、并发控制、数据的安全性保护、数据库的恢复）</p><h4 id="1-1-4-数据库系统的用户"><a href="#1-1-4-数据库系统的用户" class="headerlink" title="1.1.4 数据库系统的用户"></a>1.1.4 数据库系统的用户</h4><ol><li><h5 id="数据库管理员"><a href="#数据库管理员" class="headerlink" title="数据库管理员"></a>数据库管理员</h5></li></ol><p>①参与数据库的设计</p><p>②定义数据的安全性要求和完整性约束条件</p><p>③日常维护：定期备份数据库、监视数据库的运行、保障有充足的空余磁盘空间</p><p>④数据库的改进、重组和重构</p><ol start="2"><li><h5 id="数据库用户"><a href="#数据库用户" class="headerlink" title="数据库用户"></a>数据库用户</h5></li></ol><p>①最终用户：现实系统中的业务人员，数据库的主要用户</p><p>②专业用户：包括工程师、科学家、经济学家等具有较高科学技术背景的人员</p><p>③系统分析员和数据库设计人员</p><p>④应用程序员</p><h3 id="1-2-数据模型"><a href="#1-2-数据模型" class="headerlink" title="1.2 数据模型"></a>1.2 数据模型</h3><p>模型是对现实世界的抽象</p><h4 id="1-2-1-数据抽象的过程"><a href="#1-2-1-数据抽象的过程" class="headerlink" title="1.2.1 数据抽象的过程"></a>1.2.1 数据抽象的过程</h4><p>美国国家标准化协会（ANSI）根据<strong>数据抽象级别</strong>定义了四种模型：概念模型、逻辑模型、外部模型、内部模型</p><p>数据抽象过程：</p><p>①综合：根据用户需求设计数据库的概念模型</p><p>②转换：根据转换规则将概念模型转换为数据库的逻辑模型</p><p>③实现：根据用户业务特点设计不同的外部模型</p><p>④根据逻辑模型设计内部模型</p><p>模型介绍：</p><ol><li><h5 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h5></li></ol><p>抽象级别最高，表达用户需求观点的数据库全局逻辑结构的模型</p><p>特点：</p><p>①表达了数据库的整体逻辑结构，<strong>企业管理人员</strong>对整个<strong>企业组织</strong>的全面概述</p><p>②从<strong>用户需求</strong>的观点出发对数据建模</p><p>③独立于软硬件。不依赖于硬件设备，不依赖于实现时的DBMS软件</p><p>④数据库设计人员与用户之间进行交流的工具</p><p>现在概念模型多是实体-联系模型（E-R模型，使用E-R图表示）。</p><p>实体是现实世界或客观世界中可相互区别的对象（抽象或具体）。</p><p>联系：两个或多个实体之间的关联，分为三种：</p><p>①一对一（1:1）②一对多（1：N）③多对多（M:N）</p><ol start="2"><li><h5 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h5></li></ol><p>特点：</p><p>①表达了数据库的整体逻辑结构，<strong>设计人员</strong>对整个<strong>企业组织数据库</strong>的全面概述（与概念模型不同，主要区分）</p><p>②从<strong>数据库实现</strong>的观点出发对数据建模</p><p>③硬件独立，软件依赖</p><p>④数据库设计人员与应用程序员之间交流的工具</p><p>类别：层次模型（数据结构为树状结构）、网状结构（数据结构为有向图）、关系模型（数据结构为二维表格，现在关系型DBMS均采用关系模型）</p><ol start="3"><li><h5 id="外部模型"><a href="#外部模型" class="headerlink" title="外部模型"></a>外部模型</h5></li></ol><p>特点：</p><p>①逻辑结构的一个逻辑子集（可以有多个）</p><p>②硬件独立，软件依赖</p><p>③反映了用户使用数据库的观点</p><p>系统考查上，特点为：简化了用户观点、有助于数据库的安全性保护、对概念模型的支持</p><ol start="4"><li><h5 id="内部模型（物理模型）"><a href="#内部模型（物理模型）" class="headerlink" title="内部模型（物理模型）"></a>内部模型（物理模型）</h5></li></ol><p>数据库最底层的抽象（描述了数据在磁盘上的存储方式、存取设备、存取方法）。</p><p>与硬件和软件紧密相连的。</p><h4 id="1-2-2-关系模型"><a href="#1-2-2-关系模型" class="headerlink" title="1.2.2 关系模型"></a>1.2.2 关系模型</h4><p>1970年，IBM公司 E.F.Codd 首次提出</p><h5 id="1-数据模型的三要素"><a href="#1-数据模型的三要素" class="headerlink" title="1. 数据模型的三要素"></a>1. 数据模型的三要素</h5><p>①数据结构</p><p>所描述的对象类型的集合，对系统静态特性的描述。</p><p>②数据操作</p><p>对系统动态特性的描述。</p><p>③数据的完整性约束</p><p>一组完整性规则，保证数据的正确性、有效性、相容性、</p><p>必须满足实体完整性和参照完整性。</p><h5 id="2-关系数据模型的数据结构"><a href="#2-关系数据模型的数据结构" class="headerlink" title="2.关系数据模型的数据结构"></a>2.关系数据模型的数据结构</h5><p>①关系（relation）</p><p>一个关系即为一个规范的二维表。</p><p>基本条件：关系的每一列不可再分。即不允许表中还有表</p><p>②元组（tuple）</p><p>二维表中除第一行外的每一行为一个元组。</p><p>一个元祖代表一条完整的信息。</p><p>③属性（attribute）</p><p>二维表中的每一列为一个属性。</p><p>④码（key）</p><p>码：关键字或关键码。</p><p>由一个属性或属性的组合能够<strong>唯一</strong>确定一个元组，则该属性或属性的组合称为码。</p><p>⑤关系模式</p><p>一般描述：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">关系名（属性1，属性2，属性3，属性4，···，属性n）</span><br></pre></td></tr></table></figure><ol start="3"><li><h5 id="关系数据模型的操作和完整性约束"><a href="#关系数据模型的操作和完整性约束" class="headerlink" title="关系数据模型的操作和完整性约束"></a>关系数据模型的操作和完整性约束</h5></li></ol><p>主要操作：查询、插入、删除、更新数据（必须满足关系的完整性约束条件）</p><p>关系的完整性约束条件：实体参照性、参照完整性、用户定义的完整性</p><h3 id="1-3数据库体系结构"><a href="#1-3数据库体系结构" class="headerlink" title="1.3数据库体系结构"></a>1.3数据库体系结构</h3><h4 id="1-3-1-数据库系统的三级结构"><a href="#1-3-1-数据库系统的三级结构" class="headerlink" title="1.3.1 数据库系统的三级结构"></a>1.3.1 数据库系统的三级结构</h4><p>1975年，美国ANSI&#x2F;SPARC报告提出三级划分法。</p><h5 id="1-用户级数据库"><a href="#1-用户级数据库" class="headerlink" title="1. 用户级数据库"></a>1. 用户级数据库</h5><p>对应<strong>外模式</strong>，最接近用户，用户可以看到和使用的数据库（又称用户视图）。</p><p>主要由外部记录组成，不同视图可重叠。</p><p>所有操作都是针对用户视图。</p><h5 id="2-概念级数据库"><a href="#2-概念级数据库" class="headerlink" title="2. 概念级数据库"></a>2. 概念级数据库</h5><p>对应<strong>概念模式</strong>，介于用户级和物理级之间。数据库管理人员看到和使用的数据库（又称DBA视图）。</p><h5 id="3-物理级数据库"><a href="#3-物理级数据库" class="headerlink" title="3. 物理级数据库"></a>3. 物理级数据库</h5><p>对应<strong>内模式</strong>，数据库底层表示。描述数据的实际存储组织，最接近与物理存储的级别（又称内部视图）。</p><p>由内部记录组成。</p><p>注意：物理级数据库不是真正的物理存储（只是对物理存储的抽象），最接近物理存储。</p><h4 id="1-3-2-数据库系统的三级模式"><a href="#1-3-2-数据库系统的三级模式" class="headerlink" title="1.3.2 数据库系统的三级模式"></a>1.3.2 数据库系统的三级模式</h4><h5 id="1-概念模式"><a href="#1-概念模式" class="headerlink" title="1. 概念模式"></a>1. 概念模式</h5><p>又称<strong>模式</strong>或<strong>逻辑模式</strong>。</p><p>数据库中<strong>全体</strong>数据的逻辑结构和特征的描述，<strong>所有用户</strong>的公共数据视图。</p><p>具有唯一性。即一个数据库只有一个概念模式。</p><h5 id="2-外部模式"><a href="#2-外部模式" class="headerlink" title="2. 外部模式"></a>2. 外部模式</h5><p>又称<strong>子模式</strong>和<strong>用户模式</strong>。</p><p>数据库用户可以看到和使用的<strong>局部</strong>数据的逻辑结构和特征的描述。数据库用户的数据视图</p><p>具有不唯一性。</p><h5 id="3-内部模式"><a href="#3-内部模式" class="headerlink" title="3.内部模式"></a>3.内部模式</h5><p>又称<strong>存储模式</strong>或<strong>物理模式</strong>。</p><p>数据物理结构和存储方式的描述，数据在数据库内的表示方式。</p><p>具有唯一性。</p><h4 id="1-3-3-数据库系统的二级映射与数据独立性"><a href="#1-3-3-数据库系统的二级映射与数据独立性" class="headerlink" title="1.3.3 数据库系统的二级映射与数据独立性"></a>1.3.3 数据库系统的二级映射与数据独立性</h4><h5 id="1-数据库系统的二级映射"><a href="#1-数据库系统的二级映射" class="headerlink" title="1. 数据库系统的二级映射"></a>1. 数据库系统的二级映射</h5><p>外模式&#x2F;模式映射模式&#x2F;内模式映射</p><p>三个抽象级通过二级映射进行相互转换，形成一个统一的整体。</p><h5 id="2-数据独立性"><a href="#2-数据独立性" class="headerlink" title="2. 数据独立性"></a>2. 数据独立性</h5><p>应用程序与数据之间的独立性。包括两种如下：</p><p>①物理独立性</p><p>应用程序与磁盘上的数据库中的数据是独立的。</p><p>通过模式&#x2F;内模式映射来实现的。</p><p>②逻辑独立性</p><p>应用程序与逻辑结构是相互独立的。通过外模式&#x2F;模式映射来实现的。</p><h2 id="2-关系数据库标准语言SQL"><a href="#2-关系数据库标准语言SQL" class="headerlink" title="2. 关系数据库标准语言SQL"></a>2. 关系数据库标准语言SQL</h2><h3 id="2-1-SQL-语言介绍"><a href="#2-1-SQL-语言介绍" class="headerlink" title="2.1 SQL 语言介绍"></a>2.1 SQL 语言介绍</h3><p>近期版本是SQL2016，主要新特性为行模式识别、支持json对象、多态表函数等</p><h4 id="2-1-1-SQL数据库的体系结构"><a href="#2-1-1-SQL数据库的体系结构" class="headerlink" title="2.1.1 SQL数据库的体系结构"></a>2.1.1 SQL数据库的体系结构</h4><p>特点：</p><p>①SQL用户可以是应用程序或终端用户。</p><p>②使用SQL语言对基本表和视图进行查询。</p><p>③一个视图是从若干个基本表或其他视图上导出的表。</p><p>④一个或一些基本表对应一个数据文件。</p><p>⑤一个基本表可以带若干个索引。</p><p>⑥一个表空间可以由若干个数据文件组成。</p><p>⑦一个数据库可以由若干个存储文件组成。</p><h4 id="2-1-2-SQL的特点"><a href="#2-1-2-SQL的特点" class="headerlink" title="2.1.2 SQL的特点"></a>2.1.2 SQL的特点</h4><p>Structured Query Language 结构化查询语言</p><p>①综合统一</p><p>②高度非过程化</p><p>③面向对象的操作方式</p><p>④同一种语法结构提供两种使用方式（即是独立语言又是嵌入式语言）</p><p>⑤语言简介、易学易用（结构化查询语言）</p><h4 id="2-1-3-SQL语言的组成"><a href="#2-1-3-SQL语言的组成" class="headerlink" title="2.1.3 SQL语言的组成"></a>2.1.3 SQL语言的组成</h4><p>1.数据定义语言（DDL）</p><p>create：创建数据库、表、视图等</p><p>alter：修改</p><p>drop：删除数据库、表、视图等</p><p>rename：重命名</p><p>truncate：删除表中所有数据但不删除表</p><p>2.数据操作语言（DML）</p><p>select：查询</p><p>inset：添加新数据</p><p>update：更新现有的数据</p><p>delete：删除指定行的数据</p><p>3.数据控制语言（DCL）</p><p>DCL用于事务控制、并发控制、完整性和安全性控制等。</p><p>commit：保存修改</p><p>rollback：回滚修改</p><p>savepoint：设置保存点</p><p>locktable：锁定数据库中的一个表</p><h2 id="3-数据库编程"><a href="#3-数据库编程" class="headerlink" title="3.数据库编程"></a>3.数据库编程</h2><h3 id="1-常量"><a href="#1-常量" class="headerlink" title="1.常量"></a>1.常量</h3><p>常量：程序本身不能改变其值的数据</p><p>（1）字符串常量</p><p>使用单引号或双引号括起来的字符串序列，一般使用单引号。</p><p>（2）数值常量</p><p>整数常量和小数常量。可使用科学计数法表示，如 <strong>1e10</strong>、<strong>1.25E10</strong>*。</p><p>（3）日期和时间常量</p><p>单引号括的特定格式的字符日期值。如 <strong>‘yyyy\mm\dd hh:mm:ss’<strong>、</strong>yyyy-mm-dd hh:mm:ss</strong>.</p><p>日期时间之间可以使用比较符号比较大小</p><p>（4）布尔值常量</p><p>只有true、false两个值。SQL命令的运行结果：1表示true，0表示false。</p><p>（5）NULL值</p><p>NULL值适用于各种类型的字段，表示“不确定的值”。有NULL值参与的运算结果一定为NULL值。</p><h3 id="2-变量"><a href="#2-变量" class="headerlink" title="2.变量"></a>2.变量</h3><p>变量：程序运行过程中可以改变其值的数据</p><h4 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1.局部变量"></a>1.局部变量</h4><p>格式：@+局部变量名</p><p>（1）定义与赋值</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set @局部变量名[,@局部变量名,···];#定义</span><br><span class="line">set @局部变量名 = 表达式1[,@局部变量名 = 表达式2,···];#定义并赋值</span><br><span class="line">select 列名[,列名,···] into @局部变量名[,@局部变量名,···] from 表名;#将查询到的数据赋值给局部变量名</span><br></pre></td></tr></table></figure><p>（2）显示</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @局部变量名;</span><br></pre></td></tr></table></figure><p>（3）其他</p><p>局部变量名可作为 select语句 中 where子句 的比较条件。</p><p>如：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 where name = @局部变量名</span><br></pre></td></tr></table></figure><h4 id="2-全局变量"><a href="#2-全局变量" class="headerlink" title="2.全局变量"></a>2.全局变量</h4><p>全局变量：MySQL 系统提供并赋值的变量。用户不能定义全局变量，只能使用。</p><p>格式：@@+全局变量名</p><table><thead><tr><th align="center">全局变量名</th><th align="center">说明</th></tr></thead><tbody><tr><td align="center">@@back_log</td><td align="center">返回MySQL主要连接请求的数量</td></tr><tr><td align="center">@@basedir</td><td align="center">返回MySQL安装目录基准</td></tr><tr><td align="center">@@license</td><td align="center">返回服务器的许可类型</td></tr><tr><td align="center">@@port</td><td align="center">返回服务器侦听TCP&#x2F;IP链接的端口号</td></tr><tr><td align="center">@@storage_engine</td><td align="center">返回存储引擎</td></tr><tr><td align="center">@@version</td><td align="center">返回服务器版本号</td></tr></tbody></table><p>显示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@全局变量名</span><br></pre></td></tr></table></figure><span id="more"></span>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> MySql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
-      <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
-      
-        <content type="html"><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p><ul><li>单元测试：对最小模块测试</li><li>集成测试：小模块集成后测试</li><li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li><li>验收测试：上线前的测试，包括<ul><li>α测试：内测，开发环境下测试模拟用户测试</li><li>β测试：公测，实际环境下用户的测试</li></ul></li></ul><p>是否查看代码：</p><ul><li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li><li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li><li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li></ul><p>测试执行方式：</p><ul><li>静态测试：不运行程序，只是检查代码</li><li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li></ul><p>是否手工测试：</p><ul><li>手动测试：即人工测试</li><li>自动测试：使用代码进行测试</li></ul><p>其他：</p><ul><li>冒烟测试：</li><li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li><li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li><li>探索性测试：升级版的随机测试，未来的发展方向</li></ul><h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul><li>70%单元测试</li><li>20%服务测试</li><li>10%用户界面测试</li></ul><h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p><ul><li><p>等价类划分</p><p>输入域明确：把程序的输入域划分为若干个子集</p><p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p><p>常见分类：有效、无效等价类</p></li><li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p></li><li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p></li><li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p></li><li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p></li><li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p><ul><li>成本低，可以不用提前设计大量测试用例</li><li>可以激发测试工程师的创造性，更快发现问题</li><li>测试覆盖度无法得到有效保障</li><li>多数测试活动都是由探索性测试与脚本用例结合</li></ul></li></ul><h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p><p>三大核心要素：标题、步骤、断言</p><ul><li>标题：测试用例的描述</li><li>步骤：测试执行过程的描述</li><li>断言：实际结果与预期结果对比</li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2021/12/24/2021-12-24-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
-      <url>/2021/12/24/2021-12-24-%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<h1 id="静态路由和动态路由的配置"><a href="#静态路由和动态路由的配置" class="headerlink" title="静态路由和动态路由的配置"></a>静态路由和动态路由的配置</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p><p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p><p>将各个组件相连（使用自动选择连接）</p><p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p><p>为各个路由器的接口配置IP地址如下：</p><p>Router0:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure><p>Router1:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure><p>Router2:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure><h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure><p>Router0:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure><p>Router1:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure><p>Router2:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure><p>此时开始在一台主机ping目的主机。</p><h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure><p>每个路由器都是如此。</p><p>Router0的邻居网络为10.1.1.0、20.1.1.0</p><p>Router1的邻居网络为20.1.1.0、30.1.1.0</p><p>Router2的邻居网络为30.1.1.0、40.1.1.0</p><p>则配置如下：</p><p>Router0</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure><p>Router1</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure><p>Router2</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure><p>3.2 ospf配置</p><p>格式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure><p>配置如下：</p><p>Router0</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure><p>Router1</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure><p>Router2</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2021/12/11/2021-12-11-%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/"/>
-      <url>/2021/12/11/2021-12-11-%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-      
-        <content type="html"><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p><p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p><p>遮罩的作用：</p><p>​①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p><p>​②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p><h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p><p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p><p>2.Fusion面板</p><p>创建一个文本节点</p><p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p><p>3.调色面板</p><p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p><p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p><h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p><p>示波器的使用</p><p>分量图、波形图、矢量图、直方图、CIE色度图</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/"/>
-      <url>/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p><p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p><p>③控制器：自动执行指令</p><p>​运算器：进行算术运算和逻辑运算</p><p>​存储器：存放数据和指令（都是二进制形式）</p><p>​输入输出设备：操作人员通过输入输出设备使用计算机</p><p>④指令和数据：二进制形式</p><p>​指令组成：操作码（操作类型）和地址码（操作数地址）</p><p>​程序：一串指令组成</p><h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p><p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p><p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p><p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p><p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p><p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p><p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p><p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p><p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p><h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p><p>​2. 取数</p><p>​3. 存数</p><p>​4. ALU运算</p><p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p><h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p><p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p><p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p><p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p><p>汇编指令：机器指令对应的符号表示</p><p>汇编语言程序：使用汇编语言编写的程序</p><p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p><p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p><h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/"/>
-      <url>/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<hr><h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p><p>进入主页后点击New进入创建界面</p><p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p><p>然后点击Create repository创建。</p><p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p><p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p><p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p><p>在Note下方输入令牌名字，勾选repo后生成即可。</p><p>复制生成的token（后面会用到）</p><h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p><p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p><h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p><p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p><p>上传服务选择PicGo。路径选择你的安装路径。</p><h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>git初体验</title>
-      <link href="/2021/11/25/2021-11-25-Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-      <url>/2021/11/25/2021-11-25-Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a>Linux学习笔记</h1><p>写在前面</p><p>善用tab 补全命令</p><p>Ctrl+C：中断命令</p><p>Ctrl+D：直接离开界面（相当于exit）</p><p>startx：进入图形化界面（前提：安装了图形化界面，如KDE、GNOME）</p><p>退出图形化界面：init 数字（1-6），Ctrl + Alt + F2 - F6</p><p>man 命令名：查看命令使用方法</p><p>man page 与 info page：求助命令，也就是查看命令信息</p><p>vi：i a o 插入（即编辑模式），q 退出，w 保存，esc 退出编辑</p><p>date：查看时间日期</p><p>cal：显示日历</p><p>bc：打开计算器</p><p>su 其他账号：进入其他账号（即限root用户）</p><h2 id="1-文件命令"><a href="#1-文件命令" class="headerlink" title="1.文件命令"></a>1.文件命令</h2><p>vi（vim）：创建文件并进入文件进行编辑（属于vi编辑器的范围）</p><p>cd：进入某个目录</p><p>ls：显示当前目录下的除隐藏文件外的所有文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ls [-选项] [filename|directory]</span><br><span class="line">-a:显示指定目录下所有子目录和文件，包括隐藏文件</span><br><span class="line">-c:按文件修改时间排序</span><br><span class="line">-d:若参数是目录，则只显示其名称不显示其下的各文件</span><br><span class="line">-i:在输出的第一列显示文件的i节点</span><br><span class="line">-l:以长格式显示文件详细信息</span><br></pre></td></tr></table></figure><p>mkdir：创建文件目录（为蓝色），相当于文件夹</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-选项] dirname</span><br><span class="line">-m:对新建目录设置存取权限，也可通过chmod来设置</span><br><span class="line">-p:可以一次建立多个目录，如mkdir -p dir1/dir2/dir3将依次建立dir1、dir2、dir3三个目录</span><br></pre></td></tr></table></figure><p>rmdir：删除文件目录，相当于删除文件夹</p><p>pwd：显示当前所在路径</p><p>cp：复制文件或目录（会增加文件个数）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cp [-选项] sourcefilename | directorydestfilename | dirctory</span><br><span class="line">-a:整个目录复制</span><br><span class="line">-f:覆盖已存在的目标文件且不提示</span><br><span class="line">-i:覆盖已存在的目标文件前询问用户是否覆盖(交互式覆盖)</span><br><span class="line">-p:除了复制文件内容，还复制源文件的修改时间和文件权限</span><br><span class="line">-R:源文件是目录时，，递归复制该目录下的子目录和文件</span><br><span class="line">-l:不复制，只作为链接文件</span><br></pre></td></tr></table></figure><p>mv：移动文件或目录，可以用来更改文件或目录名字</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv [-选项] sourcefilename | directorydestfilename | directory</span><br><span class="line">-i:交互式操作，若存在与目标文件重名的文件会导致覆盖，系统会询问是否覆盖</span><br><span class="line">-f:禁止交互操作，无论是否有与目标文件重名的文件，都直接覆盖</span><br></pre></td></tr></table></figure><p>rm：删除文件或目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rm [-选项] filename | directory···</span><br><span class="line">-f:忽略不存在的文件，从不给出提示</span><br><span class="line">-r:指示rm将参数中列出的全部目录和子目录均递归删除掉</span><br><span class="line">-i:进行交互式删除</span><br></pre></td></tr></table></figure><p>rm -rf * 会删除系统内的文件（删库跑路专属）</p><p>cat：不打开文件直接显示文件的内容（即不使用vi命令即可看到内容）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat [-选项] filename [filename2 ···]</span><br><span class="line">-n:由1开始编号</span><br><span class="line">-b:由1开始编号，空白行除外</span><br><span class="line">-s:将两个空白行替换为一个空白行</span><br><span class="line">-v:显示非打印文本</span><br></pre></td></tr></table></figure><p>tac：cat的相反命令，用来逆序显示文件内容</p><p>more：若文件内容过长，将文件内容分屏显示，按空格键显示下一页内容</p><p>less：与more相似，允许用户向前或向后查看文件，按B键向前翻阅，按P键向后翻阅，输入百分比显示指定位置，按Q键退出查看</p><p>chmod： 修改文件权限（读 写 执行r w x）</p><table><thead><tr><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table><p>chown： 修改文件拥有者</p><p>chgrp： 修改文件所属群组</p><h2 id="2-用户和组管理命令"><a href="#2-用户和组管理命令" class="headerlink" title="2.用户和组管理命令"></a>2.用户和组管理命令</h2><h3 id="2-1用户管理"><a href="#2-1用户管理" class="headerlink" title="2.1用户管理"></a>2.1用户管理</h3><p>adduser：添加用户</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adduser [-选项] username</span><br><span class="line">-d:指定用于取代默认/home/username的用户主目录</span><br><span class="line">-g:用户所属的用户组的组名或组id（指定前需存在这个组）</span><br><span class="line">-m:若指定用户主目录不存在则创建</span><br><span class="line">-p:使用crypt加密的口令</span><br><span class="line">-s:指定用户登录shell，默认为/bin/bash</span><br><span class="line">-u uid:指定用户的UID，必须唯一且不小于500</span><br></pre></td></tr></table></figure><p>passwd：修改用户的口令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">passwd [-选项] [username]</span><br><span class="line">-l:锁定口令，即禁用账号</span><br><span class="line">-u:口令解锁</span><br><span class="line">-d:使账号无口令</span><br><span class="line">-f:强迫用户下次登录修改口令</span><br><span class="line">若不指定用户，默认修改当前用户的口令</span><br></pre></td></tr></table></figure><p>userdel：删除用户（将&#x2F;etc&#x2F;passwd等系统文件中该用户的记录删除）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">userdel [-选项] username</span><br><span class="line">-r:把用户的主目录一起删除</span><br></pre></td></tr></table></figure><p>完全删除一个用户包括：</p><p>​删除&#x2F;etc&#x2F;passwd文件中该用户的记录</p><p>​删除&#x2F;etc&#x2F;group文件中该用户的信息</p><p>​删除用户的主目录</p><p>​删除该用户创建的或属于该用户的文件</p><p>su：改变身份</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su [username]</span><br><span class="line">不指定用户名，默认切换到root</span><br></pre></td></tr></table></figure><h3 id="2-2用户组管理"><a href="#2-2用户组管理" class="headerlink" title="2.2用户组管理"></a>2.2用户组管理</h3><p>groupadd：添加用户组</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">groupadd [-选项] username</span><br><span class="line">-g GID:指定用户组的GID，唯一且不小于500</span><br><span class="line">-r:创建GID小于500的系统用户组</span><br><span class="line">-f:若用户组存在，退出并显示错误（原用户组不发生改变）</span><br></pre></td></tr></table></figure><p>groupdel:删除用户组</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">注意：</span><br><span class="line">组中用户文件不能自行删除，不能改变文件所属的组</span><br><span class="line">若组是用户的基本组，则这个组无法删除</span><br><span class="line">若组中有用户在系统中处于登录状态不能删除该组，需删除用户后在删除组</span><br></pre></td></tr></table></figure><p>groupmod：修改用户组属性</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gtoupmod [-选项] groupname</span><br><span class="line">-g:为用户组指定新的组标识号</span><br><span class="line">-n:将用户组的名字改为新名字</span><br></pre></td></tr></table></figure><p>为用户组添加用户：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将一个用户添加到一个组内：</span><br><span class="line">通过编辑/etc/group文件，将用户名写到组名后面来实现，有多个用户名使用逗号分隔</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> TeXt </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>二进制数补码</title>
-      <link href="/2021/11/23/2021-11-23-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/"/>
-      <url>/2021/11/23/2021-11-23-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-      
-        <content type="html"><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）--><h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p><h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p><h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p><p>X &#x3D; <strong>0</strong> 000 0011</p><p>这是一个正数的原码表示，表示 3。</p><p>这里我们看一下模运算求正数补码的公式：</p><p>[X]  &#x3D; X + M ( mod M)</p><p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p><p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p><p><strong>补码→原码：</strong></p><p>由上可知，正数补码与原码相同，即补码即原码</p><h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p><p>X &#x3D; <strong>1</strong> 000 0011</p><p>这是一个负数的原码表示，表示 -3。</p><p>这里我们看一下模运算求负数补码的公式：</p><p>[X]  &#x3D; M + X ( mod M)</p><p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p><p>对比一下 X 与 [X]:</p><p>  X &#x3D; <strong>1</strong> 000 0011</p><p>[X] &#x3D; <strong>1</strong> 111 1101</p><p>我们可以看到原码与补码的变化。</p><p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p><p><strong>补码→原码：</strong></p><p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p><p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p><p>除此之外，还有其他方法吗？❤❤❤</p><p>对比一下 [X] 与 X:</p><p>[X] &#x3D; <strong>1</strong> 111 1101</p><p>  X &#x3D; <strong>1</strong> 000 0011</p><p>是不是似曾相识呢？</p><p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Binary_Code </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>栈的定义及实现(C语言)</title>
-      <link href="/2021/11/01/2021-11-01-%E6%A0%88/"/>
-      <url>/2021/11/01/2021-11-01-%E6%A0%88/</url>
-      
-        <content type="html"><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p><p>栈顶(top)：线性表的表尾</p><p>栈底(bottom)：线性表的表头</p><p>操作原则：后进先出原则(LIFO)</p><h3 id="1-2-栈的操作"><a href="#1-2-栈的操作" class="headerlink" title="1.2 栈的操作"></a>1.2 栈的操作</h3><p>创建栈 Init_Stack()</p><p>添加元素 push()</p><p>删除元素 pop()</p><p>获取栈顶元素 top()</p><p>获取栈实际长度 size()</p><h3 id="1-3-顺序栈的实现"><a href="#1-3-顺序栈的实现" class="headerlink" title="1.3 顺序栈的实现"></a>1.3 顺序栈的实现</h3><h5 id="1-3-1-定义一个栈结构体"><a href="#1-3-1-定义一个栈结构体" class="headerlink" title="1.3.1 定义一个栈结构体"></a>1.3.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> *elem;</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125;<span class="built_in">stack</span>;</span><br></pre></td></tr></table></figure><h5 id="1-3-2-初始化"><a href="#1-3-2-初始化" class="headerlink" title="1.3.2 初始化"></a>1.3.2 初始化</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq.elem = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * stack_size);</span><br><span class="line">    sq.length = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;初始化成功&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-3-3-将元素压入栈"><a href="#1-3-3-将元素压入栈" class="headerlink" title="1.3.3 将元素压入栈"></a>1.3.3 将元素压入栈</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> elem)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &gt;= stack_size) <span class="keyword">return</span>;</span><br><span class="line">    sq.elem[sq.length] = elem;</span><br><span class="line">    sq.length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-3-4-将元素弹出栈"><a href="#1-3-4-将元素弹出栈" class="headerlink" title="1.3.4 将元素弹出栈"></a>1.3.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sq.elem[sq.length<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">    sq.length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-3-5-获取栈顶元素"><a href="#1-3-5-获取栈顶元素" class="headerlink" title="1.3.5 获取栈顶元素"></a>1.3.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.elem[sq.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-3-6-获取栈实际长度"><a href="#1-3-6-获取栈实际长度" class="headerlink" title="1.3.6 获取栈实际长度"></a>1.3.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="1-4-链栈的实现"><a href="#1-4-链栈的实现" class="headerlink" title="1.4 链栈的实现"></a>1.4 链栈的实现</h3><p>需要另外定义一个全局的整形变量 length 来存放栈的长度。</p><h5 id="1-4-1-定义一个栈结构体"><a href="#1-4-1-定义一个栈结构体" class="headerlink" title="1.4.1 定义一个栈结构体"></a>1.4.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> elem;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*<span class="built_in">stack</span>,*node;</span><br></pre></td></tr></table></figure><h5 id="1-4-2-初始化"><a href="#1-4-2-初始化" class="headerlink" title="1.4.2 初始化"></a>1.4.2 初始化</h5><p>需要为头结点分配空间</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq = (<span class="built_in">stack</span>)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    sq-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-4-3-将元素压入栈"><a href="#1-4-3-将元素压入栈" class="headerlink" title="1.4.3 将元素压入栈"></a>1.4.3 将元素压入栈</h5><p>需要为新节点分配空间</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> e)</span>&#123;</span><br><span class="line">    node p = (node)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    p-&gt;elem = e;</span><br><span class="line">    p-&gt;next = sq-&gt;next;</span><br><span class="line">    sq-&gt;next = p;</span><br><span class="line">    length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-4-4-将元素弹出栈"><a href="#1-4-4-将元素弹出栈" class="headerlink" title="1.4.4 将元素弹出栈"></a>1.4.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    node p = sq-&gt;next;</span><br><span class="line">   sq-&gt;next = sq-&gt;next-&gt;next;</span><br><span class="line">   delete p;</span><br><span class="line">   length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-4-5-获取栈顶元素"><a href="#1-4-5-获取栈顶元素" class="headerlink" title="1.4.5 获取栈顶元素"></a>1.4.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> sq-&gt;next-&gt;elem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h5 id="1-4-6-获取栈实际长度"><a href="#1-4-6-获取栈实际长度" class="headerlink" title="1.4.6 获取栈实际长度"></a>1.4.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="1-5-栈的问题解决"><a href="#1-5-栈的问题解决" class="headerlink" title="1.5 栈的问题解决"></a>1.5 栈的问题解决</h3><h5 id="1-5-1-括号匹配"><a href="#1-5-1-括号匹配" class="headerlink" title="1.5.1 括号匹配"></a>1.5.1 括号匹配</h5><p>苗苗今天刚刚学会使用括号，不过他分不清小括号，中括号，大括号和尖括号，不知道怎么使用这些括号，请帮助他判断括号使用是否正确。</p><p>输入格式</p><p>共一行，包含一个由 <code>&lt;</code>,<code>(</code>,<code>&#123;</code>,<code>[</code>,<code>&gt;</code>,<code>)</code>,<code>&#125;</code>,<code>]</code> 构成的字符串。</p><p>输出格式</p><p>如果输入的字符串中的括号正确匹配则输出 <code>yes</code>，否则输出 <code>no</code>。</p><p>数据范围</p><p>输入字符串长度不超过 1000010000。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; sq;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span> || s[i] == <span class="string">&#x27;[&#x27;</span> || s[i] == <span class="string">&#x27;&lt;&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">            sq.push(s[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果不是左括号并且栈内无元素，直接判断非法</span></span><br><span class="line">            <span class="keyword">if</span> (sq.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//接下来逐一判断是否匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&gt;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&lt;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;)&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;]&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;[&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//需要再次判断栈中是否还有字符</span></span><br><span class="line">    <span class="keyword">if</span>(sq.empty())&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;yes&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Data Structure </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>视频剪辑基础</title>
-      <link href="/2021/10/24/2021-10-24-film-editing/"/>
-      <url>/2021/10/24/2021-10-24-film-editing/</url>
-      
-        <content type="html"><![CDATA[<h1 id="达芬奇第一课"><a href="#达芬奇第一课" class="headerlink" title="达芬奇第一课"></a>达芬奇第一课</h1><h2 id="1-视频剪辑基础知识"><a href="#1-视频剪辑基础知识" class="headerlink" title="1. 视频剪辑基础知识"></a>1. 视频剪辑基础知识</h2><h3 id="1-1-数字视频信号"><a href="#1-1-数字视频信号" class="headerlink" title="1.1 数字视频信号"></a>1.1 数字视频信号</h3><p>标清：720p以下</p><p>高清：720p-1080p，宽高比为16:9</p><p>超高清：4k分辨率（3840*2160px）或者8k分辨率（7680*4320px）</p><p>帧速率（单位fps）：每秒显示的图片数量，大于10fps可以在视觉上造成平滑的动画。</p><h3 id="1-2-场与场序"><a href="#1-2-场与场序" class="headerlink" title="1.2 场与场序"></a>1.2 场与场序</h3><p>PAL制：每帧625行扫描</p><p>每秒25帧</p><p>NTSC制：每帧525行扫描</p><p>每秒30帧</p><p>分离场：解决交错视频场的最佳方案（在对素材进行如变速、缩放、旋转等时有很好效果，未进行场分离会使画面有严重抖动、毛刺效果）</p><h3 id="1-3-时间代码"><a href="#1-3-时间代码" class="headerlink" title="1.3 时间代码"></a>1.3 时间代码</h3><p>国际标准称为SMPTE时间代码，简称时码，表示为h : m : s : f</p><h3 id="1-4-帧长比"><a href="#1-4-帧长比" class="headerlink" title="1.4 帧长比"></a>1.4 帧长比</h3><p>帧的长度和宽度的比例。</p><h3 id="1-5-像素长宽比"><a href="#1-5-像素长宽比" class="headerlink" title="1.5 像素长宽比"></a>1.5 像素长宽比</h3><p>像素的长度和宽度的比例。PAL制视频采用矩形像素，一帧图像由720*576像素组成。其像素长宽比为1.067.方形像素的像素长宽比为1，剪辑软件可调整像素长宽比。</p><h3 id="1-6-颜色模式"><a href="#1-6-颜色模式" class="headerlink" title="1.6 颜色模式"></a>1.6 颜色模式</h3><p>颜色模式即翻译颜色的方法。视频领域常用RGB模式、Lab模式、HSB模式、YUV模式。</p><p>PAL制采用YUV模式，NSTC制采用HSB模式</p><h3 id="1-7-颜色深度"><a href="#1-7-颜色深度" class="headerlink" title="1.7 颜色深度"></a>1.7 颜色深度</h3><p>颜色深度：每个像素可显示出的颜色数。8位颜色是256色；16位颜色为中彩色；24位颜色为真彩色（百万色）；32位颜色为百万+（24位颜色+8位透明信息（Alpha通道））</p><h3 id="1-8-视频格式"><a href="#1-8-视频格式" class="headerlink" title="1.8 视频格式"></a>1.8 视频格式</h3><p>(1)AVI格式</p><p>音频交错格式。图像质量好，可跨平台，体积庞大，压缩标准多。</p><p>(2)DV-AVI格式</p><p>(3)MPEG格式</p><p>运动图像专家组格式。如VCD、SVCD、DVD。压缩标准：MPEG-1、MPEG-2、MPEG-4。</p><p>(4)MOV格式</p><p>Apple开发的。默认播放器QuickTime。</p><p>较高压缩比率，较完美视频清晰度。跨平台。</p><p>(5)RM格式</p><p>RealPlayer播放器。压缩速率可随网络传输速率制定。</p><p>(6)RMVB格式</p><p>(7)WMV格式</p><p>英文全称为Windows Media Video，也是微软推出的一种采用独立<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A0%81">编码</a>方式并且可以直接在网上实时观看视频节目的文件压缩格式。WMV格式的主要优点包括：本地或网络回放、可扩充的媒体类型、可伸缩的媒体类型、多语言支持、环境独立性、丰富的流间关系以及扩展性等。</p><p>(8)DivX格式</p><p>(9)ASF格式</p><h2 id="2-媒体面板"><a href="#2-媒体面板" class="headerlink" title="2. 媒体面板"></a>2. 媒体面板</h2><p><img src="https://i.loli.net/2021/11/05/8LSGygHQBNcPoT5.png" alt="GIEB_}T)2(7%T@XM8TB8IBO.png"></p><p>这个面板主要是将素材添加到达芬奇中，对素材进行分类。</p><p>场景剪切检测</p><p>对素材进行描述</p><h2 id="3-快编面板"><a href="#3-快编面板" class="headerlink" title="3. 快编面板"></a>3. 快编面板</h2><p><img src="https://i.loli.net/2021/11/05/9jePwHaRYIyK3k7.png" alt="快编.png"></p><p>磁带逻辑</p><p>磁带监看(母带监看)</p><p>每个素材一个分界</p><p>自动调色（快捷键C）</p><h2 id="4-剪辑面板"><a href="#4-剪辑面板" class="headerlink" title="4. 剪辑面板"></a>4. 剪辑面板</h2><p><img src="https://i.loli.net/2021/11/05/qFKiMBPybj3vODU.png" alt="剪辑.png"></p><p>Aroll：视频的主体</p><p>Broll：辅助镜头</p><p>智能媒体夹：可快速筛选素材</p><p>双时间线：在不破坏素材连续性的情况下，方便选择素材。（Aroll、Broll）</p><p>I、O 分别设置入点出点。</p><p>J、K、L键分别为后退、暂停、前进。</p><h2 id="5-交付面板"><a href="#5-交付面板" class="headerlink" title="5. 交付面板"></a>5. 交付面板</h2><p><img src="https://i.loli.net/2021/11/05/9jePwHaRYIyK3k7.png" alt="快编.png"></p><p>1.选中目标序列(即时间线)</p><p>2.选中渲染格式(可选择预设类型，也可以自己设置导出格式)</p><p>​这一步注意选择的是渲染单个片段还是多个片段</p><p>3.添加到渲染队列</p><p>4.开始渲染</p><span id="more"></span>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> TeXt </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>git初体验</title>
-      <link href="/2021/10/19/2021-10-19-init-set/"/>
-      <url>/2021/10/19/2021-10-19-init-set/</url>
-      
-        <content type="html"><![CDATA[<h1 id="首次git连接仓库"><a href="#首次git连接仓库" class="headerlink" title="首次git连接仓库"></a>首次git连接仓库</h1><p>新建一个文件夹，作为仓库文件，在文件夹内进入<strong>git bash</strong></p><p>初始化：git init此时查看隐藏文件，可以看到文件夹中有一个 .git 文件</p><p>添加文件到仓库：git add 文件名 (或者 . ，代表文件夹内的全部文件)</p><p>添加注释：git commit -m “注释”</p><p>创建主分支：git branch -M <u>main</u>(主分支名称)</p><p>连接到远程仓库：git remote add origin <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a>:repository名称</p><p>上传提交的文件（第一次时）：git push -u origin main(master) (一般为main)</p><p>非第一次：git push 即可</p><h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p><p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p><p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p><p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p><p>打开id_rsa.pub文件，复制其中的密钥。</p><p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p><p>检测是否连接成功：shh -T <a href="mailto:&#103;&#105;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#116;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>(注意看出现的信息是否连接成功)</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> TeXt </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title>git初体验</title>
+    <url>/2021/10/19/init-set/</url>
+    <content><![CDATA[<h1 id="首次git连接仓库"><a href="#首次git连接仓库" class="headerlink" title="首次git连接仓库"></a>首次git连接仓库</h1><p>新建一个文件夹，作为仓库文件，在文件夹内进入<strong>git bash</strong></p>
+<p>初始化：git init	此时查看隐藏文件，可以看到文件夹中有一个 .git 文件</p>
+<p>添加文件到仓库：git add 文件名 (或者 . ，代表文件夹内的全部文件)</p>
+<p>添加注释：git commit -m “注释”</p>
+<p>创建主分支：git branch -M <u>main</u>(主分支名称)</p>
+<p>连接到远程仓库：git remote add origin <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>:repository名称</p>
+<p>上传提交的文件（第一次时）：git push -u origin main(master) (一般为main)</p>
+<p>非第一次：git push 即可</p>
+<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
+<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
+<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
+<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
+<p>打开id_rsa.pub文件，复制其中的密钥。</p>
+<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
+]]></content>
+      <tags>
+        <tag>TeXt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>栈的定义及实现(C语言)</title>
+    <url>/2021/11/01/%E6%A0%88/</url>
+    <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
+<p>栈顶(top)：线性表的表尾</p>
+<p>栈底(bottom)：线性表的表头</p>
+<p>操作原则：后进先出原则(LIFO)</p>
+<h3 id="1-2-栈的操作"><a href="#1-2-栈的操作" class="headerlink" title="1.2 栈的操作"></a>1.2 栈的操作</h3><p>创建栈 Init_Stack()</p>
+<p>添加元素 push()</p>
+<p>删除元素 pop()</p>
+<p>获取栈顶元素 top()</p>
+<p>获取栈实际长度 size()</p>
+<h3 id="1-3-顺序栈的实现"><a href="#1-3-顺序栈的实现" class="headerlink" title="1.3 顺序栈的实现"></a>1.3 顺序栈的实现</h3><h5 id="1-3-1-定义一个栈结构体"><a href="#1-3-1-定义一个栈结构体" class="headerlink" title="1.3.1 定义一个栈结构体"></a>1.3.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> *elem;</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125;<span class="built_in">stack</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-3-2-初始化"><a href="#1-3-2-初始化" class="headerlink" title="1.3.2 初始化"></a>1.3.2 初始化</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq.elem = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>) * stack_size);</span><br><span class="line">    sq.length = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;初始化成功&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-3-将元素压入栈"><a href="#1-3-3-将元素压入栈" class="headerlink" title="1.3.3 将元素压入栈"></a>1.3.3 将元素压入栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> elem)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &gt;= stack_size) <span class="keyword">return</span>;</span><br><span class="line">    sq.elem[sq.length] = elem;</span><br><span class="line">    sq.length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-4-将元素弹出栈"><a href="#1-3-4-将元素弹出栈" class="headerlink" title="1.3.4 将元素弹出栈"></a>1.3.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq.length &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sq.elem[sq.length<span class="number">-1</span>] = <span class="number">0</span>;</span><br><span class="line">    sq.length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-5-获取栈顶元素"><a href="#1-3-5-获取栈顶元素" class="headerlink" title="1.3.5 获取栈顶元素"></a>1.3.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.elem[sq.length<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="1-3-6-获取栈实际长度"><a href="#1-3-6-获取栈实际长度" class="headerlink" title="1.3.6 获取栈实际长度"></a>1.3.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sq.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-链栈的实现"><a href="#1-4-链栈的实现" class="headerlink" title="1.4 链栈的实现"></a>1.4 链栈的实现</h3><p>需要另外定义一个全局的整形变量 length 来存放栈的长度。</p>
+<h5 id="1-4-1-定义一个栈结构体"><a href="#1-4-1-定义一个栈结构体" class="headerlink" title="1.4.1 定义一个栈结构体"></a>1.4.1 定义一个栈结构体</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span>&#123;</span></span><br><span class="line">    <span class="type">int</span> elem;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Stack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;*<span class="built_in">stack</span>,*node;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-2-初始化"><a href="#1-4-2-初始化" class="headerlink" title="1.4.2 初始化"></a>1.4.2 初始化</h5><p>需要为头结点分配空间</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Init_Stack</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    sq = (<span class="built_in">stack</span>)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    sq-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-3-将元素压入栈"><a href="#1-4-3-将元素压入栈" class="headerlink" title="1.4.3 将元素压入栈"></a>1.4.3 将元素压入栈</h5><p>需要为新节点分配空间</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">push</span><span class="params">(<span class="built_in">stack</span> &amp;sq,<span class="type">int</span> e)</span>&#123;</span><br><span class="line">    node p = (node)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    p-&gt;elem = e;</span><br><span class="line">    p-&gt;next = sq-&gt;next;</span><br><span class="line">    sq-&gt;next = p;</span><br><span class="line">    length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-4-将元素弹出栈"><a href="#1-4-4-将元素弹出栈" class="headerlink" title="1.4.4 将元素弹出栈"></a>1.4.4 将元素弹出栈</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">pop</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">    node p = sq-&gt;next;</span><br><span class="line">   sq-&gt;next = sq-&gt;next-&gt;next;</span><br><span class="line">   delete p;</span><br><span class="line">   length--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-5-获取栈顶元素"><a href="#1-4-5-获取栈顶元素" class="headerlink" title="1.4.5 获取栈顶元素"></a>1.4.5 获取栈顶元素</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>  <span class="title function_">top</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sq-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> sq-&gt;next-&gt;elem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-6-获取栈实际长度"><a href="#1-4-6-获取栈实际长度" class="headerlink" title="1.4.6 获取栈实际长度"></a>1.4.6 获取栈实际长度</h5><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">size</span><span class="params">(<span class="built_in">stack</span> &amp;sq)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-栈的问题解决"><a href="#1-5-栈的问题解决" class="headerlink" title="1.5 栈的问题解决"></a>1.5 栈的问题解决</h3><h5 id="1-5-1-括号匹配"><a href="#1-5-1-括号匹配" class="headerlink" title="1.5.1 括号匹配"></a>1.5.1 括号匹配</h5><p>苗苗今天刚刚学会使用括号，不过他分不清小括号，中括号，大括号和尖括号，不知道怎么使用这些括号，请帮助他判断括号使用是否正确。</p>
+<p>输入格式</p>
+<p>共一行，包含一个由 <code>&lt;</code>,<code>(</code>,<code>&#123;</code>,<code>[</code>,<code>&gt;</code>,<code>)</code>,<code>&#125;</code>,<code>]</code> 构成的字符串。</p>
+<p>输出格式</p>
+<p>如果输入的字符串中的括号正确匹配则输出 <code>yes</code>，否则输出 <code>no</code>。</p>
+<p>数据范围</p>
+<p>输入字符串长度不超过 1000010000。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="type">char</span>&gt; sq;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span> || s[i] == <span class="string">&#x27;[&#x27;</span> || s[i] == <span class="string">&#x27;&lt;&#x27;</span> || s[i] == <span class="string">&#x27;&#123;&#x27;</span>)&#123;</span><br><span class="line">            sq.push(s[i]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果不是左括号并且栈内无元素，直接判断非法</span></span><br><span class="line">            <span class="keyword">if</span> (sq.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//接下来逐一判断是否匹配</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&gt;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&lt;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;)&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;(&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;]&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;[&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s[i] == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; sq.top() == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sq.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//需要再次判断栈中是否还有字符</span></span><br><span class="line">    <span class="keyword">if</span>(sq.empty())&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;yes&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>视频剪辑基础</title>
+    <url>/2021/10/24/film-editing/</url>
+    <content><![CDATA[<h1 id="达芬奇第一课"><a href="#达芬奇第一课" class="headerlink" title="达芬奇第一课"></a>达芬奇第一课</h1><h2 id="1-视频剪辑基础知识"><a href="#1-视频剪辑基础知识" class="headerlink" title="1. 视频剪辑基础知识"></a>1. 视频剪辑基础知识</h2><h3 id="1-1-数字视频信号"><a href="#1-1-数字视频信号" class="headerlink" title="1.1 数字视频信号"></a>1.1 数字视频信号</h3><p>标清：720p以下</p>
+<p>高清：720p-1080p，宽高比为16:9</p>
+<p>超高清：4k分辨率（3840*2160px）或者8k分辨率（7680*4320px）</p>
+<p>帧速率（单位fps）：每秒显示的图片数量，大于10fps可以在视觉上造成平滑的动画。</p>
+<h3 id="1-2-场与场序"><a href="#1-2-场与场序" class="headerlink" title="1.2 场与场序"></a>1.2 场与场序</h3><p>PAL制：每帧625行扫描</p>
+<p>每秒25帧</p>
+<p>NTSC制：每帧525行扫描</p>
+<p>每秒30帧</p>
+<p>分离场：解决交错视频场的最佳方案（在对素材进行如变速、缩放、旋转等时有很好效果，未进行场分离会使画面有严重抖动、毛刺效果）</p>
+<h3 id="1-3-时间代码"><a href="#1-3-时间代码" class="headerlink" title="1.3 时间代码"></a>1.3 时间代码</h3><p>国际标准称为SMPTE时间代码，简称时码，表示为h : m : s : f</p>
+<h3 id="1-4-帧长比"><a href="#1-4-帧长比" class="headerlink" title="1.4 帧长比"></a>1.4 帧长比</h3><p>帧的长度和宽度的比例。</p>
+<h3 id="1-5-像素长宽比"><a href="#1-5-像素长宽比" class="headerlink" title="1.5 像素长宽比"></a>1.5 像素长宽比</h3><p>像素的长度和宽度的比例。PAL制视频采用矩形像素，一帧图像由720*576像素组成。其像素长宽比为1.067.方形像素的像素长宽比为1，剪辑软件可调整像素长宽比。</p>
+<h3 id="1-6-颜色模式"><a href="#1-6-颜色模式" class="headerlink" title="1.6 颜色模式"></a>1.6 颜色模式</h3><p>颜色模式即翻译颜色的方法。视频领域常用RGB模式、Lab模式、HSB模式、YUV模式。</p>
+<p>PAL制采用YUV模式，NSTC制采用HSB模式</p>
+<h3 id="1-7-颜色深度"><a href="#1-7-颜色深度" class="headerlink" title="1.7 颜色深度"></a>1.7 颜色深度</h3><p>颜色深度：每个像素可显示出的颜色数。8位颜色是256色；16位颜色为中彩色；24位颜色为真彩色（百万色）；32位颜色为百万+（24位颜色+8位透明信息（Alpha通道））</p>
+<h3 id="1-8-视频格式"><a href="#1-8-视频格式" class="headerlink" title="1.8 视频格式"></a>1.8 视频格式</h3><p>(1)AVI格式</p>
+<p>音频交错格式。图像质量好，可跨平台，体积庞大，压缩标准多。</p>
+<p>(2)DV-AVI格式</p>
+<p>(3)MPEG格式</p>
+<p>运动图像专家组格式。如VCD、SVCD、DVD。压缩标准：MPEG-1、MPEG-2、MPEG-4。</p>
+<p>(4)MOV格式</p>
+<p>Apple开发的。默认播放器QuickTime。</p>
+<p>较高压缩比率，较完美视频清晰度。跨平台。</p>
+<p>(5)RM格式</p>
+<p>RealPlayer播放器。压缩速率可随网络传输速率制定。</p>
+<p>(6)RMVB格式</p>
+<p>(7)WMV格式</p>
+<p>英文全称为Windows Media Video，也是微软推出的一种采用独立<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A0%81">编码</a>方式并且可以直接在网上实时观看视频节目的文件压缩格式。WMV格式的主要优点包括：本地或网络回放、可扩充的媒体类型、可伸缩的媒体类型、多语言支持、环境独立性、丰富的流间关系以及扩展性等。</p>
+<p>(8)DivX格式</p>
+<p>(9)ASF格式</p>
+<h2 id="2-媒体面板"><a href="#2-媒体面板" class="headerlink" title="2. 媒体面板"></a>2. 媒体面板</h2><p><img src="https://i.loli.net/2021/11/05/8LSGygHQBNcPoT5.png" alt="GIEB_}T)2(7%T@XM8TB8IBO.png"></p>
+<p>这个面板主要是将素材添加到达芬奇中，对素材进行分类。</p>
+<p>场景剪切检测</p>
+<p>对素材进行描述</p>
+<h2 id="3-快编面板"><a href="#3-快编面板" class="headerlink" title="3. 快编面板"></a>3. 快编面板</h2><p><img src="https://i.loli.net/2021/11/05/9jePwHaRYIyK3k7.png" alt="快编.png"></p>
+<p>磁带逻辑</p>
+<p>磁带监看(母带监看)</p>
+<p>每个素材一个分界</p>
+<p>自动调色（快捷键C）</p>
+<h2 id="4-剪辑面板"><a href="#4-剪辑面板" class="headerlink" title="4. 剪辑面板"></a>4. 剪辑面板</h2><p><img src="https://i.loli.net/2021/11/05/qFKiMBPybj3vODU.png" alt="剪辑.png"></p>
+<p>Aroll：视频的主体</p>
+<p>Broll：辅助镜头</p>
+<p>智能媒体夹：可快速筛选素材</p>
+<p>双时间线：在不破坏素材连续性的情况下，方便选择素材。（Aroll、Broll）</p>
+<p>I、O 分别设置入点出点。</p>
+<p>J、K、L键分别为后退、暂停、前进。</p>
+<h2 id="5-交付面板"><a href="#5-交付面板" class="headerlink" title="5. 交付面板"></a>5. 交付面板</h2><p><img src="https://i.loli.net/2021/11/05/9jePwHaRYIyK3k7.png" alt="快编.png"></p>
+<p>1.选中目标序列(即时间线)</p>
+<p>2.选中渲染格式(可选择预设类型，也可以自己设置导出格式)</p>
+<p>​	这一步注意选择的是渲染单个片段还是多个片段</p>
+<p>3.添加到渲染队列</p>
+<p>4.开始渲染</p>
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>TeXt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git初体验</title>
+    <url>/2021/11/25/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="Linux学习笔记"><a href="#Linux学习笔记" class="headerlink" title="Linux学习笔记"></a>Linux学习笔记</h1><p>写在前面</p>
+<p>善用tab 补全命令</p>
+<p>Ctrl+C：中断命令</p>
+<p>Ctrl+D：直接离开界面（相当于exit）</p>
+<p>startx：进入图形化界面（前提：安装了图形化界面，如KDE、GNOME）</p>
+<p>退出图形化界面：init 数字（1-6），Ctrl + Alt + F2 - F6</p>
+<p>man 命令名：查看命令使用方法</p>
+<p>man page 与 info page：求助命令，也就是查看命令信息</p>
+<p>vi：i a o 插入（即编辑模式），q 退出，w 保存，esc 退出编辑</p>
+<p>date：查看时间日期</p>
+<p>cal：显示日历</p>
+<p>bc：打开计算器</p>
+<p>su 其他账号：进入其他账号（即限root用户）</p>
+<h2 id="1-文件命令"><a href="#1-文件命令" class="headerlink" title="1.文件命令"></a>1.文件命令</h2><p>vi（vim）：创建文件并进入文件进行编辑（属于vi编辑器的范围）</p>
+<p>cd：进入某个目录</p>
+<p>ls：显示当前目录下的除隐藏文件外的所有文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls [-选项] [filename|directory]</span><br><span class="line">-a:显示指定目录下所有子目录和文件，包括隐藏文件</span><br><span class="line">-c:按文件修改时间排序</span><br><span class="line">-d:若参数是目录，则只显示其名称不显示其下的各文件</span><br><span class="line">-i:在输出的第一列显示文件的i节点</span><br><span class="line">-l:以长格式显示文件详细信息</span><br></pre></td></tr></table></figure>
+
+<p>mkdir：创建文件目录（为蓝色），相当于文件夹</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir [-选项] dirname</span><br><span class="line">-m:对新建目录设置存取权限，也可通过chmod来设置</span><br><span class="line">-p:可以一次建立多个目录，如mkdir -p dir1/dir2/dir3将依次建立dir1、dir2、dir3三个目录</span><br></pre></td></tr></table></figure>
+
+<p>rmdir：删除文件目录，相当于删除文件夹</p>
+<p>pwd：显示当前所在路径</p>
+<p>cp：复制文件或目录（会增加文件个数）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp [-选项] sourcefilename | directorydestfilename | dirctory</span><br><span class="line">-a:整个目录复制</span><br><span class="line">-f:覆盖已存在的目标文件且不提示</span><br><span class="line">-i:覆盖已存在的目标文件前询问用户是否覆盖(交互式覆盖)</span><br><span class="line">-p:除了复制文件内容，还复制源文件的修改时间和文件权限</span><br><span class="line">-R:源文件是目录时，，递归复制该目录下的子目录和文件</span><br><span class="line">-l:不复制，只作为链接文件</span><br></pre></td></tr></table></figure>
+
+<p>mv：移动文件或目录，可以用来更改文件或目录名字</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv [-选项] sourcefilename | directorydestfilename | directory</span><br><span class="line">-i:交互式操作，若存在与目标文件重名的文件会导致覆盖，系统会询问是否覆盖</span><br><span class="line">-f:禁止交互操作，无论是否有与目标文件重名的文件，都直接覆盖</span><br></pre></td></tr></table></figure>
+
+<p>rm：删除文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm [-选项] filename | directory···</span><br><span class="line">-f:忽略不存在的文件，从不给出提示</span><br><span class="line">-r:指示rm将参数中列出的全部目录和子目录均递归删除掉</span><br><span class="line">-i:进行交互式删除</span><br></pre></td></tr></table></figure>
+
+<p>rm -rf * 会删除系统内的文件（删库跑路专属）</p>
+<p>cat：不打开文件直接显示文件的内容（即不使用vi命令即可看到内容）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat [-选项] filename [filename2 ···]</span><br><span class="line">-n:由1开始编号</span><br><span class="line">-b:由1开始编号，空白行除外</span><br><span class="line">-s:将两个空白行替换为一个空白行</span><br><span class="line">-v:显示非打印文本</span><br></pre></td></tr></table></figure>
+
+<p>tac：cat的相反命令，用来逆序显示文件内容</p>
+<p>more：若文件内容过长，将文件内容分屏显示，按空格键显示下一页内容</p>
+<p>less：与more相似，允许用户向前或向后查看文件，按B键向前翻阅，按P键向后翻阅，输入百分比显示指定位置，按Q键退出查看</p>
+<p>chmod： 修改文件权限（读 写 执行r w x）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>chown： 修改文件拥有者</p>
+<p>chgrp： 修改文件所属群组</p>
+<h2 id="2-用户和组管理命令"><a href="#2-用户和组管理命令" class="headerlink" title="2.用户和组管理命令"></a>2.用户和组管理命令</h2><h3 id="2-1用户管理"><a href="#2-1用户管理" class="headerlink" title="2.1用户管理"></a>2.1用户管理</h3><p>adduser：添加用户</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser [-选项] username</span><br><span class="line">-d:指定用于取代默认/home/username的用户主目录</span><br><span class="line">-g:用户所属的用户组的组名或组id（指定前需存在这个组）</span><br><span class="line">-m:若指定用户主目录不存在则创建</span><br><span class="line">-p:使用crypt加密的口令</span><br><span class="line">-s:指定用户登录shell，默认为/bin/bash</span><br><span class="line">-u uid:指定用户的UID，必须唯一且不小于500</span><br></pre></td></tr></table></figure>
+
+<p>passwd：修改用户的口令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">passwd [-选项] [username]</span><br><span class="line">-l:锁定口令，即禁用账号</span><br><span class="line">-u:口令解锁</span><br><span class="line">-d:使账号无口令</span><br><span class="line">-f:强迫用户下次登录修改口令</span><br><span class="line">若不指定用户，默认修改当前用户的口令</span><br></pre></td></tr></table></figure>
+
+<p>userdel：删除用户（将&#x2F;etc&#x2F;passwd等系统文件中该用户的记录删除）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">userdel [-选项] username</span><br><span class="line">-r:把用户的主目录一起删除</span><br></pre></td></tr></table></figure>
+
+<p>完全删除一个用户包括：</p>
+<p>​	删除&#x2F;etc&#x2F;passwd文件中该用户的记录</p>
+<p>​	删除&#x2F;etc&#x2F;group文件中该用户的信息</p>
+<p>​	删除用户的主目录</p>
+<p>​	删除该用户创建的或属于该用户的文件</p>
+<p>su：改变身份</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">su [username]</span><br><span class="line">不指定用户名，默认切换到root</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2用户组管理"><a href="#2-2用户组管理" class="headerlink" title="2.2用户组管理"></a>2.2用户组管理</h3><p>groupadd：添加用户组</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">groupadd [-选项] username</span><br><span class="line">-g GID:指定用户组的GID，唯一且不小于500</span><br><span class="line">-r:创建GID小于500的系统用户组</span><br><span class="line">-f:若用户组存在，退出并显示错误（原用户组不发生改变）</span><br></pre></td></tr></table></figure>
+
+<p>groupdel:删除用户组</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">注意：</span><br><span class="line">组中用户文件不能自行删除，不能改变文件所属的组</span><br><span class="line">若组是用户的基本组，则这个组无法删除</span><br><span class="line">若组中有用户在系统中处于登录状态不能删除该组，需删除用户后在删除组</span><br></pre></td></tr></table></figure>
+
+<p>groupmod：修改用户组属性</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gtoupmod [-选项] groupname</span><br><span class="line">-g:为用户组指定新的组标识号</span><br><span class="line">-n:将用户组的名字改为新名字</span><br></pre></td></tr></table></figure>
+
+<p>为用户组添加用户：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">将一个用户添加到一个组内：</span><br><span class="line">通过编辑/etc/group文件，将用户名写到组名后面来实现，有多个用户名使用逗号分隔</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>TeXt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+]]></content>
+      <tags>
+        <tag>Binary_Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
+<p>进入主页后点击New进入创建界面</p>
+<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
+<p>然后点击Create repository创建。</p>
+<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
+<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
+<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
+<p>复制生成的token（后面会用到）</p>
+<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
+<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
+<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
+<p>上传服务选择PicGo。路径选择你的安装路径。</p>
+<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
+<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
+<p>遮罩的作用：</p>
+<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
+<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
+<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
+<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
+<p>2.Fusion面板</p>
+<p>创建一个文本节点</p>
+<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
+<p>3.调色面板</p>
+<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
+<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
+<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
+<p>示波器的使用</p>
+<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="静态路由和动态路由的配置"><a href="#静态路由和动态路由的配置" class="headerlink" title="静态路由和动态路由的配置"></a>静态路由和动态路由的配置</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
+<p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p>
+<p>将各个组件相连（使用自动选择连接）</p>
+<p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p>
+<p>为各个路由器的接口配置IP地址如下：</p>
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure>
+
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+
+<p>此时开始在一台主机ping目的主机。</p>
+<h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure>
+
+<p>每个路由器都是如此。</p>
+<p>Router0的邻居网络为10.1.1.0、20.1.1.0</p>
+<p>Router1的邻居网络为20.1.1.0、30.1.1.0</p>
+<p>Router2的邻居网络为30.1.1.0、40.1.1.0</p>
+<p>则配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure>
+
+<p>3.2 ospf配置</p>
+<p>格式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure>
+
+<p>配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
+<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
+<p>③控制器：自动执行指令</p>
+<p>​	运算器：进行算术运算和逻辑运算</p>
+<p>​	存储器：存放数据和指令（都是二进制形式）</p>
+<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
+<p>④指令和数据：二进制形式</p>
+<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
+<p>​	程序：一串指令组成</p>
+<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
+<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
+<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
+<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
+<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
+<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
+<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
+<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
+<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
+<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
+<p>​							2. 取数</p>
+<p>​							3. 存数</p>
+<p>​							4. ALU运算</p>
+<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
+<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
+<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
+<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
+<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
+<p>汇编指令：机器指令对应的符号表示</p>
+<p>汇编语言程序：使用汇编语言编写的程序</p>
+<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
+<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p>
+<ul>
+<li>单元测试：对最小模块测试</li>
+<li>集成测试：小模块集成后测试</li>
+<li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li>
+<li>验收测试：上线前的测试，包括<ul>
+<li>α测试：内测，开发环境下测试模拟用户测试</li>
+<li>β测试：公测，实际环境下用户的测试</li>
+</ul>
+</li>
+</ul>
+<p>是否查看代码：</p>
+<ul>
+<li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li>
+<li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li>
+<li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li>
+</ul>
+<p>测试执行方式：</p>
+<ul>
+<li>静态测试：不运行程序，只是检查代码</li>
+<li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li>
+</ul>
+<p>是否手工测试：</p>
+<ul>
+<li>手动测试：即人工测试</li>
+<li>自动测试：使用代码进行测试</li>
+</ul>
+<p>其他：</p>
+<ul>
+<li>冒烟测试：</li>
+<li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li>
+<li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li>
+<li>探索性测试：升级版的随机测试，未来的发展方向</li>
+</ul>
+<h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul>
+<li>70%单元测试</li>
+<li>20%服务测试</li>
+<li>10%用户界面测试</li>
+</ul>
+<h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p>
+<ul>
+<li><p>等价类划分</p>
+<p>输入域明确：把程序的输入域划分为若干个子集</p>
+<p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p>
+<p>常见分类：有效、无效等价类</p>
+</li>
+<li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p>
+</li>
+<li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p>
+</li>
+<li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p>
+</li>
+<li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p>
+</li>
+<li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p>
+<ul>
+<li>成本低，可以不用提前设计大量测试用例</li>
+<li>可以激发测试工程师的创造性，更快发现问题</li>
+<li>测试覆盖度无法得到有效保障</li>
+<li>多数测试活动都是由探索性测试与脚本用例结合</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p>
+<p>三大核心要素：标题、步骤、断言</p>
+<ul>
+<li>标题：测试用例的描述</li>
+<li>步骤：测试执行过程的描述</li>
+<li>断言：实际结果与预期结果对比</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据库笔记</title>
+    <url>/2022/03/02/2022-3-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="数据库笔记"><a href="#数据库笔记" class="headerlink" title="数据库笔记"></a>数据库笔记</h1><h2 id="1-数据库系统的基本原理"><a href="#1-数据库系统的基本原理" class="headerlink" title="1. 数据库系统的基本原理"></a>1. 数据库系统的基本原理</h2><p>介绍基本概念、发展阶段、数据模型、DBMS的功能及组成、DBS的组成及全局结构</p>
+<h3 id="1-1-数据库概述"><a href="#1-1-数据库概述" class="headerlink" title="1.1 数据库概述"></a>1.1 数据库概述</h3><h4 id="1-1-1-数据库系统的应用"><a href="#1-1-1-数据库系统的应用" class="headerlink" title="1.1.1 数据库系统的应用"></a>1.1.1 数据库系统的应用</h4><p>广泛应用在电信业、银行业、金融业、销售业、电商、大学、航空业、人力资源、制造业</p>
+<h4 id="1-1-2-数据库系统的概念"><a href="#1-1-2-数据库系统的概念" class="headerlink" title="1.1.2 数据库系统的概念"></a>1.1.2 数据库系统的概念</h4><ol>
+<li><h5 id="数据Date"><a href="#数据Date" class="headerlink" title="数据Date"></a>数据Date</h5></li>
+</ol>
+<p>数据：数据库存储的基本对象，是描述现实世界中各种事物或抽象概念的、可存储并具有明确意义的符号记录。</p>
+<p>具体事物：有形且看得见的事物		抽象事物：无形且看不见的事物</p>
+<p>记录是数据库系统表示和存储数据的一种格式</p>
+<ol start="2">
+<li><h5 id="数据库DB"><a href="#数据库DB" class="headerlink" title="数据库DB"></a>数据库DB</h5></li>
+</ol>
+<p>简单上，数据库：相互关联的数据集合</p>
+<p>严格上，数据库：长期存储在计算机内、有组织、可共享的大量数据的集合。</p>
+<p>数据库具有较小的冗余度（不能杜绝数据冗余）、较高的数据独立性、易扩展性</p>
+<ol start="3">
+<li><h5 id="数据库管理系统DBMS"><a href="#数据库管理系统DBMS" class="headerlink" title="数据库管理系统DBMS"></a>数据库管理系统DBMS</h5></li>
+</ol>
+<p>数据库系统核心部分，介于用户和OS之间。提供访问数据库的方法（数据库定义、建立、查询、更新及其他数据控制）</p>
+<p><strong>主要</strong>功能</p>
+<ol>
+<li><h5 id="数据定义功能（使用数据定义语言DDL）"><a href="#数据定义功能（使用数据定义语言DDL）" class="headerlink" title="数据定义功能（使用数据定义语言DDL）"></a>数据定义功能（使用数据定义语言DDL）</h5></li>
+</ol>
+<p>在数据库中定义数据对象（表、视图、索引、存储过程等）、数据的完整性约束等</p>
+<p>数据的完整性（主要）：实体完整性、参照完整性、用户定义的完整性</p>
+<ol start="2">
+<li><h5 id="数据操纵功能（使用数据操纵语言，DML）"><a href="#数据操纵功能（使用数据操纵语言，DML）" class="headerlink" title="数据操纵功能（使用数据操纵语言，DML）"></a>数据操纵功能（使用数据操纵语言，DML）</h5></li>
+</ol>
+<p>对数据库进行增、删、改、查操作（insert、delete、update、select）</p>
+<p>查询功能使用频率最高</p>
+<ol start="3">
+<li>数据控制功能（使用数据控制语言，DCL）</li>
+</ol>
+<p>进行用户权限的变动，如授予或撤销，即安全性控制：解决多用户对数据库的并发使用所产生的事物处理问题（并发控制；数据库的转储、恢复功能；数据库的性能监视、分析功能）</p>
+<ol start="4">
+<li><h5 id="数据库系统（DBS）"><a href="#数据库系统（DBS）" class="headerlink" title="数据库系统（DBS）"></a>数据库系统（DBS）</h5></li>
+</ol>
+<p>数据库系统：计算机系统引入数据库后的系统，由DB、DBMS、应用系统、数据库管理员DBA构成。</p>
+<ol start="5">
+<li><h5 id="数据库应用系统（DBAS）"><a href="#数据库应用系统（DBAS）" class="headerlink" title="数据库应用系统（DBAS）"></a>数据库应用系统（DBAS）</h5></li>
+</ol>
+<p>DBAS：指实现业务逻辑的应用程序</p>
+<p>要求：提供一个有好的、人性化的操作数据的GUI</p>
+<h4 id="1-1-3-数据管理技术的发展阶段"><a href="#1-1-3-数据管理技术的发展阶段" class="headerlink" title="1.1.3 数据管理技术的发展阶段"></a>1.1.3 数据管理技术的发展阶段</h4><ol>
+<li><h5 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h5></li>
+</ol>
+<p>用途：科学计算</p>
+<p>处理方式：批处理</p>
+<p>特点：数据不保存、不具有独立性、不共享；只有程序概念，无文件概念</p>
+<ol start="2">
+<li><h5 id="文件管理系统阶段"><a href="#文件管理系统阶段" class="headerlink" title="文件管理系统阶段"></a>文件管理系统阶段</h5></li>
+</ol>
+<p>用途：科学计算、信息管理</p>
+<p>处理方式：批处理、联机实时处理</p>
+<p>缺点：数据冗余性和不一致（数据重复存储且可能有差异）、数据独立性差、数据孤立</p>
+<ol start="3">
+<li><h5 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h5></li>
+</ol>
+<p>用途：大规模管理</p>
+<p>处理方式：批处理、实时联机处理、分布处理</p>
+<p>特点：数据结构化；数据共享性高、冗余度低、易扩充；数据独立性高（物理独立性、逻辑独立性）；DBMS统一管理和控制（包括数据的完整性检查、并发控制、数据的安全性保护、数据库的恢复）</p>
+<h4 id="1-1-4-数据库系统的用户"><a href="#1-1-4-数据库系统的用户" class="headerlink" title="1.1.4 数据库系统的用户"></a>1.1.4 数据库系统的用户</h4><ol>
+<li><h5 id="数据库管理员"><a href="#数据库管理员" class="headerlink" title="数据库管理员"></a>数据库管理员</h5></li>
+</ol>
+<p>①参与数据库的设计</p>
+<p>②定义数据的安全性要求和完整性约束条件</p>
+<p>③日常维护：定期备份数据库、监视数据库的运行、保障有充足的空余磁盘空间</p>
+<p>④数据库的改进、重组和重构</p>
+<ol start="2">
+<li><h5 id="数据库用户"><a href="#数据库用户" class="headerlink" title="数据库用户"></a>数据库用户</h5></li>
+</ol>
+<p>①最终用户：现实系统中的业务人员，数据库的主要用户</p>
+<p>②专业用户：包括工程师、科学家、经济学家等具有较高科学技术背景的人员</p>
+<p>③系统分析员和数据库设计人员</p>
+<p>④应用程序员</p>
+<h3 id="1-2-数据模型"><a href="#1-2-数据模型" class="headerlink" title="1.2 数据模型"></a>1.2 数据模型</h3><p>模型是对现实世界的抽象</p>
+<h4 id="1-2-1-数据抽象的过程"><a href="#1-2-1-数据抽象的过程" class="headerlink" title="1.2.1 数据抽象的过程"></a>1.2.1 数据抽象的过程</h4><p>美国国家标准化协会（ANSI）根据<strong>数据抽象级别</strong>定义了四种模型：概念模型、逻辑模型、外部模型、内部模型</p>
+<p>数据抽象过程：</p>
+<p>①综合：根据用户需求设计数据库的概念模型</p>
+<p>②转换：根据转换规则将概念模型转换为数据库的逻辑模型</p>
+<p>③实现：根据用户业务特点设计不同的外部模型</p>
+<p>④根据逻辑模型设计内部模型</p>
+<p>模型介绍：</p>
+<ol>
+<li><h5 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h5></li>
+</ol>
+<p>抽象级别最高，表达用户需求观点的数据库全局逻辑结构的模型</p>
+<p>特点：</p>
+<p>①表达了数据库的整体逻辑结构，<strong>企业管理人员</strong>对整个<strong>企业组织</strong>的全面概述</p>
+<p>②从<strong>用户需求</strong>的观点出发对数据建模</p>
+<p>③独立于软硬件。不依赖于硬件设备，不依赖于实现时的DBMS软件</p>
+<p>④数据库设计人员与用户之间进行交流的工具</p>
+<p>现在概念模型多是实体-联系模型（E-R模型，使用E-R图表示）。</p>
+<p>实体是现实世界或客观世界中可相互区别的对象（抽象或具体）。</p>
+<p>联系：两个或多个实体之间的关联，分为三种：</p>
+<p>①一对一（1:1）②一对多（1：N）③多对多（M:N）</p>
+<ol start="2">
+<li><h5 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h5></li>
+</ol>
+<p>特点：</p>
+<p>①表达了数据库的整体逻辑结构，<strong>设计人员</strong>对整个<strong>企业组织数据库</strong>的全面概述（与概念模型不同，主要区分）</p>
+<p>②从<strong>数据库实现</strong>的观点出发对数据建模</p>
+<p>③硬件独立，软件依赖</p>
+<p>④数据库设计人员与应用程序员之间交流的工具</p>
+<p>类别：层次模型（数据结构为树状结构）、网状结构（数据结构为有向图）、关系模型（数据结构为二维表格，现在关系型DBMS均采用关系模型）</p>
+<ol start="3">
+<li><h5 id="外部模型"><a href="#外部模型" class="headerlink" title="外部模型"></a>外部模型</h5></li>
+</ol>
+<p>特点：</p>
+<p>①逻辑结构的一个逻辑子集（可以有多个）</p>
+<p>②硬件独立，软件依赖</p>
+<p>③反映了用户使用数据库的观点</p>
+<p>系统考查上，特点为：简化了用户观点、有助于数据库的安全性保护、对概念模型的支持</p>
+<ol start="4">
+<li><h5 id="内部模型（物理模型）"><a href="#内部模型（物理模型）" class="headerlink" title="内部模型（物理模型）"></a>内部模型（物理模型）</h5></li>
+</ol>
+<p>数据库最底层的抽象（描述了数据在磁盘上的存储方式、存取设备、存取方法）。</p>
+<p>与硬件和软件紧密相连的。</p>
+<h4 id="1-2-2-关系模型"><a href="#1-2-2-关系模型" class="headerlink" title="1.2.2 关系模型"></a>1.2.2 关系模型</h4><p>1970年，IBM公司 E.F.Codd 首次提出</p>
+<h5 id="1-数据模型的三要素"><a href="#1-数据模型的三要素" class="headerlink" title="1. 数据模型的三要素"></a>1. 数据模型的三要素</h5><p>①数据结构</p>
+<p>所描述的对象类型的集合，对系统静态特性的描述。</p>
+<p>②数据操作</p>
+<p>对系统动态特性的描述。</p>
+<p>③数据的完整性约束</p>
+<p>一组完整性规则，保证数据的正确性、有效性、相容性、</p>
+<p>必须满足实体完整性和参照完整性。</p>
+<h5 id="2-关系数据模型的数据结构"><a href="#2-关系数据模型的数据结构" class="headerlink" title="2.关系数据模型的数据结构"></a>2.关系数据模型的数据结构</h5><p>①关系（relation）</p>
+<p>一个关系即为一个规范的二维表。</p>
+<p>基本条件：关系的每一列不可再分。即不允许表中还有表</p>
+<p>②元组（tuple）</p>
+<p>二维表中除第一行外的每一行为一个元组。</p>
+<p>一个元祖代表一条完整的信息。</p>
+<p>③属性（attribute）</p>
+<p>二维表中的每一列为一个属性。</p>
+<p>④码（key）</p>
+<p>码：关键字或关键码。</p>
+<p>由一个属性或属性的组合能够<strong>唯一</strong>确定一个元组，则该属性或属性的组合称为码。</p>
+<p>⑤关系模式</p>
+<p>一般描述：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关系名（属性1，属性2，属性3，属性4，···，属性n）</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><h5 id="关系数据模型的操作和完整性约束"><a href="#关系数据模型的操作和完整性约束" class="headerlink" title="关系数据模型的操作和完整性约束"></a>关系数据模型的操作和完整性约束</h5></li>
+</ol>
+<p>主要操作：查询、插入、删除、更新数据（必须满足关系的完整性约束条件）</p>
+<p>关系的完整性约束条件：实体参照性、参照完整性、用户定义的完整性</p>
+<h3 id="1-3数据库体系结构"><a href="#1-3数据库体系结构" class="headerlink" title="1.3数据库体系结构"></a>1.3数据库体系结构</h3><h4 id="1-3-1-数据库系统的三级结构"><a href="#1-3-1-数据库系统的三级结构" class="headerlink" title="1.3.1 数据库系统的三级结构"></a>1.3.1 数据库系统的三级结构</h4><p>1975年，美国ANSI&#x2F;SPARC报告提出三级划分法。</p>
+<h5 id="1-用户级数据库"><a href="#1-用户级数据库" class="headerlink" title="1. 用户级数据库"></a>1. 用户级数据库</h5><p>对应<strong>外模式</strong>，最接近用户，用户可以看到和使用的数据库（又称用户视图）。</p>
+<p>主要由外部记录组成，不同视图可重叠。</p>
+<p>所有操作都是针对用户视图。</p>
+<h5 id="2-概念级数据库"><a href="#2-概念级数据库" class="headerlink" title="2. 概念级数据库"></a>2. 概念级数据库</h5><p>对应<strong>概念模式</strong>，介于用户级和物理级之间。数据库管理人员看到和使用的数据库（又称DBA视图）。</p>
+<h5 id="3-物理级数据库"><a href="#3-物理级数据库" class="headerlink" title="3. 物理级数据库"></a>3. 物理级数据库</h5><p>对应<strong>内模式</strong>，数据库底层表示。描述数据的实际存储组织，最接近与物理存储的级别（又称内部视图）。</p>
+<p>由内部记录组成。</p>
+<p>注意：物理级数据库不是真正的物理存储（只是对物理存储的抽象），最接近物理存储。</p>
+<h4 id="1-3-2-数据库系统的三级模式"><a href="#1-3-2-数据库系统的三级模式" class="headerlink" title="1.3.2 数据库系统的三级模式"></a>1.3.2 数据库系统的三级模式</h4><h5 id="1-概念模式"><a href="#1-概念模式" class="headerlink" title="1. 概念模式"></a>1. 概念模式</h5><p>又称<strong>模式</strong>或<strong>逻辑模式</strong>。</p>
+<p>数据库中<strong>全体</strong>数据的逻辑结构和特征的描述，<strong>所有用户</strong>的公共数据视图。</p>
+<p>具有唯一性。即一个数据库只有一个概念模式。</p>
+<h5 id="2-外部模式"><a href="#2-外部模式" class="headerlink" title="2. 外部模式"></a>2. 外部模式</h5><p>又称<strong>子模式</strong>和<strong>用户模式</strong>。</p>
+<p>数据库用户可以看到和使用的<strong>局部</strong>数据的逻辑结构和特征的描述。数据库用户的数据视图</p>
+<p>具有不唯一性。</p>
+<h5 id="3-内部模式"><a href="#3-内部模式" class="headerlink" title="3.内部模式"></a>3.内部模式</h5><p>又称<strong>存储模式</strong>或<strong>物理模式</strong>。</p>
+<p>数据物理结构和存储方式的描述，数据在数据库内的表示方式。</p>
+<p>具有唯一性。</p>
+<h4 id="1-3-3-数据库系统的二级映射与数据独立性"><a href="#1-3-3-数据库系统的二级映射与数据独立性" class="headerlink" title="1.3.3 数据库系统的二级映射与数据独立性"></a>1.3.3 数据库系统的二级映射与数据独立性</h4><h5 id="1-数据库系统的二级映射"><a href="#1-数据库系统的二级映射" class="headerlink" title="1. 数据库系统的二级映射"></a>1. 数据库系统的二级映射</h5><p>外模式&#x2F;模式映射				模式&#x2F;内模式映射</p>
+<p>三个抽象级通过二级映射进行相互转换，形成一个统一的整体。</p>
+<h5 id="2-数据独立性"><a href="#2-数据独立性" class="headerlink" title="2. 数据独立性"></a>2. 数据独立性</h5><p>应用程序与数据之间的独立性。包括两种如下：</p>
+<p>①物理独立性</p>
+<p>应用程序与磁盘上的数据库中的数据是独立的。</p>
+<p>通过模式&#x2F;内模式映射来实现的。</p>
+<p>②逻辑独立性</p>
+<p>应用程序与逻辑结构是相互独立的。通过外模式&#x2F;模式映射来实现的。</p>
+<h2 id="2-关系数据库标准语言SQL"><a href="#2-关系数据库标准语言SQL" class="headerlink" title="2. 关系数据库标准语言SQL"></a>2. 关系数据库标准语言SQL</h2><h3 id="2-1-SQL-语言介绍"><a href="#2-1-SQL-语言介绍" class="headerlink" title="2.1 SQL 语言介绍"></a>2.1 SQL 语言介绍</h3><p>近期版本是SQL2016，主要新特性为行模式识别、支持json对象、多态表函数等</p>
+<h4 id="2-1-1-SQL数据库的体系结构"><a href="#2-1-1-SQL数据库的体系结构" class="headerlink" title="2.1.1 SQL数据库的体系结构"></a>2.1.1 SQL数据库的体系结构</h4><p>特点：</p>
+<p>①SQL用户可以是应用程序或终端用户。</p>
+<p>②使用SQL语言对基本表和视图进行查询。</p>
+<p>③一个视图是从若干个基本表或其他视图上导出的表。</p>
+<p>④一个或一些基本表对应一个数据文件。</p>
+<p>⑤一个基本表可以带若干个索引。</p>
+<p>⑥一个表空间可以由若干个数据文件组成。</p>
+<p>⑦一个数据库可以由若干个存储文件组成。</p>
+<h4 id="2-1-2-SQL的特点"><a href="#2-1-2-SQL的特点" class="headerlink" title="2.1.2 SQL的特点"></a>2.1.2 SQL的特点</h4><p>Structured Query Language 结构化查询语言</p>
+<p>①综合统一</p>
+<p>②高度非过程化</p>
+<p>③面向对象的操作方式</p>
+<p>④同一种语法结构提供两种使用方式（即是独立语言又是嵌入式语言）</p>
+<p>⑤语言简介、易学易用（结构化查询语言）</p>
+<h4 id="2-1-3-SQL语言的组成"><a href="#2-1-3-SQL语言的组成" class="headerlink" title="2.1.3 SQL语言的组成"></a>2.1.3 SQL语言的组成</h4><p>1.数据定义语言（DDL）</p>
+<p>create：创建数据库、表、视图等</p>
+<p>alter：修改</p>
+<p>drop：删除数据库、表、视图等</p>
+<p>rename：重命名</p>
+<p>truncate：删除表中所有数据但不删除表</p>
+<p>2.数据操作语言（DML）</p>
+<p>select：查询</p>
+<p>inset：添加新数据</p>
+<p>update：更新现有的数据</p>
+<p>delete：删除指定行的数据</p>
+<p>3.数据控制语言（DCL）</p>
+<p>DCL用于事务控制、并发控制、完整性和安全性控制等。</p>
+<p>commit：保存修改</p>
+<p>rollback：回滚修改</p>
+<p>savepoint：设置保存点</p>
+<p>locktable：锁定数据库中的一个表</p>
+<h2 id="3-数据库编程"><a href="#3-数据库编程" class="headerlink" title="3.数据库编程"></a>3.数据库编程</h2><h3 id="1-常量"><a href="#1-常量" class="headerlink" title="1.常量"></a>1.常量</h3><p>常量：程序本身不能改变其值的数据</p>
+<p>（1）字符串常量</p>
+<p>使用单引号或双引号括起来的字符串序列，一般使用单引号。</p>
+<p>（2）数值常量</p>
+<p>整数常量和小数常量。可使用科学计数法表示，如 <strong>1e10</strong>、<strong>1.25E10</strong>*。</p>
+<p>（3）日期和时间常量</p>
+<p>单引号括的特定格式的字符日期值。如 <strong>‘yyyy\mm\dd hh:mm:ss’<strong>、</strong>yyyy-mm-dd hh:mm:ss</strong>.</p>
+<p>日期时间之间可以使用比较符号比较大小</p>
+<p>（4）布尔值常量</p>
+<p>只有true、false两个值。SQL命令的运行结果：1表示true，0表示false。</p>
+<p>（5）NULL值</p>
+<p>NULL值适用于各种类型的字段，表示“不确定的值”。有NULL值参与的运算结果一定为NULL值。</p>
+<h3 id="2-变量"><a href="#2-变量" class="headerlink" title="2.变量"></a>2.变量</h3><p>变量：程序运行过程中可以改变其值的数据</p>
+<h4 id="1-局部变量"><a href="#1-局部变量" class="headerlink" title="1.局部变量"></a>1.局部变量</h4><p>格式：@+局部变量名</p>
+<p>（1）定义与赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set @局部变量名[,@局部变量名,···];#定义</span><br><span class="line">set @局部变量名 = 表达式1[,@局部变量名 = 表达式2,···];#定义并赋值</span><br><span class="line">select 列名[,列名,···] into @局部变量名[,@局部变量名,···] from 表名;#将查询到的数据赋值给局部变量名</span><br></pre></td></tr></table></figure>
+
+<p>（2）显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @局部变量名;</span><br></pre></td></tr></table></figure>
+
+<p>（3）其他</p>
+<p>局部变量名可作为 select语句 中 where子句 的比较条件。</p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from 表名 where name = @局部变量名</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-全局变量"><a href="#2-全局变量" class="headerlink" title="2.全局变量"></a>2.全局变量</h4><p>全局变量：MySQL 系统提供并赋值的变量。用户不能定义全局变量，只能使用。</p>
+<p>格式：@@+全局变量名</p>
+<table>
+<thead>
+<tr>
+<th align="center">全局变量名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@@back_log</td>
+<td align="center">返回MySQL主要连接请求的数量</td>
+</tr>
+<tr>
+<td align="center">@@basedir</td>
+<td align="center">返回MySQL安装目录基准</td>
+</tr>
+<tr>
+<td align="center">@@license</td>
+<td align="center">返回服务器的许可类型</td>
+</tr>
+<tr>
+<td align="center">@@port</td>
+<td align="center">返回服务器侦听TCP&#x2F;IP链接的端口号</td>
+</tr>
+<tr>
+<td align="center">@@storage_engine</td>
+<td align="center">返回存储引擎</td>
+</tr>
+<tr>
+<td align="center">@@version</td>
+<td align="center">返回服务器版本号</td>
+</tr>
+</tbody></table>
+<p>显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @@全局变量名</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>MySql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
+<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
+<p>②第二代晶体管计算机（1958-1964年）</p>
+<p>③第三代集成电路计算机（1965-1977）</p>
+<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
+<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
+<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
+<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
+<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
+<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
+<p>主存：存储正在执行的程序和数据。</p>
+<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
+<p>特点：</p>
+<p>①运算单元为中心，控制流由指令流产生</p>
+<p>②存储程序原理，面向主存组织数据流</p>
+<p>③主存按地址访问，提供线性编址空间</p>
+<p>④操作码与地址码组成指令</p>
+<p>⑤数据以二进制编码</p>
+<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
+<p>按传输信息分类：控制线、数据线、地址线</p>
+<p>三类总线：</p>
+<p>①内部总线：CPU内部各元件的连接</p>
+<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
+<p>③通信总线：计算机系统之间的通信</p>
+<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
+  </entry>
+  <entry>
+    <title>C++指针</title>
+    <url>/2022/07/15/2022-8-15-C/</url>
+    <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p>
+<p>定义：指针被释放后，还指向原来的内存空间。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line"><span class="comment">//此时p为悬空指针</span></span><br></pre></td></tr></table></figure>
+
+<p>避免方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line">p = <span class="literal">NULL</span>;<span class="comment">//赋值为NULL来避免悬空指针</span></span><br></pre></td></tr></table></figure>
+
+<p>2.野指针</p>
+<p>定义：指针不确定其具体指向的内存空间。如：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p;</span><br><span class="line"><span class="comment">//此时p为野指针</span></span><br></pre></td></tr></table></figure>
+
+<p>危害：可能指向任意内存段，因此它可能会损坏正常的数据，也有可能引发其他未知错误。</p>
+<p>避免方法：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++面经</title>
+    <url>/2025/03/05/C-%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
+<ul>
+<li><p>函数未被使用：编译和链接时都不报错</p>
+</li>
+<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
+</li>
+<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
+</li>
+</ul>
+<p>2.头文件循环包含问题</p>
+<ul>
+<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但在源文件中需要包含具体头文件</p>
+<ul>
+<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决依赖扩散问题：使用Pimpl解决</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++操作符重载&amp;引用</title>
+    <url>/2024/07/25/C++/</url>
+    <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">函数类型 <span class="keyword">operator</span>运算符(形参列表)</span><br><span class="line">&#123;</span><br><span class="line">    重载语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>operator</code>为关键字，专门用于定义运算符重载的函数。可以将 <strong>operator运算符</strong> 看成函数名称。</p>
+<span id="more"></span>
+
+<h4 id="运算符重载规则："><a href="#运算符重载规则：" class="headerlink" title="运算符重载规则："></a>运算符重载规则：</h4><p>1.并不是所有的运算符都能被重载，如长度运算符<code>sizeof</code>、条件运算符<code>: ?</code>（三元运算符）、成员选择符<code>.</code>和域解析运算符<code>::</code>不能被重载。</p>
+<p>2.重载不能改变运算符的优先级和结合性。</p>
+<p>3.重载不改变运算符的用法（即不改变原先的使用规则）。</p>
+<p>4.运算符重载函数<strong>不能有默认参数</strong>，因为这会改变运算符操作数个数。</p>
+<p>5.运算符重载函数既可以作为<strong>类的成员函数</strong>，也可以作为<strong>全局函数</strong>。</p>
+<p>将运算符重载函数作为类的成员函数时，二元运算符的参数只有一个，一元运算符不需要参数。之所以少一个参数，是因为这个参数是隐含的。当类的对象调用重载后的运算符时，此对象就隐形作为一个参数了。</p>
+<p>将运算符重载函数作为全局函数时，二元操作符就需要两个参数，一元操作符需要一个参数，<strong>而且其中必须有一个参数是对象</strong>，好让编译器区分这是程序员自定义的运算符，防止程序员修改用于内置类型的运算符的性质。</p>
+<p>6.箭头运算符<code>-&gt;</code>、下标运算符<code>[ ]</code>、函数调用运算符<code>( )</code>、赋值运算符<code>=</code>只能以成员函数的形式重载。</p>
+<h4 id="流操作符重载"><a href="#流操作符重载" class="headerlink" title="流操作符重载"></a>流操作符重载</h4><p>输入流操作符<code>&gt;&gt;</code>和输出流操作符<code>&lt;&lt;</code>。</p>
+<p><code>cout</code>是<code>ostream类</code>对象，<code>cin</code>是<code>iostream类</code>对象。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//输入流操作符&gt;&gt;重载</span></span><br><span class="line">istream &amp; <span class="keyword">operator</span>&gt;&gt;(istream &amp;in, 类型 &amp;A)</span><br><span class="line">&#123;</span><br><span class="line">    in &gt;&gt; A.成员<span class="number">1</span> &gt;&gt; A.成员<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> in;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//返回 istream 类对象的引用，是为了能够连续读取复数，让代码书写更加漂亮</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输出流操作符&lt;&lt;重载</span></span><br><span class="line">ostream &amp; <span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, 类型 &amp;A)</span><br><span class="line">&#123;</span><br><span class="line">    out &lt;&lt; A.成员<span class="number">1</span> &lt;&lt; A.成员<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="下标运算符-重载"><a href="#下标运算符-重载" class="headerlink" title="下标运算符[]重载"></a>下标运算符<code>[]</code>重载</h4><p>只能以成员函数的形式进行重载，声明格式一般为：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//第一种方式:不仅可以访问元素，还可以修改元素。</span></span><br><span class="line">返回值类型 &amp; <span class="keyword">operator</span>[](形参);</span><br><span class="line"><span class="comment">//第二种方式:只能访问而不能修改元素</span></span><br><span class="line"><span class="type">const</span> 返回值类型 &amp; <span class="keyword">operator</span>[](形参) <span class="type">const</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以通过重载<code>[]</code>来实现变长数组。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Array</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Array</span>(<span class="type">int</span> length = <span class="number">0</span>);</span><br><span class="line">    ~<span class="built_in">Array</span>();</span><br><span class="line">    <span class="type">int</span> &amp; <span class="keyword">operator</span>[](<span class="type">int</span> i);</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> &amp; <span class="keyword">operator</span>[](<span class="type">int</span> i) <span class="type">const</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_length;  <span class="comment">//数组长度</span></span><br><span class="line">    <span class="type">int</span> *m_p;  <span class="comment">//指向数组内存的指针</span></span><br><span class="line">&#125;;</span><br><span class="line">Array::~<span class="built_in">Array</span>()&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] m_p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span>&amp; Array::<span class="keyword">operator</span>[](<span class="type">int</span> i)&#123;</span><br><span class="line">    <span class="keyword">return</span> m_p[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp; Array::<span class="keyword">operator</span>[](<span class="type">int</span> i) <span class="type">const</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m_p[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h3><h4 id="（1）流操作符重载"><a href="#（1）流操作符重载" class="headerlink" title="（1）流操作符重载"></a>（1）流操作符重载</h4><p>必须作为友元函数（关键字：<strong>friend</strong>）或普通全局函数来重载。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">std:ostream&amp; <span class="keyword">operator</span>&lt;&lt;(std::ostream&amp; os,<span class="type">const</span> className&amp; object)&#123;</span><br><span class="line">    os &lt;&lt; object的内容;</span><br><span class="line">    <span class="keyword">return</span> os;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">std:istream&amp; <span class="keyword">operator</span>&gt;&gt;(std::istream&amp; is,className&amp; object)&#123;</span><br><span class="line">    os &gt;&gt; object的内容;</span><br><span class="line">    <span class="keyword">return</span> is;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（2）一元运算符重载（-、–、-、-）"><a href="#（2）一元运算符重载（-、–、-、-）" class="headerlink" title="（2）一元运算符重载（++、–、-、!）"></a>（2）一元运算符重载（++、–、-、!）</h4><p>前缀形式重载调用 <strong>operator ++ ()</strong> ，后缀形式重载调用 <strong>operator ++ (int)</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 重载前缀递增运算符（ ++ ）</span></span><br><span class="line">      Time <span class="keyword">operator</span>++ ()  </span><br><span class="line">      &#123;</span><br><span class="line">         ++minutes;          <span class="comment">// 对象加 1</span></span><br><span class="line">         <span class="keyword">if</span>(minutes &gt;= <span class="number">60</span>)  </span><br><span class="line">         &#123;</span><br><span class="line">            ++hours;</span><br><span class="line">            minutes -= <span class="number">60</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">return</span> <span class="built_in">Time</span>(hours, minutes);</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">// 重载后缀递增运算符（ ++ ）</span></span><br><span class="line">      Time <span class="keyword">operator</span>++( <span class="type">int</span> )         </span><br><span class="line">      &#123;</span><br><span class="line">         <span class="comment">// 保存原始值</span></span><br><span class="line">         <span class="function">Time <span class="title">T</span><span class="params">(hours, minutes)</span></span>;</span><br><span class="line">         <span class="comment">// 对象加 1</span></span><br><span class="line">         ++minutes;                    </span><br><span class="line">         <span class="keyword">if</span>(minutes &gt;= <span class="number">60</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            ++hours;</span><br><span class="line">            minutes -= <span class="number">60</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="comment">// 返回旧的原始值</span></span><br><span class="line">         <span class="keyword">return</span> T; </span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（3）二元运算符重载（-、-、-、-）"><a href="#（3）二元运算符重载（-、-、-、-）" class="headerlink" title="（3）二元运算符重载（+、-、*、&#x2F;）"></a>（3）二元运算符重载（+、-、*、&#x2F;）</h4><p>类成员函数或全局函数</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 类成员函数重载 + 运算符，用于把两个 Box 对象相加</span></span><br><span class="line">   Box <span class="keyword">operator</span>+(<span class="type">const</span> Box&amp; b)</span><br><span class="line">   &#123;</span><br><span class="line">      Box box;</span><br><span class="line">      box.length = <span class="keyword">this</span>-&gt;length + b.length;</span><br><span class="line">      box.breadth = <span class="keyword">this</span>-&gt;breadth + b.breadth;</span><br><span class="line">      box.height = <span class="keyword">this</span>-&gt;height + b.height;</span><br><span class="line">      <span class="keyword">return</span> box;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//其他运算符类似</span></span><br><span class="line"><span class="comment">//全局函数重载</span></span><br><span class="line">Box <span class="keyword">operator</span>+(<span class="type">const</span> Box&amp; a, <span class="type">const</span> Box&amp; b)</span><br><span class="line">   &#123;</span><br><span class="line">      Box box;</span><br><span class="line">      box.length = a.length + b.length;</span><br><span class="line">      box.breadth = a.breadth + b.breadth;</span><br><span class="line">      box.height = a.height + b.height;</span><br><span class="line">      <span class="keyword">return</span> box;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（4）赋值运算符"><a href="#（4）赋值运算符" class="headerlink" title="（4）赋值运算符"></a>（4）赋值运算符</h4><ul>
+<li>参数类型：引用传参，用const修饰，即const 类&amp;<br>引用传参可以提高传参效率。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="keyword">operator</span>=(<span class="type">const</span> Distance &amp;D )</span><br><span class="line">      &#123; </span><br><span class="line">         feet = D.feet;</span><br><span class="line">         inches = D.inches;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>返回值类型：引用返回，即 类&amp;<br>引用返回可以提高返回的效率，有返回值目的是为了支持连续赋值功能。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Data <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)<span class="comment">//可以提高效率</span></span><br><span class="line">	&#123;</span><br><span class="line">			_year = d._year;</span><br><span class="line">			_month = d._month;</span><br><span class="line">			_day = d._day;</span><br><span class="line">			<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>要检查是否给自己赋值</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Data <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span> != &amp;d)<span class="comment">//如果两个对象的地址不相同那么就可以进行赋值</span></span><br><span class="line">	&#123;</span><br><span class="line">		_year = d._year;</span><br><span class="line">		_month = d._month;</span><br><span class="line">		_day = d._day;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>返回*this：要符合连续赋值的含义。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Data&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Data&amp; d)<span class="comment">//用引用返回，可以提高效率,减少拷贝</span></span><br><span class="line">	&#123;</span><br><span class="line">			_year = d._year;</span><br><span class="line">			_month = d._month;</span><br><span class="line">			_day = d._day;</span><br><span class="line">			<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="（5）函数调用运算符-重载"><a href="#（5）函数调用运算符-重载" class="headerlink" title="（5）函数调用运算符()重载"></a>（5）函数调用运算符()重载</h4><p>函数调用运算符 () 可以被重载用于类的对象。当重载 () 时，您不是创造了一种新的调用函数的方式，相反地，这是创建一个可以传递任意数目参数的运算符函数。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 重载函数调用运算符</span></span><br><span class="line">      <span class="function">Distance <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">         Distance D;</span><br><span class="line">         <span class="comment">// 进行随机计算</span></span><br><span class="line">         D.feet = a + c + <span class="number">10</span>;</span><br><span class="line">         D.inches = b + c + <span class="number">100</span> ;</span><br><span class="line">         <span class="keyword">return</span> D;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（6）下标运算符-重载"><a href="#（6）下标运算符-重载" class="headerlink" title="（6）下标运算符[]重载"></a>（6）下标运算符[]重载</h4><p>下标操作符 [] 通常用于访问数组元素。重载该运算符用于增强操作 C++ 数组的功能。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>&amp; <span class="keyword">operator</span>[](<span class="type">int</span> i)</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">if</span>( i &gt;= SIZE )</span><br><span class="line">          &#123;</span><br><span class="line">              cout &lt;&lt; <span class="string">&quot;索引超过最大值&quot;</span> &lt;&lt;endl; </span><br><span class="line">              <span class="comment">// 返回第一个元素</span></span><br><span class="line">              <span class="keyword">return</span> arr[<span class="number">0</span>];</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> arr[i];</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="（7）类成员访问运算符-重载"><a href="#（7）类成员访问运算符-重载" class="headerlink" title="（7）类成员访问运算符-&gt;重载"></a>（7）类成员访问运算符-&gt;重载</h4><p>运算符 -&gt; 通常与指针引用运算符 * 结合使用，用于实现”智能指针”的功能。</p>
+<p>语句 p-&gt;m 被解释为 (p.operator-&gt;())-&gt;m</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">Obj* <span class="keyword">operator</span>-&gt;() <span class="type">const</span> </span><br><span class="line">   &#123;</span><br><span class="line">     <span class="keyword">if</span>(!oc.a[index])</span><br><span class="line">     &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Zero value&quot;</span>;</span><br><span class="line">        <span class="keyword">return</span> (Obj*)<span class="number">0</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> oc.a[index];</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>引用必须在声明时初始化，初始化后无法改变指向。</p>
+<p><strong>左值、右值的区别：</strong></p>
+<p>左值：可以取地址的对象</p>
+<p>右值：不可以取地址的对象（如常量、表达式、函数返回值）</p>
+<h3 id="左值引用"><a href="#左值引用" class="headerlink" title="左值引用"></a>左值引用</h3><p>就是对左值进行引用</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.左值引用只能引用左值</span></span><br><span class="line"><span class="type">int</span> t = <span class="number">8</span>;</span><br><span class="line"><span class="type">int</span>&amp; rt1 = t;</span><br><span class="line"><span class="comment">//int&amp; rt2 = 8;  // 编译报错，因为8是右值，不能直接引用右值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.但是const左值引用既可以引用左值</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rt3 = t;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp; rt4 = <span class="number">8</span>;  <span class="comment">// 也可以引用右值</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp; r1 = x + y;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp; r2 = <span class="built_in">fmin</span>(x, y);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h3><p>就是对右值进行引用</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1.右值引用只能引用右值</span></span><br><span class="line"><span class="type">int</span>&amp;&amp; rr1 = <span class="number">10</span>;</span><br><span class="line"><span class="type">double</span>&amp;&amp; rr2 = x + y;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span>&amp;&amp; rr3 = x + y;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> t = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//int&amp;&amp; rrt = t;  // 编译报错，不能直接引用左值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.但是右值引用可以引用被move的左值</span></span><br><span class="line"><span class="type">int</span>&amp;&amp; rrt = std::<span class="built_in">move</span>(t);</span><br><span class="line"><span class="type">int</span>*&amp;&amp; rr4 = std::<span class="built_in">move</span>(p);</span><br><span class="line"><span class="type">int</span>&amp;&amp; rr5 = std::<span class="built_in">move</span>(*p);</span><br><span class="line"><span class="type">const</span> <span class="type">int</span>&amp;&amp; rr6 = std::<span class="built_in">move</span>(b);</span><br><span class="line"></span><br><span class="line"><span class="comment">//std::move移动语义：将一个对象中的资源移动到另一个对象（资源控制权的转移）</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2><p>浅拷贝是创建一个新对象，新对象和原对象共享同一个底层资源，简单的赋值拷贝。浅拷贝在拷贝后对象共享同一份底层资源，可以提高效率，但是当对象<strong>析构</strong>时可能会出现不确定的行为，因为<strong>资源会被重复释放</strong>。</p>
+<p>深拷贝则是创建一个新对象，，在堆中重新分配空间，新对象拥有原对象的全部资源，二者之间互不影响。深拷贝则会为每个对象创建独立的底层资源，避免了这个问题，但是会<strong>占用更多的内存</strong>。</p>
+<p>当对象中有<strong>指针指向动态分配的内存</strong>时，为了安全地复制对象，需要显式地实现深拷贝，通常通过重载类的拷贝构造函数和赋值操作符来完成</p>
+<h2 id="类与结构体"><a href="#类与结构体" class="headerlink" title="类与结构体"></a>类与结构体</h2><p>C语言中，结构体只是用来封装不同数据类型的数据，没有构造函数和成员函数。</p>
+<p>C++中，结构体除了默认权限和继承默认权限不一样外，其他功能与类一样。（结构体默认public，类默认private）</p>
+<p>在类定义中的<strong>定义</strong>的函数都是<strong>内联函数</strong>，即使没有使用 <strong>inline</strong> 说明符。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>派生类可以访问基类中所有的<strong>非私有</strong>成员。因此基类成员如果不想被派生类的成员函数访问，则应在基类中声明为 private。</p>
+<p>一个派生类继承了所有的基类方法，但下列情况除外：</p>
+<ul>
+<li>基类的构造函数、析构函数和拷贝构造函数。</li>
+<li>基类的重载运算符。</li>
+<li>基类的友元函数。</li>
+</ul>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>C++ 多态意味着调用成员函数时，会根据调用函数的对象的类型来执行不同的函数。</p>
+<p>编译时多态、静态多态（静态链接或早绑定）：函数调用在程序执行前就准备好了。有时候这也被称为<strong>早绑定</strong>，因为 area() 函数在程序编译期间就已经设置好了，如<strong>函数重载</strong>和<strong>运算符重载</strong></p>
+<p>运行时多态、动态多态（动态链接或后期绑定）：根据所调用的对象类型来选择调用的函数，如派生类中的<strong>虚函数重写</strong></p>
+<h5 id="虚函数与纯虚函数"><a href="#虚函数与纯虚函数" class="headerlink" title="虚函数与纯虚函数"></a>虚函数与纯虚函数</h5><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//虚函数</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> returnType <span class="title">functionName</span><span class="params">()</span></span>&#123;</span><br><span class="line">	···</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//纯虚函数,派生类必须重写纯虚函数</span></span><br><span class="line"><span class="function"><span class="keyword">virtual</span> returnType <span class="title">functionName</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>当类中有虚函数时，会为该类生成一个虚函数指针表（虚函数表），同时为该类添加一个虚函数表指针成员（用于访问虚函数表），表中包含一个或多个函数指针，指向该类的虚函数地址</p>
+<h3 id="数据抽象"><a href="#数据抽象" class="headerlink" title="数据抽象"></a>数据抽象</h3><p>只向外界提供关键信息，并隐藏其后台的实现细节，即只表现必要的信息而不呈现细节。</p>
+<p><strong>优势：</strong></p>
+<ul>
+<li>类的内部受到保护，不会因无意的用户级错误导致对象状态受损。</li>
+<li>类实现可能随着时间的推移而发生变化，以便应对不断变化的需求，或者应对那些要求不改变用户级代码的错误报告。</li>
+</ul>
+<h3 id="数据封装"><a href="#数据封装" class="headerlink" title="数据封装"></a>数据封装</h3><p>把数据和操作数据的函数捆绑在一起，通过将数据和操作数据的函数封装在一个类中来实现。</p>
+<p><strong>访问修饰符</strong></p>
+<ul>
+<li><strong>private</strong>: 私有成员只能在类的内部访问，不能被类的外部代码直接访问。</li>
+<li><strong>public</strong>: 公有成员可以被类的外部代码直接访问。</li>
+<li><strong>protected</strong>: 受保护成员可以被类和其派生类访问。</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li><strong>数据隐藏</strong>: 通过将数据成员声明为私有，防止外部代码直接访问这些数据。</li>
+<li><strong>提高代码可维护性</strong>: 提供公共方法来访问和修改数据，这使得可以在不影响外部代码的情况下修改类的内部实现。</li>
+<li><strong>增强安全性</strong>: 防止不合法的数据输入和不当的修改操作。</li>
+<li><strong>实现抽象</strong>: 提供了一种机制，使得用户不需要了解类的内部实现细节，只需要了解如何使用类的公共接口即可。</li>
+</ul>
+<h3 id="接口（抽象类ABC）"><a href="#接口（抽象类ABC）" class="headerlink" title="接口（抽象类ABC）"></a>接口（抽象类ABC）</h3><p>类中<strong>至少</strong>有一个函数被声明为<strong>纯虚函数</strong>，则这个类就是抽象类。纯虚函数是通过在声明中使用 “&#x3D; 0” 来指定的。C++的接口是通过抽象类来实现的，抽象类不能被用于实例化对象，它只能作为<strong>接口</strong>使用。</p>
+<p>如果一个 ABC 的子类需要被实例化，则必须实现每个纯虚函数，这也意味着 C++ 支持使用 ABC 声明接口。如果没有在派生类中重写纯虚函数，就尝试实例化该类的对象，会导致编译错误。可用于实例化对象的类被称为<strong>具体类</strong>。</p>
+<h3 id="构造函数类"><a href="#构造函数类" class="headerlink" title="构造函数类"></a>构造函数类</h3><p>按参数区分：有参、无参（默认构造函数）</p>
+<p>按照类型区分：普通、拷贝(或复制构造)</p>
+<p>拷贝构造调用情景：</p>
+<p>1.对象以值的形式作为函数参数</p>
+<p>2.对象以值的形式作为函数返回值</p>
+<p>3.将一个对象用于给另一对象进行初始化时</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="comment">//拷贝构造，形参必须为引用，一般会加const</span></span><br><span class="line">    <span class="comment">//一般拷贝构造函数为浅拷贝，当成员变量中存在指针变量时需定义一个深拷贝构造函数</span></span><br><span class="line">    <span class="built_in">Person</span>(<span class="type">const</span> Person &amp;p)&#123;</span><br><span class="line">        <span class="meta">#statement</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3>]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux下gdb调试</title>
+    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/12/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<span id="more"></span>
+]]></content>
+  </entry>
 </search>
