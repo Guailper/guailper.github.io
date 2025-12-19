@@ -1,237 +1,164 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"guailper.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
-
-  <meta name="description" content="计算机系统概述1.计算机系统概述1.1计算机基本工作原理1.1.1 冯诺依曼结构思想①采用“存储程序”工作方式 ②五个基本部件：控制器、运算器、存储器、输入设备、输出设备 ③控制器：自动执行指令 ​	运算器：进行算术运算和逻辑运算 ​	存储器：存放数据和指令（都是二进制形式） ​	输入输出设备：操作人员通过输入输出设备使用计算机 ④指令和数据：二进制形式 ​	指令组成：操作码（操作类型）和地址码（">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Guailper的个人博客 | Guailper的个人博客</title><meta name="author" content="Guailper"><meta name="copyright" content="Guailper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="计算机系统概述1.计算机系统概述1.1计算机基本工作原理1.1.1 冯诺依曼结构思想①采用“存储程序”工作方式 ②五个基本部件：控制器、运算器、存储器、输入设备、输出设备 ③控制器：自动执行指令 ​	运算器：进行算术运算和逻辑运算 ​	存储器：存放数据和指令（都是二进制形式） ​	输入输出设备：操作人员通过输入输出设备使用计算机 ④指令和数据：二进制形式 ​	指令组成：操作码（操作类型）和地址码（">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Guailper的个人博客">
 <meta property="og:url" content="https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Guailper的个人博客">
 <meta property="og:description" content="计算机系统概述1.计算机系统概述1.1计算机基本工作原理1.1.1 冯诺依曼结构思想①采用“存储程序”工作方式 ②五个基本部件：控制器、运算器、存储器、输入设备、输出设备 ③控制器：自动执行指令 ​	运算器：进行算术运算和逻辑运算 ​	存储器：存放数据和指令（都是二进制形式） ​	输入输出设备：操作人员通过输入输出设备使用计算机 ④指令和数据：二进制形式 ​	指令组成：操作码（操作类型）和地址码（">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg">
+<meta property="og:image" content="https://guailper.github.io/img/butterfly-icon.png">
 <meta property="article:published_time" content="2021-11-30T11:25:07.000Z">
 <meta property="article:modified_time" content="2021-12-02T10:08:37.000Z">
 <meta property="article:author" content="Guailper">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg">
-
-<link rel="canonical" href="https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title> | Hexo</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Hexo</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">6</span></a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">0</span></a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">17</span></a>
-
-  </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
-
-  </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
-
-  </li>
-        <li class="menu-item menu-item-search">
-
-    <a href="/search/" rel="section"><i class="fa fa-fw fa-search"></i>搜索</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Guailper">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-30 19:25:07" itemprop="dateCreated datePublished" datetime="2021-11-30T19:25:07+08:00">2021-11-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-02 18:08:37" itemprop="dateModified" datetime="2021-12-02T18:08:37+08:00">2021-12-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+<meta name="twitter:image" content="https://guailper.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/",
+  "image": "https://guailper.github.io/img/butterfly-icon.png",
+  "datePublished": "2021-11-30T11:25:07.000Z",
+  "dateModified": "2021-12-02T10:08:37.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Guailper",
+      "url": "https://guailper.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-        <h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Guailper的个人博客',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Guailper的个人博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Guailper的个人博客</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-11-30T11:25:07.000Z" title="发表于 2021-11-30 19:25:07">2021-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-02T10:08:37.000Z" title="更新于 2021-12-02 18:08:37">2021-12-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
 <p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
 <p>③控制器：自动执行指令</p>
 <p>​	运算器：进行算术运算和逻辑运算</p>
@@ -262,193 +189,4 @@
 <p>汇编语言程序：使用汇编语言编写的程序</p>
 <p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
 <p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
-<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/" rel="prev" title="">
-      <i class="fa fa-chevron-left"></i> 
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/12/11/2021-12-11-%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/" rel="next" title="">
-       <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">1.计算机系统概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1计算机基本工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.1.1 冯诺依曼结构思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">1.1.2冯诺依曼机基本结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3%E7%A8%8B%E5%BA%8F%E5%92%8C%E6%8C%87%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">1.1.3程序和指令的执行过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91%E4%B8%8E%E8%BF%90%E8%A1%8C"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2程序的开发与运行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BF%BB%E8%AF%91%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.2.1程序设计语言和翻译程序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">2.数据的机器级表示与处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%8F%8A%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.3.</span> <span class="nav-text">3.程序的转换及机器级表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="nav-number">1.4.</span> <span class="nav-text">4.程序的链接</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Guailper</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">17</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Guailper</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://guailper.github.io">Guailper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">https://guailper.github.io/2021/11/30/2021-12-30-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://guailper.github.io" target="_blank">Guailper的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2021/12/11/2021-12-11-%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">遮罩的应用遮罩遮罩是什么？ 遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。 遮罩的作用： ​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见 ​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。 三种制作遮罩的方法1.剪辑面板 将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha 2.Fusion面板 创建一个文本节点 将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接 3.调色面板 先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。 这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高 调色面板调色三个重要参数：色相、明度、饱和度 示波器的使用 分量图、波形图、矢量图、直方图、CIE色度图 </div></div></div></a><a class="pagination-related" href="/2021/11/28/2021-11-28-%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1"> title:”图床配置”tags:”others”1.github上创建仓库当然，这要先注册一个github账号😁😁😁 进入主页后点击New进入创建界面 填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file 然后点击Create repository创建。 然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。 进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）  在Note下方输入令牌名字，勾选repo后生成即可。 复制生成的token（后面会用到） 2.PicGo设置找到图床设置下的Github图床，输入好对应信息，确定。 点击PicGo设置中的 设置Server 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了） 3.TyporaCtrl + ，进入设置，选择图像  上传服务选择PicGo。路径选择你的安装路径。 4.上传失败重启PicGo。 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Guailper</div><div class="author-info-description">record personal information of learn and life</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">计算机系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1.计算机系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1计算机基本工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84%E6%80%9D%E6%83%B3"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1.1 冯诺依曼结构思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E6%9C%BA%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.1.2冯诺依曼机基本结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3%E7%A8%8B%E5%BA%8F%E5%92%8C%E6%8C%87%E4%BB%A4%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.1.3程序和指令的执行过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%BC%80%E5%8F%91%E4%B8%8E%E8%BF%90%E8%A1%8C"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2程序的开发与运行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%E5%92%8C%E7%BF%BB%E8%AF%91%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.2.1程序设计语言和翻译程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA%E4%B8%8E%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.数据的机器级表示与处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E5%8F%8A%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.3.</span> <span class="toc-text">3.程序的转换及机器级表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">4.程序的链接</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/18/hello-world/" title="Hello World">Hello World</a><time datetime="2025-12-18T12:50:41.553Z" title="发表于 2025-12-18 20:50:41">2025-12-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/05/C++%E9%9D%A2%E7%BB%8F/" title="C++面经">C++面经</a><time datetime="2025-03-05T05:35:13.000Z" title="发表于 2025-03-05 13:35:13">2025-03-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/25/2024-07-25-C++/" title="C++操作符重载&amp;引用">C++操作符重载&amp;引用</a><time datetime="2024-07-25T02:50:52.000Z" title="发表于 2024-07-25 10:50:52">2024-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/" title="Linux下gdb调试">Linux下gdb调试</a><time datetime="2022-08-16T10:44:19.000Z" title="发表于 2022-08-16 18:44:19">2022-08-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/15/2022-8-15-C++/" title="C++指针">C++指针</a><time datetime="2022-07-15T02:28:16.000Z" title="发表于 2022-07-15 10:28:16">2022-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Guailper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
