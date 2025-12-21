@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git初体验</title>
+    <url>/2021/10/19/init-set/</url>
+    <content><![CDATA[<h1 id="首次git连接仓库"><a href="#首次git连接仓库" class="headerlink" title="首次git连接仓库"></a>首次git连接仓库</h1><p>新建一个文件夹，作为仓库文件，在文件夹内进入<strong>git bash</strong></p>
+<p>初始化：git init	此时查看隐藏文件，可以看到文件夹中有一个 .git 文件</p>
+<p>添加文件到仓库：git add 文件名 (或者 . ，代表文件夹内的全部文件)</p>
+<p>添加注释：git commit -m “注释”</p>
+<p>创建主分支：git branch -M <u>main</u>(主分支名称)</p>
+<p>连接到远程仓库：git remote add origin <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:repository名称</p>
+<p>上传提交的文件（第一次时）：git push -u origin main(master) (一般为main)</p>
+<p>非第一次：git push 即可</p>
+<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
+<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
+<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
+<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
+<p>打开id_rsa.pub文件，复制其中的密钥。</p>
+<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>(注意看出现的信息是否连接成功)</p>
+]]></content>
+      <tags>
+        <tag>TeXt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>视频剪辑基础</title>
     <url>/2021/10/24/film-editing/</url>
     <content><![CDATA[<h1 id="达芬奇第一课"><a href="#达芬奇第一课" class="headerlink" title="达芬奇第一课"></a>达芬奇第一课</h1><h2 id="1-视频剪辑基础知识"><a href="#1-视频剪辑基础知识" class="headerlink" title="1. 视频剪辑基础知识"></a>1. 视频剪辑基础知识</h2><h3 id="1-1-数字视频信号"><a href="#1-1-数字视频信号" class="headerlink" title="1.1 数字视频信号"></a>1.1 数字视频信号</h3><p>标清：720p以下</p>
@@ -62,6 +85,47 @@
       </tags>
   </entry>
   <entry>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+]]></content>
+      <tags>
+        <tag>Binary_Code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>栈的定义及实现(C语言)</title>
     <url>/2021/11/01/%E6%A0%88/</url>
     <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
@@ -109,164 +173,6 @@
       <tags>
         <tag>Data Structure</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>git初体验</title>
-    <url>/2021/10/19/init-set/</url>
-    <content><![CDATA[<h1 id="首次git连接仓库"><a href="#首次git连接仓库" class="headerlink" title="首次git连接仓库"></a>首次git连接仓库</h1><p>新建一个文件夹，作为仓库文件，在文件夹内进入<strong>git bash</strong></p>
-<p>初始化：git init	此时查看隐藏文件，可以看到文件夹中有一个 .git 文件</p>
-<p>添加文件到仓库：git add 文件名 (或者 . ，代表文件夹内的全部文件)</p>
-<p>添加注释：git commit -m “注释”</p>
-<p>创建主分支：git branch -M <u>main</u>(主分支名称)</p>
-<p>连接到远程仓库：git remote add origin <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;</a>:repository名称</p>
-<p>上传提交的文件（第一次时）：git push -u origin main(master) (一般为main)</p>
-<p>非第一次：git push 即可</p>
-<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
-<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
-<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
-<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
-<p>打开id_rsa.pub文件，复制其中的密钥。</p>
-<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
-]]></content>
-      <tags>
-        <tag>TeXt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
-
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
-]]></content>
-      <tags>
-        <tag>Binary_Code</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<hr>
-<h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
-<p>进入主页后点击New进入创建界面</p>
-<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
-<p>然后点击Create repository创建。</p>
-<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
-<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
-<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
-<p>复制生成的token（后面会用到）</p>
-<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
-<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
-<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
-<p>上传服务选择PicGo。路径选择你的安装路径。</p>
-<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
-<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
-<p>遮罩的作用：</p>
-<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
-<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
-<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
-<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
-<p>2.Fusion面板</p>
-<p>创建一个文本节点</p>
-<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
-<p>3.调色面板</p>
-<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
-<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
-<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
-<p>示波器的使用</p>
-<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="静态路由和动态路由的配置"><a href="#静态路由和动态路由的配置" class="headerlink" title="静态路由和动态路由的配置"></a>静态路由和动态路由的配置</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
-<p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p>
-<p>将各个组件相连（使用自动选择连接）</p>
-<p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p>
-<p>为各个路由器的接口配置IP地址如下：</p>
-<p>Router0:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-<p>Router1:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-<p>Router2:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure>
-
-<p>Router0:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-<p>Router1:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-<p>Router2:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-
-<p>此时开始在一台主机ping目的主机。</p>
-<h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure>
-
-<p>每个路由器都是如此。</p>
-<p>Router0的邻居网络为10.1.1.0、20.1.1.0</p>
-<p>Router1的邻居网络为20.1.1.0、30.1.1.0</p>
-<p>Router2的邻居网络为30.1.1.0、40.1.1.0</p>
-<p>则配置如下：</p>
-<p>Router0</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure>
-<p>Router1</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure>
-<p>Router2</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure>
-
-<p>3.2 ospf配置</p>
-<p>格式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure>
-
-<p>配置如下：</p>
-<p>Router0</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
-<p>Router1</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
-<p>Router2</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>git初体验</title>
@@ -374,6 +280,48 @@
       <tags>
         <tag>TeXt</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-”图床配置”tags-”others”"><a href="#title-”图床配置”tags-”others”" class="headerlink" title="title:”图床配置”tags:”others”"></a>title:”图床配置”<br>tags:”others”</h2><h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
+<p>进入主页后点击New进入创建界面</p>
+<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
+<p>然后点击Create repository创建。</p>
+<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
+<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
+<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
+<p>复制生成的token（后面会用到）</p>
+<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
+<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
+<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
+<p>上传服务选择PicGo。路径选择你的安装路径。</p>
+<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
+<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
+<p>遮罩的作用：</p>
+<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
+<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
+<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
+<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
+<p>2.Fusion面板</p>
+<p>创建一个文本节点</p>
+<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
+<p>3.调色面板</p>
+<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
+<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
+<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
+<p>示波器的使用</p>
+<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
+]]></content>
   </entry>
   <entry>
     <title></title>
@@ -485,35 +433,6 @@
 <li>断言：实际结果与预期结果对比</li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
-<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
-<p>②第二代晶体管计算机（1958-1964年）</p>
-<p>③第三代集成电路计算机（1965-1977）</p>
-<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
-<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
-<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
-<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
-<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
-<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
-<p>主存：存储正在执行的程序和数据。</p>
-<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
-<p>特点：</p>
-<p>①运算单元为中心，控制流由指令流产生</p>
-<p>②存储程序原理，面向主存组织数据流</p>
-<p>③主存按地址访问，提供线性编址空间</p>
-<p>④操作码与地址码组成指令</p>
-<p>⑤数据以二进制编码</p>
-<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
-<p>按传输信息分类：控制线、数据线、地址线</p>
-<p>三类总线：</p>
-<p>①内部总线：CPU内部各元件的连接</p>
-<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
-<p>③通信总线：计算机系统之间的通信</p>
-<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
   </entry>
   <entry>
     <title>数据库笔记</title>
@@ -825,6 +744,58 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="静态路由和动态路由的配置"><a href="#静态路由和动态路由的配置" class="headerlink" title="静态路由和动态路由的配置"></a>静态路由和动态路由的配置</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
+<p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p>
+<p>将各个组件相连（使用自动选择连接）</p>
+<p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p>
+<p>为各个路由器的接口配置IP地址如下：</p>
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure>
+
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+
+<p>此时开始在一台主机ping目的主机。</p>
+<h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure>
+
+<p>每个路由器都是如此。</p>
+<p>Router0的邻居网络为10.1.1.0、20.1.1.0</p>
+<p>Router1的邻居网络为20.1.1.0、30.1.1.0</p>
+<p>Router2的邻居网络为30.1.1.0、40.1.1.0</p>
+<p>则配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure>
+
+<p>3.2 ospf配置</p>
+<p>格式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure>
+
+<p>配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
     <title>C++操作符重载&amp;引用</title>
     <url>/2024/07/25/C++/</url>
     <content><![CDATA[<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">函数类型 <span class="keyword">operator</span>运算符(形参列表)</span><br><span class="line">&#123;</span><br><span class="line">    重载语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1005,5 +976,34 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 <span id="more"></span>
 ]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
+<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
+<p>②第二代晶体管计算机（1958-1964年）</p>
+<p>③第三代集成电路计算机（1965-1977）</p>
+<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
+<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
+<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
+<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
+<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
+<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
+<p>主存：存储正在执行的程序和数据。</p>
+<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
+<p>特点：</p>
+<p>①运算单元为中心，控制流由指令流产生</p>
+<p>②存储程序原理，面向主存组织数据流</p>
+<p>③主存按地址访问，提供线性编址空间</p>
+<p>④操作码与地址码组成指令</p>
+<p>⑤数据以二进制编码</p>
+<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
+<p>按传输信息分类：控制线、数据线、地址线</p>
+<p>三类总线：</p>
+<p>①内部总线：CPU内部各元件的连接</p>
+<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
+<p>③通信总线：计算机系统之间的通信</p>
+<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
   </entry>
 </search>
