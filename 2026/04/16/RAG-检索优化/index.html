@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RAG-检索优化 | Guailper的博客</title><meta name="author" content="Guailper"><meta name="copyright" content="Guailper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="混合检索混合检索（Hybrid Search）是一种结合了 稀疏向量（Sparse Vectors） 和 密集向量（Dense Vectors） 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。 稀疏向量稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAG-检索优化">
+<meta property="og:url" content="https://guailper.github.io/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="Guailper的博客">
+<meta property="og:description" content="混合检索混合检索（Hybrid Search）是一种结合了 稀疏向量（Sparse Vectors） 和 密集向量（Dense Vectors） 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。 稀疏向量稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://guailper.github.io/img/cover.png">
+<meta property="article:published_time" content="2026-04-16T14:28:32.000Z">
+<meta property="article:modified_time" content="2026-04-18T07:42:11.368Z">
+<meta property="article:author" content="Guailper">
+<meta property="article:tag" content="RAG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://guailper.github.io/img/cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RAG-检索优化",
+  "url": "https://guailper.github.io/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/",
+  "image": "https://guailper.github.io/img/cover.png",
+  "datePublished": "2026-04-16T14:28:32.000Z",
+  "dateModified": "2026-04-18T07:42:11.368Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Guailper",
+      "url": "https://guailper.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/guailper.png"><link rel="canonical" href="https://guailper.github.io/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RAG-检索优化',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Guailper的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">RAG-检索优化</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">RAG-检索优化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-16T14:28:32.000Z" title="发表于 2026-04-16 22:28:32">2026-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-18T07:42:11.368Z" title="更新于 2026-04-18 15:42:11">2026-04-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RAG/">RAG</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RAG/%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/">检索优化</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
+<h2 id="稀疏向量"><a href="#稀疏向量" class="headerlink" title="稀疏向量"></a>稀疏向量</h2><p>稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下：</p>
+<p>$$<br>Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_1+1)}<br>$$<br>其中：</p>
+<ul>
+<li>$IDF(q_i)$: 查询词 $q_i$的逆文档频率，用于衡量一个词的普遍程度。越常见的词，IDF值越低。</li>
+<li>$f(q_i,D)$: 查询词 $q_i$在文档 D<em>D</em> 中的词频。</li>
+<li>$∣D∣$: 文档 D的长度。</li>
+<li>$avgdl$: 集合中所有文档的平均长度。</li>
+<li>$k_1,b$: 可调节的超参数。 $k_i$ 用于控制词频饱和度（一个词在文档中出现10次和100次，其重要性增长并非线性）， $b$用于控制文档长度归一化的程度。</li>
+</ul>
+<p>这种方法的优点是可解释性极强（每个维度都代表一个确切的词），无需训练，能够实现关键词的精确匹配，对于专业术语和特定名词的检索效果好。主要缺点是无法理解语义，例如它无法识别“汽车”和“轿车”是同义词，存在“词汇鸿沟”。</p>
+<p><strong>稀疏向量表示:</strong></p>
+<p>稀疏向量的核心思想是只存储非零值。例如，一个8维的向量 <code>[0, 0, 0, 5, 0, 0, 0, 9]</code>，其大部分元素都是零。用稀疏格式表示，可以极大地节约空间。常见的稀疏表示法有两种：</p>
+<ol>
+<li><p><strong>字典 &#x2F; 键值对 (Dictionary &#x2F; Key-Value):</strong> 这种方式将非零元素的 <code>索引</code> (0-based) 作为键，<code>值</code> 作为值。上面的向量可以表示为：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 值&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;3&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;7&quot;</span><span class="punctuation">:</span> <span class="number">9</span></span><br><span class="line"><span class="punctuation">&#125;</span>Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>坐标列表 (Coordinate list - COO):</strong> 这种方式通常用一个元组 <code>(维度, [索引列表], [值列表])</code> 来表示。上面的向量可以表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(8, [3, 7], [5, 9])Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p>这种格式在 <code>SciPy</code> 等科学计算库中非常常见。</p>
+</li>
+</ol>
+<p>假设在一个包含5万个词的词汇表中，“西红柿”在第88位，“炒”在第666位，“蛋”在第999位，它们的BM25权重分别是1.2、0.8、1.5。那么它的稀疏表示（采用字典格式）就是：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 权重&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;88&quot;</span><span class="punctuation">:</span> <span class="number">1.2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;666&quot;</span><span class="punctuation">:</span> <span class="number">0.8</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;999&quot;</span><span class="punctuation">:</span> <span class="number">1.5</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果采用坐标列表（COO）格式，它会是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(50000, [88, 666, 999], [1.2, 0.8, 1.5])</span><br></pre></td></tr></table></figure>
+
+<p>这两种格式都清晰地记录了文档的关键信息，但它们的局限性也很明显：如果我们搜索“番茄炒鸡蛋”，由于“番茄”和“西红柿”是不同的词条（索引不同），模型将无法理解它们的语义相似性。</p>
+<h2 id="密集向量"><a href="#密集向量" class="headerlink" title="密集向量"></a>密集向量</h2><p>密集向量，也常被称为“语义向量”，是通过深度学习模型学习到的数据（如文本、图像）的<strong>低维、稠密</strong>的浮点数表示。这些向量旨在将原始数据映射到一个连续的、充满意义的“语义空间”中来捕捉“语义”或“概念”。在理想的语义空间中，向量之间的距离和方向代表了它们所表示概念之间的关系。一个经典的例子是 <code>vector(&#39;国王&#39;) - vector(&#39;男人&#39;) + vector(&#39;女人&#39;)</code> 的计算结果在向量空间中非常接近 <code>vector(&#39;女王&#39;)</code>，这表明模型学会了“性别”和“皇室”这两个维度的抽象概念。它的代表包括 Word2Vec、GloVe、以及所有基于 Transformer 的模型（如 BERT、GPT）生成的嵌入（Embeddings）。</p>
+<p>其主要优点是能够理解同义词、近义词和上下文关系，泛化能力强，在语义搜索任务中表现卓越。但缺点也同样明显：可解释性差（向量中的每个维度通常没有具体的物理意义），需要大量数据和算力进行模型训练，且对于未登录词（OOV）的处理相对困难。</p>
+<p><strong>密集向量表示:</strong></p>
+<p>与稀疏向量不同，密集向量的所有维度都有值，因此使用<strong>数组 <code>[]</code></strong> 来表示是最直接的方式。一个预训练好的语义模型在读取“西红柿炒蛋”后，会输出一个低维的密集向量：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个低维（比如1024维）的浮点数向量</span></span><br><span class="line"><span class="comment">// 向量的每个维度没有直接的、可解释的含义</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">0.89</span><span class="punctuation">,</span> <span class="number">-0.12</span><span class="punctuation">,</span> <span class="number">0.77</span><span class="punctuation">,</span> ...<span class="punctuation">,</span> <span class="number">-0.45</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这个向量本身难以解读，但它在语义空间中的位置可能与“番茄鸡蛋面”、“洋葱炒鸡蛋”等菜肴的向量非常接近，因为模型理解了它们共享“鸡蛋类菜肴”、“家常菜”、“酸甜口味”等核心概念。因此，当我们搜索“蛋白质丰富的家常菜”时，即使查询中没有出现任何原文关键词，密集向量也很有可能成功匹配到这份菜谱。</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p><strong>OOV（Out-of-Vocabulary）未登录词</strong>：指在模型训练时没有出现在词汇表中，但在实际使用时遇到的新词汇。传统的稀疏向量方法（如BM25）对OOV词汇会完全忽略，而现代的密集向量方法通过子词分割（如BPE、WordPiece）可以更好地处理OOV问题。</p>
+</blockquote>
+<h2 id="混合检索-1"><a href="#混合检索-1" class="headerlink" title="混合检索"></a>混合检索</h2><p>稀疏向量和密集向量各有千秋，那么将它们结合起来，实现优势互补，就成了一个不错的选择。混合检索便是基于这个思路，通过结合多种搜索算法（最常见的是稀疏与密集检索）来提升搜索结果相关性和召回率。</p>
+<ul>
+<li><strong>主要目标</strong>：解决单一检索技术的局限性。例如，关键词检索无法理解语义，而向量检索则可能忽略掉必须精确匹配的关键词（如产品型号、函数名等）。混合检索旨在同时利用稀疏向量的<strong>精确性</strong>和密集向量的<strong>泛化性</strong>，以应对复杂多变的搜索需求。</li>
+</ul>
+<h3 id="技术原理与融合方法"><a href="#技术原理与融合方法" class="headerlink" title="技术原理与融合方法"></a>技术原理与融合方法</h3><p>混合检索通常并行执行两种检索算法，然后将两组异构的结果集融合成一个统一的排序列表。以下是两种主流的融合策略：</p>
+<h4 id="倒数排序融合-Reciprocal-Rank-Fusion-RRF"><a href="#倒数排序融合-Reciprocal-Rank-Fusion-RRF" class="headerlink" title="倒数排序融合 (Reciprocal Rank Fusion, RRF)"></a>倒数排序融合 (Reciprocal Rank Fusion, RRF)</h4><p>RRF 不关心不同检索系统的原始得分，只关心每个文档在各自结果集中的<strong>排名</strong>。其思想是：一个文档在不同检索系统中的排名越靠前，它的最终得分就越高。</p>
+<p>其计分公式为：<br>$$<br>RRF_{score}(d) &#x3D; \sum_{i&#x3D;1}^k \frac{1}{rank_i(d) + c}<br>$$<br>其中：</p>
+<ul>
+<li>$d$ 是待评分的文档。</li>
+<li>$k$ 是检索系统的数量（这里是2，即稀疏和密集）。</li>
+<li>$rank_i(d)$是文档 d<em>d</em> 在第 $i$ 个检索系统中的排名。</li>
+<li>$c$是一个常数（通常设为60），用于降低排名靠前文档的相对权重，实现更稳健的排名融合。</li>
+</ul>
+<h4 id="加权线性组合"><a href="#加权线性组合" class="headerlink" title="加权线性组合"></a>加权线性组合</h4><p>这种方法需要先将不同检索系统的得分进行归一化（例如，统一到 0-1 区间），然后通过一个权重参数 $\alpha$ 来进行线性组合。<br>$$<br>Hybrid_{score} &#x3D; \alpha \cdot Dense_{score} + (1 - \alpha) \cdot Sparse_{score}<br>$$<br>通过调整 $\alpha$ 的值，可以灵活地控制语义相似性与关键词匹配在最终排序中的贡献比例。例如，在电商搜索中，可以调高关键词的权重；而在智能问答中，则可以侧重于语义。</p>
+<h3 id="优势与局限"><a href="#优势与局限" class="headerlink" title="优势与局限"></a>优势与局限</h3><table>
+<thead>
+<tr>
+<th align="left">优势</th>
+<th align="left">局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>召回率与准确率高</strong>：能同时捕获关键词和语义，显著优于单一检索。</td>
+<td align="left"><strong>计算资源消耗大</strong>：需要同时维护和查询两套索引。</td>
+</tr>
+<tr>
+<td align="left"><strong>灵活性强</strong>：可通过融合策略和权重调整，适应不同业务场景。</td>
+<td align="left"><strong>参数调试复杂</strong>：融合权重等超参数需要反复实验调优。</td>
+</tr>
+<tr>
+<td align="left"><strong>容错性好</strong>：关键词检索可部分弥补向量模型对拼写错误或罕见词的敏感性。</td>
+<td align="left"><strong>可解释性仍是挑战</strong>：融合后的结果排序理由难以直观分析。</td>
+</tr>
+</tbody></table>
+<h1 id="查询构建"><a href="#查询构建" class="headerlink" title="查询构建"></a>查询构建</h1><p>在实际应用中，我们常常需要处理更加复杂和多样化的数据，包括结构化数据（如SQL数据库）、半结构化数据（如带有元数据的文档）以及图数据。用户的查询也可能不仅仅是简单的语义匹配，而是包含复杂的过滤条件、聚合操作或关系查询。</p>
+<p><strong>查询构建（Query Construction）</strong><a target="_blank" rel="noopener" href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a> 正是应对这一挑战的关键技术。它利用大语言模型（LLM）的强大理解能力，将用户的自然语言查询“翻译”成针对特定数据源的结构化查询语言或带有过滤条件的请求。这使得RAG系统能够无缝地连接和利用各种类型的数据，从而极大地扩展了其应用场景和能力。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418122703299.png?token=AR3LVDCJZ4IEMTVPL3AOZHDJ4MEFG" alt="image-20260418122648264"></p>
+<h2 id="文本到元数据过滤器"><a href="#文本到元数据过滤器" class="headerlink" title="文本到元数据过滤器"></a>文本到元数据过滤器</h2><p>在构建向量索引时，常常会为文档块（Chunks）附加元数据（Metadata），例如文档来源、发布日期、作者、章节、类别等。这些元数据为我们提供了在语义搜索之外进行精确过滤的可能。</p>
+<p><strong>自查询检索器（Self-Query Retriever）</strong> 是LangChain中实现这一功能的核心组件。它的工作流程如下：</p>
+<ol>
+<li><strong>定义元数据结构</strong>：首先，需要向LLM清晰地描述文档内容和每个元数据字段的含义及类型。</li>
+<li><strong>查询解析</strong>：当用户输入一个自然语言查询时，自查询检索器会调用LLM，将查询分解为两部分：<ul>
+<li><strong>查询字符串（Query String）</strong>：用于进行语义搜索的部分。</li>
+<li><strong>元数据过滤器（Metadata Filter）</strong>：从查询中提取出的结构化过滤条件。</li>
+</ul>
+</li>
+<li><strong>执行查询</strong>：检索器将解析出的查询字符串和元数据过滤器发送给向量数据库，执行一次同时包含语义搜索和元数据过滤的查询。</li>
+</ol>
+<p>例如，对于查询“关于2022年发布的机器学习的论文”，自查询检索器会将其解析为：</p>
+<ul>
+<li><strong>查询字符串</strong>: “机器学习的论文”</li>
+<li><strong>元数据过滤器</strong>: <code>year == 2022</code></li>
+</ul>
+<h2 id="文本到Cypher"><a href="#文本到Cypher" class="headerlink" title="文本到Cypher"></a>文本到Cypher</h2><p>除了处理扁平化的元数据，查询构建技术还能应用于更复杂的数据结构，如图数据库。</p>
+<h3 id="什么是-Cypher？"><a href="#什么是-Cypher？" class="headerlink" title="什么是 Cypher？"></a>什么是 Cypher？</h3><p>Cypher 是图数据库（如 Neo4j）中最常用的查询语言，其地位类似于 SQL 之于关系数据库。它采用一种直观的方式来匹配图中的模式和关系，例如 <code>(:Person &#123;name:&quot;Tomaz&quot;&#125;)-[:LIVES_IN]-&gt;(:Country &#123;name:&quot;Slovenia&quot;&#125;)</code> 描述了一个人和一个国家以及他们之间的“居住在”关系。</p>
+<h3 id="文本到Cypher”的原理"><a href="#文本到Cypher”的原理" class="headerlink" title="文本到Cypher”的原理"></a>文本到Cypher”的原理</h3><p>与“文本到元数据过滤器”类似，“文本到Cypher”技术利用大语言模型（LLM）将用户的自然语言问题直接翻译成一句精准的 Cypher 查询语句。LangChain 提供了相应的工具链（如 <code>GraphCypherQAChain</code>），其工作流程通常是：</p>
+<ol>
+<li>接收用户的自然语言问题。</li>
+<li>LLM 根据预先提供的图谱模式（Schema），将问题转换为 Cypher 查询。</li>
+<li>在图数据库上执行该查询，获取精确的结构化数据。</li>
+<li>(可选)将查询结果再次交由 LLM，生成通顺的自然语言答案。</li>
+</ol>
+<p>由于生成有效的 Cypher 查询是一项复杂的任务，通常使用性能较强的 LLM 来确保转换的准确性。通过这种方式，用户可以用最自然的方式与高度结构化的图数据进行交互，极大地降低了数据查询的门槛。</p>
+<h1 id="文本到SQL"><a href="#文本到SQL" class="headerlink" title="文本到SQL"></a>文本到SQL</h1><p>在数据世界中，除了向量数据库能够处理的非结构化数据，关系型数据库（如 MySQL, PostgreSQL, SQLite）同样是存储和管理结构化数据的重点。<strong>文本到SQL（Text-to-SQL）</strong>正是为了打破人与结构化数据之间的语言障碍而生。它利用大语言模型（LLM）将用户的自然语言问题，直接翻译成可以在数据库上执行的SQL查询语句。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418130229381.png?token=AR3LVDCDOH4T4V2OVC3SPU3J4MIKA" alt="image-20260418130227803"></p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><ul>
+<li><strong>“幻觉”问题</strong>：LLM 可能会“想象”出数据库中不存在的表或字段，导致生成的SQL语句无效。</li>
+<li><strong>对数据库结构理解不足</strong>：LLM 需要准确理解表的结构、字段的含义以及表与表之间的关联关系，才能生成正确的 <code>JOIN</code> 和 <code>WHERE</code> 子句。</li>
+<li><strong>处理用户输入的模糊性</strong>：用户的提问可能存在拼写错误或不规范的表达（例如，“上个月的销售冠军是谁？”），模型需要具备一定的容错和推理能力。</li>
+</ul>
+<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><ol>
+<li><strong>提供精确的数据库模式</strong>：这是最基础也是最关键的一步。我们需要向LLM提供数据库中相关表的 <code>CREATE TABLE</code> 语句。这就像是给了LLM一张地图，让它了解数据库的结构，包括表名、列名、数据类型和外键关系。</li>
+<li><strong>提供少量高质量的示例</strong>：在提示（Prompt）中加入一些“问题-SQL”的示例对，可以极大地提升LLM生成查询的准确性。这相当于给了LLM几个范例，让它学习如何根据相似的问题构建查询。</li>
+<li><strong>利用RAG增强上下文</strong>：这是更进一步的策略。我们可以像RAGFlow一样，为数据库构建一个专门的“知识库”<a target="_blank" rel="noopener" href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>，其中不仅包含表的DDL（数据定义语言），还可以包含：<ul>
+<li><strong>表和字段的详细描述</strong>：用自然语言解释每个表是做什么的，每个字段代表什么业务含义。</li>
+<li><strong>同义词和业务术语</strong>：例如，将用户的“花费”映射到数据库的 <code>cost</code> 字段。</li>
+<li><strong>复杂的查询示例</strong>：提供一些包含 <code>JOIN</code>、<code>GROUP BY</code> 或子查询的复杂问答对。 当用户提问时，系统首先从这个知识库中检索最相关的信息（如相关的表结构、字段描述、相似的Q&amp;A），然后将这些信息和用户的问题一起组合成一个内容更丰富的提示，交给LLM生成最终的SQL查询。这种方式极大地降低了“幻觉”的风险，提高了查询的准确度。</li>
+</ul>
+</li>
+<li>**错误修正与反思 (Error Correction and Reflection)**：在生成SQL后，系统会尝试执行它。如果数据库返回错误，可以将错误信息反馈给LLM，让它“反思”并修正SQL语句，然后重试。这个迭代过程可以显著提高查询的成功率。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://guailper.github.io">Guailper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guailper.github.io/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/">https://guailper.github.io/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://guailper.github.io" target="_blank">Guailper的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RAG/">RAG</a></div><div class="post-share"><div class="social-share" data-image="/img/cover.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width no-desc" href="/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习"><img class="cover" src="/img/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Docker学习</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/13/RAG%E5%AD%A6%E4%B9%A0-%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97/" title="RAG学习-文本分块"><img class="cover" src="/img/cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-13</div><div class="info-item-2">RAG学习-文本分块</div></div><div class="info-2"><div class="info-item-1">技术原理主要分为检索、生成两个阶段 （1）检索阶段：寻找“非参数化知识”  知识向量化：嵌入模型（Embedding Model） 充当了“连接器”的角色。它将外部知识库编码为向量索引（Index），存入向量数据库。 语义召回：当用户发起查询时，检索模块利用同样的嵌入模型将问题向量化，并通过相似度搜索（Similarity Search），从海量数据中精准锁定与问题最相关的文档片段。  （2）生成阶段：融合两种知识  上下文整合：生成模块接收检索阶段送来的相关文档片段以及用户的原始问题。 指令引导生成：该模块会遵循预设的 Prompt 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。   技术演进大致分为原生RAG、高级RAG、模块化RAG三个阶段。  具体对比如下表：     初级 RAG（Naive RAG） 高级 RAG（Advanced RAG） 模块化 RAG（Modular RAG）    流程 离线: 索引 在线: 检索 → 生成 离线: 索引 在线: ...→ 检索前 → ... → 检索后 → ... 积木式可...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Guailper</div><div class="author-info-description">record personal information of learn and life</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/guailper"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/guailper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3031975593@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E5%90%91%E9%87%8F"><span class="toc-text">稀疏向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%9B%86%E5%90%91%E9%87%8F"><span class="toc-text">密集向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2-1"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95"><span class="toc-text">技术原理与融合方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%92%E6%95%B0%E6%8E%92%E5%BA%8F%E8%9E%8D%E5%90%88-Reciprocal-Rank-Fusion-RRF"><span class="toc-text">倒数排序融合 (Reciprocal Rank Fusion, RRF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88"><span class="toc-text">加权线性组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%B1%80%E9%99%90"><span class="toc-text">优势与局限</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%9E%84%E5%BB%BA"><span class="toc-text">查询构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0%E5%85%83%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">文本到元数据过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher"><span class="toc-text">文本到Cypher</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Cypher%EF%BC%9F"><span class="toc-text">什么是 Cypher？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher%E2%80%9D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">文本到Cypher”的原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0SQL"><span class="toc-text">文本到SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-text">挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-text">优化策略</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG-检索优化"/></a><div class="content"><a class="title" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化">RAG-检索优化</a><time datetime="2026-04-16T14:28:32.000Z" title="发表于 2026-04-16 22:28:32">2026-04-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Docker学习"/></a><div class="content"><a class="title" href="/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习">Docker学习</a><time datetime="2026-04-15T13:40:52.000Z" title="发表于 2026-04-15 21:40:52">2026-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/14/RAG%E5%AD%A6%E4%B9%A0-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA/" title="RAG-索引构建"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG-索引构建"/></a><div class="content"><a class="title" href="/2026/04/14/RAG%E5%AD%A6%E4%B9%A0-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA/" title="RAG-索引构建">RAG-索引构建</a><time datetime="2026-04-14T12:02:27.000Z" title="发表于 2026-04-14 20:02:27">2026-04-14</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Guailper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>
