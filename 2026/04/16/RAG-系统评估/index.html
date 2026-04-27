@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>RAG-系统评估 | Guailper的博客</title><meta name="author" content="Guailper"><meta name="copyright" content="Guailper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="RAG评估构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？ 典型失败模式 检索器问题：检索结果与需求不相关（检索了完全不相关的文档或数据）、遗漏关键信息（Top-K没有包揽核心论点）、刻舟求剑（返回了历史过期版本的信息） 生成器问题：忽略正确的检索上下文信息、脱离上下文，产生知识幻觉、答非所问（回答形式或语气不符合要求） 协同问题：检索正确但被LLM歪曲理解、检索到错误信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RAG-系统评估">
+<meta property="og:url" content="https://guailper.github.io/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/index.html">
+<meta property="og:site_name" content="Guailper的博客">
+<meta property="og:description" content="RAG评估构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？ 典型失败模式 检索器问题：检索结果与需求不相关（检索了完全不相关的文档或数据）、遗漏关键信息（Top-K没有包揽核心论点）、刻舟求剑（返回了历史过期版本的信息） 生成器问题：忽略正确的检索上下文信息、脱离上下文，产生知识幻觉、答非所问（回答形式或语气不符合要求） 协同问题：检索正确但被LLM歪曲理解、检索到错误信">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://guailper.github.io/img/cover.png">
+<meta property="article:published_time" content="2026-04-16T07:28:02.000Z">
+<meta property="article:modified_time" content="2026-04-27T00:08:54.111Z">
+<meta property="article:author" content="Guailper">
+<meta property="article:tag" content="RAG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://guailper.github.io/img/cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "RAG-系统评估",
+  "url": "https://guailper.github.io/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/",
+  "image": "https://guailper.github.io/img/cover.png",
+  "datePublished": "2026-04-16T07:28:02.000Z",
+  "dateModified": "2026-04-27T00:08:54.111Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Guailper",
+      "url": "https://guailper.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/guailper.png"><link rel="canonical" href="https://guailper.github.io/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RAG-系统评估',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Guailper的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">RAG-系统评估</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">RAG-系统评估</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-16T07:28:02.000Z" title="发表于 2026-04-16 15:28:02">2026-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-27T00:08:54.111Z" title="更新于 2026-04-27 08:08:54">2026-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RAG/">RAG</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/RAG/%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/">系统评估</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="RAG评估"><a href="#RAG评估" class="headerlink" title="RAG评估"></a>RAG评估</h1><p>构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？</p>
+<h2 id="典型失败模式"><a href="#典型失败模式" class="headerlink" title="典型失败模式"></a>典型失败模式</h2><ul>
+<li>检索器问题：检索结果与需求不相关（检索了完全不相关的文档或数据）、遗漏关键信息（Top-K没有包揽核心论点）、刻舟求剑（返回了历史过期版本的信息）</li>
+<li>生成器问题：忽略正确的检索上下文信息、脱离上下文，产生知识幻觉、答非所问（回答形式或语气不符合要求）</li>
+<li>协同问题：检索正确但被LLM歪曲理解、检索到错误信息LLm无法调和</li>
+</ul>
+<h2 id="评估维度"><a href="#评估维度" class="headerlink" title="评估维度"></a>评估维度</h2><p>该架构包含以下三个维度，并在 <strong>TruLens</strong> 等工具中有深入的应用：</p>
+<p>（1）<strong>上下文相关性 (Context Relevance)</strong></p>
+<p>即检索层评估（Retrieval Layer Evaluation），核心指标有召回率、精度、平均倒数排名（MRR）、归一化折损累积增益（NDCG）、Hit Rate@K等，评估重点为检索器能否准确找到相关文档并正确排序。</p>
+<ul>
+<li><strong>评估目标：</strong> 检索器（Retriever）的性能。</li>
+<li><strong>核心问题：</strong> 检索到的上下文内容，是否与用户的查询（Query）高度相关？</li>
+<li><strong>重要性：</strong> 检索是RAG应用在响应用户查询时的第一步。如果检索回来的上下文充满了噪声或无关信息，那么无论后续的生成模型多么强大，都没法做出正确答案。</li>
+</ul>
+<p>（2）<strong>忠实度 &#x2F; 可信度 (Faithfulness &#x2F; Groundedness)</strong></p>
+<p>即生成层评估，核心指标有忠实度、答案相关性、完整性、流畅性等，评估重点为生成器能否基于检索内容生成正确、相关的答案。</p>
+<ul>
+<li><strong>评估目标：</strong> 生成器的可靠性。</li>
+<li><strong>核心问题：</strong> 生成的答案是否完全基于所提供的上下文信息？</li>
+<li><strong>重要性：</strong> 这个维度主要在于量化LLM的“幻觉”程度。一个高忠实度的回答意味着模型严格遵守了上下文，没有捏造或歪曲事实。如果忠实度得分低，说明LLM在回答时“自由发挥”过度，引入了外部知识或不实信息。</li>
+</ul>
+<p>（3）<strong>答案相关性 (Answer Relevance)</strong></p>
+<p>即系统层评估，核心指标有整体准确性、用户满意度、业务指标等，评估重点为端到端的系统性能和业务价值。</p>
+<ul>
+<li><strong>评估目标：</strong> 系统的端到端（End-to-End）表现。</li>
+<li><strong>核心问题：</strong> 最终生成的答案是否直接、完整且有效地回答了用户的原始问题？</li>
+<li><strong>重要性：</strong> 这是用户最直观的感受。一个答案可能完全基于上下文（高忠实度），但如果它答非所问，或者只回答了问题的一部分，那么这个答案的相关性就很低。例如，当用户问“法国在哪里，首都是哪里？”，如果答案只是“法国在西欧”，那么虽然忠实度高，但答案相关性很低。</li>
+</ul>
+<blockquote>
+<p>你可能觉得忠实度和答案相关性很相似，但它们的侧重点是不同的。忠实度更关注模型是否严格遵循了上下文，而答案相关性则更关注模型是否直接、完整且有效地回答了问题。</p>
+</blockquote>
+<p>通过对这三个维度进行评估，可以对RAG系统的表现有一个全面而细致的了解，并能准确定位问题所在：是检索出了问题，还是生成环节有待改进。</p>
+<h2 id="评估工作流"><a href="#评估工作流" class="headerlink" title="评估工作流"></a>评估工作流</h2><p>虽然上面把评估分成了三个部分，但实际上可以把评估过程拆解为两个主要环节：<strong>检索评估</strong>和<strong>响应评估</strong>。</p>
+<h3 id="检索评估"><a href="#检索评估" class="headerlink" title="检索评估"></a>检索评估</h3><p>检索评估聚焦于RAG三元组中的 **上下文相关性 (Context Relevance)*<em>，本质上是一次*<em>白盒测试</em></em> <a target="_blank" rel="noopener" href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>。此阶段的评估需要一个标注数据集，其中包含一系列查询以及每个查询对应的真实相关文档。</p>
+<p>这项评估借鉴了信息检索领域的多个经典指标：</p>
+<ul>
+<li><p><strong>上下文精确率 (Context Precision):</strong> 衡量检索结果的准确性。计算在检索到的前 <strong>k</strong> 个文档中相关文档所占的比例，其中 <strong>k</strong> 是一个预设的数字（例如，k&#x3D;3或k&#x3D;5），代表评估的范围。高精确率意味着检索结果的噪声较少。<br>$$<br>Precision@k&#x3D;\frac{检索到的k个结果中的相关文档数}k<br>$$</p>
+</li>
+<li><p><strong>上下文召回率 (Context Recall):</strong> 衡量检索结果的完整性。计算在检索到的前 <strong>k</strong> 个文档中，找到的相关文档占所有真实相关文档总数的比例。高召回率意味着系统能够成功找回大部分关键信息。<br>$$<br>Recall@k&#x3D;\frac{检索到的k个结果中的相关文档数}{数据集中所有相关的文档总数}<br>$$<br><strong>F1分数 (F1-Score):</strong> F1分数是精确率和召回率的调和平均数，它同时兼顾了这两个指标，在它们之间寻求平衡。当精确率和召回率都高时，F1分数也高。<br>$$<br>F1&#x3D;2\frac{Precision×Recall}{Precision+Recall}<br>$$</p>
+</li>
+<li><p><strong>平均倒数排名 (MRR - Mean Reciprocal Rank):</strong> 评估系统将第一个相关文档排在靠前位置的能力。对于一个查询，倒数排名是第一个相关文档排名的倒数。MRR是所有查询的倒数排名的平均值。该指标适用于用户通常只关心第一个正确答案的场景。<br>$$<br>MRR&#x3D;\frac1{∣Q∣}∑_{q&#x3D;1}^{∣Q∣}\frac1{rankq}<br>$$<br>其中 <code>|Q|</code> 是查询总数，<code>rank_q</code> 是第 <code>q</code> 个查询的第一个相关文档的排名。</p>
+</li>
+<li><p><strong>平均准确率均值 (MAP - Mean Average Precision):</strong> MAP是一个综合性指标，同时评估了检索结果的精确率和相关文档的排名。它先计算每个查询的平均精确率（AP），然后对所有查询的AP取平均值。AP本身是基于每个相关文档被检索到时的精确率计算的。<br>$$<br>MAP&#x3D;\frac1{∣Q∣}∑_{q&#x3D;1}^{∣Q∣}AP(q)<br>$$<br>其中 <code>|Q|</code> 是查询总数，<code>AP(q)</code> 是第 <code>q</code> 个查询的平均精确率（Average Precision）。</p>
+</li>
+</ul>
+<p>要计算上述所有指标，前提是拥有一个高质量的标注数据集，其中包含了查询和每个查询对应的“真实”相关文档。</p>
+<h3 id="响应评估"><a href="#响应评估" class="headerlink" title="响应评估"></a>响应评估</h3><p>响应评估覆盖了RAG三元组中的 <strong>忠实度</strong> 和 <strong>答案相关性</strong>。此环节通常采用 <strong>端到端</strong> 的评估范式，因为它直接衡量用户感知的最终输出质量。无论采用何种评估方法，都主要围绕以下两个核心维度展开。</p>
+<h4 id="评估维度-1"><a href="#评估维度-1" class="headerlink" title="评估维度"></a>评估维度</h4><p>（1）<strong>忠实度 &#x2F; 可信度</strong>：衡量生成的答案在多大程度上可以由给定的上下文所证实。一个完全忠实的答案，其所有内容都必须能在上下文中找到依据，以此避免模型产生“幻觉”。</p>
+<p>（2）<strong>答案相关性</strong>：衡量生成的答案与用户原始查询的对齐程度。一个高相关性的答案必须是直接的、切题的，并且不包含与问题无关的冗余信息。</p>
+<h4 id="主要评估方法"><a href="#主要评估方法" class="headerlink" title="主要评估方法"></a>主要评估方法</h4><p>针对上述维度，目前主要有两类评估方法：</p>
+<p>（1）<strong>基于大语言模型的评估</strong></p>
+<p>这是一种强大的评估方法，能够提供更深度的语义评估，正逐渐成为主流选择。利用一个高性能、中立的llm作为“评估者”，对上述维度进行深度的语义理解和打分。</p>
+<ul>
+<li><strong>忠实度评估：</strong> 首先，将生成的答案分解为一系列独立的声明或断言（Claims）。然后，对于每一个断言，在提供的上下文中进行验证，判断其真伪。最终的忠实度分数是所有被上下文证实的断言所占的比例。</li>
+<li><strong>答案相关性评估：</strong> 评估者需要同时分析用户查询和生成的答案。评分时会惩罚那些答非所问、信息不完整或包含过多无关细节的答案。</li>
+</ul>
+<p>（2）<strong>基于词汇重叠的经典指标</strong></p>
+<p>这类指标需要在数据集中包含一个或多个“标准答案”。它们通过计算生成答案与标准答案之间 n-gram（连续的n个词）的重叠程度来评估质量。</p>
+<ul>
+<li><p><strong>ROUGE (Recall-Oriented Understudy for Gisting Evaluation):</strong> ROUGE关注的重点是 <strong>召回率</strong>，即标准答案中的词语有多少被生成答案所覆盖，因此常用于评估内容的 <strong>完整性</strong>。其常用变体包括计算n-gram的 <code>ROUGE-N</code> 和计算最长公共子序列的 <code>ROUGE-L</code>。<br>$$<br>ROUGE-N&#x3D;\frac{匹配的 n-gram 数量}{参考答案中 n-gram 的总数}<br>$$</p>
+</li>
+<li><p><strong>BLEU (Bilingual Evalu ation Understudy):</strong> BLEU侧重于评估 <strong>精确率</strong>，衡量生成的答案中有多少词是有效的（即在标准答案中出现过）。它还引入了长度惩罚机制，避免模型生成过短的句子，因此更适合评估答案的 <strong>流畅度和准确性</strong>。<br>$$<br>BLEU&#x3D;BP×\exp⁡(∑_{n&#x3D;1}^Nw_n\log⁡p_n)<br>$$<br>其中，<code>BP</code> 是长度惩罚因子，<code>p_n</code> 是修正后的n-gram精确率。</p>
+</li>
+<li><p><strong>METEOR (Metric for Evaluation of Translation with Explicit ORdering):</strong> 作为BLEU的改进版，METEOR同时考量 <strong>精确率和召回率</strong> 的调和平均，并通过词干和同义词匹配（如将’boat’和’ship’视为相关）来更好地捕捉语义相似性。其评估结果通常被认为与人类判断的相关性更高。<br>$$<br>Fmean&#x3D;\frac{P×R}{αP+(1−α)R}<br>$$</p>
+<p>$$<br>METEOR&#x3D;F_{mean}×(1−Penalty)<br>$$</p>
+<p>其中 <code>P</code> 是精确率，<code>R</code> 是召回率，<code>Penalty</code> 是基于语序的惩罚项。</p>
+</li>
+</ul>
+<blockquote>
+<p>为了更直观地理解三者的区别，来看一个简单的例子。</p>
+<p><strong>假设：</strong></p>
+<ul>
+<li><strong>参考答案：</strong> <code>狗 在 床 上面</code> (共5个词)</li>
+<li><strong>生成答案：</strong> <code>狗 在 床 上</code> (共4个词)</li>
+</ul>
+<p><strong>评估分析：</strong></p>
+<ul>
+<li><strong>ROUGE (召回率导向):</strong> 从召回率的角度出发：“参考答案里的5个词，生成答案覆盖了多少？”——覆盖了4个。因此，它的召回率很高（ROUGE-1 为 4&#x2F;5），得分会不错。ROUGE更关心“说全了没”。</li>
+<li><strong>BLEU (精确率导向):</strong> 从精确率的角度进行评判：“生成答案里的4个词，有多少是有效的（在参考答案里）？”——全部有效，精确率很高。但它会发现生成答案比参考答案短，于是通过 <strong>长度惩罚(Brevity Penalty)</strong> 进行扣分。BLEU更关心“说对了没，以及长度是否合适”。</li>
+<li><strong>METEOR (综合平衡):</strong> 同时计算精确率和召回率，并取一个调和平均。在这个例子里，词序是完全正确的，惩罚项为0。METEOR会在“说全”和“说对”之间找到一个最佳平衡点。</li>
+</ul>
+</blockquote>
+<h4 id="方法对比和总结"><a href="#方法对比和总结" class="headerlink" title="方法对比和总结"></a>方法对比和总结</h4><p>基于LLM的评估更注重<strong>语义和逻辑</strong>，评估质量高，但成本也更高且存在评估者偏见。基于词汇重叠的指标<strong>客观、计算快、成本低</strong>，但无法理解语义，可能误判同义词或释义。在实践中，可以将两者结合，使用经典指标进行快速、大规模的初步筛选，再利用LLM进行更精细的评估。</p>
+<h2 id="常用评估工具"><a href="#常用评估工具" class="headerlink" title="常用评估工具"></a>常用评估工具</h2><h3 id="LlamaIndex-Evaluation"><a href="#LlamaIndex-Evaluation" class="headerlink" title="LlamaIndex Evaluation"></a>LlamaIndex Evaluation</h3><p><code>LlamaIndex Evaluation</code> 是<strong>深度集成于LlamaIndex框架内的评估模块</strong>，专为使用该框架构建的RAG应用提供无缝的评估能力。作为RAG开发框架的原生组件，其核心定位是<strong>为开发者在开发、调试和迭代周期中提供快速、灵活的嵌入式评估解决方案</strong>。它强调与开发流程的紧密结合，允许开发者在构建过程中即时验证和对比不同RAG策略的性能<a target="_blank" rel="noopener" href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>。</p>
+<blockquote>
+<p><strong>适用场景</strong>：对于深度使用 <code>LlamaIndex</code> 框架构建RAG应用的开发者而言，其内置评估模块是无缝集成的首选，提供了一站式的开发与评估体验。</p>
+</blockquote>
+<h4 id="核心理念与工作流"><a href="#核心理念与工作流" class="headerlink" title="核心理念与工作流"></a>核心理念与工作流</h4><p><code>LlamaIndex</code> 的评估理念是利用LLM作为“裁判”，以自动化的方式对RAG系统的各个环节进行打分。这种方法在很多场景下无需预先准备“标准答案”，大大降低了评估门槛。其典型工作流如下：</p>
+<ol>
+<li><strong>准备评估数据集</strong>：通过 <code>DatasetGenerator</code> 从文档中自动生成问题-答案对（<code>QueryResponseDataset</code>），或加载一个已有的数据集。为了效率，通常会将生成的数据集保存到本地，避免重复生成。</li>
+<li><strong>构建查询引擎</strong>：搭建一个或多个需要被评估的RAG查询引擎（<code>QueryEngine</code>）。这是进行对比实验的基础。</li>
+<li><strong>初始化评估器</strong>：根据评估维度，选择并初始化一个或多个评估器，如 <code>FaithfulnessEvaluator</code>（忠实度）和 <code>RelevancyEvaluator</code>（相关性）。</li>
+<li><strong>执行批量评估</strong>：使用 <code>BatchEvalRunner</code> 来管理整个评估过程。它能够高效地（可并行）将查询引擎应用于数据集中的所有问题，并调用所有评估器进行打分。</li>
+<li><strong>分析结果</strong>：从评估运行器返回的结果中，计算各项指标的平均分，从而量化地对比不同RAG策略的优劣。</li>
+</ol>
+<h3 id="RAGAS"><a href="#RAGAS" class="headerlink" title="RAGAS"></a>RAGAS</h3><p>RAGAS（RAG Assessment）是一个<strong>独立的、专注于RAG的开源评估框架</strong>。提供了一套全面的指标来量化RAG管道的检索和生成两大核心环节的性能。其最显著的特色是支持<strong>无参考评估</strong>，即在许多场景下无需人工标注的“标准答案”即可进行评估，极大地降低了评估成本。现对RAG管道的持续监控和改进。如果你需要一个轻量级、与具体RAG实现解耦、能够快速对核心指标进行量化评估的工具时，<code>RAGAS</code> 是一个理想的选择。</p>
+<h4 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h4><p><code>RAGAS</code> 的核心思想是通过分析问题（<code>question</code>）、生成的答案（<code>answer</code>）和检索到的上下文（<code>context</code>）三者之间的关系，来综合评估RAG系统的性能。它将复杂的评估问题分解为几个简单、可量化的维度。</p>
+<h4 id="工作流程与核心指标"><a href="#工作流程与核心指标" class="headerlink" title="工作流程与核心指标"></a>工作流程与核心指标</h4><p>RAGAS的评估流程非常简洁，通常遵循以下步骤：</p>
+<p>（1）<strong>准备数据集</strong>：根据官方文档，一个标准的评估数据集应包含 <code>question</code>（问题）、<code>answer</code>（RAG系统生成的答案）、<code>contexts</code>（检索到的上下文）以及 <code>ground_truth</code>（标准参考答案）这四列。不过，<code>ground_truth</code> 对于计算 <code>context_recall</code> 等指标是必需的，但对于 <code>faithfulness</code> 等指标则是可选的。</p>
+<p>（2）<strong>运行评估</strong>：调用 <code>ragas.evaluate()</code> 函数，传入准备好的数据集和需要评估的指标列表。</p>
+<p>（3）<strong>分析结果</strong>：获取一个包含各项指标量化分数的评估报告。</p>
+<p>其核心评估指标包括：</p>
+<ul>
+<li><code>faithfulness</code>: 衡量生成的答案中有多少比例的信息是可以由检索到的上下文所支持的。</li>
+<li><code>context_recall</code>: 衡量检索到的上下文与标准答案（<code>ground_truth</code>）的对齐程度，即标准答案中的信息是否被上下文完全“召回”。</li>
+<li><code>context_precision</code>: 衡量检索到的上下文中，信噪比如何，即有多少是真正与回答问题相关的。</li>
+<li><code>answer_relevancy</code>: 评估答案与问题的相关程度。此指标不评估事实准确性，只关注答案是否切题。</li>
+</ul>
+<h3 id="Phoenix-Arize-Phoenix"><a href="#Phoenix-Arize-Phoenix" class="headerlink" title="Phoenix (Arize Phoenix)"></a>Phoenix (Arize Phoenix)</h3><p>Phoenix (现由Arize维护) 是一个<strong>开源的LLM可观测性与评估平台</strong>。在RAG评估生态中，它主要扮演<strong>生产环境中的可视化分析与故障诊断引擎</strong>的角色。它通过捕获LLM应用的轨迹（Traces），提供强大的可视化、切片和聚类分析能力，帮助开发者理解线上真实数据的表现。Phoenix 的核心价值在于<strong>从海量生产数据中发现问题、监控性能漂移并进行深度诊断</strong>，是连接线下评估与线上运维的关键桥梁。它不仅提供评估指标，更强调对LLM应用进行追踪（Tracing）和可视化分析，从而快速定位问题<a target="_blank" rel="noopener" href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。</p>
+<h4 id="核心理念"><a href="#核心理念" class="headerlink" title="核心理念"></a>核心理念</h4><p><code>Phoenix</code> 的核心是“AI可观测性”，它通过追踪RAG系统内部的每一步调用（如检索、生成等），将整个流程可视化。这使得开发者可以直观地看到每个环节的输入、输出和耗时，并在此基础上进行深入的评估和调试。</p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p><code>Phoenix</code> 的工作流程是先通过基于开放标准 <strong>OpenTelemetry</strong> 的<strong>代码插桩（<code>Instrumentation</code>）</strong>，在 RAG 应用中集成追踪功能，自动捕获 LLM 调用、函数执行等事件；随后在应用运行过程中持续生成<strong>追踪数据（<code>Traces</code>）</strong>，记录完整的执行链路；接着在本地启动 <code>Phoenix</code> 的 Web 界面，加载并可视化这些追踪数据；最后在 UI 中对失败案例或表现不佳的查询进行筛选、钻取，并借助内置的<strong>评估器（<code>Evals</code>）</strong>完成深入的评估与调试。</p>
+<p>特色功能：</p>
+<ul>
+<li><strong>可视化追踪</strong>: 将RAG的执行流程、数据和评估结果进行可视化展示，极大地方便了问题定位。</li>
+<li><strong>根本原因分析</strong>: 通过可视化的界面，可以轻松地对表现不佳的查询进行切片和钻取。</li>
+<li><strong>安全护栏 (<code>Guardrails</code>)</strong>: 允许为应用添加保护层，防止恶意或错误的输入输出，保障生产环境安全。</li>
+<li><strong>数据探索与标注</strong>: 提供数据探索、清洗和标注工具，帮助开发者利用生产数据反哺模型和系统优化。</li>
+<li><strong>与Arize平台集成</strong>: <code>Phoenix</code> 可以与Arize的商业平台无缝对接，实现生产环境中对RAG系统的持续监控。</li>
+</ul>
+<h3 id="对比建议"><a href="#对比建议" class="headerlink" title="对比建议"></a>对比建议</h3><table>
+<thead>
+<tr>
+<th><strong>工具</strong></th>
+<th><strong>核心机制</strong></th>
+<th><strong>独特技术</strong></th>
+<th><strong>典型应用场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RAGAS</td>
+<td>LLM驱动评估</td>
+<td>合成数据生成、无参考评估架构</td>
+<td>对比不同RAG策略、版本迭代后的性能回归测试</td>
+</tr>
+<tr>
+<td>LlamaIndex</td>
+<td>嵌入式评估</td>
+<td>异步评估引擎、模块化BaseEvaluator</td>
+<td>开发过程中快速验证单个组件或完整管道的效果</td>
+</tr>
+<tr>
+<td>Phoenix</td>
+<td>追踪分析型</td>
+<td>分布式追踪、向量聚类分析算法</td>
+<td>生产环境监控、Bad Case分析、数据漂移检测</td>
+</tr>
+</tbody></table>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://guailper.github.io">Guailper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://guailper.github.io/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/">https://guailper.github.io/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://guailper.github.io" target="_blank">Guailper的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/RAG/">RAG</a></div><div class="post-share"><div class="social-share" data-image="/img/cover.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化"><img class="cover" src="/img/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">RAG-检索优化</div></div><div class="info-2"><div class="info-item-1">混合检索混合检索（Hybrid Search）是一种结合了 稀疏向量（Sparse Vectors） 和 密集向量（Dense Vectors） 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。 稀疏向量稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下： $$Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_...</div></div></div></a><a class="pagination-related  no-desc" href="/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/" title="Docker学习"><img class="cover" src="/img/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Docker学习</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/04/13/RAG%E5%AD%A6%E4%B9%A0-%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97/" title="RAG学习-文本分块"><img class="cover" src="/img/cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-13</div><div class="info-item-2">RAG学习-文本分块</div></div><div class="info-2"><div class="info-item-1">技术原理主要分为检索、生成两个阶段 （1）检索阶段：寻找“非参数化知识”  知识向量化：嵌入模型（Embedding Model） 充当了“连接器”的角色。它将外部知识库编码为向量索引（Index），存入向量数据库。 语义召回：当用户发起查询时，检索模块利用同样的嵌入模型将问题向量化，并通过相似度搜索（Similarity Search），从海量数据中精准锁定与问题最相关的文档片段。  （2）生成阶段：融合两种知识  上下文整合：生成模块接收检索阶段送来的相关文档片段以及用户的原始问题。 指令引导生成：该模块会遵循预设的 Prompt 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。   技术演进大致分为原生RAG、高级RAG、模块化RAG三个阶段。  具体对比如下表：     初级 RAG（Naive RAG） 高级 RAG（Advanced RAG） 模块化 RAG（Modular RAG）    流程 离线: 索引 在线: 检索 → 生成 离线: 索引 在线: ...→ 检索前 → ... → 检索后 → ... 积木式可...</div></div></div></a><a class="pagination-related" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化"><img class="cover" src="/img/cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-04-16</div><div class="info-item-2">RAG-检索优化</div></div><div class="info-2"><div class="info-item-1">混合检索混合检索（Hybrid Search）是一种结合了 稀疏向量（Sparse Vectors） 和 密集向量（Dense Vectors） 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。 稀疏向量稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下： $$Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Guailper</div><div class="author-info-description">record personal information of learn and life</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/guailper"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/guailper" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3031975593@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RAG%E8%AF%84%E4%BC%B0"><span class="toc-text">RAG评估</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E5%A4%B1%E8%B4%A5%E6%A8%A1%E5%BC%8F"><span class="toc-text">典型失败模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E7%BB%B4%E5%BA%A6"><span class="toc-text">评估维度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">评估工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%AF%84%E4%BC%B0"><span class="toc-text">检索评估</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E8%AF%84%E4%BC%B0"><span class="toc-text">响应评估</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E7%BB%B4%E5%BA%A6-1"><span class="toc-text">评估维度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95"><span class="toc-text">主要评估方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94%E5%92%8C%E6%80%BB%E7%BB%93"><span class="toc-text">方法对比和总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%AF%84%E4%BC%B0%E5%B7%A5%E5%85%B7"><span class="toc-text">常用评估工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LlamaIndex-Evaluation"><span class="toc-text">LlamaIndex Evaluation</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">核心理念与工作流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAGAS"><span class="toc-text">RAGAS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5"><span class="toc-text">设计理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B8%8E%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87"><span class="toc-text">工作流程与核心指标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phoenix-Arize-Phoenix"><span class="toc-text">Phoenix (Arize Phoenix)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5"><span class="toc-text">核心理念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-text">工作原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E5%BB%BA%E8%AE%AE"><span class="toc-text">对比建议</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" title="智能体通信协议"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="智能体通信协议"/></a><div class="content"><a class="title" href="/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" title="智能体通信协议">智能体通信协议</a><time datetime="2026-04-26T14:05:38.000Z" title="发表于 2026-04-26 22:05:38">2026-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/25/FastAPI%E5%AD%A6%E4%B9%A0/" title="FastAPI学习"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FastAPI学习"/></a><div class="content"><a class="title" href="/2026/04/25/FastAPI%E5%AD%A6%E4%B9%A0/" title="FastAPI学习">FastAPI学习</a><time datetime="2026-04-25T10:17:59.000Z" title="发表于 2026-04-25 18:17:59">2026-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化"><img src="/img/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAG-检索优化"/></a><div class="content"><a class="title" href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/" title="RAG-检索优化">RAG-检索优化</a><time datetime="2026-04-16T14:28:32.000Z" title="发表于 2026-04-16 22:28:32">2026-04-16</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Guailper</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.3"></script></div></div></body></html>

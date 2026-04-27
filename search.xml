@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+]]></content>
+      <tags>
+        <tag>二进制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>视频剪辑基础</title>
     <url>/2026/04/07/film-editing/</url>
     <content><![CDATA[<h1 id="达芬奇第一课"><a href="#达芬奇第一课" class="headerlink" title="达芬奇第一课"></a>达芬奇第一课</h1><h2 id="1-视频剪辑基础知识"><a href="#1-视频剪辑基础知识" class="headerlink" title="1. 视频剪辑基础知识"></a>1. 视频剪辑基础知识</h2><h3 id="1-1-数字视频信号"><a href="#1-1-数字视频信号" class="headerlink" title="1.1 数字视频信号"></a>1.1 数字视频信号</h3><p>标清：720p以下</p>
@@ -62,6 +103,65 @@
       </tags>
   </entry>
   <entry>
+    <title>Git学习</title>
+    <url>/2026/04/07/Git%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
+<ul>
+<li>工作区（Working Directory）</li>
+</ul>
+<p>实际修改文件的地方，即本地工作目录</p>
+<ul>
+<li>暂存区</li>
+</ul>
+<p>文件修改完成后，暂时存放的地方</p>
+<p>指令：git add</p>
+<ul>
+<li>本地仓库</li>
+</ul>
+<p>存放暂存区中打包好的文件，并附上标签信息</p>
+<p>指令：git commit</p>
+<ul>
+<li>远程仓库</li>
+</ul>
+<p>接收本地仓库中发送过来的文件包，方便别人查看</p>
+<p>指令：git push</p>
+<ul>
+<li>贮藏区</li>
+</ul>
+<p>存储未完成但又不想提交的文件</p>
+<p>指令：git stash</p>
+<h1 id="初次配置"><a href="#初次配置" class="headerlink" title="初次配置"></a>初次配置</h1><p>全局基础参数配置：用户名和邮箱（github或gitee中使用的名字和邮箱）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<h1 id="仓库相关"><a href="#仓库相关" class="headerlink" title="仓库相关"></a>仓库相关</h1><h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong> 是使用 Git 的第一个命令。</p>
+<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>当前目录作为仓库：git init</p>
+<p>指定目录作为仓库：git init {路径}</p>
+<p>[^1]: <strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 **’**，Windows 系统，commit 信息使用双引号 **”**。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 **git commit -m “提交说明”**。</p>
+<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><p>使用git remote来关联远程仓库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看当前关联的远程仓库</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 关联远程仓库（把链接换成你的）</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">示例：git remote add origin https://github.com/user_name/respository_name.git(仓库名区分大小写)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 修改远程仓库地址</span></span><br><span class="line">git remote set-url origin https://新地址.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 第一次克隆整个项目，完整仓库地址可以在github仓库页面获取到</span></span><br><span class="line">git clone https://远程仓库地址.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 拉取远程分支最新代码</span></span><br><span class="line">git pull origin 分支名（如main）</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看文件修改状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 添加文件到暂存区</span></span><br><span class="line">git add 文件名        # 添加单个文件</span><br><span class="line">git add .            # 添加所有文件（最常用）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 提交到本地仓库（必须写备注）</span></span><br><span class="line">git commit -m &quot;本次提交说明&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 推送到远程仓库，首次push分支需要使用git push origin 分支名(如main、master)</span></span><br><span class="line">git push origin main    # 第一次推送，主流分支名 main/master</span><br><span class="line">git push				# 非第一次推送</span><br></pre></td></tr></table></figure>
+
+<h1 id="分支相关"><a href="#分支相关" class="headerlink" title="分支相关"></a>分支相关</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看所有分支，前面带 * 的是你当前所在的分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 创建新分支（开发新功能），基于你当前所在的分支，复制一份代码，创建新分支。注意：创建分支后需要手动切换到新分支</span></span><br><span class="line">git branch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 切换到分支</span></span><br><span class="line">git checkout 分支名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或新版命令</span></span><br><span class="line">git switch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 创建并直接切换分支（最常用）</span></span><br><span class="line">git checkout -b 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5. 把分支代码合并到主分支</span></span><br><span class="line">git checkout main    # 先切回主分支</span><br><span class="line">git merge 分支名     # 合并你的分支</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6. 删除本地分支</span></span><br><span class="line">git branch -d 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7. 推送分支到远程</span></span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
+<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
+<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
+<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
+<p>打开id_rsa.pub文件，复制其中的密钥。</p>
+<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#103;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>(注意看出现的信息是否连接成功)</p>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>栈的定义及实现(C语言)</title>
     <url>/2021/11/01/%E6%A0%88/</url>
     <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
@@ -111,47 +211,6 @@
       </tags>
   </entry>
   <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
-
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
-]]></content>
-      <tags>
-        <tag>二进制</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PicGo图床配置</title>
     <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
@@ -173,170 +232,6 @@
       <tags>
         <tag>图床</tag>
       </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
-<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
-<p>遮罩的作用：</p>
-<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
-<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
-<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
-<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
-<p>2.Fusion面板</p>
-<p>创建一个文本节点</p>
-<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
-<p>3.调色面板</p>
-<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
-<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
-<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
-<p>示波器的使用</p>
-<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>软件测试</title>
-    <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p>
-<ul>
-<li>单元测试：对最小模块测试</li>
-<li>集成测试：小模块集成后测试</li>
-<li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li>
-<li>验收测试：上线前的测试，包括<ul>
-<li>α测试：内测，开发环境下测试模拟用户测试</li>
-<li>β测试：公测，实际环境下用户的测试</li>
-</ul>
-</li>
-</ul>
-<p>是否查看代码：</p>
-<ul>
-<li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li>
-<li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li>
-<li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li>
-</ul>
-<p>测试执行方式：</p>
-<ul>
-<li>静态测试：不运行程序，只是检查代码</li>
-<li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li>
-</ul>
-<p>是否手工测试：</p>
-<ul>
-<li>手动测试：即人工测试</li>
-<li>自动测试：使用代码进行测试</li>
-</ul>
-<p>其他：</p>
-<ul>
-<li>冒烟测试：</li>
-<li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li>
-<li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li>
-<li>探索性测试：升级版的随机测试，未来的发展方向</li>
-</ul>
-<h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul>
-<li>70%单元测试</li>
-<li>20%服务测试</li>
-<li>10%用户界面测试</li>
-</ul>
-<h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p>
-<ul>
-<li><p>等价类划分</p>
-<p>输入域明确：把程序的输入域划分为若干个子集</p>
-<p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p>
-<p>常见分类：有效、无效等价类</p>
-</li>
-<li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p>
-</li>
-<li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p>
-</li>
-<li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p>
-</li>
-<li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p>
-</li>
-<li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p>
-<ul>
-<li>成本低，可以不用提前设计大量测试用例</li>
-<li>可以激发测试工程师的创造性，更快发现问题</li>
-<li>测试覆盖度无法得到有效保障</li>
-<li>多数测试活动都是由探索性测试与脚本用例结合</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p>
-<p>三大核心要素：标题、步骤、断言</p>
-<ul>
-<li>标题：测试用例的描述</li>
-<li>步骤：测试执行过程的描述</li>
-<li>断言：实际结果与预期结果对比</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
-<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
-<p>③控制器：自动执行指令</p>
-<p>​	运算器：进行算术运算和逻辑运算</p>
-<p>​	存储器：存放数据和指令（都是二进制形式）</p>
-<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
-<p>④指令和数据：二进制形式</p>
-<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
-<p>​	程序：一串指令组成</p>
-<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
-<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
-<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
-<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
-<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
-<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
-<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
-<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
-<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
-<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
-<p>​							2. 取数</p>
-<p>​							3. 存数</p>
-<p>​							4. ALU运算</p>
-<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
-<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
-<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
-<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
-<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
-<p>汇编指令：机器指令对应的符号表示</p>
-<p>汇编语言程序：使用汇编语言编写的程序</p>
-<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
-<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
-<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
-<p>②第二代晶体管计算机（1958-1964年）</p>
-<p>③第三代集成电路计算机（1965-1977）</p>
-<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
-<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
-<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
-<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
-<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
-<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
-<p>主存：存储正在执行的程序和数据。</p>
-<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
-<p>特点：</p>
-<p>①运算单元为中心，控制流由指令流产生</p>
-<p>②存储程序原理，面向主存组织数据流</p>
-<p>③主存按地址访问，提供线性编址空间</p>
-<p>④操作码与地址码组成指令</p>
-<p>⑤数据以二进制编码</p>
-<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
-<p>按传输信息分类：控制线、数据线、地址线</p>
-<p>三类总线：</p>
-<p>①内部总线：CPU内部各元件的连接</p>
-<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
-<p>③通信总线：计算机系统之间的通信</p>
-<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
   </entry>
   <entry>
     <title>Linux学习笔记</title>
@@ -446,16 +341,25 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下gdb调试</title>
-    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
+    <title></title>
+    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="遮罩的应用"><a href="#遮罩的应用" class="headerlink" title="遮罩的应用"></a>遮罩的应用</h1><h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
+<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
+<p>遮罩的作用：</p>
+<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
+<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
+<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
+<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
+<p>2.Fusion面板</p>
+<p>创建一个文本节点</p>
+<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
+<p>3.调色面板</p>
+<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
+<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
+<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
+<p>示波器的使用</p>
+<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
 ]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title></title>
@@ -510,92 +414,69 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>深度学习激活函数学习</title>
-    <url>/2026/01/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="一、激活函数原理"><a href="#一、激活函数原理" class="headerlink" title="一、激活函数原理"></a>一、激活函数原理</h2><p>激活函数（activation function），就是在神经网络的神经元上运行的函数，负责将神经元的输入映射到输出层，旨在帮组神经网络学习数据中的复杂模式。</p>
-<h2 id="二、激活函数的作用"><a href="#二、激活函数的作用" class="headerlink" title="二、激活函数的作用"></a>二、激活函数的作用</h2><p>使用激活函数能够为神经网络引入非线性因素，使得神经网络可以任意逼近任何非线性函数，使深层神经网络表达能力更加强大，使得神经网络可以应用到总舵的非线性模型中。如果不使用激活函数，那神经网络的每一层输出都是上层输入的线性函数，无论神经网络的层数是多少，其输出都是输入的线性组合，这样就退化为原始的感知机模型了。</p>
-<h2 id="三、激活函数分类"><a href="#三、激活函数分类" class="headerlink" title="三、激活函数分类"></a>三、激活函数分类</h2><p>激活函数可以分为<strong>饱和激活函数</strong>与<strong>非饱和激活函数</strong>。</p>
-<p>3.1 饱和的概念</p>
-<p>假设h(x)是一个激活函数，有如下一个极限：<br>$$<br>\lim_{n\rightarrow\pm\infty}h^\prime(x)&#x3D;0<br>$$<br>当n趋于正无穷，激活函数的导数趋于0，则称之为右饱和；若当n趋于负无穷时，激活函数的导数趋于0，则称之为左饱和。当一个函数同时满足左饱和和右饱和时，我们称之为饱和，不然则称之为非饱和。</p>
-<ul>
-<li>饱和激活函数：sigmoid、tanh</li>
-<li>非饱和激活函数：ReLU、 Leakly ReLU、elu、PReLU、RReLU</li>
-</ul>
-<p>相比于饱和激活函数，非饱和激活函数的优势在于两点：</p>
-<ul>
-<li>能解决深度神经网络带来的梯度消失问题</li>
-<li>能加快收敛速度</li>
-</ul>
-<h2 id="四、常见激活函数"><a href="#四、常见激活函数" class="headerlink" title="四、常见激活函数"></a>四、常见激活函数</h2><h3 id="4-1-sigmoid"><a href="#4-1-sigmoid" class="headerlink" title="4.1 sigmoid"></a>4.1 sigmoid</h3><p>其数学表达式如下，输出范围在[0, 1]之间。<br>$$<br>sigmoid(x) &#x3D; \frac{1}{1+e^{-x}}<br>$$<br>其导数表达式为：<br>$$<br>sigmoid\prime(x) &#x3D; sigmoid(x)(1-sigmoid(x)) &#x3D;\frac{1}{1+e^{-x}}\frac{e^{-x}}{1+e^{-x}}&#x3D;\frac{e^{-x}}{(1+e^{-x})^2}<br>$$<br>其函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/af5f15ef44f1b276c78bec5e140e7082.png" alt="图片"></p>
-<p>其代码实现：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = <span class="number">1</span> / (<span class="number">1</span> + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = <span class="number">1</span> / (<span class="number">1</span> + scipy.special.expit(x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
-
-<p>使用场景：</p>
-<ul>
-<li>sigmoid函数的输出范围是0到1。适合作为模型的输出函数用于输出一个0-1范围内的概率值，如表示二分类的类别或者用于表示置信度。</li>
-<li>sigmoid函数梯度平滑，方便求导，可以用于防止模型训练过程中出现突变的梯度。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>容易造成梯度消失。</li>
-<li>函数输出不是以0为中心的，梯度可能会向特定方向一点，从而降低权重更新的效率。</li>
-<li>sigmoid函数执行指数运算，计算速度慢，计算资源需求大。</li>
-</ul>
-<h3 id="4-2-Tanh函数"><a href="#4-2-Tanh函数" class="headerlink" title="4.2 Tanh函数"></a>4.2 Tanh函数</h3><p>其数学表达式如下，输出范围在[-1, 1]之间。<br>$$<br>Tanh(x) &#x3D; \frac{e^x-e^{-x}}{e^x+e^{-x}}&#x3D;\frac{e^x-e^{-x}}{e^x+e^{-x}} \frac{e^{-x}}{e^{-x}}&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>实际上，Tanh函数是 sigmoid 的变形：<br>$$<br>Tanh(x)&#x3D;2sigmoid(2x)-1&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>其导数表达式为：<br>$$<br>Tanh\prime(x) &#x3D;\frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{({e^x+e^{-x}})^2}&#x3D;\frac{4}{(1+e^{-x})^2}&#x3D;\frac{4e^{-2x}}{(1+e^{-2x})^2}<br>$$<br>与sigmoid函数不同的三十，tanh是以0为中心的。因此，在实际应用中，tanh会比ssigmoid更好一点。但在饱和神经元的情况下辖，tanh仍没有解决梯度消失的问题。</p>
-<p>其函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e58d7204fef7f7410e92b4bf82e91938.png" alt="img"></p>
-<p>其代码实现：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = (math.exp(x) - math.exp(-x)) / (math.exp(x) + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = (scipy.special.expit(x) - scipy.special.expit(-x)) / (scipy.special.expit(x) + scipy.special.expit(-x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
-
-<p>Tanh函数优点：</p>
-<ul>
-<li>Tanh的输出间隔为1，并且整个函数以0为中心，比sigmoid函数更好；</li>
-<li>在Tanh函数图中，负输入被强映射为负，二零输入被映射为接近0。</li>
-</ul>
-<p>Tanh函数缺点：</p>
-<ul>
-<li>仍存在梯度饱和的问题；</li>
-<li>依然进行的是指数运算。</li>
-</ul>
-<h3 id="4-3-ReLU函数"><a href="#4-3-ReLU函数" class="headerlink" title="4.3 ReLU函数"></a>4.3 ReLU函数</h3><p>其数学表达式为：<br>$$<br>ReLU(x)&#x3D;\max(0,x)<br>$$<br>函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a2f4f9f3c522518908e20d7865beb48c.png" alt="img"></p>
-<p>ReLU函数优点：</p>
-<ul>
-<li>ReLU解决了梯度消失的问题，当输入值为正是，神经元不会饱和；</li>
-<li>由于ReLU函数的线性、非饱和性质，在SGD中能够快速收敛；</li>
-<li>计算复杂度低，不需要进行指数运算。</li>
-</ul>
-<p>ReLU函数缺点：</p>
-<ul>
-<li>与simoid函数一样，其输出不是以0为中心的；</li>
-<li>Dead ReLU问题。当输入为负时，梯度为0。此时，神经元及之后的神经元梯度永远为0，不再对任何数据有所响应，导致相应参数永远不会被更新。</li>
-</ul>
-<p>训练神经网络时，若学习率没设置好，第一次更新权重时输入为负值，则这个含有ReLU的神经节点会死亡，再也不会被激活。因此，要设置一个合适的较小学习率，来降低这种情况的发生。</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-        <category>激活函数</category>
-      </categories>
+    <title></title>
+    <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="计算机系统概述"><a href="#计算机系统概述" class="headerlink" title="计算机系统概述"></a>计算机系统概述</h1><h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
+<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
+<p>③控制器：自动执行指令</p>
+<p>​	运算器：进行算术运算和逻辑运算</p>
+<p>​	存储器：存放数据和指令（都是二进制形式）</p>
+<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
+<p>④指令和数据：二进制形式</p>
+<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
+<p>​	程序：一串指令组成</p>
+<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
+<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
+<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
+<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
+<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
+<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
+<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
+<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
+<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
+<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
+<p>​							2. 取数</p>
+<p>​							3. 存数</p>
+<p>​							4. ALU运算</p>
+<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
+<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
+<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
+<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
+<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
+<p>汇编指令：机器指令对应的符号表示</p>
+<p>汇编语言程序：使用汇编语言编写的程序</p>
+<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
+<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/12/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<span id="more"></span>
-]]></content>
+    <title></title>
+    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
+<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
+<p>②第二代晶体管计算机（1958-1964年）</p>
+<p>③第三代集成电路计算机（1965-1977）</p>
+<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
+<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
+<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
+<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
+<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
+<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
+<p>主存：存储正在执行的程序和数据。</p>
+<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
+<p>特点：</p>
+<p>①运算单元为中心，控制流由指令流产生</p>
+<p>②存储程序原理，面向主存组织数据流</p>
+<p>③主存按地址访问，提供线性编址空间</p>
+<p>④操作码与地址码组成指令</p>
+<p>⑤数据以二进制编码</p>
+<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
+<p>按传输信息分类：控制线、数据线、地址线</p>
+<p>三类总线：</p>
+<p>①内部总线：CPU内部各元件的连接</p>
+<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
+<p>③通信总线：计算机系统之间的通信</p>
+<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
   </entry>
   <entry>
     <title>C++学习笔记</title>
@@ -751,36 +632,271 @@
       </tags>
   </entry>
   <entry>
-    <title>C++面经</title>
-    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
-    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
-<ul>
-<li><p>函数未被使用：编译和链接时都不报错</p>
-</li>
-<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
-</li>
-<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
-</li>
-</ul>
-<p>2.头文件循环包含问题</p>
-<ul>
-<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Linux下gdb调试</title>
+    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
 
-<p>但在源文件中需要包含具体头文件</p>
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件测试</title>
+    <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p>
 <ul>
-<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
+<li>单元测试：对最小模块测试</li>
+<li>集成测试：小模块集成后测试</li>
+<li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li>
+<li>验收测试：上线前的测试，包括<ul>
+<li>α测试：内测，开发环境下测试模拟用户测试</li>
+<li>β测试：公测，实际环境下用户的测试</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
+</li>
+</ul>
+<p>是否查看代码：</p>
 <ul>
-<li>解决依赖扩散问题：使用Pimpl解决</li>
+<li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li>
+<li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li>
+<li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li>
+</ul>
+<p>测试执行方式：</p>
+<ul>
+<li>静态测试：不运行程序，只是检查代码</li>
+<li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li>
+</ul>
+<p>是否手工测试：</p>
+<ul>
+<li>手动测试：即人工测试</li>
+<li>自动测试：使用代码进行测试</li>
+</ul>
+<p>其他：</p>
+<ul>
+<li>冒烟测试：</li>
+<li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li>
+<li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li>
+<li>探索性测试：升级版的随机测试，未来的发展方向</li>
+</ul>
+<h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul>
+<li>70%单元测试</li>
+<li>20%服务测试</li>
+<li>10%用户界面测试</li>
+</ul>
+<h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p>
+<ul>
+<li><p>等价类划分</p>
+<p>输入域明确：把程序的输入域划分为若干个子集</p>
+<p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p>
+<p>常见分类：有效、无效等价类</p>
+</li>
+<li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p>
+</li>
+<li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p>
+</li>
+<li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p>
+</li>
+<li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p>
+</li>
+<li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p>
+<ul>
+<li>成本低，可以不用提前设计大量测试用例</li>
+<li>可以激发测试工程师的创造性，更快发现问题</li>
+<li>测试覆盖度无法得到有效保障</li>
+<li>多数测试活动都是由探索性测试与脚本用例结合</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p>
+<p>三大核心要素：标题、步骤、断言</p>
+<ul>
+<li>标题：测试用例的描述</li>
+<li>步骤：测试执行过程的描述</li>
+<li>断言：实际结果与预期结果对比</li>
 </ul>
 ]]></content>
       <tags>
-        <tag>C++</tag>
+        <tag>测试</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Agent三大范式</title>
+    <url>/2026/03/22/Agent%E8%8C%83%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="workflow与agent的区别"><a href="#workflow与agent的区别" class="headerlink" title="workflow与agent的区别"></a>workflow与agent的区别</h2><h3 id="workflow（工作流）"><a href="#workflow（工作流）" class="headerlink" title="workflow（工作流）"></a>workflow（工作流）</h3><p>核心是对一系列任务或步骤进行预先定义的、结构化的编排。本质上是一个精确的、静态的流程图，规定了在何种条件下、以什么顺序来执行什么操作。</p>
+<p>简单地说，workflow就是让AI按部就班地执行指令。</p>
+<h3 id="agent"><a href="#agent" class="headerlink" title="agent"></a>agent</h3><p>一个具备自主性、以目标为导向的系统。在一定程度上理解环境、进行推理、制定计划，并动态地采取行动来达成目标。</p>
+<p>简单地说，agent就是赋予AI自由度去自主地达成目标。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260322205854253.png?token=AR3LVDAK3HM5FJLAEPRWFNDJX7T4W"></p>
+<h2 id="Agent经典范式"><a href="#Agent经典范式" class="headerlink" title="Agent经典范式"></a>Agent经典范式</h2><h3 id="ReAct范式"><a href="#ReAct范式" class="headerlink" title="ReAct范式"></a>ReAct范式</h3><p>ReAct的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。为此，ReAct范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：</p>
+<ul>
+<li><strong>Thought (思考)：</strong> 这是智能体的“内心独白”。它会分析当前情况、分解任务、制定下一步计划，或者反思上一步的结果。</li>
+<li><strong>Action (行动)：</strong> 这是智能体决定采取的具体动作，通常是调用一个外部工具，例如 <code>Search[&#39;华为最新款手机&#39;]</code>。</li>
+<li><strong>Observation (观察)：</strong> 这是执行<code>Action</code>后从外部工具返回的结果，例如搜索结果的摘要或API的返回值。</li>
+</ul>
+<p>智能体将不断重复这个 <strong>Thought -&gt; Action -&gt; Observation</strong> 的循环，将新的观察结果追加到历史记录中，形成一个不断增长的上下文，直到它在<code>Thought</code>中认为已经找到了最终答案，然后输出结果。这个过程形成了一个强大的协同效应：<strong>推理使得行动更具目的性，而行动则为推理提供了事实依据。</strong></p>
+<p>（1）ReAct 的主要特点</p>
+<ol>
+<li><strong>高可解释性</strong>：ReAct 最大的优点之一就是透明。通过 <code>Thought</code> 链，我们可以清晰地看到智能体每一步的“心路历程”——它为什么会选择这个工具，下一步又打算做什么。这对于理解、信任和调试智能体的行为至关重要。</li>
+<li><strong>动态规划与纠错能力</strong>：与一次性生成完整计划的范式不同，ReAct 是“走一步，看一步”。它根据每一步从外部世界获得的 <code>Observation</code> 来动态调整后续的 <code>Thought</code> 和 <code>Action</code>。如果上一步的搜索结果不理想，它可以在下一步中修正搜索词，重新尝试。</li>
+<li><strong>工具协同能力</strong>：ReAct 范式天然地将大语言模型的推理能力与外部工具的执行能力结合起来。LLM 负责运筹帷幄（规划和推理），工具负责解决具体问题（搜索、计算），二者协同工作，突破了单一 LLM 在知识时效性、计算准确性等方面的固有局限。</li>
+</ol>
+<p>（2）ReAct 的固有局限性</p>
+<ol>
+<li><strong>对LLM自身能力的强依赖</strong>：ReAct 流程的成功与否，高度依赖于底层 LLM 的综合能力。如果 LLM 的逻辑推理能力、指令遵循能力或格式化输出能力不足，就很容易在 <code>Thought</code> 环节产生错误的规划，或者在 <code>Action</code> 环节生成不符合格式的指令，导致整个流程中断。</li>
+<li><strong>执行效率问题</strong>：由于其循序渐进的特性，完成一个任务通常需要多次调用 LLM。每一次调用都伴随着网络延迟和计算成本。对于需要很多步骤的复杂任务，这种串行的“思考-行动”循环可能会导致较高的总耗时和费用。</li>
+<li><strong>提示词的脆弱性</strong>：整个机制的稳定运行建立在一个精心设计的提示词模板之上。模板中的任何微小变动，甚至是用词的差异，都可能影响 LLM 的行为。此外，并非所有模型都能持续稳定地遵循预设的格式，这增加了在实际应用中的不确定性。</li>
+<li><strong>可能陷入局部最优</strong>：步进式的决策模式意味着智能体缺乏一个全局的、长远的规划。它可能会因为眼前的 <code>Observation</code> 而选择一个看似正确但长远来看并非最优的路径，甚至在某些情况下陷入“原地打转”的循环中。</li>
+</ol>
+<p>（3）调试技巧</p>
+<p>当你构建的 ReAct 智能体行为不符合预期时，可以从以下几个方面入手进行调试：</p>
+<ul>
+<li><strong>检查完整的提示词</strong>：在每次调用 LLM 之前，将最终格式化好的、包含所有历史记录的完整提示词打印出来。这是追溯 LLM 决策源头的最直接方式。</li>
+<li><strong>分析原始输出</strong>：当输出解析失败时（例如，正则表达式没有匹配到 <code>Action</code>），务必将 LLM 返回的原始、未经处理的文本打印出来。这能帮助你判断是 LLM 没有遵循格式，还是你的解析逻辑有误。</li>
+<li><strong>验证工具的输入与输出</strong>：检查智能体生成的 <code>tool_input</code> 是否是工具函数所期望的格式，同时也要确保工具返回的 <code>observation</code> 格式是智能体可以理解和处理的。</li>
+<li>**调整提示词中的示例 (Few-shot Prompting)**：如果模型频繁出错，可以在提示词中加入一两个完整的“Thought-Action-Observation”成功案例，通过示例来引导模型更好地遵循你的指令。</li>
+<li><strong>尝试不同的模型或参数</strong>：更换一个能力更强的模型，或者调整 <code>temperature</code> 参数（通常设为0以保证输出的确定性），有时能直接解决问题。</li>
+</ul>
+<h3 id="PlanAndSlove"><a href="#PlanAndSlove" class="headerlink" title="PlanAndSlove"></a>PlanAndSlove</h3><p><strong>Plan-and-Solve</strong>。顾名思义，这种范式将任务处理明确地分为两个阶段：**先规划 (Plan)，后执行 (Solve)**。</p>
+<p>如果说 ReAct 像一个经验丰富的侦探，根据现场的蛛丝马迹（Observation）一步步推理，随时调整自己的调查方向；那么 Plan-and-Solve 则更像一位建筑师，在动工之前必须先绘制出完整的蓝图（Plan），然后严格按照蓝图来施工（Solve）。事实上我们现在用的很多大模型工具的Agent模式都融入了这种设计模式。</p>
+<h4 id="Plan-and-Solve-的工作原理"><a href="#Plan-and-Solve-的工作原理" class="headerlink" title="Plan-and-Solve 的工作原理"></a>Plan-and-Solve 的工作原理</h4><p>Plan-and-Solve Prompting 由 Lei Wang 在2023年提出。其核心动机是为了解决思维链在处理多步骤、复杂问题时容易“偏离轨道”的问题。</p>
+<p>与 ReAct 将思考和行动融合在每一步不同，Plan-and-Solve 将整个流程解耦为两个核心阶段，如图4.2所示：</p>
+<ol>
+<li><strong>规划阶段 (Planning Phase)<strong>： 首先，智能体会接收用户的完整问题。它的第一个任务不是直接去解决问题或调用工具，而是</strong>将问题分解，并制定出一个清晰、分步骤的行动计划</strong>。这个计划本身就是一次大语言模型的调用产物。</li>
+<li><strong>执行阶段 (Solving Phase)<strong>： 在获得完整的计划后，智能体进入执行阶段。它会</strong>严格按照计划中的步骤，逐一执行</strong>。每一步的执行都可能是一次独立的 LLM 调用，或者是对上一步结果的加工处理，直到计划中的所有步骤都完成，最终得出答案。</li>
+</ol>
+<p>这种“先谋后动”的策略，使得智能体在处理需要长远规划的复杂任务时，能够保持更高的目标一致性，避免在中间步骤中迷失方向。</p>
+<p>我们可以将这个两阶段过程进行形式化表达。首先，规划模型 πplan 根据原始问题 q 生成一个包含 n 个步骤的计划 P&#x3D;(p1,p2,…,pn)：<br>$$<br>P&#x3D;π_{plan}(q)<br>$$<br>随后，在执行阶段，执行模型 πsolve 会逐一完成计划中的步骤。对于第 i 个步骤，其解决方案 si 的生成会同时依赖于原始问题 q、完整计划 P 以及之前所有步骤的执行结果 (s1,…,si−1)：<br>$$<br>s_i&#x3D;π_{solve}(q,P,(s_1,…,s_{i−1}))<br>$$<br>最终的答案就是最后一个步骤的执行结果 sn。</p>
+<p>Plan-and-Solve 尤其适用于那些结构性强、可以被清晰分解的复杂任务，例如：</p>
+<ul>
+<li><strong>多步数学应用题</strong>：需要先列出计算步骤，再逐一求解。</li>
+<li><strong>需要整合多个信息源的报告撰写</strong>：需要先规划好报告结构（引言、数据来源A、数据来源B、总结），再逐一填充内容。</li>
+<li><strong>代码生成任务</strong>：需要先构思好函数、类和模块的结构，再逐一实现。</li>
+</ul>
+<p>规划阶段的目标是让大语言模型接收原始问题，并输出一个清晰、分步骤的行动计划。这个计划必须是结构化的，以便我们的代码可以轻松解析并逐一执行。因此，我们设计的提示词需要明确地告诉模型它的角色和任务，并给出一个输出格式的范例。</p>
+<p>执行器的提示词与规划器不同。它的目标不是分解问题，而是<strong>在已有上下文的基础上，专注解决当前这一个步骤</strong>。因此，提示词需要包含以下关键信息：</p>
+<ul>
+<li><strong>原始问题</strong>： 确保模型始终了解最终目标。</li>
+<li><strong>完整计划</strong>： 让模型了解当前步骤在整个任务中的位置。</li>
+<li><strong>历史步骤与结果</strong>： 提供至今为止已经完成的工作，作为当前步骤的直接输入。</li>
+<li><strong>当前步骤</strong>： 明确指示模型现在需要解决哪一个具体任务。</li>
+</ul>
+<h3 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h3><p>Reflection 机制的灵感来源于人类的学习过程：我们完成初稿后会进行校对，解出数学题后会进行验算。这一思想在多个研究中得到了体现，例如 Shinn, Noah 在2023年提出的 Reflexion 框架。其核心工作流程可以概括为一个简洁的三步循环：<strong>执行 -&gt; 反思 -&gt; 优化</strong>。</p>
+<ol>
+<li>**执行 (Execution)**：首先，智能体使用我们熟悉的方法（如 ReAct 或 Plan-and-Solve）尝试完成任务，生成一个初步的解决方案或行动轨迹。这可以看作是“初稿”。</li>
+<li>**反思 (Reflection)**：接着，智能体进入反思阶段。它会调用一个独立的、或者带有特殊提示词的大语言模型实例，来扮演一个“评审员”的角色。这个“评审员”会审视第一步生成的“初稿”，并从多个维度进行评估，例如：<ul>
+<li><strong>事实性错误</strong>：是否存在与常识或已知事实相悖的内容？</li>
+<li><strong>逻辑漏洞</strong>：推理过程是否存在不连贯或矛盾之处？</li>
+<li><strong>效率问题</strong>：是否有更直接、更简洁的路径来完成任务？</li>
+<li><strong>遗漏信息</strong>：是否忽略了问题的某些关键约束或方面？ 根据评估，它会生成一段结构化的**反馈 (Feedback)**，指出具体的问题所在和改进建议。</li>
+</ul>
+</li>
+<li>**优化 (Refinement)**：最后，智能体将“初稿”和“反馈”作为新的上下文，再次调用大语言模型，要求它根据反馈内容对初稿进行修正，生成一个更完善的“修订稿”。</li>
+</ol>
+<p>这个循环可以重复进行多次，直到反思阶段不再发现新的问题，或者达到预设的迭代次数上限。我们可以将这个迭代优化的过程形式化地表达出来。首先，行动模型&#x2F;智能体会根据prompt来完成任务；反思模型&#x2F;智能体对任务完成情况进行判断，生成反馈；随后，优化模型&#x2F;智能体会结合原始任务、上一版任务完成情况以及反馈，生成新一版的输出 。</p>
+<p>与前两种范式相比，Reflection 的价值在于：</p>
+<ul>
+<li>它为智能体提供了一个内部纠错回路，使其不再完全依赖于外部工具的反馈（ReAct 的 Observation），从而能够修正更高层次的逻辑和策略错误。</li>
+<li>它将一次性的任务执行，转变为一个持续优化的过程，显著提升了复杂任务的最终成功率和答案质量。</li>
+<li>它为智能体构建了一个临时的<strong>“短期记忆”</strong>。整个“执行-反思-优化”的轨迹形成了一个宝贵的经验记录，智能体不仅知道最终答案，还记得自己是如何从有缺陷的初稿迭代到最终版本的。更进一步，这个记忆系统还可以是<strong>多模态的</strong>，允许智能体反思和修正文本以外的输出（如代码、图像等），为构建更强大的多模态智能体奠定了基础。</li>
+</ul>
+<h4 id="Reflection-机制的成本收益分析"><a href="#Reflection-机制的成本收益分析" class="headerlink" title="Reflection 机制的成本收益分析"></a>Reflection 机制的成本收益分析</h4><p>尽管 Reflection 机制在提升任务解决质量上表现出色，但这种能力的获得并非没有代价。在实际应用中，我们需要权衡其带来的收益与相应的成本。</p>
+<p>（1）主要成本</p>
+<ol>
+<li><strong>模型调用开销增加</strong>:这是最直接的成本。每进行一轮迭代，至少需要额外调用两次大语言模型（一次用于反思，一次用于优化）。如果迭代多轮，API 调用成本和计算资源消耗将成倍增加。</li>
+<li><strong>任务延迟显著提高</strong>:Reflection 是一个串行过程，每一轮的优化都必须等待上一轮的反思完成。这使得任务的总耗时显著延长，不适合对实时性要求高的场景。</li>
+<li><strong>提示工程复杂度上升</strong>:如我们的案例所示，Reflection 的成功在很大程度上依赖于高质量、有针对性的提示词。为“执行”、“反思”、“优化”等不同阶段设计和调试有效的提示词，需要投入更多的开发精力。</li>
+</ol>
+<p>（2）核心收益</p>
+<ol>
+<li><strong>解决方案质量的跃迁</strong>:最大的收益在于，它能将一个“合格”的初始方案，迭代优化成一个“优秀”的最终方案。这种从功能正确到性能高效、从逻辑粗糙到逻辑严谨的提升，在很多关键任务中是至关重要的。</li>
+<li><strong>鲁棒性与可靠性增强</strong>:通过内部的自我纠错循环，智能体能够发现并修复初始方案中可能存在的逻辑漏洞、事实性错误或边界情况处理不当等问题，从而大大提高了最终结果的可靠性。</li>
+</ol>
+<p>综上所述，Reflection 机制是一种典型的“以成本换质量”的策略。它非常适合那些<strong>对最终结果的质量、准确性和可靠性有极高要求，且对任务完成的实时性要求相对宽松</strong>的场景。例如:</p>
+<ul>
+<li>生成关键的业务代码或技术报告。</li>
+<li>在科学研究中进行复杂的逻辑推演。</li>
+<li>需要深度分析和规划的决策支持系统。</li>
+</ul>
+<p>反之，如果应用场景需要快速响应，或者一个“大致正确”的答案就已经足够，那么使用更轻量的 ReAct 或 Plan-and-Solve 范式可能会是更具性价比的选择。</p>
+]]></content>
+      <categories>
+        <category>Agent</category>
+        <category>范式</category>
+      </categories>
+      <tags>
+        <tag>Agent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>深度学习激活函数学习</title>
+    <url>/2026/01/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="一、激活函数原理"><a href="#一、激活函数原理" class="headerlink" title="一、激活函数原理"></a>一、激活函数原理</h2><p>激活函数（activation function），就是在神经网络的神经元上运行的函数，负责将神经元的输入映射到输出层，旨在帮组神经网络学习数据中的复杂模式。</p>
+<h2 id="二、激活函数的作用"><a href="#二、激活函数的作用" class="headerlink" title="二、激活函数的作用"></a>二、激活函数的作用</h2><p>使用激活函数能够为神经网络引入非线性因素，使得神经网络可以任意逼近任何非线性函数，使深层神经网络表达能力更加强大，使得神经网络可以应用到总舵的非线性模型中。如果不使用激活函数，那神经网络的每一层输出都是上层输入的线性函数，无论神经网络的层数是多少，其输出都是输入的线性组合，这样就退化为原始的感知机模型了。</p>
+<h2 id="三、激活函数分类"><a href="#三、激活函数分类" class="headerlink" title="三、激活函数分类"></a>三、激活函数分类</h2><p>激活函数可以分为<strong>饱和激活函数</strong>与<strong>非饱和激活函数</strong>。</p>
+<p>3.1 饱和的概念</p>
+<p>假设h(x)是一个激活函数，有如下一个极限：<br>$$<br>\lim_{n\rightarrow\pm\infty}h^\prime(x)&#x3D;0<br>$$<br>当n趋于正无穷，激活函数的导数趋于0，则称之为右饱和；若当n趋于负无穷时，激活函数的导数趋于0，则称之为左饱和。当一个函数同时满足左饱和和右饱和时，我们称之为饱和，不然则称之为非饱和。</p>
+<ul>
+<li>饱和激活函数：sigmoid、tanh</li>
+<li>非饱和激活函数：ReLU、 Leakly ReLU、elu、PReLU、RReLU</li>
+</ul>
+<p>相比于饱和激活函数，非饱和激活函数的优势在于两点：</p>
+<ul>
+<li>能解决深度神经网络带来的梯度消失问题</li>
+<li>能加快收敛速度</li>
+</ul>
+<h2 id="四、常见激活函数"><a href="#四、常见激活函数" class="headerlink" title="四、常见激活函数"></a>四、常见激活函数</h2><h3 id="4-1-sigmoid"><a href="#4-1-sigmoid" class="headerlink" title="4.1 sigmoid"></a>4.1 sigmoid</h3><p>其数学表达式如下，输出范围在[0, 1]之间。<br>$$<br>sigmoid(x) &#x3D; \frac{1}{1+e^{-x}}<br>$$<br>其导数表达式为：<br>$$<br>sigmoid\prime(x) &#x3D; sigmoid(x)(1-sigmoid(x)) &#x3D;\frac{1}{1+e^{-x}}\frac{e^{-x}}{1+e^{-x}}&#x3D;\frac{e^{-x}}{(1+e^{-x})^2}<br>$$<br>其函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/af5f15ef44f1b276c78bec5e140e7082.png" alt="图片"></p>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = <span class="number">1</span> / (<span class="number">1</span> + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = <span class="number">1</span> / (<span class="number">1</span> + scipy.special.expit(x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
+
+<p>使用场景：</p>
+<ul>
+<li>sigmoid函数的输出范围是0到1。适合作为模型的输出函数用于输出一个0-1范围内的概率值，如表示二分类的类别或者用于表示置信度。</li>
+<li>sigmoid函数梯度平滑，方便求导，可以用于防止模型训练过程中出现突变的梯度。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>容易造成梯度消失。</li>
+<li>函数输出不是以0为中心的，梯度可能会向特定方向一点，从而降低权重更新的效率。</li>
+<li>sigmoid函数执行指数运算，计算速度慢，计算资源需求大。</li>
+</ul>
+<h3 id="4-2-Tanh函数"><a href="#4-2-Tanh函数" class="headerlink" title="4.2 Tanh函数"></a>4.2 Tanh函数</h3><p>其数学表达式如下，输出范围在[-1, 1]之间。<br>$$<br>Tanh(x) &#x3D; \frac{e^x-e^{-x}}{e^x+e^{-x}}&#x3D;\frac{e^x-e^{-x}}{e^x+e^{-x}} \frac{e^{-x}}{e^{-x}}&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>实际上，Tanh函数是 sigmoid 的变形：<br>$$<br>Tanh(x)&#x3D;2sigmoid(2x)-1&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>其导数表达式为：<br>$$<br>Tanh\prime(x) &#x3D;\frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{({e^x+e^{-x}})^2}&#x3D;\frac{4}{(1+e^{-x})^2}&#x3D;\frac{4e^{-2x}}{(1+e^{-2x})^2}<br>$$<br>与sigmoid函数不同的三十，tanh是以0为中心的。因此，在实际应用中，tanh会比ssigmoid更好一点。但在饱和神经元的情况下辖，tanh仍没有解决梯度消失的问题。</p>
+<p>其函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e58d7204fef7f7410e92b4bf82e91938.png" alt="img"></p>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = (math.exp(x) - math.exp(-x)) / (math.exp(x) + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = (scipy.special.expit(x) - scipy.special.expit(-x)) / (scipy.special.expit(x) + scipy.special.expit(-x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
+
+<p>Tanh函数优点：</p>
+<ul>
+<li>Tanh的输出间隔为1，并且整个函数以0为中心，比sigmoid函数更好；</li>
+<li>在Tanh函数图中，负输入被强映射为负，二零输入被映射为接近0。</li>
+</ul>
+<p>Tanh函数缺点：</p>
+<ul>
+<li>仍存在梯度饱和的问题；</li>
+<li>依然进行的是指数运算。</li>
+</ul>
+<h3 id="4-3-ReLU函数"><a href="#4-3-ReLU函数" class="headerlink" title="4.3 ReLU函数"></a>4.3 ReLU函数</h3><p>其数学表达式为：<br>$$<br>ReLU(x)&#x3D;\max(0,x)<br>$$<br>函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a2f4f9f3c522518908e20d7865beb48c.png" alt="img"></p>
+<p>ReLU函数优点：</p>
+<ul>
+<li>ReLU解决了梯度消失的问题，当输入值为正是，神经元不会饱和；</li>
+<li>由于ReLU函数的线性、非饱和性质，在SGD中能够快速收敛；</li>
+<li>计算复杂度低，不需要进行指数运算。</li>
+</ul>
+<p>ReLU函数缺点：</p>
+<ul>
+<li>与simoid函数一样，其输出不是以0为中心的；</li>
+<li>Dead ReLU问题。当输入为负时，梯度为0。此时，神经元及之后的神经元梯度永远为0，不再对任何数据有所响应，导致相应参数永远不会被更新。</li>
+</ul>
+<p>训练神经网络时，若学习率没设置好，第一次更新权重时输入为负值，则这个含有ReLU的神经节点会死亡，再也不会被激活。因此，要设置一个合适的较小学习率，来降低这种情况的发生。</p>
+]]></content>
+      <categories>
+        <category>深度学习</category>
+        <category>激活函数</category>
+      </categories>
   </entry>
   <entry>
     <title>数据库学习笔记</title>
@@ -1684,65 +1800,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git学习</title>
-    <url>/2026/04/07/Git%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
-<ul>
-<li>工作区（Working Directory）</li>
-</ul>
-<p>实际修改文件的地方，即本地工作目录</p>
-<ul>
-<li>暂存区</li>
-</ul>
-<p>文件修改完成后，暂时存放的地方</p>
-<p>指令：git add</p>
-<ul>
-<li>本地仓库</li>
-</ul>
-<p>存放暂存区中打包好的文件，并附上标签信息</p>
-<p>指令：git commit</p>
-<ul>
-<li>远程仓库</li>
-</ul>
-<p>接收本地仓库中发送过来的文件包，方便别人查看</p>
-<p>指令：git push</p>
-<ul>
-<li>贮藏区</li>
-</ul>
-<p>存储未完成但又不想提交的文件</p>
-<p>指令：git stash</p>
-<h1 id="初次配置"><a href="#初次配置" class="headerlink" title="初次配置"></a>初次配置</h1><p>全局基础参数配置：用户名和邮箱（github或gitee中使用的名字和邮箱）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<h1 id="仓库相关"><a href="#仓库相关" class="headerlink" title="仓库相关"></a>仓库相关</h1><h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong> 是使用 Git 的第一个命令。</p>
-<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>当前目录作为仓库：git init</p>
-<p>指定目录作为仓库：git init {路径}</p>
-<p>[^1]: <strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 **’**，Windows 系统，commit 信息使用双引号 **”**。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 **git commit -m “提交说明”**。</p>
-<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><p>使用git remote来关联远程仓库。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看当前关联的远程仓库</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 关联远程仓库（把链接换成你的）</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">示例：git remote add origin https://github.com/user_name/respository_name.git(仓库名区分大小写)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 修改远程仓库地址</span></span><br><span class="line">git remote set-url origin https://新地址.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 第一次克隆整个项目，完整仓库地址可以在github仓库页面获取到</span></span><br><span class="line">git clone https://远程仓库地址.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 拉取远程分支最新代码</span></span><br><span class="line">git pull origin 分支名（如main）</span><br></pre></td></tr></table></figure>
-
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看文件修改状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 添加文件到暂存区</span></span><br><span class="line">git add 文件名        # 添加单个文件</span><br><span class="line">git add .            # 添加所有文件（最常用）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 提交到本地仓库（必须写备注）</span></span><br><span class="line">git commit -m &quot;本次提交说明&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 推送到远程仓库，首次push分支需要使用git push origin 分支名(如main、master)</span></span><br><span class="line">git push origin main    # 第一次推送，主流分支名 main/master</span><br><span class="line">git push				# 非第一次推送</span><br></pre></td></tr></table></figure>
-
-<h1 id="分支相关"><a href="#分支相关" class="headerlink" title="分支相关"></a>分支相关</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看所有分支，前面带 * 的是你当前所在的分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 创建新分支（开发新功能），基于你当前所在的分支，复制一份代码，创建新分支。注意：创建分支后需要手动切换到新分支</span></span><br><span class="line">git branch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 切换到分支</span></span><br><span class="line">git checkout 分支名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或新版命令</span></span><br><span class="line">git switch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 创建并直接切换分支（最常用）</span></span><br><span class="line">git checkout -b 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5. 把分支代码合并到主分支</span></span><br><span class="line">git checkout main    # 先切回主分支</span><br><span class="line">git merge 分支名     # 合并你的分支</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6. 删除本地分支</span></span><br><span class="line">git branch -d 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7. 推送分支到远程</span></span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
-<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
-<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
-<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
-<p>打开id_rsa.pub文件，复制其中的密钥。</p>
-<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RAG学习-文本分块</title>
     <url>/2026/04/13/RAG%E5%AD%A6%E4%B9%A0-%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97/</url>
     <content><![CDATA[<h2 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h2><p>主要分为检索、生成两个阶段</p>
@@ -1955,6 +2012,11 @@
       <tags>
         <tag>RAG</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Docker学习</title>
+    <url>/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>RAG-索引构建</title>
@@ -2407,11 +2469,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Docker学习</title>
-    <url>/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>RAG-检索优化</title>
     <url>/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
@@ -2745,111 +2802,162 @@
       </tags>
   </entry>
   <entry>
-    <title>Agent三大范式</title>
-    <url>/2026/03/22/Agent%E8%8C%83%E5%BC%8F/</url>
-    <content><![CDATA[<h2 id="workflow与agent的区别"><a href="#workflow与agent的区别" class="headerlink" title="workflow与agent的区别"></a>workflow与agent的区别</h2><h3 id="workflow（工作流）"><a href="#workflow（工作流）" class="headerlink" title="workflow（工作流）"></a>workflow（工作流）</h3><p>核心是对一系列任务或步骤进行预先定义的、结构化的编排。本质上是一个精确的、静态的流程图，规定了在何种条件下、以什么顺序来执行什么操作。</p>
-<p>简单地说，workflow就是让AI按部就班地执行指令。</p>
-<h3 id="agent"><a href="#agent" class="headerlink" title="agent"></a>agent</h3><p>一个具备自主性、以目标为导向的系统。在一定程度上理解环境、进行推理、制定计划，并动态地采取行动来达成目标。</p>
-<p>简单地说，agent就是赋予AI自由度去自主地达成目标。</p>
-<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260322205854253.png?token=AR3LVDAK3HM5FJLAEPRWFNDJX7T4W"></p>
-<h2 id="Agent经典范式"><a href="#Agent经典范式" class="headerlink" title="Agent经典范式"></a>Agent经典范式</h2><h3 id="ReAct范式"><a href="#ReAct范式" class="headerlink" title="ReAct范式"></a>ReAct范式</h3><p>ReAct的巧妙之处在于，它认识到<strong>思考与行动是相辅相成的</strong>。思考指导行动，而行动的结果又反过来修正思考。为此，ReAct范式通过一种特殊的提示工程来引导模型，使其每一步的输出都遵循一个固定的轨迹：</p>
+    <title>RAG-系统评估</title>
+    <url>/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/</url>
+    <content><![CDATA[<h1 id="RAG评估"><a href="#RAG评估" class="headerlink" title="RAG评估"></a>RAG评估</h1><p>构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？</p>
+<h2 id="典型失败模式"><a href="#典型失败模式" class="headerlink" title="典型失败模式"></a>典型失败模式</h2><ul>
+<li>检索器问题：检索结果与需求不相关（检索了完全不相关的文档或数据）、遗漏关键信息（Top-K没有包揽核心论点）、刻舟求剑（返回了历史过期版本的信息）</li>
+<li>生成器问题：忽略正确的检索上下文信息、脱离上下文，产生知识幻觉、答非所问（回答形式或语气不符合要求）</li>
+<li>协同问题：检索正确但被LLM歪曲理解、检索到错误信息LLm无法调和</li>
+</ul>
+<h2 id="评估维度"><a href="#评估维度" class="headerlink" title="评估维度"></a>评估维度</h2><p>该架构包含以下三个维度，并在 <strong>TruLens</strong> 等工具中有深入的应用：</p>
+<p>（1）<strong>上下文相关性 (Context Relevance)</strong></p>
+<p>即检索层评估（Retrieval Layer Evaluation），核心指标有召回率、精度、平均倒数排名（MRR）、归一化折损累积增益（NDCG）、Hit Rate@K等，评估重点为检索器能否准确找到相关文档并正确排序。</p>
 <ul>
-<li><strong>Thought (思考)：</strong> 这是智能体的“内心独白”。它会分析当前情况、分解任务、制定下一步计划，或者反思上一步的结果。</li>
-<li><strong>Action (行动)：</strong> 这是智能体决定采取的具体动作，通常是调用一个外部工具，例如 <code>Search[&#39;华为最新款手机&#39;]</code>。</li>
-<li><strong>Observation (观察)：</strong> 这是执行<code>Action</code>后从外部工具返回的结果，例如搜索结果的摘要或API的返回值。</li>
+<li><strong>评估目标：</strong> 检索器（Retriever）的性能。</li>
+<li><strong>核心问题：</strong> 检索到的上下文内容，是否与用户的查询（Query）高度相关？</li>
+<li><strong>重要性：</strong> 检索是RAG应用在响应用户查询时的第一步。如果检索回来的上下文充满了噪声或无关信息，那么无论后续的生成模型多么强大，都没法做出正确答案。</li>
 </ul>
-<p>智能体将不断重复这个 <strong>Thought -&gt; Action -&gt; Observation</strong> 的循环，将新的观察结果追加到历史记录中，形成一个不断增长的上下文，直到它在<code>Thought</code>中认为已经找到了最终答案，然后输出结果。这个过程形成了一个强大的协同效应：<strong>推理使得行动更具目的性，而行动则为推理提供了事实依据。</strong></p>
-<p>（1）ReAct 的主要特点</p>
-<ol>
-<li><strong>高可解释性</strong>：ReAct 最大的优点之一就是透明。通过 <code>Thought</code> 链，我们可以清晰地看到智能体每一步的“心路历程”——它为什么会选择这个工具，下一步又打算做什么。这对于理解、信任和调试智能体的行为至关重要。</li>
-<li><strong>动态规划与纠错能力</strong>：与一次性生成完整计划的范式不同，ReAct 是“走一步，看一步”。它根据每一步从外部世界获得的 <code>Observation</code> 来动态调整后续的 <code>Thought</code> 和 <code>Action</code>。如果上一步的搜索结果不理想，它可以在下一步中修正搜索词，重新尝试。</li>
-<li><strong>工具协同能力</strong>：ReAct 范式天然地将大语言模型的推理能力与外部工具的执行能力结合起来。LLM 负责运筹帷幄（规划和推理），工具负责解决具体问题（搜索、计算），二者协同工作，突破了单一 LLM 在知识时效性、计算准确性等方面的固有局限。</li>
-</ol>
-<p>（2）ReAct 的固有局限性</p>
-<ol>
-<li><strong>对LLM自身能力的强依赖</strong>：ReAct 流程的成功与否，高度依赖于底层 LLM 的综合能力。如果 LLM 的逻辑推理能力、指令遵循能力或格式化输出能力不足，就很容易在 <code>Thought</code> 环节产生错误的规划，或者在 <code>Action</code> 环节生成不符合格式的指令，导致整个流程中断。</li>
-<li><strong>执行效率问题</strong>：由于其循序渐进的特性，完成一个任务通常需要多次调用 LLM。每一次调用都伴随着网络延迟和计算成本。对于需要很多步骤的复杂任务，这种串行的“思考-行动”循环可能会导致较高的总耗时和费用。</li>
-<li><strong>提示词的脆弱性</strong>：整个机制的稳定运行建立在一个精心设计的提示词模板之上。模板中的任何微小变动，甚至是用词的差异，都可能影响 LLM 的行为。此外，并非所有模型都能持续稳定地遵循预设的格式，这增加了在实际应用中的不确定性。</li>
-<li><strong>可能陷入局部最优</strong>：步进式的决策模式意味着智能体缺乏一个全局的、长远的规划。它可能会因为眼前的 <code>Observation</code> 而选择一个看似正确但长远来看并非最优的路径，甚至在某些情况下陷入“原地打转”的循环中。</li>
-</ol>
-<p>（3）调试技巧</p>
-<p>当你构建的 ReAct 智能体行为不符合预期时，可以从以下几个方面入手进行调试：</p>
+<p>（2）<strong>忠实度 &#x2F; 可信度 (Faithfulness &#x2F; Groundedness)</strong></p>
+<p>即生成层评估，核心指标有忠实度、答案相关性、完整性、流畅性等，评估重点为生成器能否基于检索内容生成正确、相关的答案。</p>
 <ul>
-<li><strong>检查完整的提示词</strong>：在每次调用 LLM 之前，将最终格式化好的、包含所有历史记录的完整提示词打印出来。这是追溯 LLM 决策源头的最直接方式。</li>
-<li><strong>分析原始输出</strong>：当输出解析失败时（例如，正则表达式没有匹配到 <code>Action</code>），务必将 LLM 返回的原始、未经处理的文本打印出来。这能帮助你判断是 LLM 没有遵循格式，还是你的解析逻辑有误。</li>
-<li><strong>验证工具的输入与输出</strong>：检查智能体生成的 <code>tool_input</code> 是否是工具函数所期望的格式，同时也要确保工具返回的 <code>observation</code> 格式是智能体可以理解和处理的。</li>
-<li>**调整提示词中的示例 (Few-shot Prompting)**：如果模型频繁出错，可以在提示词中加入一两个完整的“Thought-Action-Observation”成功案例，通过示例来引导模型更好地遵循你的指令。</li>
-<li><strong>尝试不同的模型或参数</strong>：更换一个能力更强的模型，或者调整 <code>temperature</code> 参数（通常设为0以保证输出的确定性），有时能直接解决问题。</li>
+<li><strong>评估目标：</strong> 生成器的可靠性。</li>
+<li><strong>核心问题：</strong> 生成的答案是否完全基于所提供的上下文信息？</li>
+<li><strong>重要性：</strong> 这个维度主要在于量化LLM的“幻觉”程度。一个高忠实度的回答意味着模型严格遵守了上下文，没有捏造或歪曲事实。如果忠实度得分低，说明LLM在回答时“自由发挥”过度，引入了外部知识或不实信息。</li>
 </ul>
-<h3 id="PlanAndSlove"><a href="#PlanAndSlove" class="headerlink" title="PlanAndSlove"></a>PlanAndSlove</h3><p><strong>Plan-and-Solve</strong>。顾名思义，这种范式将任务处理明确地分为两个阶段：**先规划 (Plan)，后执行 (Solve)**。</p>
-<p>如果说 ReAct 像一个经验丰富的侦探，根据现场的蛛丝马迹（Observation）一步步推理，随时调整自己的调查方向；那么 Plan-and-Solve 则更像一位建筑师，在动工之前必须先绘制出完整的蓝图（Plan），然后严格按照蓝图来施工（Solve）。事实上我们现在用的很多大模型工具的Agent模式都融入了这种设计模式。</p>
-<h4 id="Plan-and-Solve-的工作原理"><a href="#Plan-and-Solve-的工作原理" class="headerlink" title="Plan-and-Solve 的工作原理"></a>Plan-and-Solve 的工作原理</h4><p>Plan-and-Solve Prompting 由 Lei Wang 在2023年提出。其核心动机是为了解决思维链在处理多步骤、复杂问题时容易“偏离轨道”的问题。</p>
-<p>与 ReAct 将思考和行动融合在每一步不同，Plan-and-Solve 将整个流程解耦为两个核心阶段，如图4.2所示：</p>
-<ol>
-<li><strong>规划阶段 (Planning Phase)<strong>： 首先，智能体会接收用户的完整问题。它的第一个任务不是直接去解决问题或调用工具，而是</strong>将问题分解，并制定出一个清晰、分步骤的行动计划</strong>。这个计划本身就是一次大语言模型的调用产物。</li>
-<li><strong>执行阶段 (Solving Phase)<strong>： 在获得完整的计划后，智能体进入执行阶段。它会</strong>严格按照计划中的步骤，逐一执行</strong>。每一步的执行都可能是一次独立的 LLM 调用，或者是对上一步结果的加工处理，直到计划中的所有步骤都完成，最终得出答案。</li>
-</ol>
-<p>这种“先谋后动”的策略，使得智能体在处理需要长远规划的复杂任务时，能够保持更高的目标一致性，避免在中间步骤中迷失方向。</p>
-<p>我们可以将这个两阶段过程进行形式化表达。首先，规划模型 πplan 根据原始问题 q 生成一个包含 n 个步骤的计划 P&#x3D;(p1,p2,…,pn)：<br>$$<br>P&#x3D;π_{plan}(q)<br>$$<br>随后，在执行阶段，执行模型 πsolve 会逐一完成计划中的步骤。对于第 i 个步骤，其解决方案 si 的生成会同时依赖于原始问题 q、完整计划 P 以及之前所有步骤的执行结果 (s1,…,si−1)：<br>$$<br>s_i&#x3D;π_{solve}(q,P,(s_1,…,s_{i−1}))<br>$$<br>最终的答案就是最后一个步骤的执行结果 sn。</p>
-<p>Plan-and-Solve 尤其适用于那些结构性强、可以被清晰分解的复杂任务，例如：</p>
+<p>（3）<strong>答案相关性 (Answer Relevance)</strong></p>
+<p>即系统层评估，核心指标有整体准确性、用户满意度、业务指标等，评估重点为端到端的系统性能和业务价值。</p>
 <ul>
-<li><strong>多步数学应用题</strong>：需要先列出计算步骤，再逐一求解。</li>
-<li><strong>需要整合多个信息源的报告撰写</strong>：需要先规划好报告结构（引言、数据来源A、数据来源B、总结），再逐一填充内容。</li>
-<li><strong>代码生成任务</strong>：需要先构思好函数、类和模块的结构，再逐一实现。</li>
+<li><strong>评估目标：</strong> 系统的端到端（End-to-End）表现。</li>
+<li><strong>核心问题：</strong> 最终生成的答案是否直接、完整且有效地回答了用户的原始问题？</li>
+<li><strong>重要性：</strong> 这是用户最直观的感受。一个答案可能完全基于上下文（高忠实度），但如果它答非所问，或者只回答了问题的一部分，那么这个答案的相关性就很低。例如，当用户问“法国在哪里，首都是哪里？”，如果答案只是“法国在西欧”，那么虽然忠实度高，但答案相关性很低。</li>
 </ul>
-<p>规划阶段的目标是让大语言模型接收原始问题，并输出一个清晰、分步骤的行动计划。这个计划必须是结构化的，以便我们的代码可以轻松解析并逐一执行。因此，我们设计的提示词需要明确地告诉模型它的角色和任务，并给出一个输出格式的范例。</p>
-<p>执行器的提示词与规划器不同。它的目标不是分解问题，而是<strong>在已有上下文的基础上，专注解决当前这一个步骤</strong>。因此，提示词需要包含以下关键信息：</p>
+<blockquote>
+<p>你可能觉得忠实度和答案相关性很相似，但它们的侧重点是不同的。忠实度更关注模型是否严格遵循了上下文，而答案相关性则更关注模型是否直接、完整且有效地回答了问题。</p>
+</blockquote>
+<p>通过对这三个维度进行评估，可以对RAG系统的表现有一个全面而细致的了解，并能准确定位问题所在：是检索出了问题，还是生成环节有待改进。</p>
+<h2 id="评估工作流"><a href="#评估工作流" class="headerlink" title="评估工作流"></a>评估工作流</h2><p>虽然上面把评估分成了三个部分，但实际上可以把评估过程拆解为两个主要环节：<strong>检索评估</strong>和<strong>响应评估</strong>。</p>
+<h3 id="检索评估"><a href="#检索评估" class="headerlink" title="检索评估"></a>检索评估</h3><p>检索评估聚焦于RAG三元组中的 **上下文相关性 (Context Relevance)*<em>，本质上是一次*<em>白盒测试</em></em> <a href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>。此阶段的评估需要一个标注数据集，其中包含一系列查询以及每个查询对应的真实相关文档。</p>
+<p>这项评估借鉴了信息检索领域的多个经典指标：</p>
 <ul>
-<li><strong>原始问题</strong>： 确保模型始终了解最终目标。</li>
-<li><strong>完整计划</strong>： 让模型了解当前步骤在整个任务中的位置。</li>
-<li><strong>历史步骤与结果</strong>： 提供至今为止已经完成的工作，作为当前步骤的直接输入。</li>
-<li><strong>当前步骤</strong>： 明确指示模型现在需要解决哪一个具体任务。</li>
-</ul>
-<h3 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h3><p>Reflection 机制的灵感来源于人类的学习过程：我们完成初稿后会进行校对，解出数学题后会进行验算。这一思想在多个研究中得到了体现，例如 Shinn, Noah 在2023年提出的 Reflexion 框架。其核心工作流程可以概括为一个简洁的三步循环：<strong>执行 -&gt; 反思 -&gt; 优化</strong>。</p>
-<ol>
-<li>**执行 (Execution)**：首先，智能体使用我们熟悉的方法（如 ReAct 或 Plan-and-Solve）尝试完成任务，生成一个初步的解决方案或行动轨迹。这可以看作是“初稿”。</li>
-<li>**反思 (Reflection)**：接着，智能体进入反思阶段。它会调用一个独立的、或者带有特殊提示词的大语言模型实例，来扮演一个“评审员”的角色。这个“评审员”会审视第一步生成的“初稿”，并从多个维度进行评估，例如：<ul>
-<li><strong>事实性错误</strong>：是否存在与常识或已知事实相悖的内容？</li>
-<li><strong>逻辑漏洞</strong>：推理过程是否存在不连贯或矛盾之处？</li>
-<li><strong>效率问题</strong>：是否有更直接、更简洁的路径来完成任务？</li>
-<li><strong>遗漏信息</strong>：是否忽略了问题的某些关键约束或方面？ 根据评估，它会生成一段结构化的**反馈 (Feedback)**，指出具体的问题所在和改进建议。</li>
-</ul>
+<li><p><strong>上下文精确率 (Context Precision):</strong> 衡量检索结果的准确性。计算在检索到的前 <strong>k</strong> 个文档中相关文档所占的比例，其中 <strong>k</strong> 是一个预设的数字（例如，k&#x3D;3或k&#x3D;5），代表评估的范围。高精确率意味着检索结果的噪声较少。<br>$$<br>Precision@k&#x3D;\frac{检索到的k个结果中的相关文档数}k<br>$$</p>
 </li>
-<li>**优化 (Refinement)**：最后，智能体将“初稿”和“反馈”作为新的上下文，再次调用大语言模型，要求它根据反馈内容对初稿进行修正，生成一个更完善的“修订稿”。</li>
-</ol>
-<p>这个循环可以重复进行多次，直到反思阶段不再发现新的问题，或者达到预设的迭代次数上限。我们可以将这个迭代优化的过程形式化地表达出来。首先，行动模型&#x2F;智能体会根据prompt来完成任务；反思模型&#x2F;智能体对任务完成情况进行判断，生成反馈；随后，优化模型&#x2F;智能体会结合原始任务、上一版任务完成情况以及反馈，生成新一版的输出 。</p>
-<p>与前两种范式相比，Reflection 的价值在于：</p>
-<ul>
-<li>它为智能体提供了一个内部纠错回路，使其不再完全依赖于外部工具的反馈（ReAct 的 Observation），从而能够修正更高层次的逻辑和策略错误。</li>
-<li>它将一次性的任务执行，转变为一个持续优化的过程，显著提升了复杂任务的最终成功率和答案质量。</li>
-<li>它为智能体构建了一个临时的<strong>“短期记忆”</strong>。整个“执行-反思-优化”的轨迹形成了一个宝贵的经验记录，智能体不仅知道最终答案，还记得自己是如何从有缺陷的初稿迭代到最终版本的。更进一步，这个记忆系统还可以是<strong>多模态的</strong>，允许智能体反思和修正文本以外的输出（如代码、图像等），为构建更强大的多模态智能体奠定了基础。</li>
+<li><p><strong>上下文召回率 (Context Recall):</strong> 衡量检索结果的完整性。计算在检索到的前 <strong>k</strong> 个文档中，找到的相关文档占所有真实相关文档总数的比例。高召回率意味着系统能够成功找回大部分关键信息。<br>$$<br>Recall@k&#x3D;\frac{检索到的k个结果中的相关文档数}{数据集中所有相关的文档总数}<br>$$<br><strong>F1分数 (F1-Score):</strong> F1分数是精确率和召回率的调和平均数，它同时兼顾了这两个指标，在它们之间寻求平衡。当精确率和召回率都高时，F1分数也高。<br>$$<br>F1&#x3D;2\frac{Precision×Recall}{Precision+Recall}<br>$$</p>
+</li>
+<li><p><strong>平均倒数排名 (MRR - Mean Reciprocal Rank):</strong> 评估系统将第一个相关文档排在靠前位置的能力。对于一个查询，倒数排名是第一个相关文档排名的倒数。MRR是所有查询的倒数排名的平均值。该指标适用于用户通常只关心第一个正确答案的场景。<br>$$<br>MRR&#x3D;\frac1{∣Q∣}∑_{q&#x3D;1}^{∣Q∣}\frac1{rankq}<br>$$<br>其中 <code>|Q|</code> 是查询总数，<code>rank_q</code> 是第 <code>q</code> 个查询的第一个相关文档的排名。</p>
+</li>
+<li><p><strong>平均准确率均值 (MAP - Mean Average Precision):</strong> MAP是一个综合性指标，同时评估了检索结果的精确率和相关文档的排名。它先计算每个查询的平均精确率（AP），然后对所有查询的AP取平均值。AP本身是基于每个相关文档被检索到时的精确率计算的。<br>$$<br>MAP&#x3D;\frac1{∣Q∣}∑_{q&#x3D;1}^{∣Q∣}AP(q)<br>$$<br>其中 <code>|Q|</code> 是查询总数，<code>AP(q)</code> 是第 <code>q</code> 个查询的平均精确率（Average Precision）。</p>
+</li>
 </ul>
-<h4 id="Reflection-机制的成本收益分析"><a href="#Reflection-机制的成本收益分析" class="headerlink" title="Reflection 机制的成本收益分析"></a>Reflection 机制的成本收益分析</h4><p>尽管 Reflection 机制在提升任务解决质量上表现出色，但这种能力的获得并非没有代价。在实际应用中，我们需要权衡其带来的收益与相应的成本。</p>
-<p>（1）主要成本</p>
-<ol>
-<li><strong>模型调用开销增加</strong>:这是最直接的成本。每进行一轮迭代，至少需要额外调用两次大语言模型（一次用于反思，一次用于优化）。如果迭代多轮，API 调用成本和计算资源消耗将成倍增加。</li>
-<li><strong>任务延迟显著提高</strong>:Reflection 是一个串行过程，每一轮的优化都必须等待上一轮的反思完成。这使得任务的总耗时显著延长，不适合对实时性要求高的场景。</li>
-<li><strong>提示工程复杂度上升</strong>:如我们的案例所示，Reflection 的成功在很大程度上依赖于高质量、有针对性的提示词。为“执行”、“反思”、“优化”等不同阶段设计和调试有效的提示词，需要投入更多的开发精力。</li>
-</ol>
-<p>（2）核心收益</p>
-<ol>
-<li><strong>解决方案质量的跃迁</strong>:最大的收益在于，它能将一个“合格”的初始方案，迭代优化成一个“优秀”的最终方案。这种从功能正确到性能高效、从逻辑粗糙到逻辑严谨的提升，在很多关键任务中是至关重要的。</li>
-<li><strong>鲁棒性与可靠性增强</strong>:通过内部的自我纠错循环，智能体能够发现并修复初始方案中可能存在的逻辑漏洞、事实性错误或边界情况处理不当等问题，从而大大提高了最终结果的可靠性。</li>
-</ol>
-<p>综上所述，Reflection 机制是一种典型的“以成本换质量”的策略。它非常适合那些<strong>对最终结果的质量、准确性和可靠性有极高要求，且对任务完成的实时性要求相对宽松</strong>的场景。例如:</p>
+<p>要计算上述所有指标，前提是拥有一个高质量的标注数据集，其中包含了查询和每个查询对应的“真实”相关文档。</p>
+<h3 id="响应评估"><a href="#响应评估" class="headerlink" title="响应评估"></a>响应评估</h3><p>响应评估覆盖了RAG三元组中的 <strong>忠实度</strong> 和 <strong>答案相关性</strong>。此环节通常采用 <strong>端到端</strong> 的评估范式，因为它直接衡量用户感知的最终输出质量。无论采用何种评估方法，都主要围绕以下两个核心维度展开。</p>
+<h4 id="评估维度-1"><a href="#评估维度-1" class="headerlink" title="评估维度"></a>评估维度</h4><p>（1）<strong>忠实度 &#x2F; 可信度</strong>：衡量生成的答案在多大程度上可以由给定的上下文所证实。一个完全忠实的答案，其所有内容都必须能在上下文中找到依据，以此避免模型产生“幻觉”。</p>
+<p>（2）<strong>答案相关性</strong>：衡量生成的答案与用户原始查询的对齐程度。一个高相关性的答案必须是直接的、切题的，并且不包含与问题无关的冗余信息。</p>
+<h4 id="主要评估方法"><a href="#主要评估方法" class="headerlink" title="主要评估方法"></a>主要评估方法</h4><p>针对上述维度，目前主要有两类评估方法：</p>
+<p>（1）<strong>基于大语言模型的评估</strong></p>
+<p>这是一种强大的评估方法，能够提供更深度的语义评估，正逐渐成为主流选择。利用一个高性能、中立的llm作为“评估者”，对上述维度进行深度的语义理解和打分。</p>
 <ul>
-<li>生成关键的业务代码或技术报告。</li>
-<li>在科学研究中进行复杂的逻辑推演。</li>
-<li>需要深度分析和规划的决策支持系统。</li>
+<li><strong>忠实度评估：</strong> 首先，将生成的答案分解为一系列独立的声明或断言（Claims）。然后，对于每一个断言，在提供的上下文中进行验证，判断其真伪。最终的忠实度分数是所有被上下文证实的断言所占的比例。</li>
+<li><strong>答案相关性评估：</strong> 评估者需要同时分析用户查询和生成的答案。评分时会惩罚那些答非所问、信息不完整或包含过多无关细节的答案。</li>
 </ul>
-<p>反之，如果应用场景需要快速响应，或者一个“大致正确”的答案就已经足够，那么使用更轻量的 ReAct 或 Plan-and-Solve 范式可能会是更具性价比的选择。</p>
+<p>（2）<strong>基于词汇重叠的经典指标</strong></p>
+<p>这类指标需要在数据集中包含一个或多个“标准答案”。它们通过计算生成答案与标准答案之间 n-gram（连续的n个词）的重叠程度来评估质量。</p>
+<ul>
+<li><p><strong>ROUGE (Recall-Oriented Understudy for Gisting Evaluation):</strong> ROUGE关注的重点是 <strong>召回率</strong>，即标准答案中的词语有多少被生成答案所覆盖，因此常用于评估内容的 <strong>完整性</strong>。其常用变体包括计算n-gram的 <code>ROUGE-N</code> 和计算最长公共子序列的 <code>ROUGE-L</code>。<br>$$<br>ROUGE-N&#x3D;\frac{匹配的 n-gram 数量}{参考答案中 n-gram 的总数}<br>$$</p>
+</li>
+<li><p><strong>BLEU (Bilingual Evalu ation Understudy):</strong> BLEU侧重于评估 <strong>精确率</strong>，衡量生成的答案中有多少词是有效的（即在标准答案中出现过）。它还引入了长度惩罚机制，避免模型生成过短的句子，因此更适合评估答案的 <strong>流畅度和准确性</strong>。<br>$$<br>BLEU&#x3D;BP×\exp⁡(∑_{n&#x3D;1}^Nw_n\log⁡p_n)<br>$$<br>其中，<code>BP</code> 是长度惩罚因子，<code>p_n</code> 是修正后的n-gram精确率。</p>
+</li>
+<li><p><strong>METEOR (Metric for Evaluation of Translation with Explicit ORdering):</strong> 作为BLEU的改进版，METEOR同时考量 <strong>精确率和召回率</strong> 的调和平均，并通过词干和同义词匹配（如将’boat’和’ship’视为相关）来更好地捕捉语义相似性。其评估结果通常被认为与人类判断的相关性更高。<br>$$<br>Fmean&#x3D;\frac{P×R}{αP+(1−α)R}<br>$$</p>
+<p>$$<br>METEOR&#x3D;F_{mean}×(1−Penalty)<br>$$</p>
+<p>其中 <code>P</code> 是精确率，<code>R</code> 是召回率，<code>Penalty</code> 是基于语序的惩罚项。</p>
+</li>
+</ul>
+<blockquote>
+<p>为了更直观地理解三者的区别，来看一个简单的例子。</p>
+<p><strong>假设：</strong></p>
+<ul>
+<li><strong>参考答案：</strong> <code>狗 在 床 上面</code> (共5个词)</li>
+<li><strong>生成答案：</strong> <code>狗 在 床 上</code> (共4个词)</li>
+</ul>
+<p><strong>评估分析：</strong></p>
+<ul>
+<li><strong>ROUGE (召回率导向):</strong> 从召回率的角度出发：“参考答案里的5个词，生成答案覆盖了多少？”——覆盖了4个。因此，它的召回率很高（ROUGE-1 为 4&#x2F;5），得分会不错。ROUGE更关心“说全了没”。</li>
+<li><strong>BLEU (精确率导向):</strong> 从精确率的角度进行评判：“生成答案里的4个词，有多少是有效的（在参考答案里）？”——全部有效，精确率很高。但它会发现生成答案比参考答案短，于是通过 <strong>长度惩罚(Brevity Penalty)</strong> 进行扣分。BLEU更关心“说对了没，以及长度是否合适”。</li>
+<li><strong>METEOR (综合平衡):</strong> 同时计算精确率和召回率，并取一个调和平均。在这个例子里，词序是完全正确的，惩罚项为0。METEOR会在“说全”和“说对”之间找到一个最佳平衡点。</li>
+</ul>
+</blockquote>
+<h4 id="方法对比和总结"><a href="#方法对比和总结" class="headerlink" title="方法对比和总结"></a>方法对比和总结</h4><p>基于LLM的评估更注重<strong>语义和逻辑</strong>，评估质量高，但成本也更高且存在评估者偏见。基于词汇重叠的指标<strong>客观、计算快、成本低</strong>，但无法理解语义，可能误判同义词或释义。在实践中，可以将两者结合，使用经典指标进行快速、大规模的初步筛选，再利用LLM进行更精细的评估。</p>
+<h2 id="常用评估工具"><a href="#常用评估工具" class="headerlink" title="常用评估工具"></a>常用评估工具</h2><h3 id="LlamaIndex-Evaluation"><a href="#LlamaIndex-Evaluation" class="headerlink" title="LlamaIndex Evaluation"></a>LlamaIndex Evaluation</h3><p><code>LlamaIndex Evaluation</code> 是<strong>深度集成于LlamaIndex框架内的评估模块</strong>，专为使用该框架构建的RAG应用提供无缝的评估能力。作为RAG开发框架的原生组件，其核心定位是<strong>为开发者在开发、调试和迭代周期中提供快速、灵活的嵌入式评估解决方案</strong>。它强调与开发流程的紧密结合，允许开发者在构建过程中即时验证和对比不同RAG策略的性能<a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>。</p>
+<blockquote>
+<p><strong>适用场景</strong>：对于深度使用 <code>LlamaIndex</code> 框架构建RAG应用的开发者而言，其内置评估模块是无缝集成的首选，提供了一站式的开发与评估体验。</p>
+</blockquote>
+<h4 id="核心理念与工作流"><a href="#核心理念与工作流" class="headerlink" title="核心理念与工作流"></a>核心理念与工作流</h4><p><code>LlamaIndex</code> 的评估理念是利用LLM作为“裁判”，以自动化的方式对RAG系统的各个环节进行打分。这种方法在很多场景下无需预先准备“标准答案”，大大降低了评估门槛。其典型工作流如下：</p>
+<ol>
+<li><strong>准备评估数据集</strong>：通过 <code>DatasetGenerator</code> 从文档中自动生成问题-答案对（<code>QueryResponseDataset</code>），或加载一个已有的数据集。为了效率，通常会将生成的数据集保存到本地，避免重复生成。</li>
+<li><strong>构建查询引擎</strong>：搭建一个或多个需要被评估的RAG查询引擎（<code>QueryEngine</code>）。这是进行对比实验的基础。</li>
+<li><strong>初始化评估器</strong>：根据评估维度，选择并初始化一个或多个评估器，如 <code>FaithfulnessEvaluator</code>（忠实度）和 <code>RelevancyEvaluator</code>（相关性）。</li>
+<li><strong>执行批量评估</strong>：使用 <code>BatchEvalRunner</code> 来管理整个评估过程。它能够高效地（可并行）将查询引擎应用于数据集中的所有问题，并调用所有评估器进行打分。</li>
+<li><strong>分析结果</strong>：从评估运行器返回的结果中，计算各项指标的平均分，从而量化地对比不同RAG策略的优劣。</li>
+</ol>
+<h3 id="RAGAS"><a href="#RAGAS" class="headerlink" title="RAGAS"></a>RAGAS</h3><p>RAGAS（RAG Assessment）是一个<strong>独立的、专注于RAG的开源评估框架</strong>。提供了一套全面的指标来量化RAG管道的检索和生成两大核心环节的性能。其最显著的特色是支持<strong>无参考评估</strong>，即在许多场景下无需人工标注的“标准答案”即可进行评估，极大地降低了评估成本。现对RAG管道的持续监控和改进。如果你需要一个轻量级、与具体RAG实现解耦、能够快速对核心指标进行量化评估的工具时，<code>RAGAS</code> 是一个理想的选择。</p>
+<h4 id="设计理念"><a href="#设计理念" class="headerlink" title="设计理念"></a>设计理念</h4><p><code>RAGAS</code> 的核心思想是通过分析问题（<code>question</code>）、生成的答案（<code>answer</code>）和检索到的上下文（<code>context</code>）三者之间的关系，来综合评估RAG系统的性能。它将复杂的评估问题分解为几个简单、可量化的维度。</p>
+<h4 id="工作流程与核心指标"><a href="#工作流程与核心指标" class="headerlink" title="工作流程与核心指标"></a>工作流程与核心指标</h4><p>RAGAS的评估流程非常简洁，通常遵循以下步骤：</p>
+<p>（1）<strong>准备数据集</strong>：根据官方文档，一个标准的评估数据集应包含 <code>question</code>（问题）、<code>answer</code>（RAG系统生成的答案）、<code>contexts</code>（检索到的上下文）以及 <code>ground_truth</code>（标准参考答案）这四列。不过，<code>ground_truth</code> 对于计算 <code>context_recall</code> 等指标是必需的，但对于 <code>faithfulness</code> 等指标则是可选的。</p>
+<p>（2）<strong>运行评估</strong>：调用 <code>ragas.evaluate()</code> 函数，传入准备好的数据集和需要评估的指标列表。</p>
+<p>（3）<strong>分析结果</strong>：获取一个包含各项指标量化分数的评估报告。</p>
+<p>其核心评估指标包括：</p>
+<ul>
+<li><code>faithfulness</code>: 衡量生成的答案中有多少比例的信息是可以由检索到的上下文所支持的。</li>
+<li><code>context_recall</code>: 衡量检索到的上下文与标准答案（<code>ground_truth</code>）的对齐程度，即标准答案中的信息是否被上下文完全“召回”。</li>
+<li><code>context_precision</code>: 衡量检索到的上下文中，信噪比如何，即有多少是真正与回答问题相关的。</li>
+<li><code>answer_relevancy</code>: 评估答案与问题的相关程度。此指标不评估事实准确性，只关注答案是否切题。</li>
+</ul>
+<h3 id="Phoenix-Arize-Phoenix"><a href="#Phoenix-Arize-Phoenix" class="headerlink" title="Phoenix (Arize Phoenix)"></a>Phoenix (Arize Phoenix)</h3><p>Phoenix (现由Arize维护) 是一个<strong>开源的LLM可观测性与评估平台</strong>。在RAG评估生态中，它主要扮演<strong>生产环境中的可视化分析与故障诊断引擎</strong>的角色。它通过捕获LLM应用的轨迹（Traces），提供强大的可视化、切片和聚类分析能力，帮助开发者理解线上真实数据的表现。Phoenix 的核心价值在于<strong>从海量生产数据中发现问题、监控性能漂移并进行深度诊断</strong>，是连接线下评估与线上运维的关键桥梁。它不仅提供评估指标，更强调对LLM应用进行追踪（Tracing）和可视化分析，从而快速定位问题<a href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。</p>
+<h4 id="核心理念"><a href="#核心理念" class="headerlink" title="核心理念"></a>核心理念</h4><p><code>Phoenix</code> 的核心是“AI可观测性”，它通过追踪RAG系统内部的每一步调用（如检索、生成等），将整个流程可视化。这使得开发者可以直观地看到每个环节的输入、输出和耗时，并在此基础上进行深入的评估和调试。</p>
+<h4 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h4><p><code>Phoenix</code> 的工作流程是先通过基于开放标准 <strong>OpenTelemetry</strong> 的<strong>代码插桩（<code>Instrumentation</code>）</strong>，在 RAG 应用中集成追踪功能，自动捕获 LLM 调用、函数执行等事件；随后在应用运行过程中持续生成<strong>追踪数据（<code>Traces</code>）</strong>，记录完整的执行链路；接着在本地启动 <code>Phoenix</code> 的 Web 界面，加载并可视化这些追踪数据；最后在 UI 中对失败案例或表现不佳的查询进行筛选、钻取，并借助内置的<strong>评估器（<code>Evals</code>）</strong>完成深入的评估与调试。</p>
+<p>特色功能：</p>
+<ul>
+<li><strong>可视化追踪</strong>: 将RAG的执行流程、数据和评估结果进行可视化展示，极大地方便了问题定位。</li>
+<li><strong>根本原因分析</strong>: 通过可视化的界面，可以轻松地对表现不佳的查询进行切片和钻取。</li>
+<li><strong>安全护栏 (<code>Guardrails</code>)</strong>: 允许为应用添加保护层，防止恶意或错误的输入输出，保障生产环境安全。</li>
+<li><strong>数据探索与标注</strong>: 提供数据探索、清洗和标注工具，帮助开发者利用生产数据反哺模型和系统优化。</li>
+<li><strong>与Arize平台集成</strong>: <code>Phoenix</code> 可以与Arize的商业平台无缝对接，实现生产环境中对RAG系统的持续监控。</li>
+</ul>
+<h3 id="对比建议"><a href="#对比建议" class="headerlink" title="对比建议"></a>对比建议</h3><table>
+<thead>
+<tr>
+<th><strong>工具</strong></th>
+<th><strong>核心机制</strong></th>
+<th><strong>独特技术</strong></th>
+<th><strong>典型应用场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RAGAS</td>
+<td>LLM驱动评估</td>
+<td>合成数据生成、无参考评估架构</td>
+<td>对比不同RAG策略、版本迭代后的性能回归测试</td>
+</tr>
+<tr>
+<td>LlamaIndex</td>
+<td>嵌入式评估</td>
+<td>异步评估引擎、模块化BaseEvaluator</td>
+<td>开发过程中快速验证单个组件或完整管道的效果</td>
+</tr>
+<tr>
+<td>Phoenix</td>
+<td>追踪分析型</td>
+<td>分布式追踪、向量聚类分析算法</td>
+<td>生产环境监控、Bad Case分析、数据漂移检测</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
-        <category>Agent</category>
-        <category>范式</category>
+        <category>RAG</category>
+        <category>系统评估</category>
       </categories>
       <tags>
-        <tag>Agent</tag>
+        <tag>RAG</tag>
       </tags>
   </entry>
   <entry>
@@ -2895,6 +3003,185 @@
       </categories>
       <tags>
         <tag>Agent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++面经</title>
+    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
+<ul>
+<li><p>函数未被使用：编译和链接时都不报错</p>
+</li>
+<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
+</li>
+<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
+</li>
+</ul>
+<p>2.头文件循环包含问题</p>
+<ul>
+<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但在源文件中需要包含具体头文件</p>
+<ul>
+<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决依赖扩散问题：使用Pimpl解决</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/12/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<span id="more"></span>
+]]></content>
+  </entry>
+  <entry>
+    <title>FastAPI学习</title>
+    <url>/2026/04/25/FastAPI%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="常见项目结构"><a href="#常见项目结构" class="headerlink" title="常见项目结构"></a>常见项目结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fastapi-project/</span><br><span class="line">├── app</span><br><span class="line">│   ├── main.py                 # 项目全局入口</span><br><span class="line">│   ├── core                    # 核心配置模块</span><br><span class="line">│   │   ├── config.py           # 全局配置、环境变量读取</span><br><span class="line">│   │   └── security.py         # JWT令牌、密码加密</span><br><span class="line">│   ├── api                     # 路由控制层</span><br><span class="line">│   │   └── v1</span><br><span class="line">│   │       └── user.py         # 用户相关接口</span><br><span class="line">│   ├── schemas                 # Pydantic数据校验、序列化层</span><br><span class="line">│   ├── crud                    # 业务逻辑层</span><br><span class="line">│   ├── models                  # ORM数据库模型层</span><br><span class="line">│   ├── db                      # 数据库连接层</span><br><span class="line">│   └── utils                   # 公共工具类</span><br><span class="line">├── .env                        # 环境变量配置文件</span><br><span class="line">└── requirements.txt             # 项目依赖包</span><br></pre></td></tr></table></figure>
+
+<h3 id="main-py-项目入口层"><a href="#main-py-项目入口层" class="headerlink" title="main.py 项目入口层"></a>main.py 项目入口层</h3><ul>
+<li>初始化 FastAPI 应用实例</li>
+<li>配置全局跨域中间件</li>
+<li>统一注册所有业务路由</li>
+<li>程序启动唯一入口</li>
+<li>自动创建数据库数据表</li>
+<li>管理项目全局配置</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</span><br><span class="line"><span class="keyword">from</span> fastapi.middleware.cors <span class="keyword">import</span> CORSMiddleware</span><br><span class="line"><span class="keyword">from</span> app.api.v1.user <span class="keyword">import</span> router <span class="keyword">as</span> user_router</span><br><span class="line"><span class="keyword">from</span> app.db.database <span class="keyword">import</span> engine, Base</span><br><span class="line"></span><br><span class="line"><span class="comment"># 程序启动时自动根据ORM模型创建数据表</span></span><br><span class="line">Base.metadata.create_all(bind=engine)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建FastAPI主应用</span></span><br><span class="line">app = FastAPI(</span><br><span class="line">    title=<span class="string">&quot;FastAPI分层后端项目&quot;</span>,</span><br><span class="line">    version=<span class="string">&quot;1.0.0&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置跨域中间件，解决前端跨域请求问题</span></span><br><span class="line">app.add_middleware(</span><br><span class="line">    CORSMiddleware,</span><br><span class="line">    allow_origins=[<span class="string">&quot;http://localhost:5173&quot;</span>],</span><br><span class="line">    allow_credentials=<span class="literal">True</span>,</span><br><span class="line">    allow_methods=[<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;POST&quot;</span>, <span class="string">&quot;PUT&quot;</span>, <span class="string">&quot;DELETE&quot;</span>],</span><br><span class="line">    allow_headers=[<span class="string">&quot;*&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 注册所有业务路由</span></span><br><span class="line">app.include_router(user_router)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根路径测试接口</span></span><br><span class="line"><span class="meta">@app.get(<span class="params"><span class="string">&quot;/&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">index</span>():</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;msg&quot;</span>:<span class="string">&quot;项目启动成功&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="api-路由控制层-Controller"><a href="#api-路由控制层-Controller" class="headerlink" title="api 路由控制层 Controller"></a>api 路由控制层 Controller</h3><ul>
+<li>接收前端所有 HTTP 请求</li>
+<li>匹配请求路径、请求方式</li>
+<li>获取请求参数、请求头 Token</li>
+<li>做登录鉴权依赖注入</li>
+<li>调用业务层方法，<strong>不写业务逻辑、不操作数据库</strong></li>
+<li>接收业务结果，返回统一数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi <span class="keyword">import</span> APIRouter, Depends, Header, HTTPException</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> Session</span><br><span class="line"><span class="keyword">from</span> jose <span class="keyword">import</span> jwt, JWTError</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> app.db.database <span class="keyword">import</span> get_db</span><br><span class="line"><span class="keyword">from</span> app.schemas.user <span class="keyword">import</span> UserCreate, TokenResponse</span><br><span class="line"><span class="keyword">from</span> app.crud.user <span class="keyword">import</span> create_user, get_user_by_username, verify_login</span><br><span class="line"><span class="keyword">from</span> app.core.security <span class="keyword">import</span> create_access_token</span><br><span class="line"><span class="keyword">from</span> app.utils.response <span class="keyword">import</span> success, fail</span><br><span class="line"><span class="keyword">from</span> app.core.config <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建用户模块路由对象</span></span><br><span class="line">router = APIRouter(</span><br><span class="line">    prefix=<span class="string">&quot;/user&quot;</span>,</span><br><span class="line">    tags=[<span class="string">&quot;用户管理模块&quot;</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户注册接口</span></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&quot;/register&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">register</span>(<span class="params">user: UserCreate, db: Session = Depends(<span class="params">get_db</span>)</span>):</span><br><span class="line">    <span class="comment"># 判断用户名是否已经存在</span></span><br><span class="line">    exist_user = get_user_by_username(db, user.username)</span><br><span class="line">    <span class="keyword">if</span> exist_user:</span><br><span class="line">        <span class="keyword">return</span> fail(msg=<span class="string">&quot;用户名已存在&quot;</span>)</span><br><span class="line">    <span class="comment"># 调用业务层完成注册</span></span><br><span class="line">    create_user(db, user)</span><br><span class="line">    <span class="keyword">return</span> success(msg=<span class="string">&quot;注册成功&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户登录接口</span></span><br><span class="line"><span class="meta">@router.post(<span class="params"><span class="string">&quot;/login&quot;</span>, response_model=TokenResponse</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">login</span>(<span class="params">user: UserCreate, db: Session = Depends(<span class="params">get_db</span>)</span>):</span><br><span class="line">    <span class="comment"># 校验账号密码</span></span><br><span class="line">    login_user = verify_login(db, user.username, user.password)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> login_user:</span><br><span class="line">        <span class="keyword">raise</span> HTTPException(status_code=<span class="number">400</span>, detail=<span class="string">&quot;账号或密码错误&quot;</span>)</span><br><span class="line">    <span class="comment"># 生成登录令牌</span></span><br><span class="line">    token = create_access_token(login_user.username)</span><br><span class="line">    <span class="keyword">return</span> success(data=&#123;<span class="string">&quot;token&quot;</span>: token&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要登录才能访问的个人信息接口</span></span><br><span class="line"><span class="meta">@router.get(<span class="params"><span class="string">&quot;/info&quot;</span></span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_user_info</span>(<span class="params">token: <span class="built_in">str</span> = Header(<span class="params"><span class="literal">None</span></span>), db: Session = Depends(<span class="params">get_db</span>)</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 解密token获取用户信息</span></span><br><span class="line">        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])</span><br><span class="line">        username = payload.get(<span class="string">&quot;sub&quot;</span>)</span><br><span class="line">        user = get_user_by_username(db, username)</span><br><span class="line">        <span class="keyword">return</span> success(data=user)</span><br><span class="line">    <span class="keyword">except</span> JWTError:</span><br><span class="line">        <span class="keyword">return</span> fail(msg=<span class="string">&quot;Token失效，请重新登录&quot;</span>, code=<span class="number">401</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="schemas-数据模型层-Pydantic"><a href="#schemas-数据模型层-Pydantic" class="headerlink" title="schemas 数据模型层 Pydantic"></a>schemas 数据模型层 Pydantic</h3><ul>
+<li>自动校验前端传入参数类型、是否必填</li>
+<li>自动解析 JSON 请求体</li>
+<li>格式化、过滤返回给前端的数据</li>
+<li>配合框架<strong>自动生成接口文档</strong></li>
+<li>提前拦截非法参数，减少业务代码判断</li>
+<li>实现 ORM 对象与 JSON 数据转换</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pydantic <span class="keyword">import</span> BaseModel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户注册、登录 请求参数模型</span></span><br><span class="line"><span class="comment"># 自动校验参数类型、必填项</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserCreate</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line">    password: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户信息返回模型，规范返回给前端的数据字段</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserInfo</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    <span class="built_in">id</span>: <span class="built_in">int</span></span><br><span class="line">    username: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开启ORM映射，支持直接读取数据库对象</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Config</span>:</span><br><span class="line">        from_attributes = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 登录返回token数据模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TokenResponse</span>(<span class="title class_ inherited__">BaseModel</span>):</span><br><span class="line">    token: <span class="built_in">str</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="crud-业务逻辑层-Service"><a href="#crud-业务逻辑层-Service" class="headerlink" title="crud 业务逻辑层 Service"></a>crud 业务逻辑层 Service</h3><ul>
+<li><p>编写项目所有业务逻辑</p>
+</li>
+<li><p>数据判断、逻辑处理、业务规则判断</p>
+</li>
+<li><p>调用数据库模型完成增删改查</p>
+</li>
+<li><p>项目真正处理业务的核心代码层</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> Session</span><br><span class="line"><span class="keyword">from</span> app.models.user <span class="keyword">import</span> User</span><br><span class="line"><span class="keyword">from</span> app.schemas.user <span class="keyword">import</span> UserCreate</span><br><span class="line"><span class="keyword">from</span> app.core.security <span class="keyword">import</span> get_password_hash, verify_password</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据用户名查询用户</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_user_by_username</span>(<span class="params">db: Session, username: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="keyword">return</span> db.query(User).<span class="built_in">filter</span>(User.username == username).first()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户注册业务逻辑</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_user</span>(<span class="params">db: Session, user: UserCreate</span>):</span><br><span class="line">    <span class="comment"># 密码加密处理</span></span><br><span class="line">    hash_pwd = get_password_hash(user.password)</span><br><span class="line">    <span class="comment"># 创建数据库用户对象</span></span><br><span class="line">    db_user = User(username=user.username, password=hash_pwd)</span><br><span class="line">    <span class="comment"># 添加数据</span></span><br><span class="line">    db.add(db_user)</span><br><span class="line">    <span class="comment"># 提交事务保存到数据库</span></span><br><span class="line">    db.commit()</span><br><span class="line">    <span class="comment"># 刷新对象数据</span></span><br><span class="line">    db.refresh(db_user)</span><br><span class="line">    <span class="keyword">return</span> db_user</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户登录账号密码校验</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">verify_login</span>(<span class="params">db: Session, username: <span class="built_in">str</span>, password: <span class="built_in">str</span></span>):</span><br><span class="line">    user = get_user_by_username(db, username)</span><br><span class="line">    <span class="comment"># 用户不存在直接返回空</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="comment"># 密码不一致返回空</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> verify_password(password, user.password):</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> user</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="models-ORM-数据库模型层"><a href="#models-ORM-数据库模型层" class="headerlink" title="models ORM 数据库模型层"></a>models ORM 数据库模型层</h3><ul>
+<li>映射 MySQL 真实数据表</li>
+<li>定义数据表字段、类型、主键、备注</li>
+<li>使用对象操作代替原生 SQL 语句</li>
+<li>防止 SQL 注入，简化数据库操作</li>
+<li>与数据库一一对应</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> Column, Integer, String, DateTime</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> app.db.database <span class="keyword">import</span> Base</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用户数据表ORM模型，对应mysql user表</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span>(<span class="title class_ inherited__">Base</span>):</span><br><span class="line">    <span class="comment"># 数据库真实表名</span></span><br><span class="line">    __tablename__ = <span class="string">&quot;user&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 用户主键id</span></span><br><span class="line">    <span class="built_in">id</span> = Column(Integer, primary_key=<span class="literal">True</span>, index=<span class="literal">True</span>, comment=<span class="string">&quot;用户ID&quot;</span>)</span><br><span class="line">    <span class="comment"># 用户名，唯一不可重复</span></span><br><span class="line">    username = Column(String(<span class="number">50</span>), unique=<span class="literal">True</span>, nullable=<span class="literal">False</span>, comment=<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">    <span class="comment"># 加密后的用户密码</span></span><br><span class="line">    password = Column(String(<span class="number">255</span>), nullable=<span class="literal">False</span>, comment=<span class="string">&quot;用户密码&quot;</span>)</span><br><span class="line">    <span class="comment"># 账号创建时间</span></span><br><span class="line">    create_time = Column(DateTime, default=datetime.now, comment=<span class="string">&quot;创建时间&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="db-数据库连接层"><a href="#db-数据库连接层" class="headerlink" title="db 数据库连接层"></a>db 数据库连接层</h3><ul>
+<li>创建数据库连接引擎</li>
+<li>管理数据库会话 Session</li>
+<li>统一创建、关闭数据库连接</li>
+<li>提供全局数据库依赖，供所有接口使用</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.ext.declarative <span class="keyword">import</span> declarative_base</span><br><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> sessionmaker</span><br><span class="line"><span class="keyword">from</span> app.core.config <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拼接完整mysql数据库连接地址</span></span><br><span class="line">SQL_URL = (</span><br><span class="line">    <span class="string">f&quot;mysql+pymysql://<span class="subst">&#123;settings.DB_USER&#125;</span>:<span class="subst">&#123;settings.DB_PASSWORD&#125;</span>&quot;</span></span><br><span class="line">    <span class="string">f&quot;@<span class="subst">&#123;settings.DB_HOST&#125;</span>:<span class="subst">&#123;settings.DB_PORT&#125;</span>/<span class="subst">&#123;settings.DB_NAME&#125;</span>?charset=utf8mb4&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库引擎，建立数据库基础连接</span></span><br><span class="line">engine = create_engine(</span><br><span class="line">    SQL_URL,</span><br><span class="line">    pool_pre_ping=<span class="literal">True</span>  <span class="comment"># 自动检测连接有效性，防止断开报错</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据库会话工厂，用来生成数据库操作对象</span></span><br><span class="line">SessionLocal = sessionmaker(autocommit=<span class="literal">False</span>, autoflush=<span class="literal">False</span>, bind=engine)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ORM模型基类，所有数据表模型都继承此类</span></span><br><span class="line">Base = declarative_base()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据库依赖函数：每次接口请求自动获取一次数据库连接</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_db</span>():</span><br><span class="line">    db = SessionLocal()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">yield</span> db</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="comment"># 请求结束自动关闭连接，释放资源</span></span><br><span class="line">        db.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="core-核心配置层"><a href="#core-核心配置层" class="headerlink" title="core 核心配置层"></a>core 核心配置层</h3><ul>
+<li>读取数据库密钥、JWT 密钥、过期时间</li>
+<li>密码加密、密码校验工具封装</li>
+<li>JWT 令牌生成、解密、身份认证逻辑</li>
+</ul>
+<p><strong>配置文件</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入环境变量读取工具</span></span><br><span class="line"><span class="keyword">from</span> pydantic_settings <span class="keyword">import</span> BaseSettings</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置类，自动读取.env配置文件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Settings</span>(<span class="title class_ inherited__">BaseSettings</span>):</span><br><span class="line">    <span class="comment"># 数据库配置</span></span><br><span class="line">    DB_HOST: <span class="built_in">str</span></span><br><span class="line">    DB_PORT: <span class="built_in">int</span></span><br><span class="line">    DB_USER: <span class="built_in">str</span></span><br><span class="line">    DB_PASSWORD: <span class="built_in">str</span></span><br><span class="line">    DB_NAME: <span class="built_in">str</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># JWT令牌配置</span></span><br><span class="line">    SECRET_KEY: <span class="built_in">str</span></span><br><span class="line">    ALGORITHM: <span class="built_in">str</span></span><br><span class="line">    ACCESS_TOKEN_EXPIRE_MINUTES: <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 指定配置文件路径</span></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Config</span>:</span><br><span class="line">        env_file = <span class="string">&quot;.env&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局唯一配置实例</span></span><br><span class="line">settings = Settings()</span><br></pre></td></tr></table></figure>
+
+<p><strong>JWT</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta</span><br><span class="line"><span class="keyword">from</span> jose <span class="keyword">import</span> jwt</span><br><span class="line"><span class="keyword">from</span> passlib.context <span class="keyword">import</span> CryptContext</span><br><span class="line"><span class="keyword">from</span> app.core.config <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建密码加密上下文，使用bcrypt加密算法</span></span><br><span class="line">pwd_context = CryptContext(schemes=[<span class="string">&quot;bcrypt&quot;</span>], deprecated=<span class="string">&quot;auto&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 密码加密：明文密码 -&gt; 加密密码</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_password_hash</span>(<span class="params">password: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">    <span class="keyword">return</span> pwd_context.<span class="built_in">hash</span>(password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 密码校验：明文密码 和 加密密码比对</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">verify_password</span>(<span class="params">plain_password: <span class="built_in">str</span>, hashed_password: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">    <span class="keyword">return</span> pwd_context.verify(plain_password, hashed_password)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成JWT登录令牌</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_access_token</span>(<span class="params">subject: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="comment"># 设置token过期时间</span></span><br><span class="line">    expire_time = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)</span><br><span class="line">    <span class="comment"># 封装令牌载荷数据</span></span><br><span class="line">    payload = &#123;</span><br><span class="line">        <span class="string">&quot;sub&quot;</span>: subject,</span><br><span class="line">        <span class="string">&quot;exp&quot;</span>: expire_time</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 加密生成token字符串</span></span><br><span class="line">    token = jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)</span><br><span class="line">    <span class="keyword">return</span> token</span><br></pre></td></tr></table></figure>
+
+<h3 id="utils-工具公共层"><a href="#utils-工具公共层" class="headerlink" title="utils 工具公共层"></a>utils 工具公共层</h3><ul>
+<li>封装统一接口返回格式</li>
+<li>统一成功、失败返回体</li>
+<li>通用工具方法、格式化处理</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> JSONResponse</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统一成功返回格式</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">success</span>(<span class="params">data=<span class="literal">None</span>, msg=<span class="string">&quot;请求成功&quot;</span>, code=<span class="number">200</span></span>):</span><br><span class="line">    <span class="keyword">return</span> JSONResponse(content=&#123;</span><br><span class="line">        <span class="string">&quot;code&quot;</span>: code,</span><br><span class="line">        <span class="string">&quot;msg&quot;</span>: msg,</span><br><span class="line">        <span class="string">&quot;data&quot;</span>: data</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统一失败返回格式</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fail</span>(<span class="params">msg=<span class="string">&quot;请求失败&quot;</span>, code=<span class="number">400</span></span>):</span><br><span class="line">    <span class="keyword">return</span> JSONResponse(content=&#123;</span><br><span class="line">        <span class="string">&quot;code&quot;</span>: code,</span><br><span class="line">        <span class="string">&quot;msg&quot;</span>: msg,</span><br><span class="line">        <span class="string">&quot;data&quot;</span>: <span class="literal">None</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口完整请求流程"><a href="#接口完整请求流程" class="headerlink" title="接口完整请求流程"></a>接口完整请求流程</h2><p>前端请求</p>
+<p>→ 跨域中间件校验放行</p>
+<p>→ main 主程序路由分发</p>
+<p>→ api 路由接收请求</p>
+<p>→ schemas 参数自动校验</p>
+<p>→ Token 登录身份校验</p>
+<p>→ 调用 crud 业务逻辑</p>
+<p>→ models 操作数据库</p>
+<p>→ db 数据库会话交互</p>
+<p>→ 数据封装统一返回前端</p>
+<p>→ FastAPI 自动生成接口文档</p>
+<p>![ChatGPT Image 2026年4月26日 20_57_40](C:\Users\Guailper\Downloads\ChatGPT Image 2026年4月26日 20_57_40.png)</p>
+<h2 id="FastAPI-核心基础知识点"><a href="#FastAPI-核心基础知识点" class="headerlink" title="FastAPI 核心基础知识点"></a>FastAPI 核心基础知识点</h2><h3 id="路由请求方式：GET、POST、PUT、DELETE"><a href="#路由请求方式：GET、POST、PUT、DELETE" class="headerlink" title="路由请求方式：GET、POST、PUT、DELETE"></a><strong>路由请求方式</strong>：GET、POST、PUT、DELETE</h3><h3 id="路径参数、查询参数"><a href="#路径参数、查询参数" class="headerlink" title="路径参数、查询参数"></a>路径参数、查询参数</h3><h3 id="请求体-Body（JSON-参数）"><a href="#请求体-Body（JSON-参数）" class="headerlink" title="请求体 Body（JSON 参数）"></a>请求体 Body（JSON 参数）</h3><h3 id="Pydantic-数据模型、数据校验"><a href="#Pydantic-数据模型、数据校验" class="headerlink" title="Pydantic 数据模型、数据校验"></a>Pydantic 数据模型、数据校验</h3><h3 id="请求头-Header、Cookie"><a href="#请求头-Header、Cookie" class="headerlink" title="请求头 Header、Cookie"></a>请求头 Header、Cookie</h3><h3 id="响应数据、自定义返回格式"><a href="#响应数据、自定义返回格式" class="headerlink" title="响应数据、自定义返回格式"></a>响应数据、自定义返回格式</h3><h3 id="跨域-CORS"><a href="#跨域-CORS" class="headerlink" title="跨域 CORS"></a>跨域 CORS</h3><h3 id="JWT-登录认证-Token"><a href="#JWT-登录认证-Token" class="headerlink" title="JWT 登录认证 Token"></a>JWT 登录认证 Token</h3><h3 id="依赖注入-Depends"><a href="#依赖注入-Depends" class="headerlink" title="依赖注入 Depends"></a>依赖注入 Depends</h3><h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>依赖注入（Dependency Injection，简称DI），简单来说，就是将程序中「多个模块&#x2F;接口都需要用到的公共逻辑（如登录校验、数据库连接），抽离成独立的“依赖函数”，在需要使用的地方，通过声明依赖，由框架自动执行该函数、并将执行结果传入，无需手动调用和重复编写的一种编程思想。</p>
+<p>在FastAPI中，依赖注入主要通过<code>Depends()</code>方法实现，核心目的是解决代码重复、结构混乱的问题，让接口只专注于核心业务，不用关心公共逻辑的实现细节。</p>
+<p>通俗类比：就像写作业时，不用自己准备铅笔、本子（重复杂事），有专门的后勤员（依赖函数）提前准备好，你只要说“我需要学习工具”（声明依赖），后勤员就会把东西递到你手上（自动注入），你直接写作业（核心业务）即可。</p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>FastAPI的依赖注入核心是「自动解析+自动执行+自动传值」，整体流程分为3步，简单易懂，无需复杂理解：</p>
+<ol>
+<li>定义依赖函数：将公共逻辑（如登录校验、数据库连接）单独写成一个函数，函数可接收参数（如请求头的Token），并返回处理结果（如当前登录用户、数据库会话）。</li>
+<li>声明依赖：在接口函数的参数中，通过<code>参数名 = Depends(依赖函数)</code>的方式，告诉FastAPI“这个接口需要用到这个依赖”。</li>
+<li>自动注入：当有请求访问接口时，FastAPI会自动先执行声明的依赖函数，获取其返回结果，再将结果自动传入接口函数的对应参数中，接口直接使用该结果即可，无需手动调用依赖函数。</li>
+</ol>
+<p>补充：依赖可以多层嵌套（如A依赖B，B依赖C），FastAPI会自动按顺序解析、执行所有依赖，最终将最底层的结果传入接口，全程无需手动干预。同时，依赖函数执行完成后，框架会自动处理资源释放（如数据库连接关闭）。</p>
+<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
+<li>减少重复代码（核心优点）：公共逻辑（登录、连库）只写1次，所有需要的接口直接复用，避免重复编写，提升开发效率。</li>
+<li>职责分离，结构清晰：依赖函数负责处理杂事（校验、资源管理），接口只负责核心业务（增删改查），代码分层明确，易读易维护。</li>
+<li>统一维护，修改便捷：若公共逻辑需要修改（如登录规则、数据库地址变更），只需修改依赖函数1处，所有依赖该函数的接口自动同步更新，减少修改成本和bug。</li>
+<li>实现代码解耦：接口无需关心依赖的内部实现，只需声明“需要什么”，依赖和接口互不影响，便于后续扩展和修改。</li>
+<li>便于测试和权限控制：可灵活替换依赖（如测试时用模拟依赖），也可通过多层依赖组合（如“登录校验→管理员校验”），实现灵活的权限管控。</li>
+<li>自动管理资源：如数据库连接依赖，框架会自动开启连接、请求结束后自动关闭，避免人为忘记释放资源导致的问题。</li>
+</ol>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ol>
+<li>学习成本高：新手难以理解“数据自动传入”的逻辑，阅读代码时需要跳转查看依赖函数，增加阅读成本。</li>
+<li>排查问题复杂：若依赖多层嵌套（A→B→C），一旦出现报错，报错链路较长，难以快速定位问题所在。</li>
+<li>小型项目易过度设计：若项目只有2-3个接口，无需复杂的公共逻辑，强行使用依赖注入会多写多余代码，小题大做。</li>
+<li>存在微量性能损耗：框架需要自动解析依赖、执行依赖函数，比手动调用函数多了一层中间流程，虽损耗极小可忽略，但理论上存在性能开销。</li>
+<li>需注意依赖生命周期：不规范使用（如全局依赖未释放资源），可能导致数据库连接泄露、全局变量污染等问题。</li>
+</ol>
+<h3 id="异步-async-await"><a href="#异步-async-await" class="headerlink" title="异步 async &#x2F;await"></a>异步 async &#x2F;await</h3><h3 id="数据库操作、ORM"><a href="#数据库操作、ORM" class="headerlink" title="数据库操作、ORM"></a>数据库操作、ORM</h3><h3 id="自动接口文档"><a href="#自动接口文档" class="headerlink" title="自动接口文档"></a>自动接口文档</h3>]]></content>
+      <categories>
+        <category>Python</category>
+        <category>后端</category>
+        <category>后端</category>
+        <category>FastAPI</category>
+      </categories>
+      <tags>
+        <tag>fastapi</tag>
       </tags>
   </entry>
 </search>
