@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+    <title>Git学习</title>
+    <url>/2026/04/07/Git%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
+<ul>
+<li>工作区（Working Directory）</li>
+</ul>
+<p>实际修改文件的地方，即本地工作目录</p>
+<ul>
+<li>暂存区</li>
+</ul>
+<p>文件修改完成后，暂时存放的地方</p>
+<p>指令：git add</p>
+<ul>
+<li>本地仓库</li>
+</ul>
+<p>存放暂存区中打包好的文件，并附上标签信息</p>
+<p>指令：git commit</p>
+<ul>
+<li>远程仓库</li>
+</ul>
+<p>接收本地仓库中发送过来的文件包，方便别人查看</p>
+<p>指令：git push</p>
+<ul>
+<li>贮藏区</li>
+</ul>
+<p>存储未完成但又不想提交的文件</p>
+<p>指令：git stash</p>
+<h1 id="初次配置"><a href="#初次配置" class="headerlink" title="初次配置"></a>初次配置</h1><p>全局基础参数配置：用户名和邮箱（github或gitee中使用的名字和邮箱）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+<h1 id="仓库相关"><a href="#仓库相关" class="headerlink" title="仓库相关"></a>仓库相关</h1><h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong> 是使用 Git 的第一个命令。</p>
+<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>当前目录作为仓库：git init</p>
+<p>指定目录作为仓库：git init {路径}</p>
+<p>[^1]: <strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 **’**，Windows 系统，commit 信息使用双引号 **”**。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 **git commit -m “提交说明”**。</p>
+<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><p>使用git remote来关联远程仓库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看当前关联的远程仓库</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 关联远程仓库（把链接换成你的）</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">示例：git remote add origin https://github.com/user_name/respository_name.git(仓库名区分大小写)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 修改远程仓库地址</span></span><br><span class="line">git remote set-url origin https://新地址.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 第一次克隆整个项目，完整仓库地址可以在github仓库页面获取到</span></span><br><span class="line">git clone https://远程仓库地址.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 拉取远程分支最新代码</span></span><br><span class="line">git pull origin 分支名（如main）</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看文件修改状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 添加文件到暂存区</span></span><br><span class="line">git add 文件名        # 添加单个文件</span><br><span class="line">git add .            # 添加所有文件（最常用）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 提交到本地仓库（必须写备注）</span></span><br><span class="line">git commit -m &quot;本次提交说明&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 推送到远程仓库，首次push分支需要使用git push origin 分支名(如main、master)</span></span><br><span class="line">git push origin main    # 第一次推送，主流分支名 main/master</span><br><span class="line">git push				# 非第一次推送</span><br></pre></td></tr></table></figure>
+
+<h1 id="分支相关"><a href="#分支相关" class="headerlink" title="分支相关"></a>分支相关</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看所有分支，前面带 * 的是你当前所在的分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 创建新分支（开发新功能），基于你当前所在的分支，复制一份代码，创建新分支。注意：创建分支后需要手动切换到新分支</span></span><br><span class="line">git branch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 切换到分支</span></span><br><span class="line">git checkout 分支名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或新版命令</span></span><br><span class="line">git switch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 创建并直接切换分支（最常用）</span></span><br><span class="line">git checkout -b 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5. 把分支代码合并到主分支</span></span><br><span class="line">git checkout main    # 先切回主分支</span><br><span class="line">git merge 分支名     # 合并你的分支</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6. 删除本地分支</span></span><br><span class="line">git branch -d 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7. 推送分支到远程</span></span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
+<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
+<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
+<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
+<p>打开id_rsa.pub文件，复制其中的密钥。</p>
+<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
 ]]></content>
       <tags>
-        <tag>二进制</tag>
+        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -103,65 +121,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git学习</title>
-    <url>/2026/04/07/Git%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
-<ul>
-<li>工作区（Working Directory）</li>
-</ul>
-<p>实际修改文件的地方，即本地工作目录</p>
-<ul>
-<li>暂存区</li>
-</ul>
-<p>文件修改完成后，暂时存放的地方</p>
-<p>指令：git add</p>
-<ul>
-<li>本地仓库</li>
-</ul>
-<p>存放暂存区中打包好的文件，并附上标签信息</p>
-<p>指令：git commit</p>
-<ul>
-<li>远程仓库</li>
-</ul>
-<p>接收本地仓库中发送过来的文件包，方便别人查看</p>
-<p>指令：git push</p>
-<ul>
-<li>贮藏区</li>
-</ul>
-<p>存储未完成但又不想提交的文件</p>
-<p>指令：git stash</p>
-<h1 id="初次配置"><a href="#初次配置" class="headerlink" title="初次配置"></a>初次配置</h1><p>全局基础参数配置：用户名和邮箱（github或gitee中使用的名字和邮箱）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的名字&quot;</span><br><span class="line">git config --global user.email &quot;你的邮箱&quot;</span><br></pre></td></tr></table></figure>
-
-<h1 id="仓库相关"><a href="#仓库相关" class="headerlink" title="仓库相关"></a>仓库相关</h1><h2 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h2><p>Git 使用 <strong>git init</strong> 命令来初始化一个 Git 仓库，Git 的很多命令都需要在 Git 的仓库中运行，所以 <strong>git init</strong> 是使用 Git 的第一个命令。</p>
-<p>在执行完成 <strong>git init</strong> 命令后，Git 仓库会生成一个 .git 目录，该目录包含了资源的所有元数据，其他的项目目录保持不变。</p>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>当前目录作为仓库：git init</p>
-<p>指定目录作为仓库：git init {路径}</p>
-<p>[^1]: <strong>注：</strong> 在 Linux 系统中，commit 信息使用单引号 **’**，Windows 系统，commit 信息使用双引号 **”**。所以在 git bash 中 <strong>git commit -m ‘提交说明’</strong> 这样是可以的，在 Windows 命令行中就要使用双引号 **git commit -m “提交说明”**。</p>
-<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><p>使用git remote来关联远程仓库。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看当前关联的远程仓库</span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 关联远程仓库（把链接换成你的）</span></span><br><span class="line">git remote add origin https://github.com/xxx/xxx.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">示例：git remote add origin https://github.com/user_name/respository_name.git(仓库名区分大小写)</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 修改远程仓库地址</span></span><br><span class="line">git remote set-url origin https://新地址.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="仓库克隆"><a href="#仓库克隆" class="headerlink" title="仓库克隆"></a>仓库克隆</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 第一次克隆整个项目，完整仓库地址可以在github仓库页面获取到</span></span><br><span class="line">git clone https://远程仓库地址.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 拉取远程分支最新代码</span></span><br><span class="line">git pull origin 分支名（如main）</span><br></pre></td></tr></table></figure>
-
-<h2 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看文件修改状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 添加文件到暂存区</span></span><br><span class="line">git add 文件名        # 添加单个文件</span><br><span class="line">git add .            # 添加所有文件（最常用）</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 提交到本地仓库（必须写备注）</span></span><br><span class="line">git commit -m &quot;本次提交说明&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 推送到远程仓库，首次push分支需要使用git push origin 分支名(如main、master)</span></span><br><span class="line">git push origin main    # 第一次推送，主流分支名 main/master</span><br><span class="line">git push				# 非第一次推送</span><br></pre></td></tr></table></figure>
-
-<h1 id="分支相关"><a href="#分支相关" class="headerlink" title="分支相关"></a>分支相关</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1. 查看所有分支，前面带 * 的是你当前所在的分支</span></span><br><span class="line">git branch</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2. 创建新分支（开发新功能），基于你当前所在的分支，复制一份代码，创建新分支。注意：创建分支后需要手动切换到新分支</span></span><br><span class="line">git branch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3. 切换到分支</span></span><br><span class="line">git checkout 分支名</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或新版命令</span></span><br><span class="line">git switch 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4. 创建并直接切换分支（最常用）</span></span><br><span class="line">git checkout -b 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5. 把分支代码合并到主分支</span></span><br><span class="line">git checkout main    # 先切回主分支</span><br><span class="line">git merge 分支名     # 合并你的分支</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">6. 删除本地分支</span></span><br><span class="line">git branch -d 分支名</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">7. 推送分支到远程</span></span><br><span class="line">git push origin 分支名</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h1><h2 id="在桌面进入git-bash："><a href="#在桌面进入git-bash：" class="headerlink" title="在桌面进入git bash："></a>在桌面进入git bash：</h2><p>账号确定：git config –global user.name “账号名字”</p>
-<p>邮箱确定(账号注册时的邮箱)：git config –global user.email “邮箱”</p>
-<p>生成本地密码：ssh-keygen -t rsa -C “邮箱备注”</p>
-<p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
-<p>打开id_rsa.pub文件，复制其中的密钥。</p>
-<p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#103;&#105;&#116;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>(注意看出现的信息是否连接成功)</p>
-]]></content>
-      <tags>
-        <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>栈的定义及实现(C语言)</title>
     <url>/2021/11/01/%E6%A0%88/</url>
     <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
@@ -211,26 +170,44 @@
       </tags>
   </entry>
   <entry>
-    <title>PicGo图床配置</title>
-    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
-<p>进入主页后点击New进入创建界面</p>
-<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
-<p>然后点击Create repository创建。</p>
-<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
-<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
-<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
-<p>复制生成的token（后面会用到）</p>
-<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
-<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
-<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
-<p>上传服务选择PicGo。路径选择你的安装路径。</p>
-<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
 ]]></content>
       <tags>
-        <tag>图床</tag>
+        <tag>二进制</tag>
       </tags>
   </entry>
   <entry>
@@ -338,6 +315,29 @@
 ]]></content>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PicGo图床配置</title>
+    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
+<p>进入主页后点击New进入创建界面</p>
+<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
+<p>然后点击Create repository创建。</p>
+<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
+<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
+<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
+<p>复制生成的token（后面会用到）</p>
+<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
+<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
+<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
+<p>上传服务选择PicGo。路径选择你的安装路径。</p>
+<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+]]></content>
+      <tags>
+        <tag>图床</tag>
       </tags>
   </entry>
   <entry>
@@ -450,6 +450,84 @@
 <h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
+    <title>软件测试</title>
+    <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p>
+<ul>
+<li>单元测试：对最小模块测试</li>
+<li>集成测试：小模块集成后测试</li>
+<li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li>
+<li>验收测试：上线前的测试，包括<ul>
+<li>α测试：内测，开发环境下测试模拟用户测试</li>
+<li>β测试：公测，实际环境下用户的测试</li>
+</ul>
+</li>
+</ul>
+<p>是否查看代码：</p>
+<ul>
+<li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li>
+<li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li>
+<li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li>
+</ul>
+<p>测试执行方式：</p>
+<ul>
+<li>静态测试：不运行程序，只是检查代码</li>
+<li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li>
+</ul>
+<p>是否手工测试：</p>
+<ul>
+<li>手动测试：即人工测试</li>
+<li>自动测试：使用代码进行测试</li>
+</ul>
+<p>其他：</p>
+<ul>
+<li>冒烟测试：</li>
+<li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li>
+<li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li>
+<li>探索性测试：升级版的随机测试，未来的发展方向</li>
+</ul>
+<h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul>
+<li>70%单元测试</li>
+<li>20%服务测试</li>
+<li>10%用户界面测试</li>
+</ul>
+<h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p>
+<ul>
+<li><p>等价类划分</p>
+<p>输入域明确：把程序的输入域划分为若干个子集</p>
+<p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p>
+<p>常见分类：有效、无效等价类</p>
+</li>
+<li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p>
+</li>
+<li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p>
+</li>
+<li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p>
+</li>
+<li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p>
+</li>
+<li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p>
+<ul>
+<li>成本低，可以不用提前设计大量测试用例</li>
+<li>可以激发测试工程师的创造性，更快发现问题</li>
+<li>测试覆盖度无法得到有效保障</li>
+<li>多数测试活动都是由探索性测试与脚本用例结合</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p>
+<p>三大核心要素：标题、步骤、断言</p>
+<ul>
+<li>标题：测试用例的描述</li>
+<li>步骤：测试执行过程的描述</li>
+<li>断言：实际结果与预期结果对比</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
@@ -477,6 +555,18 @@
 <p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
 <p>③通信总线：计算机系统之间的通信</p>
 <h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>]]></content>
+  </entry>
+  <entry>
+    <title>Linux下gdb调试</title>
+    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
   </entry>
   <entry>
     <title>C++学习笔记</title>
@@ -632,94 +722,73 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux下gdb调试</title>
-    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="Linux下gdb调试"><a href="#Linux下gdb调试" class="headerlink" title="Linux下gdb调试"></a>Linux下gdb调试</h1><p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
+    <title>深度学习激活函数学习</title>
+    <url>/2026/01/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="一、激活函数原理"><a href="#一、激活函数原理" class="headerlink" title="一、激活函数原理"></a>一、激活函数原理</h2><p>激活函数（activation function），就是在神经网络的神经元上运行的函数，负责将神经元的输入映射到输出层，旨在帮组神经网络学习数据中的复杂模式。</p>
+<h2 id="二、激活函数的作用"><a href="#二、激活函数的作用" class="headerlink" title="二、激活函数的作用"></a>二、激活函数的作用</h2><p>使用激活函数能够为神经网络引入非线性因素，使得神经网络可以任意逼近任何非线性函数，使深层神经网络表达能力更加强大，使得神经网络可以应用到总舵的非线性模型中。如果不使用激活函数，那神经网络的每一层输出都是上层输入的线性函数，无论神经网络的层数是多少，其输出都是输入的线性组合，这样就退化为原始的感知机模型了。</p>
+<h2 id="三、激活函数分类"><a href="#三、激活函数分类" class="headerlink" title="三、激活函数分类"></a>三、激活函数分类</h2><p>激活函数可以分为<strong>饱和激活函数</strong>与<strong>非饱和激活函数</strong>。</p>
+<p>3.1 饱和的概念</p>
+<p>假设h(x)是一个激活函数，有如下一个极限：<br>$$<br>\lim_{n\rightarrow\pm\infty}h^\prime(x)&#x3D;0<br>$$<br>当n趋于正无穷，激活函数的导数趋于0，则称之为右饱和；若当n趋于负无穷时，激活函数的导数趋于0，则称之为左饱和。当一个函数同时满足左饱和和右饱和时，我们称之为饱和，不然则称之为非饱和。</p>
+<ul>
+<li>饱和激活函数：sigmoid、tanh</li>
+<li>非饱和激活函数：ReLU、 Leakly ReLU、elu、PReLU、RReLU</li>
+</ul>
+<p>相比于饱和激活函数，非饱和激活函数的优势在于两点：</p>
+<ul>
+<li>能解决深度神经网络带来的梯度消失问题</li>
+<li>能加快收敛速度</li>
+</ul>
+<h2 id="四、常见激活函数"><a href="#四、常见激活函数" class="headerlink" title="四、常见激活函数"></a>四、常见激活函数</h2><h3 id="4-1-sigmoid"><a href="#4-1-sigmoid" class="headerlink" title="4.1 sigmoid"></a>4.1 sigmoid</h3><p>其数学表达式如下，输出范围在[0, 1]之间。<br>$$<br>sigmoid(x) &#x3D; \frac{1}{1+e^{-x}}<br>$$<br>其导数表达式为：<br>$$<br>sigmoid\prime(x) &#x3D; sigmoid(x)(1-sigmoid(x)) &#x3D;\frac{1}{1+e^{-x}}\frac{e^{-x}}{1+e^{-x}}&#x3D;\frac{e^{-x}}{(1+e^{-x})^2}<br>$$<br>其函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/af5f15ef44f1b276c78bec5e140e7082.png" alt="图片"></p>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = <span class="number">1</span> / (<span class="number">1</span> + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = <span class="number">1</span> / (<span class="number">1</span> + scipy.special.expit(x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
 
-<span id="more"></span>
+<p>使用场景：</p>
+<ul>
+<li>sigmoid函数的输出范围是0到1。适合作为模型的输出函数用于输出一个0-1范围内的概率值，如表示二分类的类别或者用于表示置信度。</li>
+<li>sigmoid函数梯度平滑，方便求导，可以用于防止模型训练过程中出现突变的梯度。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>容易造成梯度消失。</li>
+<li>函数输出不是以0为中心的，梯度可能会向特定方向一点，从而降低权重更新的效率。</li>
+<li>sigmoid函数执行指数运算，计算速度慢，计算资源需求大。</li>
+</ul>
+<h3 id="4-2-Tanh函数"><a href="#4-2-Tanh函数" class="headerlink" title="4.2 Tanh函数"></a>4.2 Tanh函数</h3><p>其数学表达式如下，输出范围在[-1, 1]之间。<br>$$<br>Tanh(x) &#x3D; \frac{e^x-e^{-x}}{e^x+e^{-x}}&#x3D;\frac{e^x-e^{-x}}{e^x+e^{-x}} \frac{e^{-x}}{e^{-x}}&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>实际上，Tanh函数是 sigmoid 的变形：<br>$$<br>Tanh(x)&#x3D;2sigmoid(2x)-1&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>其导数表达式为：<br>$$<br>Tanh\prime(x) &#x3D;\frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{({e^x+e^{-x}})^2}&#x3D;\frac{4}{(1+e^{-x})^2}&#x3D;\frac{4e^{-2x}}{(1+e^{-2x})^2}<br>$$<br>与sigmoid函数不同的三十，tanh是以0为中心的。因此，在实际应用中，tanh会比ssigmoid更好一点。但在饱和神经元的情况下辖，tanh仍没有解决梯度消失的问题。</p>
+<p>其函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e58d7204fef7f7410e92b4bf82e91938.png" alt="img"></p>
+<p>其代码实现：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = (math.exp(x) - math.exp(-x)) / (math.exp(x) + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = (scipy.special.expit(x) - scipy.special.expit(-x)) / (scipy.special.expit(x) + scipy.special.expit(-x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
+
+<p>Tanh函数优点：</p>
+<ul>
+<li>Tanh的输出间隔为1，并且整个函数以0为中心，比sigmoid函数更好；</li>
+<li>在Tanh函数图中，负输入被强映射为负，二零输入被映射为接近0。</li>
+</ul>
+<p>Tanh函数缺点：</p>
+<ul>
+<li>仍存在梯度饱和的问题；</li>
+<li>依然进行的是指数运算。</li>
+</ul>
+<h3 id="4-3-ReLU函数"><a href="#4-3-ReLU函数" class="headerlink" title="4.3 ReLU函数"></a>4.3 ReLU函数</h3><p>其数学表达式为：<br>$$<br>ReLU(x)&#x3D;\max(0,x)<br>$$<br>函数图像如下：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a2f4f9f3c522518908e20d7865beb48c.png" alt="img"></p>
+<p>ReLU函数优点：</p>
+<ul>
+<li>ReLU解决了梯度消失的问题，当输入值为正是，神经元不会饱和；</li>
+<li>由于ReLU函数的线性、非饱和性质，在SGD中能够快速收敛；</li>
+<li>计算复杂度低，不需要进行指数运算。</li>
+</ul>
+<p>ReLU函数缺点：</p>
+<ul>
+<li>与simoid函数一样，其输出不是以0为中心的；</li>
+<li>Dead ReLU问题。当输入为负时，梯度为0。此时，神经元及之后的神经元梯度永远为0，不再对任何数据有所响应，导致相应参数永远不会被更新。</li>
+</ul>
+<p>训练神经网络时，若学习率没设置好，第一次更新权重时输入为负值，则这个含有ReLU的神经节点会死亡，再也不会被激活。因此，要设置一个合适的较小学习率，来降低这种情况的发生。</p>
 ]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件测试</title>
-    <url>/2022/01/24/2022-1-24-%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h1><h2 id="1-分类"><a href="#1-分类" class="headerlink" title="1. 分类"></a>1. 分类</h2><p>开发阶段分类：</p>
-<ul>
-<li>单元测试：对最小模块测试</li>
-<li>集成测试：小模块集成后测试</li>
-<li>系统测试：所有流程统一的测试，包括功能测试、兼容性测试、性能测试、安全测试</li>
-<li>验收测试：上线前的测试，包括<ul>
-<li>α测试：内测，开发环境下测试模拟用户测试</li>
-<li>β测试：公测，实际环境下用户的测试</li>
-</ul>
-</li>
-</ul>
-<p>是否查看代码：</p>
-<ul>
-<li>白盒测试：查看源代码进行测试，研究产品内部源代码和程序结构，例如单元测试。</li>
-<li>黑盒测试（数据驱动测试）：完全查看源代码进行测试，不考虑程序内部结构和内部特性，注重与测试软件的功能需求，只关心软件的输入数据和输出数据。</li>
-<li>灰盒测试：只看一部分源代码进行测试，介于白盒与黑盒之间的测试</li>
-</ul>
-<p>测试执行方式：</p>
-<ul>
-<li>静态测试：不运行程序，只是检查代码</li>
-<li>动态测试：运行程序，检查输入数据与输出数据是否符合逻辑</li>
-</ul>
-<p>是否手工测试：</p>
-<ul>
-<li>手动测试：即人工测试</li>
-<li>自动测试：使用代码进行测试</li>
-</ul>
-<p>其他：</p>
-<ul>
-<li>冒烟测试：</li>
-<li>回归测试：软件测试的第二轮开始，测试此前的bug是否修复</li>
-<li>随机测试：模拟用户测试（用户测试一般是随机的），一般在最后一次</li>
-<li>探索性测试：升级版的随机测试，未来的发展方向</li>
-</ul>
-<h2 id="2-自动化分层测试体系"><a href="#2-自动化分层测试体系" class="headerlink" title="2.自动化分层测试体系"></a>2.自动化分层测试体系</h2><ul>
-<li>70%单元测试</li>
-<li>20%服务测试</li>
-<li>10%用户界面测试</li>
-</ul>
-<h2 id="3-黑盒测试"><a href="#3-黑盒测试" class="headerlink" title="3.黑盒测试"></a>3.黑盒测试</h2><p>常用测试方法：</p>
-<ul>
-<li><p>等价类划分</p>
-<p>输入域明确：把程序的输入域划分为若干个子集</p>
-<p>分类：每个子集中选取少数代表性数据作为测试用例，其等价于所在类的其他值</p>
-<p>常见分类：有效、无效等价类</p>
-</li>
-<li><p>边界值分析：将边界值作为重点测试数据，对等价类的补充</p>
-</li>
-<li><p>因果图：一个有向图，显示因果模型中变量之间的因果关系</p>
-</li>
-<li><p>判定表：一种表达因果关系的逻辑表达方式，使用表格分类条件、中间结果、最终结果之间的关系</p>
-</li>
-<li><p>决策树：判定表的另一种表示（比因果图和判定表好），可使用流程图表示</p>
-</li>
-<li><p>探索性测试：一种软件测试风格。基于上下文质量反馈的测试风格。适时调整测试执行</p>
-<ul>
-<li>成本低，可以不用提前设计大量测试用例</li>
-<li>可以激发测试工程师的创造性，更快发现问题</li>
-<li>测试覆盖度无法得到有效保障</li>
-<li>多数测试活动都是由探索性测试与脚本用例结合</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-测试用例"><a href="#3-测试用例" class="headerlink" title="3.测试用例"></a>3.测试用例</h2><p>最终结果：<strong>成功</strong> 或 <strong>失败</strong></p>
-<p>三大核心要素：标题、步骤、断言</p>
-<ul>
-<li>标题：测试用例的描述</li>
-<li>步骤：测试执行过程的描述</li>
-<li>断言：实际结果与预期结果对比</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>测试</tag>
-      </tags>
+      <categories>
+        <category>深度学习</category>
+        <category>激活函数</category>
+      </categories>
   </entry>
   <entry>
     <title>Agent三大范式</title>
@@ -828,75 +897,6 @@
       <tags>
         <tag>Agent</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>深度学习激活函数学习</title>
-    <url>/2026/01/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="一、激活函数原理"><a href="#一、激活函数原理" class="headerlink" title="一、激活函数原理"></a>一、激活函数原理</h2><p>激活函数（activation function），就是在神经网络的神经元上运行的函数，负责将神经元的输入映射到输出层，旨在帮组神经网络学习数据中的复杂模式。</p>
-<h2 id="二、激活函数的作用"><a href="#二、激活函数的作用" class="headerlink" title="二、激活函数的作用"></a>二、激活函数的作用</h2><p>使用激活函数能够为神经网络引入非线性因素，使得神经网络可以任意逼近任何非线性函数，使深层神经网络表达能力更加强大，使得神经网络可以应用到总舵的非线性模型中。如果不使用激活函数，那神经网络的每一层输出都是上层输入的线性函数，无论神经网络的层数是多少，其输出都是输入的线性组合，这样就退化为原始的感知机模型了。</p>
-<h2 id="三、激活函数分类"><a href="#三、激活函数分类" class="headerlink" title="三、激活函数分类"></a>三、激活函数分类</h2><p>激活函数可以分为<strong>饱和激活函数</strong>与<strong>非饱和激活函数</strong>。</p>
-<p>3.1 饱和的概念</p>
-<p>假设h(x)是一个激活函数，有如下一个极限：<br>$$<br>\lim_{n\rightarrow\pm\infty}h^\prime(x)&#x3D;0<br>$$<br>当n趋于正无穷，激活函数的导数趋于0，则称之为右饱和；若当n趋于负无穷时，激活函数的导数趋于0，则称之为左饱和。当一个函数同时满足左饱和和右饱和时，我们称之为饱和，不然则称之为非饱和。</p>
-<ul>
-<li>饱和激活函数：sigmoid、tanh</li>
-<li>非饱和激活函数：ReLU、 Leakly ReLU、elu、PReLU、RReLU</li>
-</ul>
-<p>相比于饱和激活函数，非饱和激活函数的优势在于两点：</p>
-<ul>
-<li>能解决深度神经网络带来的梯度消失问题</li>
-<li>能加快收敛速度</li>
-</ul>
-<h2 id="四、常见激活函数"><a href="#四、常见激活函数" class="headerlink" title="四、常见激活函数"></a>四、常见激活函数</h2><h3 id="4-1-sigmoid"><a href="#4-1-sigmoid" class="headerlink" title="4.1 sigmoid"></a>4.1 sigmoid</h3><p>其数学表达式如下，输出范围在[0, 1]之间。<br>$$<br>sigmoid(x) &#x3D; \frac{1}{1+e^{-x}}<br>$$<br>其导数表达式为：<br>$$<br>sigmoid\prime(x) &#x3D; sigmoid(x)(1-sigmoid(x)) &#x3D;\frac{1}{1+e^{-x}}\frac{e^{-x}}{1+e^{-x}}&#x3D;\frac{e^{-x}}{(1+e^{-x})^2}<br>$$<br>其函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/af5f15ef44f1b276c78bec5e140e7082.png" alt="图片"></p>
-<p>其代码实现：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = <span class="number">1</span> / (<span class="number">1</span> + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = <span class="number">1</span> / (<span class="number">1</span> + scipy.special.expit(x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
-
-<p>使用场景：</p>
-<ul>
-<li>sigmoid函数的输出范围是0到1。适合作为模型的输出函数用于输出一个0-1范围内的概率值，如表示二分类的类别或者用于表示置信度。</li>
-<li>sigmoid函数梯度平滑，方便求导，可以用于防止模型训练过程中出现突变的梯度。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>容易造成梯度消失。</li>
-<li>函数输出不是以0为中心的，梯度可能会向特定方向一点，从而降低权重更新的效率。</li>
-<li>sigmoid函数执行指数运算，计算速度慢，计算资源需求大。</li>
-</ul>
-<h3 id="4-2-Tanh函数"><a href="#4-2-Tanh函数" class="headerlink" title="4.2 Tanh函数"></a>4.2 Tanh函数</h3><p>其数学表达式如下，输出范围在[-1, 1]之间。<br>$$<br>Tanh(x) &#x3D; \frac{e^x-e^{-x}}{e^x+e^{-x}}&#x3D;\frac{e^x-e^{-x}}{e^x+e^{-x}} \frac{e^{-x}}{e^{-x}}&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>实际上，Tanh函数是 sigmoid 的变形：<br>$$<br>Tanh(x)&#x3D;2sigmoid(2x)-1&#x3D;\frac{1-e^{-2x}}{1+e^{-2x}}<br>$$<br>其导数表达式为：<br>$$<br>Tanh\prime(x) &#x3D;\frac{(e^x+e^{-x})^2-(e^x-e^{-x})^2}{({e^x+e^{-x}})^2}&#x3D;\frac{4}{(1+e^{-x})^2}&#x3D;\frac{4e^{-2x}}{(1+e^{-2x})^2}<br>$$<br>与sigmoid函数不同的三十，tanh是以0为中心的。因此，在实际应用中，tanh会比ssigmoid更好一点。但在饱和神经元的情况下辖，tanh仍没有解决梯度消失的问题。</p>
-<p>其函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e58d7204fef7f7410e92b4bf82e91938.png" alt="img"></p>
-<p>其代码实现：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> scipy</span><br><span class="line"><span class="comment"># math.exp()只适用于单数值</span></span><br><span class="line"><span class="comment"># numpy.exp()适用于数值、列表、数值、矩阵</span></span><br><span class="line"><span class="comment"># scipy.special.expit()同numpy，但更稳定，速度较慢</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="comment"># math</span></span><br><span class="line">    math_y = (math.exp(x) - math.exp(-x)) / (math.exp(x) + math.exp(-x))</span><br><span class="line">    <span class="comment"># np</span></span><br><span class="line">    np_y = (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))</span><br><span class="line">    <span class="comment"># scipy</span></span><br><span class="line">    sci_y = (scipy.special.expit(x) - scipy.special.expit(-x)) / (scipy.special.expit(x) + scipy.special.expit(-x))</span><br><span class="line">    <span class="keyword">return</span> np_y</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sigmoid_derivative</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> sigmoid(x) * (<span class="number">1</span> - sigmoid(x))</span><br></pre></td></tr></table></figure>
-
-<p>Tanh函数优点：</p>
-<ul>
-<li>Tanh的输出间隔为1，并且整个函数以0为中心，比sigmoid函数更好；</li>
-<li>在Tanh函数图中，负输入被强映射为负，二零输入被映射为接近0。</li>
-</ul>
-<p>Tanh函数缺点：</p>
-<ul>
-<li>仍存在梯度饱和的问题；</li>
-<li>依然进行的是指数运算。</li>
-</ul>
-<h3 id="4-3-ReLU函数"><a href="#4-3-ReLU函数" class="headerlink" title="4.3 ReLU函数"></a>4.3 ReLU函数</h3><p>其数学表达式为：<br>$$<br>ReLU(x)&#x3D;\max(0,x)<br>$$<br>函数图像如下：</p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a2f4f9f3c522518908e20d7865beb48c.png" alt="img"></p>
-<p>ReLU函数优点：</p>
-<ul>
-<li>ReLU解决了梯度消失的问题，当输入值为正是，神经元不会饱和；</li>
-<li>由于ReLU函数的线性、非饱和性质，在SGD中能够快速收敛；</li>
-<li>计算复杂度低，不需要进行指数运算。</li>
-</ul>
-<p>ReLU函数缺点：</p>
-<ul>
-<li>与simoid函数一样，其输出不是以0为中心的；</li>
-<li>Dead ReLU问题。当输入为负时，梯度为0。此时，神经元及之后的神经元梯度永远为0，不再对任何数据有所响应，导致相应参数永远不会被更新。</li>
-</ul>
-<p>训练神经网络时，若学习率没设置好，第一次更新权重时输入为负值，则这个含有ReLU的神经节点会死亡，再也不会被激活。因此，要设置一个合适的较小学习率，来降低这种情况的发生。</p>
-]]></content>
-      <categories>
-        <category>深度学习</category>
-        <category>激活函数</category>
-      </categories>
   </entry>
   <entry>
     <title>数据库学习笔记</title>
@@ -2961,102 +2961,6 @@
       </tags>
   </entry>
   <entry>
-    <title>智能体通信协议</title>
-    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
-<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
-<ul>
-<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
-<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
-<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
-</ul>
-<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
-<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
-<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
-<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
-<p><strong>（2）A2A：智能体间的对话</strong></p>
-<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
-<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
-<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
-<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
-<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
-<p>图 10.3 ANP 设计思想</p>
-<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
-<p>表 10.1 三种协议对比</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
-<p><strong>（4）如何选择合适的协议？</strong></p>
-<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
-<p>选择协议的关键在于理解你的需求：</p>
-<ul>
-<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
-<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
-<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
-</ul>
-<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1>]]></content>
-      <categories>
-        <category>Agent</category>
-        <category>通信协议</category>
-        <category>MCP A2A ANP</category>
-      </categories>
-      <tags>
-        <tag>Agent</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++面经</title>
-    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
-    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
-<ul>
-<li><p>函数未被使用：编译和链接时都不报错</p>
-</li>
-<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
-</li>
-<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
-</li>
-</ul>
-<p>2.头文件循环包含问题</p>
-<ul>
-<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但在源文件中需要包含具体头文件</p>
-<ul>
-<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决依赖扩散问题：使用Pimpl解决</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>C++</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2025/12/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<span id="more"></span>
-]]></content>
-  </entry>
-  <entry>
     <title>FastAPI学习</title>
     <url>/2026/04/25/FastAPI%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="常见项目结构"><a href="#常见项目结构" class="headerlink" title="常见项目结构"></a>常见项目结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fastapi-project/</span><br><span class="line">├── app</span><br><span class="line">│   ├── main.py                 # 项目全局入口</span><br><span class="line">│   ├── core                    # 核心配置模块</span><br><span class="line">│   │   ├── config.py           # 全局配置、环境变量读取</span><br><span class="line">│   │   └── security.py         # JWT令牌、密码加密</span><br><span class="line">│   ├── api                     # 路由控制层</span><br><span class="line">│   │   └── v1</span><br><span class="line">│   │       └── user.py         # 用户相关接口</span><br><span class="line">│   ├── schemas                 # Pydantic数据校验、序列化层</span><br><span class="line">│   ├── crud                    # 业务逻辑层</span><br><span class="line">│   ├── models                  # ORM数据库模型层</span><br><span class="line">│   ├── db                      # 数据库连接层</span><br><span class="line">│   └── utils                   # 公共工具类</span><br><span class="line">├── .env                        # 环境变量配置文件</span><br><span class="line">└── requirements.txt             # 项目依赖包</span><br></pre></td></tr></table></figure>
@@ -3182,6 +3086,116 @@
       </categories>
       <tags>
         <tag>fastapi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/12/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<span id="more"></span>
+]]></content>
+  </entry>
+  <entry>
+    <title>C++面经</title>
+    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
+<ul>
+<li><p>函数未被使用：编译和链接时都不报错</p>
+</li>
+<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
+</li>
+<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
+</li>
+</ul>
+<p>2.头文件循环包含问题</p>
+<ul>
+<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但在源文件中需要包含具体头文件</p>
+<ul>
+<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决依赖扩散问题：使用Pimpl解决</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>智能体通信协议</title>
+    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
+<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
+<ul>
+<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
+<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
+<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
+</ul>
+<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
+<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
+<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
+<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
+<p><strong>（2）A2A：智能体间的对话</strong></p>
+<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
+<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
+<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
+<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
+<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
+<p>图 10.3 ANP 设计思想</p>
+<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
+<p>表 10.1 三种协议对比</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
+<p><strong>（4）如何选择合适的协议？</strong></p>
+<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
+<p>选择协议的关键在于理解你的需求：</p>
+<ul>
+<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
+<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
+<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
+</ul>
+<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MCP (模型上下文协议) 是一个用于将 AI 应用程序与外部系统连接的开源标准。</p>
+<p>通过 MCP，诸如 Claude 或 ChatGPT 之类的 AI 应用程序可以连接到数据源（resource如本地文件、数据库）、工具（tool如搜索引擎、计算器）和工作流（workflow如专业提示词）—— 使其能够访问关键信息并执行任务。</p>
+<p>可以将 MCP 想象成 AI 应用程序的 USB-C 接口。正如 USB-C 提供了一种连接电子设备的标准化方式，MCP 提供了一种将 AI 应用程序连接到外部系统的标准化方式。</p>
+<p>MCP 架构中的关键参与者包括：</p>
+<ul>
+<li>**MCP 宿主 (Host)**：协调和管理一个或多个 MCP 客户端的 AI 应用；</li>
+<li>**MCP 客户端 (Client)**：维持与 MCP 服务端连接并获取上下文供 MCP 宿主使用的组件，由host创建得到；</li>
+<li>**MCP 服务端 (Server)**：为 MCP 客户端提供上下文的程序。</li>
+</ul>
+<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>MCP可分为两层：</p>
+<ul>
+<li><strong>数据层</strong>：定义基于 JSON-RPC 的客户端-服务端通信协议，包括生命周期管理以及工具、资源、提示词和通知等核心原语。</li>
+<li><strong>传输层</strong>：定义支持客户端和服务端之间数据交换的通信机制和通道，包括特定传输方式的连接建立、消息分帧、授权</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Agent</category>
+        <category>通信协议</category>
+        <category>MCP A2A ANP</category>
+      </categories>
+      <tags>
+        <tag>Agent</tag>
       </tags>
   </entry>
 </search>
