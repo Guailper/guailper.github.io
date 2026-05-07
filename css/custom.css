@@ -72,6 +72,18 @@
   border-radius: 4px;
 }
 
+#article-container h1::before,
+#article-container h2::before,
+#article-container h3::before,
+#article-container h4::before,
+#article-container h5::before,
+#article-container h6::before {
+  content: "\f0c1" !important;
+  font-family: "Font Awesome 6 Free", "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 0.45em;
+}
+
 #footer {
   background: rgba(18, 24, 38, 0.88);
 }
