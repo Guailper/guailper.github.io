@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef8ff"/>
+      <stop offset="54%" stop-color="#d8efff"/>
+      <stop offset="100%" stop-color="#fff3df"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2f80ed"/>
+      <stop offset="100%" stop-color="#56ccf2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="42" fill="url(#bg)"/>
+  <path d="M0 474 C146 410 284 546 456 476 C640 402 778 526 960 454 C1060 414 1138 420 1200 440 L1200 675 L0 675 Z" fill="#2f80ed" opacity="0.18"/>
+  <path d="M0 538 C150 494 300 590 480 536 C690 472 824 580 1024 518 C1100 494 1158 498 1200 514 L1200 675 L0 675 Z" fill="#56ccf2" opacity="0.24"/>
+  <g opacity="0.42" stroke="#2f80ed" stroke-width="1">
+    <path d="M120 90 H1080"/>
+    <path d="M120 170 H1080"/>
+    <path d="M120 250 H1080"/>
+    <path d="M120 330 H1080"/>
+    <path d="M200 50 V390"/>
+    <path d="M360 50 V390"/>
+    <path d="M520 50 V390"/>
+    <path d="M680 50 V390"/>
+    <path d="M840 50 V390"/>
+    <path d="M1000 50 V390"/>
+  </g>
+  <rect x="170" y="142" width="360" height="64" rx="32" fill="url(#chip)" opacity="0.92"/>
+  <rect x="170" y="238" width="260" height="40" rx="20" fill="#ffffff" opacity="0.82"/>
+  <rect x="462" y="238" width="184" height="40" rx="20" fill="#ffffff" opacity="0.72"/>
+  <rect x="170" y="310" width="560" height="18" rx="9" fill="#1f75d6" opacity="0.28"/>
+  <rect x="170" y="350" width="430" height="18" rx="9" fill="#1f75d6" opacity="0.2"/>
+  <circle cx="930" cy="200" r="92" fill="#ffffff" opacity="0.58"/>
+  <circle cx="930" cy="200" r="54" fill="url(#chip)" opacity="0.86"/>
+</svg>
