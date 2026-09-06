@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 580" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="tile1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2f5ff"/>
+      <stop offset="0.62" stop-color="#83c5ed"/>
+      <stop offset="1" stop-color="#5597ca"/>
+    </linearGradient>
+    <linearGradient id="tile2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#719fd2"/>
+      <stop offset="1" stop-color="#bfe8fb"/>
+    </linearGradient>
+    <linearGradient id="tile3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c8effb"/>
+      <stop offset="1" stop-color="#65a7d5"/>
+    </linearGradient>
+    <linearGradient id="tile4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#769bc8"/>
+      <stop offset="1" stop-color="#8d8fca"/>
+    </linearGradient>
+    <linearGradient id="tile5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9dcf3"/>
+      <stop offset="0.58" stop-color="#9cc9e8"/>
+      <stop offset="0.6" stop-color="#5b96c7"/>
+      <stop offset="1" stop-color="#3f76aa"/>
+    </linearGradient>
+    <linearGradient id="tile6" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a4a9dd"/>
+      <stop offset="1" stop-color="#98d8e9"/>
+    </linearGradient>
+    <linearGradient id="tile7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#76acd9"/>
+      <stop offset="1" stop-color="#a7e1f1"/>
+    </linearGradient>
+    <linearGradient id="tile8" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#638fbe"/>
+      <stop offset="1" stop-color="#82badc"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#fff" stop-opacity=".96"/>
+      <stop offset=".16" stop-color="#e4f8ff" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#d8f3ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="290" fill="url(#tile1)"/>
+  <rect x="400" width="400" height="290" fill="url(#tile2)"/>
+  <rect x="800" width="400" height="290" fill="url(#tile3)"/>
+  <rect x="1200" width="400" height="290" fill="url(#tile4)"/>
+  <rect y="290" width="400" height="290" fill="url(#tile5)"/>
+  <rect x="400" y="290" width="400" height="290" fill="url(#tile6)"/>
+  <rect x="800" y="290" width="400" height="290" fill="url(#tile7)"/>
+  <rect x="1200" y="290" width="400" height="290" fill="url(#tile8)"/>
+
+  <circle cx="40" cy="22" r="170" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="2"/>
+  <circle cx="40" cy="22" r="220" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="38"/>
+  <circle cx="600" cy="145" r="96" fill="url(#glow)" filter="url(#soft-glow)"/>
+  <path d="M600 98 615 130 648 145 615 160 600 193 585 160 552 145 585 130Z" fill="#fff"/>
+
+  <g fill="#eef9ff" opacity=".62" font-family="monospace" font-size="40" font-weight="600">
+    <text x="1048" y="92">01</text>
+    <text x="1048" y="140">10</text>
+    <text x="1048" y="188">11</text>
+  </g>
+
+  <circle cx="1432" cy="118" r="66" fill="#effaff"/>
+  <circle cx="1402" cy="105" r="66" fill="#737fc0"/>
+
+  <path d="M-10 500 420 460" fill="none" stroke="#fff" stroke-opacity=".74" stroke-width="2"/>
+  <path d="M-30 452 420 405" fill="none" stroke="#4e86ba" stroke-opacity=".7" stroke-width="12"/>
+
+  <g fill="#fff" stroke="#fff" stroke-width="2">
+    <circle cx="505" cy="382" r="7" fill="none"/>
+    <circle cx="635" cy="482" r="7" fill="none"/>
+    <circle cx="745" cy="365" r="7" fill="none"/>
+    <path d="M512 387 628 477 739 371" fill="none" stroke-opacity=".82"/>
+  </g>
+
+  <path d="M785 514 Q1000 430 1222 512" fill="none" stroke="#fff" stroke-opacity=".74" stroke-width="2"/>
+  <path d="M1230 498 1510 395" fill="none" stroke="#fff" stroke-opacity=".76" stroke-width="3"/>
+  <circle cx="1510" cy="395" r="8" fill="#fff"/>
+  <path d="M1280 480 1505 397" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="24" filter="url(#soft-glow)"/>
+</svg>

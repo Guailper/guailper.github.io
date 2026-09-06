@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-page">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -31,7 +31,7 @@
   </header>
   <main>
     <section class="page-banner"><p class="eyebrow">TAG</p><h1>#Linux</h1><p>相关记录与实践。</p></section><div class="page-shell"><section class="content-column"><article class="post-card compact"><div class="post-card-body"><div class="post-meta"><time>2022-08-16</time></div><h3><a href="/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/">Linux 下 GDB 调试</a></h3><p>&lt;p&gt;使用&lt;code&gt;gcc infile -o outfile -g&lt;/code&gt;可以使得在进行gdb调试时查看源代码&lt;/p&gt;
-&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;gdb 可执行文件名 //进入gdb调试&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;quit //退出gdb&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set args xxx //设置参数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;show args //获取设置参数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;help //获取gdb使用帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//运行gdb程序&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;start //转到程序第一行&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;run //执行代码直到遇上断点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//显示代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list 行号/函数名 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list 外部源文件:行号/函数名 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;show list/listsize //显示使用list显示的代码行数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set list/listsize 数字 //设置行数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//断点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 行号&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 函数名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 外部源文件:行号/函数名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//调试&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;c/continue //遇上断点时使用，至下一个断点处停&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;n/next //向下执行一行代码，不会进入函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;s/step //向下单步调试，会进入函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;finish //跳出函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//变量操作&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;p/print 变量名 //打印变量值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ptype 变量名 //打印变量类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//自动变量操作&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;display 变量名 //自动打印指定变量值（回车后）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;i/info display //显示display详细信息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;undisplay 编号 //删除相关编号的display&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//其他&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set var 变量名=变量值 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;until //跳出循环&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</p></div></article><article class="post-card compact"><div class="post-card-body"><div class="post-meta"><time>2021-11-25</time></div><h3><a href="/2021/11/25/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux学习笔记</a></h3><p></p></div></article></section><aside class="sidebar"><section class="sidebar-card profile"><img src="/img/avatar.jpg" alt="Guailper"><h3>Guailper</h3><p>记录 AI、后端与计算机基础的学习路径</p><div class="social-links"><a target="_blank" href="https://github.com/guailper" rel="noopener noopener">GitHub</a><a href="mailto:3031975593@qq.com">Email</a></div></section><section class="sidebar-card"><h3>探索</h3><a class="side-link" href="/categories/">专题 <span>→</span></a><a class="side-link" href="/tags/">标签 <span>→</span></a><a class="side-link" href="/archives/">归档 <span>→</span></a></section></aside>
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;43&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;gdb 可执行文件名 //进入gdb调试&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;quit //退出gdb&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set args xxx //设置参数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;show args //获取设置参数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;help //获取gdb使用帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//运行gdb程序&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;start //转到程序第一行&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;run //执行代码直到遇上断点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//显示代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list 行号/函数名 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;l/list 外部源文件:行号/函数名 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;show list/listsize //显示使用list显示的代码行数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set list/listsize 数字 //设置行数&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//断点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 行号&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 函数名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;b/break 外部源文件:行号/函数名&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//调试&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;c/continue //遇上断点时使用，至下一个断点处停&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;n/next //向下执行一行代码，不会进入函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;s/step //向下单步调试，会进入函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;finish //跳出函数体&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//变量操作&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;p/print 变量名 //打印变量值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ptype 变量名 //打印变量类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//自动变量操作&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;display 变量名 //自动打印指定变量值（回车后）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;i/info display //显示display详细信息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;undisplay 编号 //删除相关编号的display&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//其他&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set var 变量名=变量值 //&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;until //跳出循环&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</p></div></article><article class="post-card compact"><div class="post-card-body"><div class="post-meta"><time>2021-11-25</time></div><h3><a href="/2021/11/25/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux学习笔记</a></h3><p></p></div></article></section><aside class="sidebar"><section class="sidebar-card profile"><img src="/img/avatar-mark.svg" alt="Guailper"><h3>Guailper</h3><p>记录 AI、后端与计算机基础的学习路径</p><div class="social-links"><a target="_blank" href="https://github.com/guailper" rel="noopener noopener">GitHub</a><a href="mailto:3031975593@qq.com">Email</a></div></section><section class="sidebar-card"><h3>探索</h3><a class="side-link" href="/categories/">专题 <span>→</span></a><a class="side-link" href="/tags/">标签 <span>→</span></a><a class="side-link" href="/archives/">归档 <span>→</span></a></section></aside>
 </div>
 
   </main>
@@ -39,7 +39,101 @@
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>

@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>RAG-检索优化 | Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-post">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>RAG-检索优化</h1><div class="post-meta"><time datetime="2026-04-16T14:28:32.000Z">发布于 2026-04-16</time></div></header><div class="article-content"><h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
+    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>RAG-检索优化</h1><div class="post-meta"><time datetime="2026-04-16T14:28:32.000Z">发布于 2026-04-16</time></div></header><div class="article-content" id="article-container"><h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
 <h2 id="稀疏向量"><a href="#稀疏向量" class="headerlink" title="稀疏向量"></a>稀疏向量</h2><p>稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下：</p>
 <p>$$<br>Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_1+1)}<br>$$<br>其中：</p>
 <ul>
@@ -351,14 +351,108 @@
 </ol>
 <p>通过这种方式，C-RAG 极大地增强了 RAG 系统的鲁棒性。不再盲目信任检索结果，而是增加了一个“事实核查”层，能够在检索失败时主动寻求外部帮助，从而有效减少幻觉，提升答案的准确性和可靠性。</p>
 <p>在 LangChain 的 <code>langgraph</code> 库中，可以利用其图结构来灵活地构建这种带有条件判断和循环的复杂 RAG 流程。</p>
-</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div class="toc-card"><p class="eyebrow">ON THIS PAGE</p><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E5%90%91%E9%87%8F"><span class="toc-text">稀疏向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%9B%86%E5%90%91%E9%87%8F"><span class="toc-text">密集向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2-1"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95"><span class="toc-text">技术原理与融合方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%92%E6%95%B0%E6%8E%92%E5%BA%8F%E8%9E%8D%E5%90%88-Reciprocal-Rank-Fusion-RRF"><span class="toc-text">倒数排序融合 (Reciprocal Rank Fusion, RRF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88"><span class="toc-text">加权线性组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%B1%80%E9%99%90"><span class="toc-text">优势与局限</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%9E%84%E5%BB%BA"><span class="toc-text">查询构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0%E5%85%83%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">文本到元数据过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher"><span class="toc-text">文本到Cypher</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Cypher%EF%BC%9F"><span class="toc-text">什么是 Cypher？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher%E2%80%9D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">文本到Cypher”的原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0SQL"><span class="toc-text">文本到SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-text">挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-text">优化策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E9%87%8D%E6%9E%84%E4%B8%8E%E5%88%86%E5%8F%91"><span class="toc-text">查询重构与分发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BF%BB%E8%AF%91"><span class="toc-text">查询翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B"><span class="toc-text">提示工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%9F%A5%E8%AF%A2%E5%88%86%E8%A7%A3-Multi-query"><span class="toc-text">多查询分解 (Multi-query)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E6%AD%A5%E6%8F%90%E7%A4%BA%EF%BC%88Step-Back-Prompting%EF%BC%89"><span class="toc-text">退步提示（Step-Back Prompting）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%80%A7%E6%96%87%E6%A1%A3%E5%B5%8C%E5%85%A5-HyDE"><span class="toc-text">假设性文档嵌入 (HyDE)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%B7%AF%E7%94%B1"><span class="toc-text">查询路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-text">实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ELLM%E7%9A%84%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB"><span class="toc-text">基于LLM的意图识别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E7%9B%B8%E4%BC%BC%E6%80%A7%E8%B7%AF%E7%94%B1"><span class="toc-text">嵌入相似性路由</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%BF%9B%E9%98%B6"><span class="toc-text">检索进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E5%BA%8F-Re-ranking"><span class="toc-text">重排序(Re-ranking)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RRF"><span class="toc-text">RRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RankLLM-LLM-based-Reranker"><span class="toc-text">RankLLM &#x2F; LLM-based Reranker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cross-Encoder-%E9%87%8D%E6%8E%92"><span class="toc-text">Cross-Encoder 重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ColBERT-%E9%87%8D%E6%8E%92"><span class="toc-text">ColBERT 重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-text">重排方法对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9-Compression"><span class="toc-text">压缩(Compression)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LangChain-%E7%9A%84-ContextualCompressionRetriever"><span class="toc-text">LangChain 的 ContextualCompressionRetriever</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%87%8D%E6%8E%92%E5%99%A8%E4%B8%8E%E5%8E%8B%E7%BC%A9%E7%AE%A1%E9%81%93"><span class="toc-text">自定义重排器与压缩管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LlamaIndex-%E4%B8%AD%E7%9A%84%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9"><span class="toc-text">LlamaIndex 中的检索压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%A1%E6%AD%A3-Correcting"><span class="toc-text">校正(Correcting)</span></a></li></ol></li></ol></div></aside></div>
+</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div id="card-toc" class="toc-card"><div class="item-headline"><span><i class="fas fa-stream"></i> 文章目录</span><span class="toc-percentage">0%</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%80%E7%96%8F%E5%90%91%E9%87%8F"><span class="toc-text">稀疏向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E9%9B%86%E5%90%91%E9%87%8F"><span class="toc-text">密集向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E6%A3%80%E7%B4%A2-1"><span class="toc-text">混合检索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86%E4%B8%8E%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95"><span class="toc-text">技术原理与融合方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%92%E6%95%B0%E6%8E%92%E5%BA%8F%E8%9E%8D%E5%90%88-Reciprocal-Rank-Fusion-RRF"><span class="toc-text">倒数排序融合 (Reciprocal Rank Fusion, RRF)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E7%BA%BF%E6%80%A7%E7%BB%84%E5%90%88"><span class="toc-text">加权线性组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF%E4%B8%8E%E5%B1%80%E9%99%90"><span class="toc-text">优势与局限</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%9E%84%E5%BB%BA"><span class="toc-text">查询构建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0%E5%85%83%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">文本到元数据过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher"><span class="toc-text">文本到Cypher</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Cypher%EF%BC%9F"><span class="toc-text">什么是 Cypher？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0Cypher%E2%80%9D%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">文本到Cypher”的原理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E5%88%B0SQL"><span class="toc-text">文本到SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%91%E6%88%98"><span class="toc-text">挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="toc-text">优化策略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E9%87%8D%E6%9E%84%E4%B8%8E%E5%88%86%E5%8F%91"><span class="toc-text">查询重构与分发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%BF%BB%E8%AF%91"><span class="toc-text">查询翻译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B"><span class="toc-text">提示工程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%9F%A5%E8%AF%A2%E5%88%86%E8%A7%A3-Multi-query"><span class="toc-text">多查询分解 (Multi-query)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E6%AD%A5%E6%8F%90%E7%A4%BA%EF%BC%88Step-Back-Prompting%EF%BC%89"><span class="toc-text">退步提示（Step-Back Prompting）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%80%A7%E6%96%87%E6%A1%A3%E5%B5%8C%E5%85%A5-HyDE"><span class="toc-text">假设性文档嵌入 (HyDE)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%B7%AF%E7%94%B1"><span class="toc-text">查询路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-text">实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ELLM%E7%9A%84%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB"><span class="toc-text">基于LLM的意图识别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E7%9B%B8%E4%BC%BC%E6%80%A7%E8%B7%AF%E7%94%B1"><span class="toc-text">嵌入相似性路由</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2%E8%BF%9B%E9%98%B6"><span class="toc-text">检索进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E5%BA%8F-Re-ranking"><span class="toc-text">重排序(Re-ranking)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RRF"><span class="toc-text">RRF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RankLLM-LLM-based-Reranker"><span class="toc-text">RankLLM &#x2F; LLM-based Reranker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cross-Encoder-%E9%87%8D%E6%8E%92"><span class="toc-text">Cross-Encoder 重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ColBERT-%E9%87%8D%E6%8E%92"><span class="toc-text">ColBERT 重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E6%8E%92%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-text">重排方法对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9-Compression"><span class="toc-text">压缩(Compression)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LangChain-%E7%9A%84-ContextualCompressionRetriever"><span class="toc-text">LangChain 的 ContextualCompressionRetriever</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%87%8D%E6%8E%92%E5%99%A8%E4%B8%8E%E5%8E%8B%E7%BC%A9%E7%AE%A1%E9%81%93"><span class="toc-text">自定义重排器与压缩管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LlamaIndex-%E4%B8%AD%E7%9A%84%E6%A3%80%E7%B4%A2%E5%8E%8B%E7%BC%A9"><span class="toc-text">LlamaIndex 中的检索压缩</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%A1%E6%AD%A3-Correcting"><span class="toc-text">校正(Correcting)</span></a></li></ol></li></ol></div></div></aside></div><button id="mobile-toc-button" class="mobile-toc-button" type="button" aria-label="打开文章目录" aria-expanded="false"><i class="fas fa-stream"></i></button>
 
   </main>
   <footer class="site-footer"><div>Guailper 的博客 · 记录 AI、后端与计算机基础的学习路径</div><div class="footer-meta">Powered by Hexo · 2026</div></footer>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>

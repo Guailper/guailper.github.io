@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>C++学习笔记 | Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-post">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>C++学习笔记</h1><div class="post-meta"><time datetime="2024-07-25T14:29:43.000Z">发布于 2024-07-25</time></div></header><div class="article-content"><h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p>
+    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>C++学习笔记</h1><div class="post-meta"><time datetime="2024-07-25T14:29:43.000Z">发布于 2024-07-25</time></div></header><div class="article-content" id="article-container"><h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>1.悬空指针</p>
 <p>定义：指针被释放后，还指向原来的内存空间。如：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *p = <span class="built_in">malloc</span>(size);</span><br><span class="line"><span class="built_in">assert</span>(p);</span><br><span class="line"><span class="built_in">free</span>(p);</span><br><span class="line"><span class="comment">//此时p为悬空指针</span></span><br></pre></td></tr></table></figure>
 
@@ -175,14 +175,108 @@
 <p>3.将一个对象用于给另一对象进行初始化时</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="comment">//拷贝构造，形参必须为引用，一般会加const</span></span><br><span class="line">    <span class="comment">//一般拷贝构造函数为浅拷贝，当成员变量中存在指针变量时需定义一个深拷贝构造函数</span></span><br><span class="line">    <span class="built_in">Person</span>(<span class="type">const</span> Person &amp;p)&#123;</span><br><span class="line">        <span class="meta">#statement</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3></div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div class="toc-card"><p class="eyebrow">ON THIS PAGE</p><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text">重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E8%A7%84%E5%88%99"><span class="toc-text">运算符重载规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">流操作符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E6%A0%87%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%87%8D%E8%BD%BD"><span class="toc-text">下标运算符[]重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">操作符重载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-text">左值引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-text">右值引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-text">深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">类与结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-text">虚函数与纯虚函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1"><span class="toc-text">数据抽象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85"><span class="toc-text">数据封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BBABC%EF%BC%89"><span class="toc-text">接口（抽象类ABC）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%B1%BB"><span class="toc-text">构造函数类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8"><span class="toc-text">容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-text">vector</span></a></li></ol></li></ol></li></ol></div></aside></div>
+<h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3></div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div id="card-toc" class="toc-card"><div class="item-headline"><span><i class="fas fa-stream"></i> 文章目录</span><span class="toc-percentage">0%</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C"><span class="toc-text">C++</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E9%92%88"><span class="toc-text">指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text">重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E8%A7%84%E5%88%99"><span class="toc-text">运算符重载规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">流操作符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E6%A0%87%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%87%8D%E8%BD%BD"><span class="toc-text">下标运算符[]重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">操作符重载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-text">左值引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-text">右值引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-text">深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">类与结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-text">虚函数与纯虚函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1"><span class="toc-text">数据抽象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%B0%81%E8%A3%85"><span class="toc-text">数据封装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BBABC%EF%BC%89"><span class="toc-text">接口（抽象类ABC）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%B1%BB"><span class="toc-text">构造函数类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8"><span class="toc-text">容器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-text">vector</span></a></li></ol></li></ol></li></ol></div></div></aside></div><button id="mobile-toc-button" class="mobile-toc-button" type="button" aria-label="打开文章目录" aria-expanded="false"><i class="fas fa-stream"></i></button>
 
   </main>
   <footer class="site-footer"><div>Guailper 的博客 · 记录 AI、后端与计算机基础的学习路径</div><div class="footer-meta">Powered by Hexo · 2026</div></footer>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>

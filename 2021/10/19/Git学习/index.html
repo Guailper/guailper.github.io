@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>Git 学习 | Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-post">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>Git 学习</h1><div class="post-meta"><time datetime="2021-10-19T14:29:43.000Z">发布于 2021-10-19</time></div></header><div class="article-content"><h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
+    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>Git 学习</h1><div class="post-meta"><time datetime="2021-10-19T14:29:43.000Z">发布于 2021-10-19</time></div></header><div class="article-content" id="article-container"><h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413214134979.png?token=AR3LVDCDJILRVE57MOBMKADJ3TZMW" alt="image-20260413214126265"></p>
 <ul>
 <li>工作区（Working Directory）</li>
 </ul>
@@ -80,15 +80,109 @@
 <p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
 <p>打开id_rsa.pub文件，复制其中的密钥。</p>
 <p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;</a>(注意看出现的信息是否连接成功)</p>
-</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div class="toc-card"><p class="eyebrow">ON THIS PAGE</p><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E9%85%8D%E7%BD%AE"><span class="toc-text">初次配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%93%E5%BA%93%E7%9B%B8%E5%85%B3"><span class="toc-text">仓库相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-text">初始化仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">关联远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86"><span class="toc-text">仓库克隆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9B%B8%E5%85%B3"><span class="toc-text">分支相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BArepository"><span class="toc-text">创建repository</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%A1%8C%E9%9D%A2%E8%BF%9B%E5%85%A5git-bash%EF%BC%9A"><span class="toc-text">在桌面进入git bash：</span></a></li></ol></li></ol></div></aside></div>
+<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
+</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div id="card-toc" class="toc-card"><div class="item-headline"><span><i class="fas fa-stream"></i> 文章目录</span><span class="toc-percentage">0%</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">工作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E6%AC%A1%E9%85%8D%E7%BD%AE"><span class="toc-text">初次配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%93%E5%BA%93%E7%9B%B8%E5%85%B3"><span class="toc-text">仓库相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-text">初始化仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E8%81%94%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">关联远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86"><span class="toc-text">仓库克隆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%9B%B8%E5%85%B3"><span class="toc-text">分支相关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BArepository"><span class="toc-text">创建repository</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%A1%8C%E9%9D%A2%E8%BF%9B%E5%85%A5git-bash%EF%BC%9A"><span class="toc-text">在桌面进入git bash：</span></a></li></ol></li></ol></div></div></aside></div><button id="mobile-toc-button" class="mobile-toc-button" type="button" aria-label="打开文章目录" aria-expanded="false"><i class="fas fa-stream"></i></button>
 
   </main>
   <footer class="site-footer"><div>Guailper 的博客 · 记录 AI、后端与计算机基础的学习路径</div><div class="footer-meta">Powered by Hexo · 2026</div></footer>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>

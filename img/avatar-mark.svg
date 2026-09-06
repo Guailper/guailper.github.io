@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Guailper</title>
+  <defs>
+    <linearGradient id="bg" x1="18" y1="12" x2="112" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#86C5F0"/>
+      <stop offset="1" stop-color="#3F83C5"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="36" fill="#DCEFFC"/>
+  <rect x="10" y="10" width="108" height="108" rx="31" fill="url(#bg)"/>
+  <path d="M88 45c-6-8-14-12-25-12-19 0-33 13-33 31s14 31 33 31c11 0 21-4 28-11V61H61v15h13v4c-3 2-7 3-11 3-11 0-18-8-18-19s7-19 18-19c7 0 11 2 15 7l10-7z" fill="#fff"/>
+</svg>

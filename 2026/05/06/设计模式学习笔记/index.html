@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>设计模式学习笔记：理解与 C++ 示例 | Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-post">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>设计模式学习笔记：理解与 C++ 示例</h1><div class="post-meta"><time datetime="2026-05-06T09:17:13.000Z">发布于 2026-05-06</time></div></header><div class="article-content"><h1 id="设计模式学习笔记：理解与-C-示例"><a href="#设计模式学习笔记：理解与-C-示例" class="headerlink" title="设计模式学习笔记：理解与 C++ 示例"></a>设计模式学习笔记：理解与 C++ 示例</h1><p>一组经过验证的“组织代码的经验”：当对象之间的关系开始变复杂时，设计模式帮助我们降低耦合、隔离变化、复用行为。</p>
+    <div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>设计模式学习笔记：理解与 C++ 示例</h1><div class="post-meta"><time datetime="2026-05-06T09:17:13.000Z">发布于 2026-05-06</time></div></header><div class="article-content" id="article-container"><h1 id="设计模式学习笔记：理解与-C-示例"><a href="#设计模式学习笔记：理解与-C-示例" class="headerlink" title="设计模式学习笔记：理解与 C++ 示例"></a>设计模式学习笔记：理解与 C++ 示例</h1><p>一组经过验证的“组织代码的经验”：当对象之间的关系开始变复杂时，设计模式帮助我们降低耦合、隔离变化、复用行为。</p>
 <h2 id="一、创建型模式"><a href="#一、创建型模式" class="headerlink" title="一、创建型模式"></a>一、创建型模式</h2><p>创建型模式提供了一种在创建对象的同时隐藏创建逻辑的方式，而不是使用 new 运算符直接实例化对象。这使得程序在判断针对某个给定实例需要创建哪些对象时更加灵活。关注“对象怎么创建”。当直接 new 对象会让业务代码依赖具体类，或者创建流程比较复杂时，可以考虑创建型模式。</p>
 <h3 id="1-单例模式-Singleton"><a href="#1-单例模式-Singleton" class="headerlink" title="1. 单例模式 Singleton"></a>1. 单例模式 Singleton</h3><p>单例模式保证一个类在程序中只有一个实例，并提供一个全局访问点。常见场景有日志器、配置中心、线程池管理器等。</p>
 <p>单例的核心不是“全局变量”，而是“唯一资源”。如果某个对象代表全局唯一状态，就可以考虑单例。但它也容易隐藏依赖关系，所以不要滥用。</p>
@@ -102,14 +102,108 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Image</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">display</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Image</span>() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RealImage</span> : <span class="keyword">public</span> Image &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">RealImage</span><span class="params">(std::string filename)</span> : filename(std::move(filename)) &#123;</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;load &quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;filename &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;display &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string filename;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ImageProxy</span> : <span class="keyword">public</span> Image &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">ImageProxy</span><span class="params">(std::string filename)</span> : filename(std::move(filename)) &#123;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!image) &#123;</span><br><span class="line">            image = std::<span class="built_in">make_unique</span>&lt;RealImage&gt;(filename);</span><br><span class="line">        &#125;</span><br><span class="line">        image-&gt;<span class="built_in">display</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string filename;</span><br><span class="line">    std::unique_ptr&lt;RealImage&gt; image;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">ImageProxy <span class="title">image</span><span class="params">(<span class="string">&quot;photo.png&quot;</span>)</span></span>;</span><br><span class="line">    image.<span class="built_in">display</span>();</span><br><span class="line">    image.<span class="built_in">display</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="三、行为型模式"><a href="#三、行为型模式" class="headerlink" title="三、行为型模式"></a>三、行为型模式</h2><p>行为型模式关注对象之间的通信和交互，旨在解决对象之间的责任分配和算法的封装。</p>
-</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div class="toc-card"><p class="eyebrow">ON THIS PAGE</p><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E-C-%E7%A4%BA%E4%BE%8B"><span class="toc-text">设计模式学习笔记：理解与 C++ 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">一、创建型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-Singleton"><span class="toc-text">1. 单例模式 Singleton</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82-Simple-Factory"><span class="toc-text">2. 简单工厂 Simple Factory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-Factory-Method"><span class="toc-text">3. 工厂方法 Factory Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-Builder"><span class="toc-text">5. 建造者模式 Builder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F-Prototype"><span class="toc-text">6. 原型模式 Prototype</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">二、结构型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F-Adapter"><span class="toc-text">7. 适配器模式 Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F-Bridge"><span class="toc-text">8. 桥接模式 Bridge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F-Composite"><span class="toc-text">9. 组合模式 Composite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F-Decorator"><span class="toc-text">10. 装饰器模式 Decorator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F-Facade"><span class="toc-text">11. 外观模式 Facade</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F-Flyweight"><span class="toc-text">12. 享元模式 Flyweight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-Proxy"><span class="toc-text">13. 代理模式 Proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">三、行为型模式</span></a></li></ol></li></ol></div></aside></div>
+</div><footer class="article-footer"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></footer></article><aside class="article-aside"><div id="card-toc" class="toc-card"><div class="item-headline"><span><i class="fas fa-stream"></i> 文章目录</span><span class="toc-percentage">0%</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E-C-%E7%A4%BA%E4%BE%8B"><span class="toc-text">设计模式学习笔记：理解与 C++ 示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">一、创建型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-Singleton"><span class="toc-text">1. 单例模式 Singleton</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82-Simple-Factory"><span class="toc-text">2. 简单工厂 Simple Factory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-Factory-Method"><span class="toc-text">3. 工厂方法 Factory Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-Builder"><span class="toc-text">5. 建造者模式 Builder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F-Prototype"><span class="toc-text">6. 原型模式 Prototype</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">二、结构型模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F-Adapter"><span class="toc-text">7. 适配器模式 Adapter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F-Bridge"><span class="toc-text">8. 桥接模式 Bridge</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F-Composite"><span class="toc-text">9. 组合模式 Composite</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F-Decorator"><span class="toc-text">10. 装饰器模式 Decorator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F-Facade"><span class="toc-text">11. 外观模式 Facade</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F-Flyweight"><span class="toc-text">12. 享元模式 Flyweight</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-Proxy"><span class="toc-text">13. 代理模式 Proxy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">三、行为型模式</span></a></li></ol></li></ol></div></div></aside></div><button id="mobile-toc-button" class="mobile-toc-button" type="button" aria-label="打开文章目录" aria-expanded="false"><i class="fas fa-stream"></i></button>
 
   </main>
   <footer class="site-footer"><div>Guailper 的博客 · 记录 AI、后端与计算机基础的学习路径</div><div class="footer-meta">Powered by Hexo · 2026</div></footer>
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>

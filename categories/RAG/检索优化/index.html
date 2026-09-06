@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Hexo">
   <title>Guailper 的博客</title>
-  <link rel="icon" href="/img/guailper.png">
+  <link rel="icon" href="/img/avatar-mark.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="/css/guailper.css">
 </head>
-<body>
+<body class="is-page">
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/"><span class="brand-mark">G</span><span>Guailper 的博客</span></a>
@@ -30,7 +30,7 @@
     </div>
   </header>
   <main>
-    <section class="page-banner"><p class="eyebrow">CATEGORY</p><h1>检索优化</h1><p>这个专题下的文章。</p></section><div class="page-shell"><section class="content-column"><article class="post-card compact"><div class="post-card-body"><div class="post-meta"><time>2026-04-16</time></div><h3><a href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/">RAG-检索优化</a></h3><p></p></div></article></section><aside class="sidebar"><section class="sidebar-card profile"><img src="/img/avatar.jpg" alt="Guailper"><h3>Guailper</h3><p>记录 AI、后端与计算机基础的学习路径</p><div class="social-links"><a target="_blank" href="https://github.com/guailper" rel="noopener noopener">GitHub</a><a href="mailto:3031975593@qq.com">Email</a></div></section><section class="sidebar-card"><h3>探索</h3><a class="side-link" href="/categories/">专题 <span>→</span></a><a class="side-link" href="/tags/">标签 <span>→</span></a><a class="side-link" href="/archives/">归档 <span>→</span></a></section></aside>
+    <section class="page-banner"><p class="eyebrow">CATEGORY</p><h1>检索优化</h1><p>这个专题下的文章。</p></section><div class="page-shell"><section class="content-column"><article class="post-card compact"><div class="post-card-body"><div class="post-meta"><time>2026-04-16</time></div><h3><a href="/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/">RAG-检索优化</a></h3><p></p></div></article></section><aside class="sidebar"><section class="sidebar-card profile"><img src="/img/avatar-mark.svg" alt="Guailper"><h3>Guailper</h3><p>记录 AI、后端与计算机基础的学习路径</p><div class="social-links"><a target="_blank" href="https://github.com/guailper" rel="noopener noopener">GitHub</a><a href="mailto:3031975593@qq.com">Email</a></div></section><section class="sidebar-card"><h3>探索</h3><a class="side-link" href="/categories/">专题 <span>→</span></a><a class="side-link" href="/tags/">标签 <span>→</span></a><a class="side-link" href="/archives/">归档 <span>→</span></a></section></aside>
 </div>
 
   </main>
@@ -38,7 +38,101 @@
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');
-    if (toggle) toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
+    if (toggle) toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? '关闭导航' : '打开导航');
+    });
+
+    (() => {
+      const card = document.getElementById('card-toc');
+      const article = document.getElementById('article-container');
+      if (!card || !article) return;
+
+      const tocContent = card.querySelector('.toc-content');
+      const links = Array.from(tocContent.querySelectorAll('.toc-link'));
+      const headings = Array.from(article.querySelectorAll('h1,h2,h3,h4,h5,h6'));
+      const percentage = card.querySelector('.toc-percentage');
+      const mobileButton = document.getElementById('mobile-toc-button');
+      let activeIndex = -1;
+
+      const scrollToHeading = heading => {
+        const start = window.scrollY;
+        const end = heading.getBoundingClientRect().top + start - 72;
+        const distance = end - start;
+        const startTime = performance.now();
+        const duration = 300;
+        const ease = value => 1 - Math.pow(1 - value, 3);
+        const step = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          window.scrollTo(0, start + distance * ease(progress));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+
+      links.forEach(link => link.addEventListener('click', event => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        history.replaceState(null, '', '#' + encodeURIComponent(id));
+        scrollToHeading(target);
+        if (window.innerWidth < 901) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      }));
+
+      const updateToc = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleHeight = article.offsetHeight;
+        const progress = Math.max(0, Math.min(100, Math.round((window.scrollY - articleTop + window.innerHeight * .35) / Math.max(articleHeight - window.innerHeight * .35, 1) * 100)));
+        if (percentage) percentage.textContent = progress + '%';
+
+        let nextIndex = -1;
+        headings.forEach((heading, index) => {
+          if (heading.getBoundingClientRect().top <= 88) nextIndex = index;
+        });
+        if (nextIndex === activeIndex) return;
+        activeIndex = nextIndex;
+        tocContent.querySelectorAll('.active').forEach(item => item.classList.remove('active'));
+        if (nextIndex < 0 || !links[nextIndex]) return;
+
+        const current = links[nextIndex];
+        current.classList.add('active');
+        let parent = current.parentElement;
+        while (parent && parent !== tocContent) {
+          if (parent.classList.contains('toc-item')) parent.classList.add('active');
+          parent = parent.parentElement;
+        }
+        const centered = current.offsetTop - (tocContent.clientHeight - current.offsetHeight) / 2;
+        tocContent.scrollTo({ top: Math.max(0, centered), behavior: 'smooth' });
+      };
+
+      let scheduled = false;
+      window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => { updateToc(); scheduled = false; });
+      }, { passive: true });
+
+      mobileButton?.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        mobileButton.setAttribute('aria-expanded', String(open));
+        mobileButton.setAttribute('aria-label', open ? '关闭文章目录' : '打开文章目录');
+      });
+      document.addEventListener('click', event => {
+        if (window.innerWidth >= 901 || !card.classList.contains('open')) return;
+        if (!card.contains(event.target) && !mobileButton?.contains(event.target)) {
+          card.classList.remove('open');
+          mobileButton?.setAttribute('aria-expanded', 'false');
+          mobileButton?.setAttribute('aria-label', '打开文章目录');
+        }
+      });
+      updateToc();
+    })();
   </script>
 </body>
 </html>
