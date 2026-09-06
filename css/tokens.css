@@ -1,0 +1,27 @@
+:root {
+  --guailper-accent: #5798df;
+  --guailper-accent-strong: #3f83c5;
+  --guailper-accent-soft: #dcedfb;
+  --guailper-paper: #edf7ff;
+  --guailper-card: #f9fcff;
+  --guailper-ink: #173555;
+  --guailper-muted: #637d97;
+  --guailper-line: rgba(57, 116, 168, .2);
+  --guailper-shadow: 0 18px 46px rgba(66, 135, 190, .12);
+  --guailper-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+  --guailper-sans: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --guailper-mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+  --card-bg: var(--guailper-card);
+}
+
+[data-theme="dark"] {
+  --guailper-accent: #78b6ed;
+  --guailper-accent-strong: #a5d3f6;
+  --guailper-accent-soft: rgba(87, 152, 223, .18);
+  --guailper-paper: #101b29;
+  --guailper-card: #172538;
+  --guailper-ink: #edf6ff;
+  --guailper-muted: #a9bdd2;
+  --guailper-line: rgba(211, 232, 250, .14);
+  --guailper-shadow: 0 18px 46px rgba(0, 0, 0, .22);
+}

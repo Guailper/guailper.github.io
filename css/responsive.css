@@ -1,0 +1,12 @@
+@media (max-width: 900px) {
+  .post-copyright { display: block; }
+  .post-copyright span { display: block; margin-top: 3px; }
+}
+
+@media (max-width: 700px) {
+  .brand-logo { width: 28px; height: 28px; }
+  .nav-toggle { display: grid; gap: 4px; padding: 8px 0 8px 8px; }
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav-item.is-next { text-align: left; }
+  .error-page { padding: 80px 18px; }
+}
