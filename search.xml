@@ -53,7 +53,7 @@
 <p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
 <p>打开id_rsa.pub文件，复制其中的密钥。</p>
 <p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;</a>(注意看出现的信息是否连接成功)</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;</a>(注意看出现的信息是否连接成功)</p>
 ]]></content>
       <tags>
         <tag>git</tag>
@@ -121,47 +121,6 @@
       </tags>
   </entry>
   <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
-
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
-]]></content>
-      <tags>
-        <tag>二进制</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>栈的定义及实现(C语言)</title>
     <url>/2021/11/01/%E6%A0%88/</url>
     <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
@@ -208,6 +167,47 @@
 ]]></content>
       <tags>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+]]></content>
+      <tags>
+        <tag>二进制</tag>
       </tags>
   </entry>
   <entry>
@@ -341,27 +341,6 @@
       </tags>
   </entry>
   <entry>
-    <title>遮罩的应用</title>
-    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
-<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
-<p>遮罩的作用：</p>
-<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
-<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
-<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
-<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
-<p>2.Fusion面板</p>
-<p>创建一个文本节点</p>
-<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
-<p>3.调色面板</p>
-<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
-<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
-<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
-<p>示波器的使用</p>
-<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
-]]></content>
-  </entry>
-  <entry>
     <title>静态路由和动态路由的配置</title>
     <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
@@ -415,6 +394,27 @@
 ]]></content>
   </entry>
   <entry>
+    <title>遮罩的应用</title>
+    <url>/2021/12/11/%E9%81%AE%E7%BD%A9%E7%9A%84%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="遮罩"><a href="#遮罩" class="headerlink" title="遮罩"></a>遮罩</h2><p>遮罩是什么？</p>
+<p>遮罩（Matte）即遮挡、遮盖，遮挡部分图像内容，并显示特定区域的图像内容，相当于一个窗口，遮罩是作为一个单独的图层存在的，并且通常是上对下遮挡的关系。</p>
+<p>遮罩的作用：</p>
+<p>​	①用在整个场景或一个特定区域，使场景外的对象或特定区域外的对象不可见</p>
+<p>​	②用来遮罩住某一元件的一部分，从而实现一些特殊的效果。</p>
+<h2 id="三种制作遮罩的方法"><a href="#三种制作遮罩的方法" class="headerlink" title="三种制作遮罩的方法"></a>三种制作遮罩的方法</h2><p>1.剪辑面板</p>
+<p>将一段视频素材放入时间线并设置合成模式为前景，新建一个字幕条并设置合成模式为Alpha</p>
+<p>2.Fusion面板</p>
+<p>创建一个文本节点</p>
+<p>将该节点的合成模式设置为Alpha，与mediain1的Alpha入口相连接</p>
+<p>3.调色面板</p>
+<p>先创建一个Alpha输出，选择遮罩形状，连接Alpha输出。</p>
+<p>这个遮罩的形状选择调色面板的窗口可以自由选择，其中钢笔工具的自由度更高</p>
+<h2 id="调色面板"><a href="#调色面板" class="headerlink" title="调色面板"></a>调色面板</h2><p>调色三个重要参数：色相、明度、饱和度</p>
+<p>示波器的使用</p>
+<p>分量图、波形图、矢量图、直方图、CIE色度图</p>
+]]></content>
+  </entry>
+  <entry>
     <title>计算机系统概述</title>
     <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
     <content><![CDATA[<h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
@@ -449,36 +449,6 @@
 <p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
 <p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
 <h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
-  </entry>
-  <entry>
-    <title>操作系统</title>
-    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
-<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
-<p>②第二代晶体管计算机（1958-1964年）</p>
-<p>③第三代集成电路计算机（1965-1977）</p>
-<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
-<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
-<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
-<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
-<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
-<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
-<p>主存：存储正在执行的程序和数据。</p>
-<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
-<p>特点：</p>
-<p>①运算单元为中心，控制流由指令流产生</p>
-<p>②存储程序原理，面向主存组织数据流</p>
-<p>③主存按地址访问，提供线性编址空间</p>
-<p>④操作码与地址码组成指令</p>
-<p>⑤数据以二进制编码</p>
-<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
-<p>按传输信息分类：控制线、数据线、地址线</p>
-<p>三类总线：</p>
-<p>①内部总线：CPU内部各元件的连接</p>
-<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
-<p>③通信总线：计算机系统之间的通信</p>
-<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>
-]]></content>
   </entry>
   <entry>
     <title>软件测试</title>
@@ -556,18 +526,6 @@
 ]]></content>
       <tags>
         <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux 下 GDB 调试</title>
-    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -724,6 +682,48 @@
       </tags>
   </entry>
   <entry>
+    <title>操作系统</title>
+    <url>/2022/03/04/2022-3-4-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="一、计算机操作系统概述"><a href="#一、计算机操作系统概述" class="headerlink" title="一、计算机操作系统概述"></a>一、计算机操作系统概述</h2><h3 id="1-1-计算机系统"><a href="#1-1-计算机系统" class="headerlink" title="1.1 计算机系统"></a>1.1 计算机系统</h3><h4 id="1-1-1-计算机系统概述"><a href="#1-1-1-计算机系统概述" class="headerlink" title="1.1.1 计算机系统概述"></a>1.1.1 计算机系统概述</h4><h5 id="1-电子计算机"><a href="#1-电子计算机" class="headerlink" title="1.电子计算机"></a>1.电子计算机</h5><p>1946年，第一台电子计算机ENIAC，美国。</p>
+<h5 id="2-计算机技术的发展"><a href="#2-计算机技术的发展" class="headerlink" title="2.计算机技术的发展"></a>2.计算机技术的发展</h5><p>①第一代电子管计算机（1946-1957）</p>
+<p>②第二代晶体管计算机（1958-1964年）</p>
+<p>③第三代集成电路计算机（1965-1977）</p>
+<p>④第四代大规模与超大规模集成电路计算机（1978年至今）</p>
+<h5 id="3-计算机系统的组成"><a href="#3-计算机系统的组成" class="headerlink" title="3.计算机系统的组成"></a>3.计算机系统的组成</h5><p>现代计算机系统：硬件与软件组成。硬件是软件运行的物理基础。软件能够充分发挥硬件潜能并扩充硬件功能，共同完成各种应用任务。</p>
+<p>计算机硬件系统：各种物理部件的有机结合，计算机系统的工作载体。</p>
+<p>计算机软件系统：各类程序和文件，指挥计算机系统按指定要求进行协同工作。（包括系统软件、支持软件、应用软件）关键系统软件：操作系统、语言处理程序。</p>
+<h4 id="1-1-2-计算机硬件系统"><a href="#1-1-2-计算机硬件系统" class="headerlink" title="1.1.2 计算机硬件系统"></a>1.1.2 计算机硬件系统</h4><h5 id="1-计算机硬件系统的组成"><a href="#1-计算机硬件系统的组成" class="headerlink" title="1.计算机硬件系统的组成"></a>1.计算机硬件系统的组成</h5><p>中央处理器（运算单元和控制单元）、主存储器、外围设备（输入设备、输出设备、存储设备、通信设备），通过系统总线连接。</p>
+<p>运算单元：执行具体的机器指令的运算。控制单元：解释机器指令。</p>
+<p>主存：存储正在执行的程序和数据。</p>
+<h5 id="2-冯·诺依曼模型"><a href="#2-冯·诺依曼模型" class="headerlink" title="2.冯·诺依曼模型"></a>2.冯·诺依曼模型</h5><p>五个组成部分：运算器、控制器、存储器、输入设备、输出设备</p>
+<p>特点：</p>
+<p>①运算单元为中心，控制流由指令流产生</p>
+<p>②存储程序原理，面向主存组织数据流</p>
+<p>③主存按地址访问，提供线性编址空间</p>
+<p>④操作码与地址码组成指令</p>
+<p>⑤数据以二进制编码</p>
+<h5 id="3-计算机总线与网络总线"><a href="#3-计算机总线与网络总线" class="headerlink" title="3.计算机总线与网络总线"></a>3.计算机总线与网络总线</h5><p>总线：计算机各种功能部件之间传送信息的公共通信干线。</p>
+<p>按传输信息分类：控制线、数据线、地址线</p>
+<p>三类总线：</p>
+<p>①内部总线：CPU内部各元件的连接</p>
+<p>②系统总线：连接CPU、存储器和各个I&#x2F;O模块</p>
+<p>③通信总线：计算机系统之间的通信</p>
+<h2 id="二、处理器管理"><a href="#二、处理器管理" class="headerlink" title="二、处理器管理"></a>二、处理器管理</h2><h2 id="三、存储管理"><a href="#三、存储管理" class="headerlink" title="三、存储管理"></a>三、存储管理</h2><span id="more"></span>
+]]></content>
+  </entry>
+  <entry>
+    <title>Linux 下 GDB 调试</title>
+    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>深度学习激活函数学习</title>
     <url>/2026/01/17/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="一、激活函数原理"><a href="#一、激活函数原理" class="headerlink" title="一、激活函数原理"></a>一、激活函数原理</h2><p>激活函数（activation function），就是在神经网络的神经元上运行的函数，负责将神经元的输入映射到输出层，旨在帮组神经网络学习数据中的复杂模式。</p>
@@ -791,6 +791,336 @@
         <category>深度学习</category>
         <category>激活函数</category>
       </categories>
+  </entry>
+  <entry>
+    <title>数据库学习笔记</title>
+    <url>/2026/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="数据库系统的基本原理"><a href="#数据库系统的基本原理" class="headerlink" title="数据库系统的基本原理"></a>数据库系统的基本原理</h2><p>介绍基本概念、发展阶段、数据模型、DBMS的功能及组成、DBS的组成及全局结构</p>
+<h3 id="数据库概述"><a href="#数据库概述" class="headerlink" title="数据库概述"></a>数据库概述</h3><h4 id="1数据库系统的应用"><a href="#1数据库系统的应用" class="headerlink" title="1数据库系统的应用"></a>1数据库系统的应用</h4><p>广泛应用在电信业、银行业、金融业、销售业、电商、大学、航空业、人力资源、制造业</p>
+<h4 id="数据库系统的概念"><a href="#数据库系统的概念" class="headerlink" title="数据库系统的概念"></a>数据库系统的概念</h4><h5 id="数据Date"><a href="#数据Date" class="headerlink" title="数据Date"></a>数据Date</h5><p>数据：数据库存储的基本对象，是描述现实世界中各种事物或抽象概念的、可存储并具有明确意义的符号记录。</p>
+<p>具体事物：有形且看得见的事物		抽象事物：无形且看不见的事物</p>
+<p>记录是数据库系统表示和存储数据的一种格式</p>
+<h5 id="数据库DB"><a href="#数据库DB" class="headerlink" title="数据库DB"></a>数据库DB</h5><p>简单上，数据库：相互关联的数据集合</p>
+<p>严格上，数据库：长期存储在计算机内、有组织、可共享的大量数据的集合。</p>
+<p>数据库具有较小的冗余度（不能杜绝数据冗余）、较高的数据独立性、易扩展性</p>
+<h5 id="数据库管理系统DBMS"><a href="#数据库管理系统DBMS" class="headerlink" title="数据库管理系统DBMS"></a>数据库管理系统DBMS</h5><p>数据库系统核心部分，介于用户和OS之间。提供访问数据库的方法（数据库定义、建立、查询、更新及其他数据控制）</p>
+<h4 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a><strong>主要</strong>功能</h4><h5 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h5><p>使用数据定义语言（DDL），在数据库中<strong>定义数据对象</strong>（表、视图、索引、存储过程等）、数据的完整性约束等</p>
+<p>数据的完整性（主要）：实体完整性、参照完整性、用户定义的完整性</p>
+<h5 id="数据操纵功能"><a href="#数据操纵功能" class="headerlink" title="数据操纵功能"></a>数据操纵功能</h5><p>使用数据操纵语言（DML），对数据库进行<strong>增、删、改、查</strong>操作（insert、delete、update、select）</p>
+<p>查询功能使用频率最高</p>
+<h5 id="数据控制功能"><a href="#数据控制功能" class="headerlink" title="数据控制功能"></a>数据控制功能</h5><p>使用数据控制语言（DCL），进行用户权限的变动，如授予或撤销，即安全性控制：解决多用户对数据库的并发使用所产生的事物处理问题（并发控制；数据库的转储、恢复功能；数据库的性能监视、分析功能）</p>
+<h5 id="数据库系统DBS"><a href="#数据库系统DBS" class="headerlink" title="数据库系统DBS"></a>数据库系统DBS</h5><p>数据库系统：计算机系统引入数据库后的系统，由DB、DBMS、应用系统、数据库管理员DBA构成。</p>
+<h5 id="数据库应用系统DBAS"><a href="#数据库应用系统DBAS" class="headerlink" title="数据库应用系统DBAS"></a>数据库应用系统DBAS</h5><p>DBAS：指实现业务逻辑的应用程序</p>
+<p>要求：提供一个有好的、人性化的操作数据的GUI</p>
+<h4 id="数据管理技术的发展阶段"><a href="#数据管理技术的发展阶段" class="headerlink" title="数据管理技术的发展阶段"></a>数据管理技术的发展阶段</h4><h5 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h5><p>用途：科学计算</p>
+<p>处理方式：批处理</p>
+<p>特点：数据不保存、不具有独立性、不共享；只有程序概念，无文件概念</p>
+<h5 id="文件管理系统阶段"><a href="#文件管理系统阶段" class="headerlink" title="文件管理系统阶段"></a>文件管理系统阶段</h5><p>用途：科学计算、信息管理</p>
+<p>处理方式：批处理、联机实时处理</p>
+<p>缺点：数据冗余性和不一致（数据重复存储且可能有差异）、数据独立性差、数据孤立</p>
+<h5 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h5><p>用途：大规模管理</p>
+<p>处理方式：批处理、实时联机处理、分布处理</p>
+<p>特点：数据结构化；数据共享性高、冗余度低、易扩充；数据独立性高（物理独立性、逻辑独立性）；DBMS统一管理和控制（包括数据的完整性检查、并发控制、数据的安全性保护、数据库的恢复）</p>
+<h4 id="数据库系统的用户"><a href="#数据库系统的用户" class="headerlink" title="数据库系统的用户"></a>数据库系统的用户</h4><h5 id="数据库管理员"><a href="#数据库管理员" class="headerlink" title="数据库管理员"></a>数据库管理员</h5><p>①参与数据库的设计</p>
+<p>②定义数据的安全性要求和完整性约束条件</p>
+<p>③日常维护：定期备份数据库、监视数据库的运行、保障有充足的空余磁盘空间</p>
+<p>④数据库的改进、重组和重构</p>
+<h5 id="数据库用户"><a href="#数据库用户" class="headerlink" title="数据库用户"></a>数据库用户</h5><p>①最终用户：现实系统中的业务人员，数据库的主要用户</p>
+<p>②专业用户：包括工程师、科学家、经济学家等具有较高科学技术背景的人员</p>
+<p>③系统分析员和数据库设计人员</p>
+<p>④应用程序员</p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>模型是对现实世界的抽象</p>
+<h4 id="数据抽象的过程"><a href="#数据抽象的过程" class="headerlink" title="数据抽象的过程"></a>数据抽象的过程</h4><p>美国国家标准化协会（ANSI）根据<strong>数据抽象级别</strong>定义了四种模型：概念模型、逻辑模型、外部模型、内部模型</p>
+<p>数据抽象过程：</p>
+<p>①综合：根据用户需求设计数据库的概念模型</p>
+<p>②转换：根据转换规则将概念模型转换为数据库的逻辑模型</p>
+<p>③实现：根据用户业务特点设计不同的外部模型</p>
+<p>④根据逻辑模型设计内部模型</p>
+<p>模型介绍：</p>
+<h5 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h5><p>抽象级别最高，表达用户需求观点的数据库全局逻辑结构的模型</p>
+<p>特点：</p>
+<p>①表达了数据库的整体逻辑结构，<strong>企业管理人员</strong>对整个<strong>企业组织</strong>的全面概述</p>
+<p>②从<strong>用户需求</strong>的观点出发对数据建模</p>
+<p>③独立于软硬件。不依赖于硬件设备，不依赖于实现时的DBMS软件</p>
+<p>④数据库设计人员与用户之间进行交流的工具</p>
+<p>现在概念模型多是实体-联系模型（E-R模型，使用E-R图表示）。</p>
+<p>实体是现实世界或客观世界中可相互区别的对象（抽象或具体）。</p>
+<p>联系：两个或多个实体之间的关联，分为三种：</p>
+<p>①一对一（1:1）②一对多（1：N）③多对多（M:N）</p>
+<h5 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h5><p>特点：</p>
+<p>①表达了数据库的整体逻辑结构，<strong>设计人员</strong>对整个<strong>企业组织数据库</strong>的全面概述（与概念模型不同，主要区分）</p>
+<p>②从<strong>数据库实现</strong>的观点出发对数据建模</p>
+<p>③硬件独立，软件依赖</p>
+<p>④数据库设计人员与应用程序员之间交流的工具</p>
+<p>类别：层次模型（数据结构为树状结构）、网状结构（数据结构为有向图）、关系模型（数据结构为二维表格，现在关系型DBMS均采用关系模型）</p>
+<h5 id="外部模型"><a href="#外部模型" class="headerlink" title="外部模型"></a>外部模型</h5><p>特点：</p>
+<p>①逻辑结构的一个逻辑子集（可以有多个）</p>
+<p>②硬件独立，软件依赖</p>
+<p>③反映了用户使用数据库的观点</p>
+<p>系统考查上，特点为：简化了用户观点、有助于数据库的安全性保护、对概念模型的支持</p>
+<h5 id="内部模型（物理模型）"><a href="#内部模型（物理模型）" class="headerlink" title="内部模型（物理模型）"></a>内部模型（物理模型）</h5><p>数据库最底层的抽象（描述了数据在磁盘上的存储方式、存取设备、存取方法）。</p>
+<p>与硬件和软件紧密相连的。</p>
+<h4 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h4><p>1970年，IBM公司 E.F.Codd 首次提出</p>
+<h5 id="数据模型的三要素"><a href="#数据模型的三要素" class="headerlink" title="数据模型的三要素"></a>数据模型的三要素</h5><p>①数据结构</p>
+<p>所描述的对象类型的集合，对系统静态特性的描述。</p>
+<p>②数据操作</p>
+<p>对系统动态特性的描述。</p>
+<p>③数据的完整性约束</p>
+<p>一组完整性规则，保证数据的正确性、有效性、相容性、</p>
+<p>必须满足实体完整性和参照完整性。</p>
+<h5 id="关系数据模型的数据结构"><a href="#关系数据模型的数据结构" class="headerlink" title="关系数据模型的数据结构"></a>关系数据模型的数据结构</h5><p>①关系（relation）</p>
+<p>一个关系即为一个规范的二维表。</p>
+<p>基本条件：关系的每一列不可再分。即不允许表中还有表</p>
+<p>②元组（tuple）</p>
+<p>二维表中除第一行外的每一行为一个元组。</p>
+<p>一个元祖代表一条完整的信息。</p>
+<p>③属性（attribute）</p>
+<p>二维表中的每一列为一个属性。</p>
+<p>④码（key）</p>
+<p>码：关键字或关键码。</p>
+<p>由一个属性或属性的组合能够<strong>唯一</strong>确定一个元组，则该属性或属性的组合称为码。</p>
+<p>⑤关系模式</p>
+<p>一般描述：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关系名（属性1，属性2，属性3，属性4，···，属性n）</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><h5 id="关系数据模型的操作和完整性约束"><a href="#关系数据模型的操作和完整性约束" class="headerlink" title="关系数据模型的操作和完整性约束"></a>关系数据模型的操作和完整性约束</h5></li>
+</ol>
+<p>主要操作：查询、插入、删除、更新数据（必须满足关系的完整性约束条件）</p>
+<p>关系的完整性约束条件：实体参照性、参照完整性、用户定义的完整性</p>
+<h3 id="数据库体系结构"><a href="#数据库体系结构" class="headerlink" title="数据库体系结构"></a>数据库体系结构</h3><h4 id="数据库系统的三级结构"><a href="#数据库系统的三级结构" class="headerlink" title="数据库系统的三级结构"></a>数据库系统的三级结构</h4><p>1975年，美国ANSI&#x2F;SPARC报告提出三级划分法。</p>
+<h5 id="用户级数据库"><a href="#用户级数据库" class="headerlink" title="用户级数据库"></a>用户级数据库</h5><p>对应<strong>外模式</strong>，最接近用户，用户可以看到和使用的数据库（又称用户视图）。</p>
+<p>主要由外部记录组成，不同视图可重叠。</p>
+<p>所有操作都是针对用户视图。</p>
+<h5 id="概念级数据库"><a href="#概念级数据库" class="headerlink" title="概念级数据库"></a>概念级数据库</h5><p>对应<strong>概念模式</strong>，介于用户级和物理级之间。数据库管理人员看到和使用的数据库（又称DBA视图）。</p>
+<h5 id="物理级数据库"><a href="#物理级数据库" class="headerlink" title="物理级数据库"></a>物理级数据库</h5><p>对应<strong>内模式</strong>，数据库底层表示。描述数据的实际存储组织，最接近与物理存储的级别（又称内部视图）。</p>
+<p>由内部记录组成。</p>
+<p>注意：物理级数据库不是真正的物理存储（只是对物理存储的抽象），最接近物理存储。</p>
+<h4 id="数据库系统的三级模式"><a href="#数据库系统的三级模式" class="headerlink" title="数据库系统的三级模式"></a>数据库系统的三级模式</h4><h5 id="1概念模式"><a href="#1概念模式" class="headerlink" title="1概念模式"></a>1概念模式</h5><p>又称<strong>模式</strong>或<strong>逻辑模式</strong>。</p>
+<p>数据库中<strong>全体</strong>数据的逻辑结构和特征的描述，<strong>所有用户</strong>的公共数据视图。</p>
+<p>具有唯一性。即一个数据库只有一个概念模式。</p>
+<h5 id="外部模式"><a href="#外部模式" class="headerlink" title="外部模式"></a>外部模式</h5><p>又称<strong>子模式</strong>和<strong>用户模式</strong>。</p>
+<p>数据库用户可以看到和使用的<strong>局部</strong>数据的逻辑结构和特征的描述。数据库用户的数据视图</p>
+<p>具有不唯一性。</p>
+<h5 id="内部模式"><a href="#内部模式" class="headerlink" title="内部模式"></a>内部模式</h5><p>又称<strong>存储模式</strong>或<strong>物理模式</strong>。</p>
+<p>数据物理结构和存储方式的描述，数据在数据库内的表示方式。</p>
+<p>具有唯一性。</p>
+<h4 id="数据库系统的二级映射与数据独立性"><a href="#数据库系统的二级映射与数据独立性" class="headerlink" title="数据库系统的二级映射与数据独立性"></a>数据库系统的二级映射与数据独立性</h4><h5 id="数据库系统的二级映射"><a href="#数据库系统的二级映射" class="headerlink" title="数据库系统的二级映射"></a>数据库系统的二级映射</h5><p>外模式&#x2F;模式映射				模式&#x2F;内模式映射</p>
+<p>三个抽象级通过二级映射进行相互转换，形成一个统一的整体。</p>
+<h5 id="数据独立性"><a href="#数据独立性" class="headerlink" title="数据独立性"></a>数据独立性</h5><p>应用程序与数据之间的独立性。包括两种如下：</p>
+<p>①物理独立性</p>
+<p>应用程序与磁盘上的数据库中的数据是独立的。</p>
+<p>通过模式&#x2F;内模式映射来实现的。</p>
+<p>②逻辑独立性</p>
+<p>应用程序与逻辑结构是相互独立的。通过外模式&#x2F;模式映射来实现的。</p>
+<h2 id="关系数据库标准语言SQL"><a href="#关系数据库标准语言SQL" class="headerlink" title="关系数据库标准语言SQL"></a>关系数据库标准语言SQL</h2><h3 id="SQL-语言介绍"><a href="#SQL-语言介绍" class="headerlink" title="SQL 语言介绍"></a>SQL 语言介绍</h3><p>近期版本是SQL2016，主要新特性为行模式识别、支持json对象、多态表函数等</p>
+<h4 id="SQL数据库的体系结构"><a href="#SQL数据库的体系结构" class="headerlink" title="SQL数据库的体系结构"></a>SQL数据库的体系结构</h4><p>特点：</p>
+<p>①SQL用户可以是应用程序或终端用户。</p>
+<p>②使用SQL语言对基本表和视图进行查询。</p>
+<p>③一个视图是从若干个基本表或其他视图上导出的表。</p>
+<p>④一个或一些基本表对应一个数据文件。</p>
+<p>⑤一个基本表可以带若干个索引。</p>
+<p>⑥一个表空间可以由若干个数据文件组成。</p>
+<p>⑦一个数据库可以由若干个存储文件组成。</p>
+<h4 id="SQL的特点"><a href="#SQL的特点" class="headerlink" title="SQL的特点"></a>SQL的特点</h4><p>Structured Query Language 结构化查询语言</p>
+<p>①综合统一</p>
+<p>②高度非过程化</p>
+<p>③面向对象的操作方式</p>
+<p>④同一种语法结构提供两种使用方式（即是独立语言又是嵌入式语言）</p>
+<p>⑤语言简介、易学易用（结构化查询语言）</p>
+<h4 id="SQL语言的组成"><a href="#SQL语言的组成" class="headerlink" title="SQL语言的组成"></a>SQL语言的组成</h4><p>1.数据定义语言（DDL）</p>
+<p>create：创建数据库、表、视图等</p>
+<p>alter：修改</p>
+<p>drop：删除数据库、表、视图等</p>
+<p>rename：重命名</p>
+<p>truncate：删除表中所有数据但不删除表</p>
+<p>2.数据操作语言（DML）</p>
+<p>select：查询</p>
+<p>inset：添加新数据</p>
+<p>update：更新现有的数据</p>
+<p>delete：删除指定行的数据</p>
+<p>3.数据控制语言（DCL）</p>
+<p>DCL用于事务控制、并发控制、完整性和安全性控制等。</p>
+<p>commit：保存修改</p>
+<p>rollback：回滚修改</p>
+<p>savepoint：设置保存点</p>
+<p>locktable：锁定数据库中的一个表</p>
+<h2 id="数据库编程"><a href="#数据库编程" class="headerlink" title="数据库编程"></a>数据库编程</h2><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量：程序本身不能改变其值的数据</p>
+<p>（1）字符串常量</p>
+<p>使用单引号或双引号括起来的字符串序列，一般使用单引号。</p>
+<p>（2）数值常量</p>
+<p>整数常量和小数常量。可使用科学计数法表示，如 <strong>1e10</strong>、<strong>1.25E10</strong>*。</p>
+<p>（3）日期和时间常量</p>
+<p>单引号括的特定格式的字符日期值。如 <strong>‘yyyy\mm\dd hh:mm:ss’<strong>、</strong>yyyy-mm-dd hh:mm:ss</strong>.</p>
+<p>日期时间之间可以使用比较符号比较大小</p>
+<p>（4）布尔值常量</p>
+<p>只有true、false两个值。SQL命令的运行结果：1表示true，0表示false。</p>
+<p>（5）NULL值</p>
+<p>NULL值适用于各种类型的字段，表示“不确定的值”。有NULL值参与的运算结果一定为NULL值。</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量：程序运行过程中可以改变其值的数据</p>
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>格式：@+局部变量名</p>
+<p>（1）定义与赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set @局部变量名[,@局部变量名,···];#定义</span><br><span class="line">set @局部变量名 = 表达式1[,@局部变量名 = 表达式2,···];#定义并赋值</span><br><span class="line">select 列名[,列名,···] into @局部变量名[,@局部变量名,···] from 表名;#将查询到的数据赋值给局部变量名</span><br></pre></td></tr></table></figure>
+
+<p>（2）显示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @局部变量名;</span><br></pre></td></tr></table></figure>
+
+<p>（3）其他</p>
+<p>局部变量名可作为 select语句 中 where子句 的比较条件。</p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from 表名 where name = @局部变量名</span><br></pre></td></tr></table></figure>
+
+<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>全局变量：MySQL 系统提供并赋值的变量。用户不能定义全局变量，只能使用。</p>
+<p>格式：@@+全局变量名</p>
+<table>
+<thead>
+<tr>
+<th align="center">全局变量名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@@back_log</td>
+<td align="center">返回MySQL主要连接请求的数量</td>
+</tr>
+<tr>
+<td align="center">@@basedir</td>
+<td align="center">返回MySQL安装目录基准</td>
+</tr>
+<tr>
+<td align="center">@@license</td>
+<td align="center">返回服务器的许可类型</td>
+</tr>
+<tr>
+<td align="center">@@port</td>
+<td align="center">返回服务器侦听TCP&#x2F;IP链接的端口号</td>
+</tr>
+<tr>
+<td align="center">@@storage_engine</td>
+<td align="center">返回存储引擎</td>
+</tr>
+<tr>
+<td align="center">@@version</td>
+<td align="center">返回服务器版本号</td>
+</tr>
+</tbody></table>
+<p>显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @@全局变量名</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQL查询语句的执行顺序"><a href="#SQL查询语句的执行顺序" class="headerlink" title="SQL查询语句的执行顺序"></a>SQL查询语句的执行顺序</h3><p>先执行 FROM 确定主表，再执行 JOIN 连接，然后 WHERE 进行过滤，接着 GROUP BY 进行分组，HAVING 过滤聚合结果，SELECT 选择最终列，ORDER BY 排序，最后 LIMIT 限制返回行数。</p>
+<p>WHERE 先执行是为了减少数据量，HAVING 只能过滤聚合数据，ORDER BY 必须在 SELECT 之后排序最终结果，LIMIT 最后执行以减少数据传输。</p>
+<p>这个执行顺序与编写 SQL 语句的顺序不同，这也是为什么有时候在 SELECT 子句中定义的别名不能在 WHERE 子句中使用得原因，因为 WHERE 是在 SELECT 之前执行的。</p>
+<p><strong>LIMIT 为什么在最后执行？</strong></p>
+<p>因为 LIMIT 是在最终结果集上执行的，如果在 WHERE 之前执行 LIMIT，那么就会先返回所有行，然后再进行 LIMIT 限制，这样会增加数据传输的开销。</p>
+<p><strong>ORDER BY 为什么在 SELECT 之后执行？</strong></p>
+<p>因为排序需要基于最终返回的列，如果 ORDER BY 早于 SELECT 执行，计算 <code>COUNT(*)</code> 之类的聚合函数就会出问题。</p>
+<table>
+<thead>
+<tr>
+<th align="center">执行顺序</th>
+<th align="center">SQL 关键字</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">①</td>
+<td align="center">FROM</td>
+<td align="center">确定主表，准备数据</td>
+</tr>
+<tr>
+<td align="center">②</td>
+<td align="center">ON</td>
+<td align="center">连接多个表的条件</td>
+</tr>
+<tr>
+<td align="center">③</td>
+<td align="center">JOIN</td>
+<td align="center">执行 INNER JOIN &#x2F; LEFT JOIN 等</td>
+</tr>
+<tr>
+<td align="center">④</td>
+<td align="center">WHERE</td>
+<td align="center">过滤行数据（提高效率）</td>
+</tr>
+<tr>
+<td align="center">⑤</td>
+<td align="center">GROUP BY</td>
+<td align="center">进行分组</td>
+</tr>
+<tr>
+<td align="center">⑥</td>
+<td align="center">HAVING</td>
+<td align="center">过滤聚合后的数据</td>
+</tr>
+<tr>
+<td align="center">⑦</td>
+<td align="center">SELECT</td>
+<td align="center">选择最终返回的列</td>
+</tr>
+<tr>
+<td align="center">⑧</td>
+<td align="center">DISTINCT</td>
+<td align="center">进行去重</td>
+</tr>
+<tr>
+<td align="center">⑨</td>
+<td align="center">ORDER BY</td>
+<td align="center">对最终结果排序</td>
+</tr>
+<tr>
+<td align="center">⑩</td>
+<td align="center">LIMIT</td>
+<td align="center">限制返回行数</td>
+</tr>
+</tbody></table>
+<p><img src="https://cdn.paicoding.com/stutymore/mysql-20250306153200.png" alt="博客园数据派：查询语句执行顺序"></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>MySQL 的常用命令主要包括<strong>数据库操作命令、表操作命令、行数据 CRUD 命令、索引和约束的创建修改命令、用户和权限管理的命令、事务控制的命令</strong>等。</p>
+<h4 id="数据库操作命令"><a href="#数据库操作命令" class="headerlink" title="数据库操作命令"></a>数据库操作命令</h4><p><code>CREATE DATABASE database_name;</code> 用于创建数据库；<code>DROP DATABASE database_name;</code> 用于删除数据库；<code>SHOW DATABASES;</code> 用于显示所有数据库；<code>USE database_name;</code> 用于切换数据库。</p>
+<h4 id="表操作命令"><a href="#表操作命令" class="headerlink" title="表操作命令"></a>表操作命令</h4><p><code>CREATE TABLE table_name (列名1 数据类型1, 列名2 数据类型2,...);</code> 用于创建表；</p>
+<p><code>DROP TABLE table_name;</code> 用于删除表；</p>
+<p><code>SHOW TABLES;</code> 用于显示所有表；</p>
+<p><code>DESCRIBE table_name;</code> 用于查看表结构；</p>
+<p><code>ALTER TABLE table_name ADD column_name datatype;</code> 用于修改表。</p>
+<h4 id="行数据的-CRUD-命令"><a href="#行数据的-CRUD-命令" class="headerlink" title="行数据的 CRUD 命令"></a>行数据的 CRUD 命令</h4><p><code>INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);</code> 用于插入数据；</p>
+<p><code>SELECT column_names FROM table_name WHERE condition;</code> 用于查询数据；</p>
+<p><code>UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;</code> 用于更新数据；</p>
+<p><code>DELETE FROM table_name WHERE condition;</code> 用于删除数据。</p>
+<h4 id="索引和约束的创建修改命令"><a href="#索引和约束的创建修改命令" class="headerlink" title="索引和约束的创建修改命令"></a>索引和约束的创建修改命令</h4><p><code>CREATE INDEX index_name ON table_name (column_name);</code> 用于创建索引；</p>
+<p><code>ALTER TABLE table_name ADD PRIMARY KEY (column_name);</code> 用于添加主键；</p>
+<p><code>ALTER TABLE table_name ADD CONSTRAINT fk_name FOREIGN KEY (column_name) REFERENCES parent_table (parent_column_name);</code> 用于添加外键。</p>
+<h4 id="用户和权限管理的命令"><a href="#用户和权限管理的命令" class="headerlink" title="用户和权限管理的命令"></a>用户和权限管理的命令</h4><p><code>CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;</code> 用于创建用户；</p>
+<p><code>GRANT ALL PRIVILEGES ON database_name.table_name TO &#39;username&#39;@&#39;host&#39;;</code> 用于授予权限；</p>
+<p><code>REVOKE ALL PRIVILEGES ON database_name.table_name FROM &#39;username&#39;@&#39;host&#39;;</code> 用于撤销权限；</p>
+<p><code>DROP USER &#39;username&#39;@&#39;host&#39;;</code> 用于删除用户。</p>
+<h4 id="事务控制的命令"><a href="#事务控制的命令" class="headerlink" title="事务控制的命令"></a>事务控制的命令</h4><p><code>START TRANSACTION;</code> 用于开始事务；</p>
+<p><code>COMMIT;</code> 用于提交事务；</p>
+<p><code>ROLLBACK;</code> 用于回滚事务。</p>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接可分为三类：</p>
+<p>inner join（内连接或等值连接）：获取两个表中字段匹配关系的记录，即2个表中值都存在的记录；</p>
+<p>left join：获取左表中所有记录，即使右表中没有对应的匹配记录，右表中记录不存在则使用null替代；</p>
+<p>right join：获取右表中所有记录，即使左表中没有对应的匹配记录，左表中记录不存在则使用null替代。</p>
+<p>总结：</p>
+<p>　　①A inner join B on {条件}：取交集；</p>
+<p>　　②A left join B on {条件}：：取A全部，B没有对应的值，则为null；</p>
+<p>　　③A right join B on {条件}：：取B全部，A没有对应的值，则为null；</p>
+<p>　　④A full outer join B on {条件}：：取并集，彼此没有对应的值为null；</p>
+<p>　　上述4种的对应条件，在on后填写。</p>
+<h3 id="limit-和-offset"><a href="#limit-和-offset" class="headerlink" title="limit 和 offset"></a>limit 和 offset</h3><p>在 SQL 查询中，<strong>LIMIT</strong> 和 <strong>OFFSET</strong> 子句用于控制查询结果的返回行数和起始位置。它们通常用于分页查询，以便从大量数据中获取特定范围的记录。</p>
+<p><strong>LIMIT</strong> 子句用于限制返回的记录数。它接受一个或两个整数参数：</p>
+<ul>
+<li>一个参数：表示返回的最大记录数。</li>
+<li>两个参数：第一个参数表示偏移量（即跳过的记录数），第二个参数表示返回的最大记录数。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 返回前3行数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 跳过前2行，返回第3行数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">2</span>, <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>OFFSET</strong> 子句用于指定查询结果的起始位置。它通常与 <strong>LIMIT</strong> 子句一起使用，以实现分页效果。</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 跳过前2行，返回第3行数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
   <entry>
     <title>Agent三大范式</title>
@@ -898,6 +1228,220 @@
       </categories>
       <tags>
         <tag>Agent</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RAG学习-文本分块</title>
+    <url>/2026/04/13/RAG%E5%AD%A6%E4%B9%A0-%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97/</url>
+    <content><![CDATA[<h2 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h2><p>主要分为检索、生成两个阶段</p>
+<p>（1）<strong>检索阶段：寻找“非参数化知识”</strong></p>
+<ul>
+<li><strong>知识向量化</strong>：<strong>嵌入模型（Embedding Model）</strong> 充当了“连接器”的角色。它将外部知识库编码为向量索引（Index），存入<strong>向量数据库</strong>。</li>
+<li><strong>语义召回</strong>：当用户发起查询时，检索模块利用同样的嵌入模型将问题向量化，并通过<strong>相似度搜索（Similarity Search）</strong>，从海量数据中精准锁定与问题最相关的文档片段。</li>
+</ul>
+<p>（2）<strong>生成阶段：融合两种知识</strong></p>
+<ul>
+<li><strong>上下文整合</strong>：<strong>生成模块</strong>接收检索阶段送来的相关文档片段以及用户的原始问题。</li>
+<li><strong>指令引导生成</strong>：该模块会遵循预设的 <strong>Prompt</strong> 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413222349879.png?token=AR3LVDH3AOUKB6AGGTUOKU3J3T6LE" alt="image-20260413222347766"></p>
+<h2 id="技术演进"><a href="#技术演进" class="headerlink" title="技术演进"></a>技术演进</h2><p>大致分为原生RAG、高级RAG、模块化RAG三个阶段。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413222509770.png?token=AR3LVDCZYKD45IAKD5AT5QDJ3T6QE" alt="image-20260413222508575"></p>
+<p>具体对比如下表：</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">初级 RAG（Naive RAG）</th>
+<th align="center">高级 RAG（Advanced RAG）</th>
+<th align="center">模块化 RAG（Modular RAG）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>流程</strong></td>
+<td align="center"><strong>离线:</strong> <code>索引</code> <strong>在线:</strong> <code>检索 → 生成</code></td>
+<td align="center"><strong>离线:</strong> <code>索引</code> <strong>在线:</strong> <code>...→ 检索前 → ... → 检索后 → ...</code></td>
+<td align="center">积木式可编排流程</td>
+</tr>
+<tr>
+<td align="center"><strong>特点</strong></td>
+<td align="center">基础线性流程</td>
+<td align="center">增加<strong>检索前后</strong>的优化步骤</td>
+<td align="center">模块化、可组合、可动态调整</td>
+</tr>
+<tr>
+<td align="center"><strong>关键技术</strong></td>
+<td align="center">基础向量检索</td>
+<td align="center"><strong>查询重写（Query Rewrite）</strong> <strong>结果重排（Rerank）</strong></td>
+<td align="center"><strong>动态路由（Routing）</strong> <strong>查询转换（Query Transformation）</strong> <strong>多路融合（Fusion）</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>局限性</strong></td>
+<td align="center">效果不稳定，难以优化</td>
+<td align="center">流程相对固定，优化点有限</td>
+<td align="center">系统复杂性高</td>
+</tr>
+</tbody></table>
+<h2 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h2><p>在选择具体的技术路径时，一个重要的考量是<strong>成本与效益的平衡</strong>。通常，我们应优先选择对模型改动最小、成本最低的方案，所以技术选型路径往往遵循的顺序是<strong>提示词工程（Prompt Engineering） -&gt; 检索增强生成 -&gt; 微调（Fine-tuning）</strong>。</p>
+<p>我们可以从两个维度来理解这些技术的区别。如图 1-3 所示，<strong>横轴代表“LLM 优化”</strong>，即对模型本身进行多大程度的修改。从左到右，优化的程度越来越深，其中提示工程和 RAG 完全不改变模型权重，而微调则直接修改模型参数。<strong>纵轴代表“上下文优化”</strong>，是对输入给模型的信息进行多大程度的增强。从下到上，增强的程度越来越高，其中提示工程只是优化提问方式，而 RAG 则通过引入外部知识库，极大地丰富了上下文信息。</p>
+<p>RAG 的出现填补了通用模型与专业领域之间的鸿沟，它在解决如表 1-2 所示 LLM 局限时尤其有效：</p>
+<table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">RAG的解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>静态知识局限</strong></td>
+<td align="center">实时检索外部知识库，支持动态更新</td>
+</tr>
+<tr>
+<td align="center"><strong>幻觉（Hallucination）</strong></td>
+<td align="center">基于检索内容生成，错误率降低</td>
+</tr>
+<tr>
+<td align="center"><strong>领域专业性不足</strong></td>
+<td align="center">引入领域特定知识库（如医疗&#x2F;法律）</td>
+</tr>
+<tr>
+<td align="center"><strong>数据隐私风险</strong></td>
+<td align="center">本地化部署知识库，避免敏感数据泄露</td>
+</tr>
+</tbody></table>
+<h1 id="文本分块"><a href="#文本分块" class="headerlink" title="文本分块"></a>文本分块</h1><h2 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h2><h3 id="满足模型上下文限制"><a href="#满足模型上下文限制" class="headerlink" title="满足模型上下文限制"></a>满足模型上下文限制</h3><p>将文本分块的首要原因，是为了适应 RAG 系统中两个核心组件的硬性限制：</p>
+<ul>
+<li><strong>嵌入模型 (Embedding Model)</strong>: 负责将文本块转换为向量。这类模型有严格的输入长度上限。例如，许多常用的嵌入模型（如 <code>bge-base-zh-v1.5</code>）的上下文窗口为512个token。任何超出此限制的文本块在输入时都会被截断，导致信息丢失，生成的向量也无法完整代表原文的语义。因此，<strong>文本块的大小必须小于等于嵌入模型的上下文窗口</strong>。</li>
+<li><strong>大语言模型 (LLM)</strong>: 负责根据检索到的上下文生成答案。LLM同样有上下文窗口限制（尽管通常比嵌入模型大得多，从几千到上百万token不等）。检索到的所有文本块，连同用户问题和提示词，都必须能被放入这个窗口中。如果单个块过大，可能会导致只能容纳少数几个相关的块，限制了LLM回答问题时可参考的信息广度。</li>
+</ul>
+<p>因此，分块是确保文本能够被两个模型完整、有效处理的基础。</p>
+<h3 id="为何“块”不是越大越好"><a href="#为何“块”不是越大越好" class="headerlink" title="为何“块”不是越大越好"></a>为何“块”不是越大越好</h3><p>假设嵌入模型最多能处理 8192 个 token，是否应该把块切得尽可能大（比如8000个token）呢？答案是否定的。<strong>块的大小并非越大越好</strong>，过大的块会严重影响RAG系统的性能。</p>
+<h4 id="嵌入过程中的信息损失"><a href="#嵌入过程中的信息损失" class="headerlink" title="嵌入过程中的信息损失"></a>嵌入过程中的信息损失</h4><p>大多数嵌入模型都基于 Transformer 编码器。其工作流程大致如下：</p>
+<ul>
+<li><strong>分词 (Tokenization)</strong>: 将输入的文本块分解成一个个 token。</li>
+<li><strong>向量化 (Vectorization)</strong>: Transformer 为<strong>每个 token</strong> 生成一个高维向量表示。</li>
+<li><strong>池化 (Pooling)</strong>: 通过某种方法（如取 <code>[CLS]</code> 位的向量、对所有token向量求平均 <code>mean pooling</code> 等），将所有 token 的向量<strong>压缩</strong>成一个<strong>单一的向量</strong>，这个向量代表了整个文本块的语义。</li>
+</ul>
+<blockquote>
+<p><code>[CLS]</code> 是BERT等Transformer模型在输入文本开头添加的特殊标记，它通过自注意力机制动态聚合整个序列的上下文信息，其最终向量被训练用作代表全局语义的嵌入。</p>
+</blockquote>
+<p>在这个<code>压缩</code>过程中，信息损失是不可避免的。一个768维的向量需要概括整个文本块的所有信息。<strong>文本块越长，包含的语义点越多，这个单一向量所承载的信息就越稀释</strong>，导致其表示变得笼统，关键细节被模糊化，从而降低了检索的精度。</p>
+<h4 id="生成过程的“大海捞针”-Lost-in-the-Middle"><a href="#生成过程的“大海捞针”-Lost-in-the-Middle" class="headerlink" title="生成过程的“大海捞针” (Lost in the Middle)"></a>生成过程的“大海捞针” (Lost in the Middle)</h4><p>即使将检索到的多个大块文本都塞进LLM的长上下文窗口中，也会出现关键信息被“淹没”在大量无关内容里的问题。有研究表明 <a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>，当LLM处理非常长的、充满大量信息的上下文时，它倾向于更好地记住开头和结尾的信息，而忽略中间部分的内容。</p>
+<p>如果提供给LLM的上下文块又大又杂，充满了与问题无关的噪音，模型就很难从中提取出最关键的信息来形成答案，从而导致回答质量下降或产生幻觉。</p>
+<h4 id="主题稀释导致检索失败"><a href="#主题稀释导致检索失败" class="headerlink" title="主题稀释导致检索失败"></a>主题稀释导致检索失败</h4><p>一个好的文本块应该聚焦于一个明确、单一的主题。如果一个块包含太多不相关的主题，它的语义就会被稀释，导致在检索时无法被精确匹配。</p>
+<p>假设有一个关于《王者荣耀》英雄鲁班七号的攻略文档。</p>
+<ul>
+<li><strong>糟糕的分块策略</strong>：将“技能介绍”、“推荐出装”和“背景故事”这三个完全不同主题的内容，全部放在一个巨大的文本块里。<ul>
+<li>当玩家查询“鲁班七号怎么出装？”时，这个大块虽然包含了出装信息，但由于被技能说明和英雄故事等无关主题严重稀释，其整体的检索相关性得分可能会很低，导致无法被召回。</li>
+</ul>
+</li>
+<li><strong>优秀的分块策略</strong>：将“技能”、“出装”和“故事”分别切分为三个独立的、主题聚焦的块。<ul>
+<li>当玩家再次查询时，“推荐出装”这个块会因为与查询高度相关而获得极高的分数，从而被精准地检索出来。</li>
+</ul>
+</li>
+</ul>
+<p>通过合理分块，可以有效提升检索的信噪比，确保了后续生成环节能得到最优质、最相关的上下文。</p>
+<h2 id="基础分块策略"><a href="#基础分块策略" class="headerlink" title="基础分块策略"></a>基础分块策略</h2><p>LangChain 提供了丰富且易于使用的文本分割器（Text Splitters），下面将介绍几种最核心的策略。</p>
+<p>固定大小分块、递归字符分块、基于语义的分块、基于文档结构的分块</p>
+<h3 id="固定大小分块"><a href="#固定大小分块" class="headerlink" title="固定大小分块"></a>固定大小分块</h3><p>这是最简单直接的分块方法。根据LangChain源码，这种方法的工作原理分为两个主要阶段：</p>
+<p>（1）<strong>按段落分割</strong>：<code>CharacterTextSplitter</code> 采用默认分隔符 <code>&quot;\n\n&quot;</code>，使用正则表达式将文本按段落进行分割，通过 <code>_split_text_with_regex</code> 函数处理。</p>
+<p>（2）<strong>智能合并</strong>：调用继承自父类的 <code>_merge_splits</code> 方法，将分割后的段落依次合并。该方法会监控累积长度，当超过 <code>chunk_size</code> 时形成新块，并通过重叠机制（<code>chunk_overlap</code>）保持上下文连续性，同时在必要时发出超长块的警告。</p>
+<p>需要注意，<code>CharacterTextSplitter</code> 实际实现的并非严格的固定大小分块。根据 <code>_merge_splits</code> 源码逻辑，这种方法会：</p>
+<ul>
+<li><strong>优先保持段落完整性</strong>：只有当添加新段落会导致总长度超过 <code>chunk_size</code> 时，才会结束当前块</li>
+<li><strong>处理超长段落</strong>：如果单个段落超过 <code>chunk_size</code>，系统会发出警告但仍将其作为完整块保留</li>
+<li><strong>应用重叠机制</strong>：通过 <code>chunk_overlap</code> 参数在块之间保持内容重叠，确保上下文连续性</li>
+</ul>
+<p>所以，LangChain 的实现更准确地应该称为”段落感知的自适应分块”，块大小会根据段落边界动态调整。</p>
+<h3 id="递归字符分块"><a href="#递归字符分块" class="headerlink" title="递归字符分块"></a>递归字符分块</h3><p>现在让我们深入了解 <code>RecursiveCharacterTextSplitter</code> 的实现。这种分块器通过分隔符层级递归处理，相对与固定大小分块，改善了超长文本的处理效果。</p>
+<p><strong>算法流程</strong>： </p>
+<p>（1）<strong>寻找有效分隔符</strong>: 从分隔符列表中从前到后遍历，找到第一个在当前文本中<strong>存在</strong>的分隔符。如果都不存在，使用最后一个分隔符（通常是空字符串 <code>&quot;&quot;</code>）。</p>
+<p>（2）<strong>切分与分类处理</strong>: 使用选定的分隔符切分文本，然后遍历所有片段：</p>
+<ul>
+<li><strong>如果片段不超过块大小</strong>: 暂存到 <code>_good_splits</code> 中，准备合并</li>
+<li><strong>如果片段超过块大小</strong>:<ul>
+<li>首先，将暂存的合格片段通过 <code>_merge_splits</code> 合并成块</li>
+<li>然后，检查是否还有剩余分隔符：<ul>
+<li><strong>有剩余分隔符</strong>: 递归调用 <code>_split_text</code> 继续分割</li>
+<li><strong>无剩余分隔符</strong>: 直接保留为超长块</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>（3）<strong>最终处理</strong>: 将剩余的暂存片段合并成最后的块</p>
+<p><strong>实现细节</strong>：</p>
+<ul>
+<li><strong>批处理机制</strong>: 先收集所有合格片段（<code>_good_splits</code>），遇到超长片段时才触发合并操作。</li>
+<li><strong>递归终止条件</strong>: 关键在于 <code>if not new_separators</code> 判断。当分隔符用尽时（<code>new_separators</code> 为空），停止递归，直接保留超长片段。确保算法不会无限递归。</li>
+</ul>
+<p><strong>与固定大小分块的关键差异</strong>：</p>
+<ul>
+<li>固定大小分块遇到超长段落时只能发出警告并保留。</li>
+<li>递归分块会继续使用更细粒度的分隔符（句子→单词→字符）直到满足大小要求。</li>
+</ul>
+<p><strong>分隔符配置</strong>：</p>
+<ul>
+<li><strong>默认分隔符</strong>：<code>[&quot;\n\n&quot;, &quot;\n&quot;, &quot; &quot;, &quot;&quot;]</code></li>
+<li><strong>多语言支持</strong>：对于无词边界语言（中文、日文、泰文），可添加：</li>
+</ul>
+<p><strong>编程语言特化支持</strong>：</p>
+<p><code>RecursiveCharacterTextSplitter</code> 能够针对特定的编程语言（如Python, Java等）使用预设的、更符合代码结构的分隔符。它们通常包含语言的顶级语法结构（如类、函数定义）和次级结构（如控制流语句），以实现更符合代码逻辑的分割。</p>
+<h3 id="语义分块"><a href="#语义分块" class="headerlink" title="语义分块"></a>语义分块</h3><p>语义分块（Semantic Chunking）是一种更智能的方法，这种方法不依赖于固定的字符数或预设的分隔符，而是尝试根据文本的语义内涵来切分。其核心是：<strong>在语义主题发生显著变化的地方进行切分</strong>。这使得每个分块都具有高度的内部语义一致性。LangChain 提供了 <code>langchain_experimental.text_splitter.SemanticChunker</code> 来实现这一功能。</p>
+<p><strong>实现原理</strong></p>
+<p>工作流程可以概括为以下几个步骤：</p>
+<p>（1）**句子分割 (Sentence Splitting)**：首先，使用标准的句子分割规则（例如，基于句号、问号、感叹号）将输入文本拆分成一个句子列表。</p>
+<p>（2）**上下文感知嵌入 (Context-Aware Embedding)**：这是 <code>SemanticChunker</code> 的一个关键设计。该分块器不是对每个句子独立进行嵌入，而是通过 <code>buffer_size</code> 参数（默认为1）来捕捉上下文信息。对于列表中的每一个句子，这种方法会将其与前后各 <code>buffer_size</code> 个句子组合起来，然后对这个临时的、更长的组合文本进行嵌入。这样，每个句子最终得到的嵌入向量就融入了其上下文的语义。</p>
+<p>（3）<strong>计算语义距离 (Distance Calculation)：计算每对相邻</strong>句子的嵌入向量之间的余弦距离。这个距离值量化了两个句子之间的语义差异——距离越大，表示语义关联越弱，跳跃越明显。</p>
+<p>（4）**识别断点 (Breakpoint Identification)**：<code>SemanticChunker</code> 会分析所有计算出的距离值，并根据一个统计方法（默认为 <code>percentile</code>）来确定一个动态阈值。例如，它可能会将所有距离中第95百分位的值作为切分阈值。所有距离大于此阈值的点，都被识别为语义上的“断点”。</p>
+<p>（5）**合并成块 (Merging into Chunks)**：最后，根据识别出的所有断点位置，将原始的句子序列进行切分，并将每个切分后的部分内的所有句子合并起来，形成一个最终的、语义连贯的文本块。</p>
+<p><strong>断点识别方法 (<code>breakpoint_threshold_type</code>)</strong></p>
+<p>如何定义“显著的语义跳跃”是语义分块的关键。<code>SemanticChunker</code> 提供了几种基于统计的方法来识别断点：</p>
+<ul>
+<li><code>percentile</code> (百分位法 - <strong>默认方法</strong>):<ul>
+<li><strong>逻辑</strong>: 计算所有相邻句子的语义差异值，并将这些差异值进行排序。当一个差异值超过某个百分位阈值时，就认为该差异值是一个断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)，表示使用第95个百分位作为阈值。这意味着，只有最显著的5%的语义差异点会被选为切分点。</li>
+</ul>
+</li>
+<li><code>standard_deviation</code> (标准差法):<ul>
+<li><strong>逻辑</strong>: 计算所有差异值的平均值和标准差。当一个差异值超过“平均值 + N * 标准差”时，被视为异常高的跳跃，即断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>3</code>)，表示使用3倍标准差作为阈值。</li>
+</ul>
+</li>
+<li><code>interquartile</code> (四分位距法):<ul>
+<li><strong>逻辑</strong>: 使用统计学中的四分位距（IQR）来识别异常值。当一个差异值超过 <code>Q3 + N * IQR</code> 时，被视为断点。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>1.5</code>)，表示使用1.5倍的IQR。</li>
+</ul>
+</li>
+<li><code>gradient</code> (梯度法):<ul>
+<li><strong>逻辑</strong>: 这是一种更复杂的方法。它首先计算差异值的变化率（梯度），然后对梯度应用百分位法。对于那些句子间语义联系紧密、差异值普遍较低的文本（如法律、医疗文档）特别有效，因为这种方法能更好地捕捉到语义变化的“拐点”。</li>
+<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="基于文档结构的分块"><a href="#基于文档结构的分块" class="headerlink" title="基于文档结构的分块"></a>基于文档结构的分块</h3><p>对于具有明确结构标记的文档格式（如Markdown、HTML、LaTex），可以利用这些标记来实现更智能、更符合逻辑的分割。</p>
+<h4 id="以Markdown-结构分块为例"><a href="#以Markdown-结构分块为例" class="headerlink" title="以Markdown 结构分块为例"></a>以Markdown 结构分块为例</h4><p>针对结构清晰的 Markdown 文档，利用其标题层级进行分块是一种高效且保留了丰富语义的方法。LangChain 提供了 <code>MarkdownHeaderTextSplitter</code> 来处理。</p>
+<ul>
+<li><strong>实现原理</strong>: 该分块器的主要逻辑是“先按标题分组，再按需细分”。<ol>
+<li><strong>定义分割规则</strong>: 用户首先需要提供一个标题层级的映射关系，例如 <code>[ (&quot;#&quot;, &quot;Header 1&quot;), (&quot;##&quot;, &quot;Header 2&quot;) ]</code>，告诉分块器 <code>#</code> 是一级标题，<code>##</code> 是二级标题。</li>
+<li><strong>内容聚合</strong>: 分块器会遍历整个文档，将每个标题下的所有内容（直到下一个同级或更高级别的标题出现前）聚合在一起。每个聚合后的内容块都会被赋予一个包含其完整标题路径的元数据。</li>
+</ol>
+</li>
+<li><strong>元数据注入的优势</strong>: 这是此方法的主要特点。例如，对于一篇关于机器学习的文章，某个段落可能位于“第三章：模型评估”下的“3.2节：评估指标”中。经过分割后，这个段落形成的文本块，其元数据就会是 <code>&#123;&quot;Header 1&quot;: &quot;第三章：模型评估&quot;, &quot;Header 2&quot;: &quot;3.2节：评估指标&quot;&#125;</code>。这种元数据为每个块提供了精确的“地址”，极大地增强了上下文的准确性，让大模型能更好地理解信息片段的来源和背景。</li>
+<li><strong>局限性与组合使用</strong>: 单纯按标题分割可能会导致一个问题：某个章节下的内容可能非常长，远超模型能处理的上下文窗口。为了解决这个问题，<code>MarkdownHeaderTextSplitter</code> 可以与其它分块器（如 <code>RecursiveCharacterTextSplitter</code>）<strong>组合使用</strong>。具体流程是：<ul>
+<li>第一步，使用 <code>MarkdownHeaderTextSplitter</code> 将文档按标题分割成若干个大的、带有元数据的逻辑块。</li>
+<li>第二步，对这些逻辑块再应用 <code>RecursiveCharacterTextSplitter</code>，将其进一步切分为符合 <code>chunk_size</code> 要求的小块。由于这个过程是在第一步之后进行的，所有最终生成的小块都会<strong>继承</strong>来自第一步的标题元数据。</li>
+</ul>
+</li>
+<li><strong>RAG应用优势</strong>: 这种两阶段的分块方法，既保留了文档的宏观逻辑结构（通过元数据），又确保了每个块的大小适中，是处理结构化文档进行RAG的理想方案。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>RAG</category>
+        <category>文本分块</category>
+      </categories>
+      <tags>
+        <tag>RAG</tag>
       </tags>
   </entry>
   <entry>
@@ -1472,547 +2016,38 @@
       </tags>
   </entry>
   <entry>
-    <title>数据库学习笔记</title>
-    <url>/2026/04/07/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="数据库系统的基本原理"><a href="#数据库系统的基本原理" class="headerlink" title="数据库系统的基本原理"></a>数据库系统的基本原理</h2><p>介绍基本概念、发展阶段、数据模型、DBMS的功能及组成、DBS的组成及全局结构</p>
-<h3 id="数据库概述"><a href="#数据库概述" class="headerlink" title="数据库概述"></a>数据库概述</h3><h4 id="1数据库系统的应用"><a href="#1数据库系统的应用" class="headerlink" title="1数据库系统的应用"></a>1数据库系统的应用</h4><p>广泛应用在电信业、银行业、金融业、销售业、电商、大学、航空业、人力资源、制造业</p>
-<h4 id="数据库系统的概念"><a href="#数据库系统的概念" class="headerlink" title="数据库系统的概念"></a>数据库系统的概念</h4><h5 id="数据Date"><a href="#数据Date" class="headerlink" title="数据Date"></a>数据Date</h5><p>数据：数据库存储的基本对象，是描述现实世界中各种事物或抽象概念的、可存储并具有明确意义的符号记录。</p>
-<p>具体事物：有形且看得见的事物		抽象事物：无形且看不见的事物</p>
-<p>记录是数据库系统表示和存储数据的一种格式</p>
-<h5 id="数据库DB"><a href="#数据库DB" class="headerlink" title="数据库DB"></a>数据库DB</h5><p>简单上，数据库：相互关联的数据集合</p>
-<p>严格上，数据库：长期存储在计算机内、有组织、可共享的大量数据的集合。</p>
-<p>数据库具有较小的冗余度（不能杜绝数据冗余）、较高的数据独立性、易扩展性</p>
-<h5 id="数据库管理系统DBMS"><a href="#数据库管理系统DBMS" class="headerlink" title="数据库管理系统DBMS"></a>数据库管理系统DBMS</h5><p>数据库系统核心部分，介于用户和OS之间。提供访问数据库的方法（数据库定义、建立、查询、更新及其他数据控制）</p>
-<h4 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a><strong>主要</strong>功能</h4><h5 id="数据定义功能"><a href="#数据定义功能" class="headerlink" title="数据定义功能"></a>数据定义功能</h5><p>使用数据定义语言（DDL），在数据库中<strong>定义数据对象</strong>（表、视图、索引、存储过程等）、数据的完整性约束等</p>
-<p>数据的完整性（主要）：实体完整性、参照完整性、用户定义的完整性</p>
-<h5 id="数据操纵功能"><a href="#数据操纵功能" class="headerlink" title="数据操纵功能"></a>数据操纵功能</h5><p>使用数据操纵语言（DML），对数据库进行<strong>增、删、改、查</strong>操作（insert、delete、update、select）</p>
-<p>查询功能使用频率最高</p>
-<h5 id="数据控制功能"><a href="#数据控制功能" class="headerlink" title="数据控制功能"></a>数据控制功能</h5><p>使用数据控制语言（DCL），进行用户权限的变动，如授予或撤销，即安全性控制：解决多用户对数据库的并发使用所产生的事物处理问题（并发控制；数据库的转储、恢复功能；数据库的性能监视、分析功能）</p>
-<h5 id="数据库系统DBS"><a href="#数据库系统DBS" class="headerlink" title="数据库系统DBS"></a>数据库系统DBS</h5><p>数据库系统：计算机系统引入数据库后的系统，由DB、DBMS、应用系统、数据库管理员DBA构成。</p>
-<h5 id="数据库应用系统DBAS"><a href="#数据库应用系统DBAS" class="headerlink" title="数据库应用系统DBAS"></a>数据库应用系统DBAS</h5><p>DBAS：指实现业务逻辑的应用程序</p>
-<p>要求：提供一个有好的、人性化的操作数据的GUI</p>
-<h4 id="数据管理技术的发展阶段"><a href="#数据管理技术的发展阶段" class="headerlink" title="数据管理技术的发展阶段"></a>数据管理技术的发展阶段</h4><h5 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h5><p>用途：科学计算</p>
-<p>处理方式：批处理</p>
-<p>特点：数据不保存、不具有独立性、不共享；只有程序概念，无文件概念</p>
-<h5 id="文件管理系统阶段"><a href="#文件管理系统阶段" class="headerlink" title="文件管理系统阶段"></a>文件管理系统阶段</h5><p>用途：科学计算、信息管理</p>
-<p>处理方式：批处理、联机实时处理</p>
-<p>缺点：数据冗余性和不一致（数据重复存储且可能有差异）、数据独立性差、数据孤立</p>
-<h5 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h5><p>用途：大规模管理</p>
-<p>处理方式：批处理、实时联机处理、分布处理</p>
-<p>特点：数据结构化；数据共享性高、冗余度低、易扩充；数据独立性高（物理独立性、逻辑独立性）；DBMS统一管理和控制（包括数据的完整性检查、并发控制、数据的安全性保护、数据库的恢复）</p>
-<h4 id="数据库系统的用户"><a href="#数据库系统的用户" class="headerlink" title="数据库系统的用户"></a>数据库系统的用户</h4><h5 id="数据库管理员"><a href="#数据库管理员" class="headerlink" title="数据库管理员"></a>数据库管理员</h5><p>①参与数据库的设计</p>
-<p>②定义数据的安全性要求和完整性约束条件</p>
-<p>③日常维护：定期备份数据库、监视数据库的运行、保障有充足的空余磁盘空间</p>
-<p>④数据库的改进、重组和重构</p>
-<h5 id="数据库用户"><a href="#数据库用户" class="headerlink" title="数据库用户"></a>数据库用户</h5><p>①最终用户：现实系统中的业务人员，数据库的主要用户</p>
-<p>②专业用户：包括工程师、科学家、经济学家等具有较高科学技术背景的人员</p>
-<p>③系统分析员和数据库设计人员</p>
-<p>④应用程序员</p>
-<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>模型是对现实世界的抽象</p>
-<h4 id="数据抽象的过程"><a href="#数据抽象的过程" class="headerlink" title="数据抽象的过程"></a>数据抽象的过程</h4><p>美国国家标准化协会（ANSI）根据<strong>数据抽象级别</strong>定义了四种模型：概念模型、逻辑模型、外部模型、内部模型</p>
-<p>数据抽象过程：</p>
-<p>①综合：根据用户需求设计数据库的概念模型</p>
-<p>②转换：根据转换规则将概念模型转换为数据库的逻辑模型</p>
-<p>③实现：根据用户业务特点设计不同的外部模型</p>
-<p>④根据逻辑模型设计内部模型</p>
-<p>模型介绍：</p>
-<h5 id="概念模型"><a href="#概念模型" class="headerlink" title="概念模型"></a>概念模型</h5><p>抽象级别最高，表达用户需求观点的数据库全局逻辑结构的模型</p>
-<p>特点：</p>
-<p>①表达了数据库的整体逻辑结构，<strong>企业管理人员</strong>对整个<strong>企业组织</strong>的全面概述</p>
-<p>②从<strong>用户需求</strong>的观点出发对数据建模</p>
-<p>③独立于软硬件。不依赖于硬件设备，不依赖于实现时的DBMS软件</p>
-<p>④数据库设计人员与用户之间进行交流的工具</p>
-<p>现在概念模型多是实体-联系模型（E-R模型，使用E-R图表示）。</p>
-<p>实体是现实世界或客观世界中可相互区别的对象（抽象或具体）。</p>
-<p>联系：两个或多个实体之间的关联，分为三种：</p>
-<p>①一对一（1:1）②一对多（1：N）③多对多（M:N）</p>
-<h5 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h5><p>特点：</p>
-<p>①表达了数据库的整体逻辑结构，<strong>设计人员</strong>对整个<strong>企业组织数据库</strong>的全面概述（与概念模型不同，主要区分）</p>
-<p>②从<strong>数据库实现</strong>的观点出发对数据建模</p>
-<p>③硬件独立，软件依赖</p>
-<p>④数据库设计人员与应用程序员之间交流的工具</p>
-<p>类别：层次模型（数据结构为树状结构）、网状结构（数据结构为有向图）、关系模型（数据结构为二维表格，现在关系型DBMS均采用关系模型）</p>
-<h5 id="外部模型"><a href="#外部模型" class="headerlink" title="外部模型"></a>外部模型</h5><p>特点：</p>
-<p>①逻辑结构的一个逻辑子集（可以有多个）</p>
-<p>②硬件独立，软件依赖</p>
-<p>③反映了用户使用数据库的观点</p>
-<p>系统考查上，特点为：简化了用户观点、有助于数据库的安全性保护、对概念模型的支持</p>
-<h5 id="内部模型（物理模型）"><a href="#内部模型（物理模型）" class="headerlink" title="内部模型（物理模型）"></a>内部模型（物理模型）</h5><p>数据库最底层的抽象（描述了数据在磁盘上的存储方式、存取设备、存取方法）。</p>
-<p>与硬件和软件紧密相连的。</p>
-<h4 id="关系模型"><a href="#关系模型" class="headerlink" title="关系模型"></a>关系模型</h4><p>1970年，IBM公司 E.F.Codd 首次提出</p>
-<h5 id="数据模型的三要素"><a href="#数据模型的三要素" class="headerlink" title="数据模型的三要素"></a>数据模型的三要素</h5><p>①数据结构</p>
-<p>所描述的对象类型的集合，对系统静态特性的描述。</p>
-<p>②数据操作</p>
-<p>对系统动态特性的描述。</p>
-<p>③数据的完整性约束</p>
-<p>一组完整性规则，保证数据的正确性、有效性、相容性、</p>
-<p>必须满足实体完整性和参照完整性。</p>
-<h5 id="关系数据模型的数据结构"><a href="#关系数据模型的数据结构" class="headerlink" title="关系数据模型的数据结构"></a>关系数据模型的数据结构</h5><p>①关系（relation）</p>
-<p>一个关系即为一个规范的二维表。</p>
-<p>基本条件：关系的每一列不可再分。即不允许表中还有表</p>
-<p>②元组（tuple）</p>
-<p>二维表中除第一行外的每一行为一个元组。</p>
-<p>一个元祖代表一条完整的信息。</p>
-<p>③属性（attribute）</p>
-<p>二维表中的每一列为一个属性。</p>
-<p>④码（key）</p>
-<p>码：关键字或关键码。</p>
-<p>由一个属性或属性的组合能够<strong>唯一</strong>确定一个元组，则该属性或属性的组合称为码。</p>
-<p>⑤关系模式</p>
-<p>一般描述：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">关系名（属性1，属性2，属性3，属性4，···，属性n）</span><br></pre></td></tr></table></figure>
+    <title>Docker 学习笔记：项目开发常用命令</title>
+    <url>/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h2 id="一、Docker-基础命令"><a href="#一、Docker-基础命令" class="headerlink" title="一、Docker 基础命令"></a>一、Docker 基础命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 Docker 版本</span></span><br><span class="line">docker --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 客户端和服务端版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 运行状态和环境信息</span></span><br><span class="line">docker info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 磁盘占用</span></span><br><span class="line">docker system <span class="built_in">df</span></span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li><h5 id="关系数据模型的操作和完整性约束"><a href="#关系数据模型的操作和完整性约束" class="headerlink" title="关系数据模型的操作和完整性约束"></a>关系数据模型的操作和完整性约束</h5></li>
-</ol>
-<p>主要操作：查询、插入、删除、更新数据（必须满足关系的完整性约束条件）</p>
-<p>关系的完整性约束条件：实体参照性、参照完整性、用户定义的完整性</p>
-<h3 id="数据库体系结构"><a href="#数据库体系结构" class="headerlink" title="数据库体系结构"></a>数据库体系结构</h3><h4 id="数据库系统的三级结构"><a href="#数据库系统的三级结构" class="headerlink" title="数据库系统的三级结构"></a>数据库系统的三级结构</h4><p>1975年，美国ANSI&#x2F;SPARC报告提出三级划分法。</p>
-<h5 id="用户级数据库"><a href="#用户级数据库" class="headerlink" title="用户级数据库"></a>用户级数据库</h5><p>对应<strong>外模式</strong>，最接近用户，用户可以看到和使用的数据库（又称用户视图）。</p>
-<p>主要由外部记录组成，不同视图可重叠。</p>
-<p>所有操作都是针对用户视图。</p>
-<h5 id="概念级数据库"><a href="#概念级数据库" class="headerlink" title="概念级数据库"></a>概念级数据库</h5><p>对应<strong>概念模式</strong>，介于用户级和物理级之间。数据库管理人员看到和使用的数据库（又称DBA视图）。</p>
-<h5 id="物理级数据库"><a href="#物理级数据库" class="headerlink" title="物理级数据库"></a>物理级数据库</h5><p>对应<strong>内模式</strong>，数据库底层表示。描述数据的实际存储组织，最接近与物理存储的级别（又称内部视图）。</p>
-<p>由内部记录组成。</p>
-<p>注意：物理级数据库不是真正的物理存储（只是对物理存储的抽象），最接近物理存储。</p>
-<h4 id="数据库系统的三级模式"><a href="#数据库系统的三级模式" class="headerlink" title="数据库系统的三级模式"></a>数据库系统的三级模式</h4><h5 id="1概念模式"><a href="#1概念模式" class="headerlink" title="1概念模式"></a>1概念模式</h5><p>又称<strong>模式</strong>或<strong>逻辑模式</strong>。</p>
-<p>数据库中<strong>全体</strong>数据的逻辑结构和特征的描述，<strong>所有用户</strong>的公共数据视图。</p>
-<p>具有唯一性。即一个数据库只有一个概念模式。</p>
-<h5 id="外部模式"><a href="#外部模式" class="headerlink" title="外部模式"></a>外部模式</h5><p>又称<strong>子模式</strong>和<strong>用户模式</strong>。</p>
-<p>数据库用户可以看到和使用的<strong>局部</strong>数据的逻辑结构和特征的描述。数据库用户的数据视图</p>
-<p>具有不唯一性。</p>
-<h5 id="内部模式"><a href="#内部模式" class="headerlink" title="内部模式"></a>内部模式</h5><p>又称<strong>存储模式</strong>或<strong>物理模式</strong>。</p>
-<p>数据物理结构和存储方式的描述，数据在数据库内的表示方式。</p>
-<p>具有唯一性。</p>
-<h4 id="数据库系统的二级映射与数据独立性"><a href="#数据库系统的二级映射与数据独立性" class="headerlink" title="数据库系统的二级映射与数据独立性"></a>数据库系统的二级映射与数据独立性</h4><h5 id="数据库系统的二级映射"><a href="#数据库系统的二级映射" class="headerlink" title="数据库系统的二级映射"></a>数据库系统的二级映射</h5><p>外模式&#x2F;模式映射				模式&#x2F;内模式映射</p>
-<p>三个抽象级通过二级映射进行相互转换，形成一个统一的整体。</p>
-<h5 id="数据独立性"><a href="#数据独立性" class="headerlink" title="数据独立性"></a>数据独立性</h5><p>应用程序与数据之间的独立性。包括两种如下：</p>
-<p>①物理独立性</p>
-<p>应用程序与磁盘上的数据库中的数据是独立的。</p>
-<p>通过模式&#x2F;内模式映射来实现的。</p>
-<p>②逻辑独立性</p>
-<p>应用程序与逻辑结构是相互独立的。通过外模式&#x2F;模式映射来实现的。</p>
-<h2 id="关系数据库标准语言SQL"><a href="#关系数据库标准语言SQL" class="headerlink" title="关系数据库标准语言SQL"></a>关系数据库标准语言SQL</h2><h3 id="SQL-语言介绍"><a href="#SQL-语言介绍" class="headerlink" title="SQL 语言介绍"></a>SQL 语言介绍</h3><p>近期版本是SQL2016，主要新特性为行模式识别、支持json对象、多态表函数等</p>
-<h4 id="SQL数据库的体系结构"><a href="#SQL数据库的体系结构" class="headerlink" title="SQL数据库的体系结构"></a>SQL数据库的体系结构</h4><p>特点：</p>
-<p>①SQL用户可以是应用程序或终端用户。</p>
-<p>②使用SQL语言对基本表和视图进行查询。</p>
-<p>③一个视图是从若干个基本表或其他视图上导出的表。</p>
-<p>④一个或一些基本表对应一个数据文件。</p>
-<p>⑤一个基本表可以带若干个索引。</p>
-<p>⑥一个表空间可以由若干个数据文件组成。</p>
-<p>⑦一个数据库可以由若干个存储文件组成。</p>
-<h4 id="SQL的特点"><a href="#SQL的特点" class="headerlink" title="SQL的特点"></a>SQL的特点</h4><p>Structured Query Language 结构化查询语言</p>
-<p>①综合统一</p>
-<p>②高度非过程化</p>
-<p>③面向对象的操作方式</p>
-<p>④同一种语法结构提供两种使用方式（即是独立语言又是嵌入式语言）</p>
-<p>⑤语言简介、易学易用（结构化查询语言）</p>
-<h4 id="SQL语言的组成"><a href="#SQL语言的组成" class="headerlink" title="SQL语言的组成"></a>SQL语言的组成</h4><p>1.数据定义语言（DDL）</p>
-<p>create：创建数据库、表、视图等</p>
-<p>alter：修改</p>
-<p>drop：删除数据库、表、视图等</p>
-<p>rename：重命名</p>
-<p>truncate：删除表中所有数据但不删除表</p>
-<p>2.数据操作语言（DML）</p>
-<p>select：查询</p>
-<p>inset：添加新数据</p>
-<p>update：更新现有的数据</p>
-<p>delete：删除指定行的数据</p>
-<p>3.数据控制语言（DCL）</p>
-<p>DCL用于事务控制、并发控制、完整性和安全性控制等。</p>
-<p>commit：保存修改</p>
-<p>rollback：回滚修改</p>
-<p>savepoint：设置保存点</p>
-<p>locktable：锁定数据库中的一个表</p>
-<h2 id="数据库编程"><a href="#数据库编程" class="headerlink" title="数据库编程"></a>数据库编程</h2><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>常量：程序本身不能改变其值的数据</p>
-<p>（1）字符串常量</p>
-<p>使用单引号或双引号括起来的字符串序列，一般使用单引号。</p>
-<p>（2）数值常量</p>
-<p>整数常量和小数常量。可使用科学计数法表示，如 <strong>1e10</strong>、<strong>1.25E10</strong>*。</p>
-<p>（3）日期和时间常量</p>
-<p>单引号括的特定格式的字符日期值。如 <strong>‘yyyy\mm\dd hh:mm:ss’<strong>、</strong>yyyy-mm-dd hh:mm:ss</strong>.</p>
-<p>日期时间之间可以使用比较符号比较大小</p>
-<p>（4）布尔值常量</p>
-<p>只有true、false两个值。SQL命令的运行结果：1表示true，0表示false。</p>
-<p>（5）NULL值</p>
-<p>NULL值适用于各种类型的字段，表示“不确定的值”。有NULL值参与的运算结果一定为NULL值。</p>
-<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量：程序运行过程中可以改变其值的数据</p>
-<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>格式：@+局部变量名</p>
-<p>（1）定义与赋值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">set @局部变量名[,@局部变量名,···];#定义</span><br><span class="line">set @局部变量名 = 表达式1[,@局部变量名 = 表达式2,···];#定义并赋值</span><br><span class="line">select 列名[,列名,···] into @局部变量名[,@局部变量名,···] from 表名;#将查询到的数据赋值给局部变量名</span><br></pre></td></tr></table></figure>
+<h2 id="二、镜像命令"><a href="#二、镜像命令" class="headerlink" title="二、镜像命令"></a>二、镜像命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull nginx:1.27</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建镜像</span></span><br><span class="line">docker build -t my-app:dev .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不使用缓存重新构建镜像</span></span><br><span class="line">docker build --no-cache -t my-app:dev .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为镜像添加标签</span></span><br><span class="line">docker tag my-app:dev registry.example.com/my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送镜像</span></span><br><span class="line">docker push registry.example.com/my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看镜像详细信息</span></span><br><span class="line">docker inspect my-app:dev</span><br></pre></td></tr></table></figure>
 
-<p>（2）显示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @局部变量名;</span><br></pre></td></tr></table></figure>
+<h2 id="三、容器运行命令"><a href="#三、容器运行命令" class="headerlink" title="三、容器运行命令"></a>三、容器运行命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 后台运行容器</span></span><br><span class="line">docker run -d --name my-app my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 映射端口</span></span><br><span class="line">docker run -d --name web -p 8080:80 nginx:1.27</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">docker run -d --name my-app -e APP_ENV=development my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文件读取环境变量</span></span><br><span class="line">docker run -d --name my-app --env-file .<span class="built_in">env</span> my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载宿主机目录</span></span><br><span class="line">docker run -d --name my-app -v <span class="string">&quot;<span class="variable">$&#123;PWD&#125;</span>:/app&quot;</span> my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载命名数据卷</span></span><br><span class="line">docker run -d --name mysql -v mysql-data:/var/lib/mysql mysql:8.4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交互式运行临时容器，退出后自动删除</span></span><br><span class="line">docker run --<span class="built_in">rm</span> -it alpine:3.21 sh</span><br></pre></td></tr></table></figure>
 
-<p>（3）其他</p>
-<p>局部变量名可作为 select语句 中 where子句 的比较条件。</p>
-<p>如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from 表名 where name = @局部变量名</span><br></pre></td></tr></table></figure>
+<h2 id="四、容器管理命令"><a href="#四、容器管理命令" class="headerlink" title="四、容器管理命令"></a>四、容器管理命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看全部容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker start my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除已停止的容器</span></span><br><span class="line">docker <span class="built_in">rm</span> my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制删除运行中的容器</span></span><br><span class="line">docker <span class="built_in">rm</span> -f my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器详细信息</span></span><br><span class="line">docker inspect my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器资源占用</span></span><br><span class="line">docker stats</span><br></pre></td></tr></table></figure>
 
-<h4 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h4><p>全局变量：MySQL 系统提供并赋值的变量。用户不能定义全局变量，只能使用。</p>
-<p>格式：@@+全局变量名</p>
-<table>
-<thead>
-<tr>
-<th align="center">全局变量名</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">@@back_log</td>
-<td align="center">返回MySQL主要连接请求的数量</td>
-</tr>
-<tr>
-<td align="center">@@basedir</td>
-<td align="center">返回MySQL安装目录基准</td>
-</tr>
-<tr>
-<td align="center">@@license</td>
-<td align="center">返回服务器的许可类型</td>
-</tr>
-<tr>
-<td align="center">@@port</td>
-<td align="center">返回服务器侦听TCP&#x2F;IP链接的端口号</td>
-</tr>
-<tr>
-<td align="center">@@storage_engine</td>
-<td align="center">返回存储引擎</td>
-</tr>
-<tr>
-<td align="center">@@version</td>
-<td align="center">返回服务器版本号</td>
-</tr>
-</tbody></table>
-<p>显示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select @@全局变量名</span><br></pre></td></tr></table></figure>
+<h2 id="五、日志与排障命令"><a href="#五、日志与排障命令" class="headerlink" title="五、日志与排障命令"></a>五、日志与排障命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看容器日志</span></span><br><span class="line">docker logs my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持续查看容器日志</span></span><br><span class="line">docker logs -f my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看最后 100 行日志并持续输出</span></span><br><span class="line">docker logs -f --<span class="built_in">tail</span> 100 my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it my-app sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Bash 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it my-app bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器中执行单条命令</span></span><br><span class="line">docker <span class="built_in">exec</span> my-app <span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从容器复制文件到宿主机</span></span><br><span class="line">docker <span class="built_in">cp</span> my-app:/app/logs/app.log ./app.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从宿主机复制文件到容器</span></span><br><span class="line">docker <span class="built_in">cp</span> ./config.yaml my-app:/app/config.yaml</span><br></pre></td></tr></table></figure>
 
-<h3 id="SQL查询语句的执行顺序"><a href="#SQL查询语句的执行顺序" class="headerlink" title="SQL查询语句的执行顺序"></a>SQL查询语句的执行顺序</h3><p>先执行 FROM 确定主表，再执行 JOIN 连接，然后 WHERE 进行过滤，接着 GROUP BY 进行分组，HAVING 过滤聚合结果，SELECT 选择最终列，ORDER BY 排序，最后 LIMIT 限制返回行数。</p>
-<p>WHERE 先执行是为了减少数据量，HAVING 只能过滤聚合数据，ORDER BY 必须在 SELECT 之后排序最终结果，LIMIT 最后执行以减少数据传输。</p>
-<p>这个执行顺序与编写 SQL 语句的顺序不同，这也是为什么有时候在 SELECT 子句中定义的别名不能在 WHERE 子句中使用得原因，因为 WHERE 是在 SELECT 之前执行的。</p>
-<p><strong>LIMIT 为什么在最后执行？</strong></p>
-<p>因为 LIMIT 是在最终结果集上执行的，如果在 WHERE 之前执行 LIMIT，那么就会先返回所有行，然后再进行 LIMIT 限制，这样会增加数据传输的开销。</p>
-<p><strong>ORDER BY 为什么在 SELECT 之后执行？</strong></p>
-<p>因为排序需要基于最终返回的列，如果 ORDER BY 早于 SELECT 执行，计算 <code>COUNT(*)</code> 之类的聚合函数就会出问题。</p>
-<table>
-<thead>
-<tr>
-<th align="center">执行顺序</th>
-<th align="center">SQL 关键字</th>
-<th align="center">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">①</td>
-<td align="center">FROM</td>
-<td align="center">确定主表，准备数据</td>
-</tr>
-<tr>
-<td align="center">②</td>
-<td align="center">ON</td>
-<td align="center">连接多个表的条件</td>
-</tr>
-<tr>
-<td align="center">③</td>
-<td align="center">JOIN</td>
-<td align="center">执行 INNER JOIN &#x2F; LEFT JOIN 等</td>
-</tr>
-<tr>
-<td align="center">④</td>
-<td align="center">WHERE</td>
-<td align="center">过滤行数据（提高效率）</td>
-</tr>
-<tr>
-<td align="center">⑤</td>
-<td align="center">GROUP BY</td>
-<td align="center">进行分组</td>
-</tr>
-<tr>
-<td align="center">⑥</td>
-<td align="center">HAVING</td>
-<td align="center">过滤聚合后的数据</td>
-</tr>
-<tr>
-<td align="center">⑦</td>
-<td align="center">SELECT</td>
-<td align="center">选择最终返回的列</td>
-</tr>
-<tr>
-<td align="center">⑧</td>
-<td align="center">DISTINCT</td>
-<td align="center">进行去重</td>
-</tr>
-<tr>
-<td align="center">⑨</td>
-<td align="center">ORDER BY</td>
-<td align="center">对最终结果排序</td>
-</tr>
-<tr>
-<td align="center">⑩</td>
-<td align="center">LIMIT</td>
-<td align="center">限制返回行数</td>
-</tr>
-</tbody></table>
-<p><img src="https://cdn.paicoding.com/stutymore/mysql-20250306153200.png" alt="博客园数据派：查询语句执行顺序"></p>
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>MySQL 的常用命令主要包括<strong>数据库操作命令、表操作命令、行数据 CRUD 命令、索引和约束的创建修改命令、用户和权限管理的命令、事务控制的命令</strong>等。</p>
-<h4 id="数据库操作命令"><a href="#数据库操作命令" class="headerlink" title="数据库操作命令"></a>数据库操作命令</h4><p><code>CREATE DATABASE database_name;</code> 用于创建数据库；<code>DROP DATABASE database_name;</code> 用于删除数据库；<code>SHOW DATABASES;</code> 用于显示所有数据库；<code>USE database_name;</code> 用于切换数据库。</p>
-<h4 id="表操作命令"><a href="#表操作命令" class="headerlink" title="表操作命令"></a>表操作命令</h4><p><code>CREATE TABLE table_name (列名1 数据类型1, 列名2 数据类型2,...);</code> 用于创建表；</p>
-<p><code>DROP TABLE table_name;</code> 用于删除表；</p>
-<p><code>SHOW TABLES;</code> 用于显示所有表；</p>
-<p><code>DESCRIBE table_name;</code> 用于查看表结构；</p>
-<p><code>ALTER TABLE table_name ADD column_name datatype;</code> 用于修改表。</p>
-<h4 id="行数据的-CRUD-命令"><a href="#行数据的-CRUD-命令" class="headerlink" title="行数据的 CRUD 命令"></a>行数据的 CRUD 命令</h4><p><code>INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);</code> 用于插入数据；</p>
-<p><code>SELECT column_names FROM table_name WHERE condition;</code> 用于查询数据；</p>
-<p><code>UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;</code> 用于更新数据；</p>
-<p><code>DELETE FROM table_name WHERE condition;</code> 用于删除数据。</p>
-<h4 id="索引和约束的创建修改命令"><a href="#索引和约束的创建修改命令" class="headerlink" title="索引和约束的创建修改命令"></a>索引和约束的创建修改命令</h4><p><code>CREATE INDEX index_name ON table_name (column_name);</code> 用于创建索引；</p>
-<p><code>ALTER TABLE table_name ADD PRIMARY KEY (column_name);</code> 用于添加主键；</p>
-<p><code>ALTER TABLE table_name ADD CONSTRAINT fk_name FOREIGN KEY (column_name) REFERENCES parent_table (parent_column_name);</code> 用于添加外键。</p>
-<h4 id="用户和权限管理的命令"><a href="#用户和权限管理的命令" class="headerlink" title="用户和权限管理的命令"></a>用户和权限管理的命令</h4><p><code>CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;</code> 用于创建用户；</p>
-<p><code>GRANT ALL PRIVILEGES ON database_name.table_name TO &#39;username&#39;@&#39;host&#39;;</code> 用于授予权限；</p>
-<p><code>REVOKE ALL PRIVILEGES ON database_name.table_name FROM &#39;username&#39;@&#39;host&#39;;</code> 用于撤销权限；</p>
-<p><code>DROP USER &#39;username&#39;@&#39;host&#39;;</code> 用于删除用户。</p>
-<h4 id="事务控制的命令"><a href="#事务控制的命令" class="headerlink" title="事务控制的命令"></a>事务控制的命令</h4><p><code>START TRANSACTION;</code> 用于开始事务；</p>
-<p><code>COMMIT;</code> 用于提交事务；</p>
-<p><code>ROLLBACK;</code> 用于回滚事务。</p>
-<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><p>连接可分为三类：</p>
-<p>inner join（内连接或等值连接）：获取两个表中字段匹配关系的记录，即2个表中值都存在的记录；</p>
-<p>left join：获取左表中所有记录，即使右表中没有对应的匹配记录，右表中记录不存在则使用null替代；</p>
-<p>right join：获取右表中所有记录，即使左表中没有对应的匹配记录，左表中记录不存在则使用null替代。</p>
-<p>总结：</p>
-<p>　　①A inner join B on {条件}：取交集；</p>
-<p>　　②A left join B on {条件}：：取A全部，B没有对应的值，则为null；</p>
-<p>　　③A right join B on {条件}：：取B全部，A没有对应的值，则为null；</p>
-<p>　　④A full outer join B on {条件}：：取并集，彼此没有对应的值为null；</p>
-<p>　　上述4种的对应条件，在on后填写。</p>
-<h3 id="limit-和-offset"><a href="#limit-和-offset" class="headerlink" title="limit 和 offset"></a>limit 和 offset</h3><p>在 SQL 查询中，<strong>LIMIT</strong> 和 <strong>OFFSET</strong> 子句用于控制查询结果的返回行数和起始位置。它们通常用于分页查询，以便从大量数据中获取特定范围的记录。</p>
-<p><strong>LIMIT</strong> 子句用于限制返回的记录数。它接受一个或两个整数参数：</p>
-<ul>
-<li>一个参数：表示返回的最大记录数。</li>
-<li>两个参数：第一个参数表示偏移量（即跳过的记录数），第二个参数表示返回的最大记录数。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 返回前3行数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 跳过前2行，返回第3行数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">2</span>, <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="六、Docker-Compose-命令"><a href="#六、Docker-Compose-命令" class="headerlink" title="六、Docker Compose 命令"></a>六、Docker Compose 命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查 Compose 配置</span></span><br><span class="line">docker compose config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台启动全部服务</span></span><br><span class="line">docker compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新构建镜像并启动服务</span></span><br><span class="line">docker compose up -d --build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务状态</span></span><br><span class="line">docker compose ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看全部服务日志</span></span><br><span class="line">docker compose logs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持续查看指定服务日志</span></span><br><span class="line">docker compose logs -f --<span class="built_in">tail</span>=100 api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入指定服务容器</span></span><br><span class="line">docker compose <span class="built_in">exec</span> api sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在指定服务中执行命令</span></span><br><span class="line">docker compose <span class="built_in">exec</span> api npm <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用一次性容器执行命令</span></span><br><span class="line">docker compose run --<span class="built_in">rm</span> api npm run migrate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启指定服务</span></span><br><span class="line">docker compose restart api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止并删除服务容器和默认网络</span></span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止服务并删除数据卷</span></span><br><span class="line">docker compose down -v</span><br></pre></td></tr></table></figure>
 
+<h2 id="七、数据卷命令"><a href="#七、数据卷命令" class="headerlink" title="七、数据卷命令"></a>七、数据卷命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看数据卷</span></span><br><span class="line">docker volume <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据卷详细信息</span></span><br><span class="line">docker volume inspect mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除数据卷</span></span><br><span class="line">docker volume <span class="built_in">rm</span> mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的数据卷</span></span><br><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
 
+<h2 id="八、网络命令"><a href="#八、网络命令" class="headerlink" title="八、网络命令"></a>八、网络命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 Docker 网络</span></span><br><span class="line">docker network <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create app-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网络详细信息</span></span><br><span class="line">docker network inspect app-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将容器连接到网络</span></span><br><span class="line">docker network connect app-network my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除网络</span></span><br><span class="line">docker network <span class="built_in">rm</span> app-network</span><br></pre></td></tr></table></figure>
 
+<h2 id="九、清理命令"><a href="#九、清理命令" class="headerlink" title="九、清理命令"></a>九、清理命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除已停止的容器</span></span><br><span class="line">docker container prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的镜像</span></span><br><span class="line">docker image prune -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除构建缓存</span></span><br><span class="line">docker builder prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的容器、网络、镜像和构建缓存</span></span><br><span class="line">docker system prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用资源和匿名数据卷</span></span><br><span class="line">docker system prune -a --volumes</span><br></pre></td></tr></table></figure>
 
-
-<p><strong>OFFSET</strong> 子句用于指定查询结果的起始位置。它通常与 <strong>LIMIT</strong> 子句一起使用，以实现分页效果。</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 跳过前2行，返回第3行数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees LIMIT <span class="number">1</span> <span class="keyword">OFFSET</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>RAG学习-文本分块</title>
-    <url>/2026/04/13/RAG%E5%AD%A6%E4%B9%A0-%E6%96%87%E6%9C%AC%E5%88%86%E5%9D%97/</url>
-    <content><![CDATA[<h2 id="技术原理"><a href="#技术原理" class="headerlink" title="技术原理"></a>技术原理</h2><p>主要分为检索、生成两个阶段</p>
-<p>（1）<strong>检索阶段：寻找“非参数化知识”</strong></p>
-<ul>
-<li><strong>知识向量化</strong>：<strong>嵌入模型（Embedding Model）</strong> 充当了“连接器”的角色。它将外部知识库编码为向量索引（Index），存入<strong>向量数据库</strong>。</li>
-<li><strong>语义召回</strong>：当用户发起查询时，检索模块利用同样的嵌入模型将问题向量化，并通过<strong>相似度搜索（Similarity Search）</strong>，从海量数据中精准锁定与问题最相关的文档片段。</li>
-</ul>
-<p>（2）<strong>生成阶段：融合两种知识</strong></p>
-<ul>
-<li><strong>上下文整合</strong>：<strong>生成模块</strong>接收检索阶段送来的相关文档片段以及用户的原始问题。</li>
-<li><strong>指令引导生成</strong>：该模块会遵循预设的 <strong>Prompt</strong> 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413222349879.png?token=AR3LVDH3AOUKB6AGGTUOKU3J3T6LE" alt="image-20260413222347766"></p>
-<h2 id="技术演进"><a href="#技术演进" class="headerlink" title="技术演进"></a>技术演进</h2><p>大致分为原生RAG、高级RAG、模块化RAG三个阶段。</p>
-<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260413222509770.png?token=AR3LVDCZYKD45IAKD5AT5QDJ3T6QE" alt="image-20260413222508575"></p>
-<p>具体对比如下表：</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">初级 RAG（Naive RAG）</th>
-<th align="center">高级 RAG（Advanced RAG）</th>
-<th align="center">模块化 RAG（Modular RAG）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>流程</strong></td>
-<td align="center"><strong>离线:</strong> <code>索引</code> <strong>在线:</strong> <code>检索 → 生成</code></td>
-<td align="center"><strong>离线:</strong> <code>索引</code> <strong>在线:</strong> <code>...→ 检索前 → ... → 检索后 → ...</code></td>
-<td align="center">积木式可编排流程</td>
-</tr>
-<tr>
-<td align="center"><strong>特点</strong></td>
-<td align="center">基础线性流程</td>
-<td align="center">增加<strong>检索前后</strong>的优化步骤</td>
-<td align="center">模块化、可组合、可动态调整</td>
-</tr>
-<tr>
-<td align="center"><strong>关键技术</strong></td>
-<td align="center">基础向量检索</td>
-<td align="center"><strong>查询重写（Query Rewrite）</strong> <strong>结果重排（Rerank）</strong></td>
-<td align="center"><strong>动态路由（Routing）</strong> <strong>查询转换（Query Transformation）</strong> <strong>多路融合（Fusion）</strong></td>
-</tr>
-<tr>
-<td align="center"><strong>局限性</strong></td>
-<td align="center">效果不稳定，难以优化</td>
-<td align="center">流程相对固定，优化点有限</td>
-<td align="center">系统复杂性高</td>
-</tr>
-</tbody></table>
-<h2 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h2><p>在选择具体的技术路径时，一个重要的考量是<strong>成本与效益的平衡</strong>。通常，我们应优先选择对模型改动最小、成本最低的方案，所以技术选型路径往往遵循的顺序是<strong>提示词工程（Prompt Engineering） -&gt; 检索增强生成 -&gt; 微调（Fine-tuning）</strong>。</p>
-<p>我们可以从两个维度来理解这些技术的区别。如图 1-3 所示，<strong>横轴代表“LLM 优化”</strong>，即对模型本身进行多大程度的修改。从左到右，优化的程度越来越深，其中提示工程和 RAG 完全不改变模型权重，而微调则直接修改模型参数。<strong>纵轴代表“上下文优化”</strong>，是对输入给模型的信息进行多大程度的增强。从下到上，增强的程度越来越高，其中提示工程只是优化提问方式，而 RAG 则通过引入外部知识库，极大地丰富了上下文信息。</p>
-<p>RAG 的出现填补了通用模型与专业领域之间的鸿沟，它在解决如表 1-2 所示 LLM 局限时尤其有效：</p>
-<table>
-<thead>
-<tr>
-<th align="center">问题</th>
-<th align="center">RAG的解决方案</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><strong>静态知识局限</strong></td>
-<td align="center">实时检索外部知识库，支持动态更新</td>
-</tr>
-<tr>
-<td align="center"><strong>幻觉（Hallucination）</strong></td>
-<td align="center">基于检索内容生成，错误率降低</td>
-</tr>
-<tr>
-<td align="center"><strong>领域专业性不足</strong></td>
-<td align="center">引入领域特定知识库（如医疗&#x2F;法律）</td>
-</tr>
-<tr>
-<td align="center"><strong>数据隐私风险</strong></td>
-<td align="center">本地化部署知识库，避免敏感数据泄露</td>
-</tr>
-</tbody></table>
-<h1 id="文本分块"><a href="#文本分块" class="headerlink" title="文本分块"></a>文本分块</h1><h2 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h2><h3 id="满足模型上下文限制"><a href="#满足模型上下文限制" class="headerlink" title="满足模型上下文限制"></a>满足模型上下文限制</h3><p>将文本分块的首要原因，是为了适应 RAG 系统中两个核心组件的硬性限制：</p>
-<ul>
-<li><strong>嵌入模型 (Embedding Model)</strong>: 负责将文本块转换为向量。这类模型有严格的输入长度上限。例如，许多常用的嵌入模型（如 <code>bge-base-zh-v1.5</code>）的上下文窗口为512个token。任何超出此限制的文本块在输入时都会被截断，导致信息丢失，生成的向量也无法完整代表原文的语义。因此，<strong>文本块的大小必须小于等于嵌入模型的上下文窗口</strong>。</li>
-<li><strong>大语言模型 (LLM)</strong>: 负责根据检索到的上下文生成答案。LLM同样有上下文窗口限制（尽管通常比嵌入模型大得多，从几千到上百万token不等）。检索到的所有文本块，连同用户问题和提示词，都必须能被放入这个窗口中。如果单个块过大，可能会导致只能容纳少数几个相关的块，限制了LLM回答问题时可参考的信息广度。</li>
-</ul>
-<p>因此，分块是确保文本能够被两个模型完整、有效处理的基础。</p>
-<h3 id="为何“块”不是越大越好"><a href="#为何“块”不是越大越好" class="headerlink" title="为何“块”不是越大越好"></a>为何“块”不是越大越好</h3><p>假设嵌入模型最多能处理 8192 个 token，是否应该把块切得尽可能大（比如8000个token）呢？答案是否定的。<strong>块的大小并非越大越好</strong>，过大的块会严重影响RAG系统的性能。</p>
-<h4 id="嵌入过程中的信息损失"><a href="#嵌入过程中的信息损失" class="headerlink" title="嵌入过程中的信息损失"></a>嵌入过程中的信息损失</h4><p>大多数嵌入模型都基于 Transformer 编码器。其工作流程大致如下：</p>
-<ul>
-<li><strong>分词 (Tokenization)</strong>: 将输入的文本块分解成一个个 token。</li>
-<li><strong>向量化 (Vectorization)</strong>: Transformer 为<strong>每个 token</strong> 生成一个高维向量表示。</li>
-<li><strong>池化 (Pooling)</strong>: 通过某种方法（如取 <code>[CLS]</code> 位的向量、对所有token向量求平均 <code>mean pooling</code> 等），将所有 token 的向量<strong>压缩</strong>成一个<strong>单一的向量</strong>，这个向量代表了整个文本块的语义。</li>
-</ul>
 <blockquote>
-<p><code>[CLS]</code> 是BERT等Transformer模型在输入文本开头添加的特殊标记，它通过自注意力机制动态聚合整个序列的上下文信息，其最终向量被训练用作代表全局语义的嵌入。</p>
+<p><code>docker compose down -v</code>、<code>docker volume prune</code> 和 <code>docker system prune -a --volumes</code> 可能删除项目数据，执行前需要确认。</p>
 </blockquote>
-<p>在这个<code>压缩</code>过程中，信息损失是不可避免的。一个768维的向量需要概括整个文本块的所有信息。<strong>文本块越长，包含的语义点越多，这个单一向量所承载的信息就越稀释</strong>，导致其表示变得笼统，关键细节被模糊化，从而降低了检索的精度。</p>
-<h4 id="生成过程的“大海捞针”-Lost-in-the-Middle"><a href="#生成过程的“大海捞针”-Lost-in-the-Middle" class="headerlink" title="生成过程的“大海捞针” (Lost in the Middle)"></a>生成过程的“大海捞针” (Lost in the Middle)</h4><p>即使将检索到的多个大块文本都塞进LLM的长上下文窗口中，也会出现关键信息被“淹没”在大量无关内容里的问题。有研究表明 <a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>，当LLM处理非常长的、充满大量信息的上下文时，它倾向于更好地记住开头和结尾的信息，而忽略中间部分的内容。</p>
-<p>如果提供给LLM的上下文块又大又杂，充满了与问题无关的噪音，模型就很难从中提取出最关键的信息来形成答案，从而导致回答质量下降或产生幻觉。</p>
-<h4 id="主题稀释导致检索失败"><a href="#主题稀释导致检索失败" class="headerlink" title="主题稀释导致检索失败"></a>主题稀释导致检索失败</h4><p>一个好的文本块应该聚焦于一个明确、单一的主题。如果一个块包含太多不相关的主题，它的语义就会被稀释，导致在检索时无法被精确匹配。</p>
-<p>假设有一个关于《王者荣耀》英雄鲁班七号的攻略文档。</p>
-<ul>
-<li><strong>糟糕的分块策略</strong>：将“技能介绍”、“推荐出装”和“背景故事”这三个完全不同主题的内容，全部放在一个巨大的文本块里。<ul>
-<li>当玩家查询“鲁班七号怎么出装？”时，这个大块虽然包含了出装信息，但由于被技能说明和英雄故事等无关主题严重稀释，其整体的检索相关性得分可能会很低，导致无法被召回。</li>
-</ul>
-</li>
-<li><strong>优秀的分块策略</strong>：将“技能”、“出装”和“故事”分别切分为三个独立的、主题聚焦的块。<ul>
-<li>当玩家再次查询时，“推荐出装”这个块会因为与查询高度相关而获得极高的分数，从而被精准地检索出来。</li>
-</ul>
-</li>
-</ul>
-<p>通过合理分块，可以有效提升检索的信噪比，确保了后续生成环节能得到最优质、最相关的上下文。</p>
-<h2 id="基础分块策略"><a href="#基础分块策略" class="headerlink" title="基础分块策略"></a>基础分块策略</h2><p>LangChain 提供了丰富且易于使用的文本分割器（Text Splitters），下面将介绍几种最核心的策略。</p>
-<p>固定大小分块、递归字符分块、基于语义的分块、基于文档结构的分块</p>
-<h3 id="固定大小分块"><a href="#固定大小分块" class="headerlink" title="固定大小分块"></a>固定大小分块</h3><p>这是最简单直接的分块方法。根据LangChain源码，这种方法的工作原理分为两个主要阶段：</p>
-<p>（1）<strong>按段落分割</strong>：<code>CharacterTextSplitter</code> 采用默认分隔符 <code>&quot;\n\n&quot;</code>，使用正则表达式将文本按段落进行分割，通过 <code>_split_text_with_regex</code> 函数处理。</p>
-<p>（2）<strong>智能合并</strong>：调用继承自父类的 <code>_merge_splits</code> 方法，将分割后的段落依次合并。该方法会监控累积长度，当超过 <code>chunk_size</code> 时形成新块，并通过重叠机制（<code>chunk_overlap</code>）保持上下文连续性，同时在必要时发出超长块的警告。</p>
-<p>需要注意，<code>CharacterTextSplitter</code> 实际实现的并非严格的固定大小分块。根据 <code>_merge_splits</code> 源码逻辑，这种方法会：</p>
-<ul>
-<li><strong>优先保持段落完整性</strong>：只有当添加新段落会导致总长度超过 <code>chunk_size</code> 时，才会结束当前块</li>
-<li><strong>处理超长段落</strong>：如果单个段落超过 <code>chunk_size</code>，系统会发出警告但仍将其作为完整块保留</li>
-<li><strong>应用重叠机制</strong>：通过 <code>chunk_overlap</code> 参数在块之间保持内容重叠，确保上下文连续性</li>
-</ul>
-<p>所以，LangChain 的实现更准确地应该称为”段落感知的自适应分块”，块大小会根据段落边界动态调整。</p>
-<h3 id="递归字符分块"><a href="#递归字符分块" class="headerlink" title="递归字符分块"></a>递归字符分块</h3><p>现在让我们深入了解 <code>RecursiveCharacterTextSplitter</code> 的实现。这种分块器通过分隔符层级递归处理，相对与固定大小分块，改善了超长文本的处理效果。</p>
-<p><strong>算法流程</strong>： </p>
-<p>（1）<strong>寻找有效分隔符</strong>: 从分隔符列表中从前到后遍历，找到第一个在当前文本中<strong>存在</strong>的分隔符。如果都不存在，使用最后一个分隔符（通常是空字符串 <code>&quot;&quot;</code>）。</p>
-<p>（2）<strong>切分与分类处理</strong>: 使用选定的分隔符切分文本，然后遍历所有片段：</p>
-<ul>
-<li><strong>如果片段不超过块大小</strong>: 暂存到 <code>_good_splits</code> 中，准备合并</li>
-<li><strong>如果片段超过块大小</strong>:<ul>
-<li>首先，将暂存的合格片段通过 <code>_merge_splits</code> 合并成块</li>
-<li>然后，检查是否还有剩余分隔符：<ul>
-<li><strong>有剩余分隔符</strong>: 递归调用 <code>_split_text</code> 继续分割</li>
-<li><strong>无剩余分隔符</strong>: 直接保留为超长块</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>（3）<strong>最终处理</strong>: 将剩余的暂存片段合并成最后的块</p>
-<p><strong>实现细节</strong>：</p>
-<ul>
-<li><strong>批处理机制</strong>: 先收集所有合格片段（<code>_good_splits</code>），遇到超长片段时才触发合并操作。</li>
-<li><strong>递归终止条件</strong>: 关键在于 <code>if not new_separators</code> 判断。当分隔符用尽时（<code>new_separators</code> 为空），停止递归，直接保留超长片段。确保算法不会无限递归。</li>
-</ul>
-<p><strong>与固定大小分块的关键差异</strong>：</p>
-<ul>
-<li>固定大小分块遇到超长段落时只能发出警告并保留。</li>
-<li>递归分块会继续使用更细粒度的分隔符（句子→单词→字符）直到满足大小要求。</li>
-</ul>
-<p><strong>分隔符配置</strong>：</p>
-<ul>
-<li><strong>默认分隔符</strong>：<code>[&quot;\n\n&quot;, &quot;\n&quot;, &quot; &quot;, &quot;&quot;]</code></li>
-<li><strong>多语言支持</strong>：对于无词边界语言（中文、日文、泰文），可添加：</li>
-</ul>
-<p><strong>编程语言特化支持</strong>：</p>
-<p><code>RecursiveCharacterTextSplitter</code> 能够针对特定的编程语言（如Python, Java等）使用预设的、更符合代码结构的分隔符。它们通常包含语言的顶级语法结构（如类、函数定义）和次级结构（如控制流语句），以实现更符合代码逻辑的分割。</p>
-<h3 id="语义分块"><a href="#语义分块" class="headerlink" title="语义分块"></a>语义分块</h3><p>语义分块（Semantic Chunking）是一种更智能的方法，这种方法不依赖于固定的字符数或预设的分隔符，而是尝试根据文本的语义内涵来切分。其核心是：<strong>在语义主题发生显著变化的地方进行切分</strong>。这使得每个分块都具有高度的内部语义一致性。LangChain 提供了 <code>langchain_experimental.text_splitter.SemanticChunker</code> 来实现这一功能。</p>
-<p><strong>实现原理</strong></p>
-<p>工作流程可以概括为以下几个步骤：</p>
-<p>（1）**句子分割 (Sentence Splitting)**：首先，使用标准的句子分割规则（例如，基于句号、问号、感叹号）将输入文本拆分成一个句子列表。</p>
-<p>（2）**上下文感知嵌入 (Context-Aware Embedding)**：这是 <code>SemanticChunker</code> 的一个关键设计。该分块器不是对每个句子独立进行嵌入，而是通过 <code>buffer_size</code> 参数（默认为1）来捕捉上下文信息。对于列表中的每一个句子，这种方法会将其与前后各 <code>buffer_size</code> 个句子组合起来，然后对这个临时的、更长的组合文本进行嵌入。这样，每个句子最终得到的嵌入向量就融入了其上下文的语义。</p>
-<p>（3）<strong>计算语义距离 (Distance Calculation)：计算每对相邻</strong>句子的嵌入向量之间的余弦距离。这个距离值量化了两个句子之间的语义差异——距离越大，表示语义关联越弱，跳跃越明显。</p>
-<p>（4）**识别断点 (Breakpoint Identification)**：<code>SemanticChunker</code> 会分析所有计算出的距离值，并根据一个统计方法（默认为 <code>percentile</code>）来确定一个动态阈值。例如，它可能会将所有距离中第95百分位的值作为切分阈值。所有距离大于此阈值的点，都被识别为语义上的“断点”。</p>
-<p>（5）**合并成块 (Merging into Chunks)**：最后，根据识别出的所有断点位置，将原始的句子序列进行切分，并将每个切分后的部分内的所有句子合并起来，形成一个最终的、语义连贯的文本块。</p>
-<p><strong>断点识别方法 (<code>breakpoint_threshold_type</code>)</strong></p>
-<p>如何定义“显著的语义跳跃”是语义分块的关键。<code>SemanticChunker</code> 提供了几种基于统计的方法来识别断点：</p>
-<ul>
-<li><code>percentile</code> (百分位法 - <strong>默认方法</strong>):<ul>
-<li><strong>逻辑</strong>: 计算所有相邻句子的语义差异值，并将这些差异值进行排序。当一个差异值超过某个百分位阈值时，就认为该差异值是一个断点。</li>
-<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)，表示使用第95个百分位作为阈值。这意味着，只有最显著的5%的语义差异点会被选为切分点。</li>
-</ul>
-</li>
-<li><code>standard_deviation</code> (标准差法):<ul>
-<li><strong>逻辑</strong>: 计算所有差异值的平均值和标准差。当一个差异值超过“平均值 + N * 标准差”时，被视为异常高的跳跃，即断点。</li>
-<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>3</code>)，表示使用3倍标准差作为阈值。</li>
-</ul>
-</li>
-<li><code>interquartile</code> (四分位距法):<ul>
-<li><strong>逻辑</strong>: 使用统计学中的四分位距（IQR）来识别异常值。当一个差异值超过 <code>Q3 + N * IQR</code> 时，被视为断点。</li>
-<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>1.5</code>)，表示使用1.5倍的IQR。</li>
-</ul>
-</li>
-<li><code>gradient</code> (梯度法):<ul>
-<li><strong>逻辑</strong>: 这是一种更复杂的方法。它首先计算差异值的变化率（梯度），然后对梯度应用百分位法。对于那些句子间语义联系紧密、差异值普遍较低的文本（如法律、医疗文档）特别有效，因为这种方法能更好地捕捉到语义变化的“拐点”。</li>
-<li><strong>参数</strong>: <code>breakpoint_threshold_amount</code> (默认为 <code>95</code>)。</li>
-</ul>
-</li>
-</ul>
-<h3 id="基于文档结构的分块"><a href="#基于文档结构的分块" class="headerlink" title="基于文档结构的分块"></a>基于文档结构的分块</h3><p>对于具有明确结构标记的文档格式（如Markdown、HTML、LaTex），可以利用这些标记来实现更智能、更符合逻辑的分割。</p>
-<h4 id="以Markdown-结构分块为例"><a href="#以Markdown-结构分块为例" class="headerlink" title="以Markdown 结构分块为例"></a>以Markdown 结构分块为例</h4><p>针对结构清晰的 Markdown 文档，利用其标题层级进行分块是一种高效且保留了丰富语义的方法。LangChain 提供了 <code>MarkdownHeaderTextSplitter</code> 来处理。</p>
-<ul>
-<li><strong>实现原理</strong>: 该分块器的主要逻辑是“先按标题分组，再按需细分”。<ol>
-<li><strong>定义分割规则</strong>: 用户首先需要提供一个标题层级的映射关系，例如 <code>[ (&quot;#&quot;, &quot;Header 1&quot;), (&quot;##&quot;, &quot;Header 2&quot;) ]</code>，告诉分块器 <code>#</code> 是一级标题，<code>##</code> 是二级标题。</li>
-<li><strong>内容聚合</strong>: 分块器会遍历整个文档，将每个标题下的所有内容（直到下一个同级或更高级别的标题出现前）聚合在一起。每个聚合后的内容块都会被赋予一个包含其完整标题路径的元数据。</li>
-</ol>
-</li>
-<li><strong>元数据注入的优势</strong>: 这是此方法的主要特点。例如，对于一篇关于机器学习的文章，某个段落可能位于“第三章：模型评估”下的“3.2节：评估指标”中。经过分割后，这个段落形成的文本块，其元数据就会是 <code>&#123;&quot;Header 1&quot;: &quot;第三章：模型评估&quot;, &quot;Header 2&quot;: &quot;3.2节：评估指标&quot;&#125;</code>。这种元数据为每个块提供了精确的“地址”，极大地增强了上下文的准确性，让大模型能更好地理解信息片段的来源和背景。</li>
-<li><strong>局限性与组合使用</strong>: 单纯按标题分割可能会导致一个问题：某个章节下的内容可能非常长，远超模型能处理的上下文窗口。为了解决这个问题，<code>MarkdownHeaderTextSplitter</code> 可以与其它分块器（如 <code>RecursiveCharacterTextSplitter</code>）<strong>组合使用</strong>。具体流程是：<ul>
-<li>第一步，使用 <code>MarkdownHeaderTextSplitter</code> 将文档按标题分割成若干个大的、带有元数据的逻辑块。</li>
-<li>第二步，对这些逻辑块再应用 <code>RecursiveCharacterTextSplitter</code>，将其进一步切分为符合 <code>chunk_size</code> 要求的小块。由于这个过程是在第一步之后进行的，所有最终生成的小块都会<strong>继承</strong>来自第一步的标题元数据。</li>
-</ul>
-</li>
-<li><strong>RAG应用优势</strong>: 这种两阶段的分块方法，既保留了文档的宏观逻辑结构（通过元数据），又确保了每个块的大小适中，是处理结构化文档进行RAG的理想方案。</li>
-</ul>
 ]]></content>
       <categories>
-        <category>RAG</category>
-        <category>文本分块</category>
+        <category>DevOps</category>
+        <category>Docker</category>
       </categories>
       <tags>
-        <tag>RAG</tag>
+        <tag>Docker</tag>
+        <tag>DevOps</tag>
+        <tag>容器化</tag>
       </tags>
   </entry>
   <entry>
@@ -2799,41 +2834,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker 学习笔记：项目开发常用命令</title>
-    <url>/2026/04/15/Docker%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<h2 id="一、Docker-基础命令"><a href="#一、Docker-基础命令" class="headerlink" title="一、Docker 基础命令"></a>一、Docker 基础命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 Docker 版本</span></span><br><span class="line">docker --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 客户端和服务端版本</span></span><br><span class="line">docker version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 运行状态和环境信息</span></span><br><span class="line">docker info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Docker 磁盘占用</span></span><br><span class="line">docker system <span class="built_in">df</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="二、镜像命令"><a href="#二、镜像命令" class="headerlink" title="二、镜像命令"></a>二、镜像命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">docker pull nginx:1.27</span><br><span class="line"></span><br><span class="line"><span class="comment"># 构建镜像</span></span><br><span class="line">docker build -t my-app:dev .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不使用缓存重新构建镜像</span></span><br><span class="line">docker build --no-cache -t my-app:dev .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为镜像添加标签</span></span><br><span class="line">docker tag my-app:dev registry.example.com/my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送镜像</span></span><br><span class="line">docker push registry.example.com/my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看镜像详细信息</span></span><br><span class="line">docker inspect my-app:dev</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、容器运行命令"><a href="#三、容器运行命令" class="headerlink" title="三、容器运行命令"></a>三、容器运行命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 后台运行容器</span></span><br><span class="line">docker run -d --name my-app my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 映射端口</span></span><br><span class="line">docker run -d --name web -p 8080:80 nginx:1.27</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line">docker run -d --name my-app -e APP_ENV=development my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文件读取环境变量</span></span><br><span class="line">docker run -d --name my-app --env-file .<span class="built_in">env</span> my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载宿主机目录</span></span><br><span class="line">docker run -d --name my-app -v <span class="string">&quot;<span class="variable">$&#123;PWD&#125;</span>:/app&quot;</span> my-app:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载命名数据卷</span></span><br><span class="line">docker run -d --name mysql -v mysql-data:/var/lib/mysql mysql:8.4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 交互式运行临时容器，退出后自动删除</span></span><br><span class="line">docker run --<span class="built_in">rm</span> -it alpine:3.21 sh</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、容器管理命令"><a href="#四、容器管理命令" class="headerlink" title="四、容器管理命令"></a>四、容器管理命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看全部容器</span></span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动容器</span></span><br><span class="line">docker start my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止容器</span></span><br><span class="line">docker stop my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启容器</span></span><br><span class="line">docker restart my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除已停止的容器</span></span><br><span class="line">docker <span class="built_in">rm</span> my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制删除运行中的容器</span></span><br><span class="line">docker <span class="built_in">rm</span> -f my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器详细信息</span></span><br><span class="line">docker inspect my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器资源占用</span></span><br><span class="line">docker stats</span><br></pre></td></tr></table></figure>
-
-<h2 id="五、日志与排障命令"><a href="#五、日志与排障命令" class="headerlink" title="五、日志与排障命令"></a>五、日志与排障命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看容器日志</span></span><br><span class="line">docker logs my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持续查看容器日志</span></span><br><span class="line">docker logs -f my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看最后 100 行日志并持续输出</span></span><br><span class="line">docker logs -f --<span class="built_in">tail</span> 100 my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it my-app sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 Bash 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it my-app bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在容器中执行单条命令</span></span><br><span class="line">docker <span class="built_in">exec</span> my-app <span class="built_in">env</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从容器复制文件到宿主机</span></span><br><span class="line">docker <span class="built_in">cp</span> my-app:/app/logs/app.log ./app.log</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从宿主机复制文件到容器</span></span><br><span class="line">docker <span class="built_in">cp</span> ./config.yaml my-app:/app/config.yaml</span><br></pre></td></tr></table></figure>
-
-<h2 id="六、Docker-Compose-命令"><a href="#六、Docker-Compose-命令" class="headerlink" title="六、Docker Compose 命令"></a>六、Docker Compose 命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查 Compose 配置</span></span><br><span class="line">docker compose config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后台启动全部服务</span></span><br><span class="line">docker compose up -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新构建镜像并启动服务</span></span><br><span class="line">docker compose up -d --build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务状态</span></span><br><span class="line">docker compose ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看全部服务日志</span></span><br><span class="line">docker compose logs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 持续查看指定服务日志</span></span><br><span class="line">docker compose logs -f --<span class="built_in">tail</span>=100 api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入指定服务容器</span></span><br><span class="line">docker compose <span class="built_in">exec</span> api sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在指定服务中执行命令</span></span><br><span class="line">docker compose <span class="built_in">exec</span> api npm <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用一次性容器执行命令</span></span><br><span class="line">docker compose run --<span class="built_in">rm</span> api npm run migrate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启指定服务</span></span><br><span class="line">docker compose restart api</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止并删除服务容器和默认网络</span></span><br><span class="line">docker compose down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止服务并删除数据卷</span></span><br><span class="line">docker compose down -v</span><br></pre></td></tr></table></figure>
-
-<h2 id="七、数据卷命令"><a href="#七、数据卷命令" class="headerlink" title="七、数据卷命令"></a>七、数据卷命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看数据卷</span></span><br><span class="line">docker volume <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据卷</span></span><br><span class="line">docker volume create mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据卷详细信息</span></span><br><span class="line">docker volume inspect mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除数据卷</span></span><br><span class="line">docker volume <span class="built_in">rm</span> mysql-data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的数据卷</span></span><br><span class="line">docker volume prune</span><br></pre></td></tr></table></figure>
-
-<h2 id="八、网络命令"><a href="#八、网络命令" class="headerlink" title="八、网络命令"></a>八、网络命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 Docker 网络</span></span><br><span class="line">docker network <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建网络</span></span><br><span class="line">docker network create app-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看网络详细信息</span></span><br><span class="line">docker network inspect app-network</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将容器连接到网络</span></span><br><span class="line">docker network connect app-network my-app</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除网络</span></span><br><span class="line">docker network <span class="built_in">rm</span> app-network</span><br></pre></td></tr></table></figure>
-
-<h2 id="九、清理命令"><a href="#九、清理命令" class="headerlink" title="九、清理命令"></a>九、清理命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除已停止的容器</span></span><br><span class="line">docker container prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的镜像</span></span><br><span class="line">docker image prune -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除构建缓存</span></span><br><span class="line">docker builder prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用的容器、网络、镜像和构建缓存</span></span><br><span class="line">docker system prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除未使用资源和匿名数据卷</span></span><br><span class="line">docker system prune -a --volumes</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>docker compose down -v</code>、<code>docker volume prune</code> 和 <code>docker system prune -a --volumes</code> 可能删除项目数据，执行前需要确认。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>DevOps</category>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>DevOps</tag>
-        <tag>容器化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RAG-系统评估</title>
     <url>/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/</url>
     <content><![CDATA[<h1 id="RAG评估"><a href="#RAG评估" class="headerlink" title="RAG评估"></a>RAG评估</h1><p>构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？</p>
@@ -3121,6 +3121,65 @@
       </tags>
   </entry>
   <entry>
+    <title>智能体通信协议</title>
+    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
+<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
+<ul>
+<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
+<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
+<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
+</ul>
+<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
+<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
+<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
+<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
+<p><strong>（2）A2A：智能体间的对话</strong></p>
+<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
+<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
+<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
+<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
+<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
+<p>图 10.3 ANP 设计思想</p>
+<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
+<p>表 10.1 三种协议对比</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
+<p><strong>（4）如何选择合适的协议？</strong></p>
+<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
+<p>选择协议的关键在于理解你的需求：</p>
+<ul>
+<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
+<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
+<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
+</ul>
+<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MCP (模型上下文协议) 是一个用于将 AI 应用程序与外部系统连接的开源标准。</p>
+<p>通过 MCP，诸如 Claude 或 ChatGPT 之类的 AI 应用程序可以连接到数据源（resource如本地文件、数据库）、工具（tool如搜索引擎、计算器）和工作流（workflow如专业提示词）—— 使其能够访问关键信息并执行任务。</p>
+<p>可以将 MCP 想象成 AI 应用程序的 USB-C 接口。正如 USB-C 提供了一种连接电子设备的标准化方式，MCP 提供了一种将 AI 应用程序连接到外部系统的标准化方式。</p>
+<p>MCP 架构中的关键参与者包括：</p>
+<ul>
+<li>**MCP 宿主 (Host)**：协调和管理一个或多个 MCP 客户端的 AI 应用；</li>
+<li>**MCP 客户端 (Client)**：维持与 MCP 服务端连接并获取上下文供 MCP 宿主使用的组件，由host创建得到；</li>
+<li>**MCP 服务端 (Server)**：为 MCP 客户端提供上下文的程序。</li>
+</ul>
+<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>MCP可分为两层：</p>
+<ul>
+<li><strong>数据层</strong>：定义基于 JSON-RPC 的客户端-服务端通信协议，包括生命周期管理以及工具、资源、提示词和通知等核心原语。</li>
+<li><strong>传输层</strong>：定义支持客户端和服务端之间数据交换的通信机制和通道，包括特定传输方式的连接建立、消息分帧、授权</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Agent</category>
+        <category>通信协议</category>
+        <category>MCP A2A ANP</category>
+      </categories>
+      <tags>
+        <tag>Agent</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>设计模式学习笔记：理解与 C++ 示例</title>
     <url>/2026/05/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="设计模式学习笔记：理解与-C-示例"><a href="#设计模式学习笔记：理解与-C-示例" class="headerlink" title="设计模式学习笔记：理解与 C++ 示例"></a>设计模式学习笔记：理解与 C++ 示例</h1><p>一组经过验证的“组织代码的经验”：当对象之间的关系开始变复杂时，设计模式帮助我们降低耦合、隔离变化、复用行为。</p>
@@ -3204,65 +3263,6 @@
         <tag>C++</tag>
         <tag>设计模式</tag>
         <tag>面向对象</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能体通信协议</title>
-    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
-<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
-<ul>
-<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
-<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
-<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
-</ul>
-<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
-<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
-<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
-<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
-<p><strong>（2）A2A：智能体间的对话</strong></p>
-<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
-<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
-<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
-<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
-<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
-<p>图 10.3 ANP 设计思想</p>
-<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
-<p>表 10.1 三种协议对比</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
-<p><strong>（4）如何选择合适的协议？</strong></p>
-<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
-<p>选择协议的关键在于理解你的需求：</p>
-<ul>
-<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
-<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
-<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
-</ul>
-<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MCP (模型上下文协议) 是一个用于将 AI 应用程序与外部系统连接的开源标准。</p>
-<p>通过 MCP，诸如 Claude 或 ChatGPT 之类的 AI 应用程序可以连接到数据源（resource如本地文件、数据库）、工具（tool如搜索引擎、计算器）和工作流（workflow如专业提示词）—— 使其能够访问关键信息并执行任务。</p>
-<p>可以将 MCP 想象成 AI 应用程序的 USB-C 接口。正如 USB-C 提供了一种连接电子设备的标准化方式，MCP 提供了一种将 AI 应用程序连接到外部系统的标准化方式。</p>
-<p>MCP 架构中的关键参与者包括：</p>
-<ul>
-<li>**MCP 宿主 (Host)**：协调和管理一个或多个 MCP 客户端的 AI 应用；</li>
-<li>**MCP 客户端 (Client)**：维持与 MCP 服务端连接并获取上下文供 MCP 宿主使用的组件，由host创建得到；</li>
-<li>**MCP 服务端 (Server)**：为 MCP 客户端提供上下文的程序。</li>
-</ul>
-<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>MCP可分为两层：</p>
-<ul>
-<li><strong>数据层</strong>：定义基于 JSON-RPC 的客户端-服务端通信协议，包括生命周期管理以及工具、资源、提示词和通知等核心原语。</li>
-<li><strong>传输层</strong>：定义支持客户端和服务端之间数据交换的通信机制和通道，包括特定传输方式的连接建立、消息分帧、授权</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Agent</category>
-        <category>通信协议</category>
-        <category>MCP A2A ANP</category>
-      </categories>
-      <tags>
-        <tag>Agent</tag>
       </tags>
   </entry>
   <entry>
@@ -3739,131 +3739,6 @@
       </tags>
   </entry>
   <entry>
-    <title>从提示工程到上下文工程，再到 Harness 工程：AI 应用的工程化演进</title>
-    <url>/2026/05/16/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B-Harness%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="文章定位"><a href="#文章定位" class="headerlink" title="文章定位"></a>文章定位</h2><p>这篇文章面向已经了解大模型、Agent、RAG 基础概念的开发者。它想讨论的问题不是“怎么写出一个更漂亮的 Prompt”，而是 AI 应用在真正落地时，为什么会从提示工程逐渐走向上下文工程，再进一步走向 Harness 工程。</p>
-<p>我的理解是：提示工程解决的是“怎么问”的问题，上下文工程解决的是“给模型什么信息”的问题，而 Harness 工程解决的是“如何把模型能力变成稳定、可测试、可迭代的系统”的问题。</p>
-<p>如果只看一次模型调用，Prompt 似乎就是全部。但只要任务稍微复杂一点，比如需要读取资料、调用工具、修改代码、执行命令、处理异常、保存中间状态，单纯优化提示词就会变得不够用。AI 应用的重心也会从“写好一段输入”转向“设计一个能持续运行的工程系统”。</p>
-<h2 id="一、提示工程"><a href="#一、提示工程" class="headerlink" title="一、提示工程"></a>一、提示工程</h2><h3 id="1-1-出现背景"><a href="#1-1-出现背景" class="headerlink" title="1.1 出现背景"></a>1.1 出现背景</h3><p>大模型应用早期最常见的开发方式，就是围绕 Prompt 做优化。因为 Prompt 是开发者和模型之间最直接的交互接口，我们无法像传统程序那样逐行控制模型内部的计算过程，只能通过输入文本来影响模型的行为。</p>
-<p>在这个阶段，很多问题看起来都可以通过“把话说清楚一点”来改善。例如让模型扮演某个角色，告诉它输出格式，给它几个示例，或者要求它一步一步思考。对于摘要、分类、信息抽取、文本改写、简单问答这类任务，提示工程确实能带来非常明显的效果。</p>
-<p>所以提示工程的价值并不低。它是大模型应用最早的工程入口，也是开发者理解模型行为的重要方式。只不过，当任务从单轮生成走向复杂流程时，Prompt 本身承载的东西会越来越多，维护难度也会随之上升。</p>
-<h3 id="1-2-核心目标"><a href="#1-2-核心目标" class="headerlink" title="1.2 核心目标"></a>1.2 核心目标</h3><p>提示工程的第一个目标，是让模型理解任务目标。模型需要知道当前要完成什么事情，最终交付物是什么，哪些内容是重点，哪些内容应该避免。</p>
-<p>第二个目标，是约束输出格式。很多 AI 应用并不是只需要一段自然语言回答，而是需要 JSON、Markdown、SQL、代码片段、表格或者固定结构的报告。如果输出格式不稳定，后续程序就很难继续处理。</p>
-<p>第三个目标，是降低回答的不确定性。大模型本身具有生成式特征，同一个问题可能产生不同表达。好的 Prompt 会尽量减少歧义，让模型的输出更接近预期范围。</p>
-<p>第四个目标，是通过示例引导模型学习任务模式。Few-shot 示例的作用不是给模型灌输新知识，而是让模型在当前上下文中模仿一种输入输出关系。对于格式复杂或者标准比较隐含的任务，示例往往比抽象描述更有效。</p>
-<h3 id="1-3-常见提示方法"><a href="#1-3-常见提示方法" class="headerlink" title="1.3 常见提示方法"></a>1.3 常见提示方法</h3><p>常见的提示方法包括角色设定、任务拆解、Few-shot 示例、输出格式约束、分步推理引导、反思与自检提示等。</p>
-<p>角色设定可以帮助模型进入某种回答风格。例如让模型以“资深后端工程师”的方式分析问题，通常会比单纯说“帮我看看代码”更容易得到结构化的技术回答。</p>
-<p>任务拆解适用于复杂问题。与其让模型一次性完成所有步骤，不如把目标拆成若干阶段，例如先分析需求，再设计方案，最后生成代码或文档。</p>
-<p>Few-shot 示例适合用来稳定输出模式。比如希望模型把一段文本转换成固定字段，就可以给出几组输入和输出，让模型模仿格式。</p>
-<p>输出格式约束则更偏工程化。很多时候我们会要求模型只输出 JSON，或者按照固定 Markdown 标题组织内容，这样后续程序可以继续解析和处理。</p>
-<p>分步推理引导和反思提示可以提升复杂任务的质量，但也需要谨慎使用。并不是所有任务都需要长推理，过度要求模型展开思考可能会增加成本，也可能引入无关内容。</p>
-<h3 id="1-4-提示工程的局限"><a href="#1-4-提示工程的局限" class="headerlink" title="1.4 提示工程的局限"></a>1.4 提示工程的局限</h3><p>提示工程最大的问题，是它对上下文质量高度敏感。同一段 Prompt，在不同上下文中可能表现完全不同。如果输入资料本身混乱、缺失或者相互矛盾，再精巧的提示词也很难让模型稳定输出高质量结果。</p>
-<p>第二个问题是难以长期维护。随着业务规则变多，Prompt 很容易变成一大段混杂了角色、规则、示例、格式、异常处理和补充说明的文本。它看起来像配置，实际却承担了代码、文档和策略的多重职责。</p>
-<p>第三个问题是对复杂任务的稳定性不足。复杂任务通常不是一次回答就结束，而是需要多轮交互、工具调用、状态更新和结果校验。Prompt 可以影响模型当前这一轮的行为，但很难单独管理整个任务生命周期。</p>
-<p>第四个问题是无法单独解决系统问题。例如工具调用失败后如何重试，长任务中如何保留关键状态，输出结果如何自动评估，失败样例如何沉淀，这些都已经超出了提示词本身的范围。</p>
-<p>因此，提示工程是必要的，但不是 AI 应用工程化的终点。</p>
-<h2 id="二、上下文工程"><a href="#二、上下文工程" class="headerlink" title="二、上下文工程"></a>二、上下文工程</h2><h3 id="2-1-出现背景"><a href="#2-1-出现背景" class="headerlink" title="2.1 出现背景"></a>2.1 出现背景</h3><p>当 AI 应用从单轮问答走向多轮协作时，开发者会发现：真正影响模型表现的，不只是 Prompt 写得好不好，还有模型在每一轮调用时“看见了什么”。</p>
-<p>模型需要处理越来越多的外部信息。比如用户的历史需求、系统规则、检索到的文档、工具返回结果、代码仓库结构、运行错误、任务计划和中间状态。这些信息共同组成了模型的上下文。</p>
-<p>Agent、RAG 和工具调用进一步放大了这个问题。RAG 会把外部知识注入上下文，工具调用会把外部系统的返回结果注入上下文，Agent loop 会不断产生新的观察、计划和执行结果。上下文不再是一段静态输入，而是一个动态变化的信息环境。</p>
-<p>这时，工程重点就从“如何写 Prompt”扩展为“如何管理上下文”。</p>
-<h3 id="2-2-什么是上下文"><a href="#2-2-什么是上下文" class="headerlink" title="2.2 什么是上下文"></a>2.2 什么是上下文</h3><p>上下文可以理解为模型在一次调用中能够看到的全部信息。它不仅包括用户当前输入，也包括系统指令、历史对话、检索文档、工具返回结果、任务状态、用户偏好和约束条件。</p>
-<p>用户输入告诉模型当前要做什么。系统指令定义模型的角色、边界和行为规范。历史对话提供任务连续性。检索文档提供外部知识。工具返回结果提供来自真实系统的观察。任务状态记录当前进展。用户偏好帮助模型保持长期一致性。约束条件则用于限制模型的行为范围。</p>
-<p>这些内容如果组织得好，模型就更容易做出正确判断。如果组织得不好，模型可能会被无关信息干扰，忽略关键事实，甚至把过期信息当成当前状态。</p>
-<p>所以，上下文不是简单地“塞更多信息”。上下文工程的重点是选择、组织、压缩和更新信息。</p>
-<h3 id="2-3-关注的问题"><a href="#2-3-关注的问题" class="headerlink" title="2.3 关注的问题"></a>2.3 关注的问题</h3><p>上下文工程首先要回答：给模型什么信息。不是所有信息都应该进入上下文。相关性低、重复、过期或者噪声很大的内容，会消耗上下文窗口，也会稀释模型注意力。</p>
-<p>其次是：什么时候给。某些信息只在任务开始时需要，例如总体目标和输出规范；某些信息只在特定阶段需要，例如检索结果、工具错误、代码片段；还有一些信息需要持续保留，例如用户明确提出的约束。</p>
-<p>第三是：给多少。大模型上下文窗口虽然越来越长，但长上下文不等于好上下文。上下文越长，成本越高，延迟越大，模型也越可能遗漏细节。工程上需要在完整性和简洁性之间取平衡。</p>
-<p>第四是：以什么结构给。结构化上下文通常比随意拼接文本更稳定。例如把任务目标、已知事实、约束条件、当前状态、可用工具、输出要求分块组织，模型更容易理解每类信息的作用。</p>
-<p>最后是：如何过滤噪声、避免上下文污染，并在长任务中保留关键状态。上下文污染常见于多轮对话和工具调用场景，例如早期错误结论没有被清理，过期计划仍然留在上下文里，工具返回的大量日志遮蔽了真正重要的错误信息。</p>
-<h3 id="2-4-上下文工程和-RAG、Agent-的关系"><a href="#2-4-上下文工程和-RAG、Agent-的关系" class="headerlink" title="2.4 上下文工程和 RAG、Agent 的关系"></a>2.4 上下文工程和 RAG、Agent 的关系</h3><p>RAG 是上下文工程的一种典型方式。它的核心不是让模型“记住”所有知识，而是在用户提问时，从外部知识库检索相关内容，再把这些内容作为上下文提供给模型。</p>
-<p>从这个角度看，RAG 的文档切分、索引构建、查询改写、召回、重排、上下文拼装，本质上都在服务于上下文质量。检索到的信息越准确、越结构化，模型生成答案的基础就越可靠。</p>
-<p>Agent 对上下文工程的要求更高。因为 Agent 不只是回答问题，还会规划任务、调用工具、观察结果、修正计划并继续执行。每一步都会产生新的上下文，也可能带来新的噪声。</p>
-<p>长任务尤其依赖上下文压缩、记忆、状态管理和工具结果整理。否则任务执行到后半段时，模型可能已经忘记最初目标，或者被大量中间日志淹没，导致行为漂移。</p>
-<p>所以，RAG 关注的是如何把外部知识变成上下文，Agent 关注的是如何在动态过程中持续管理上下文。二者都离不开上下文工程。</p>
-<h3 id="2-5-上下文工程的典型策略"><a href="#2-5-上下文工程的典型策略" class="headerlink" title="2.5 上下文工程的典型策略"></a>2.5 上下文工程的典型策略</h3><p>第一种策略是信息筛选。进入上下文的信息应该和当前任务直接相关，必要时需要先对检索结果或工具结果做摘要和过滤。</p>
-<p>第二种策略是上下文分层。可以把上下文分为长期稳定信息、当前任务信息、临时工具结果和输出约束。不同层级的内容采用不同的保留策略。</p>
-<p>第三种策略是历史摘要。多轮对话不能无限追加，应该定期把历史压缩成任务摘要，保留目标、决策、约束、待办事项和关键事实。</p>
-<p>第四种策略是工具结果结构化。工具返回内容往往很长，尤其是搜索结果、命令行日志和网页内容。直接塞给模型容易造成噪声，最好提取关键信息、错误原因和下一步可用线索。</p>
-<p>第五种策略是任务状态显式化。复杂任务中，模型需要知道当前做到哪一步、哪些步骤完成了、哪些步骤失败了、接下来要做什么。显式状态比让模型从历史对话里自行推断更可靠。</p>
-<p>第六种策略是失败信息保留。失败不是无用信息。工具调用失败、测试失败、构建失败都能帮助模型修正方案。关键是保留失败的核心原因，而不是保留全部冗余日志。</p>
-<p>第七种策略是长上下文压缩。随着任务推进，旧信息需要被总结、归档或移出当前上下文，只留下对后续决策仍然有价值的部分。</p>
-<h2 id="三、为什么需要-Harness-Engineering"><a href="#三、为什么需要-Harness-Engineering" class="headerlink" title="三、为什么需要 Harness Engineering"></a>三、为什么需要 Harness Engineering</h2><h3 id="3-1-AI-应用不只是一次模型调用"><a href="#3-1-AI-应用不只是一次模型调用" class="headerlink" title="3.1 AI 应用不只是一次模型调用"></a>3.1 AI 应用不只是一次模型调用</h3><p>上下文工程解决了模型“看见什么”的问题，但真实 AI 应用还不只是一次模型调用。一个可用的 AI 系统通常包含输入处理、上下文构造、模型调用、工具调用、结果校验、错误恢复、日志记录和效果评估等多个环节。</p>
-<p>也就是说，模型只是系统中的一个能力组件。它负责理解、生成、推理和决策，但它不应该独自承担所有工程责任。输入是否合法、工具是否可用、输出是否符合格式、失败是否需要重试、成本是否超限，这些都需要系统层面的设计。</p>
-<p>如果没有这一层工程外壳，AI 应用很容易停留在 Demo 阶段：单次演示效果不错，但一旦面对真实用户、复杂输入和持续运行，就会出现不稳定、不可复现、难调试的问题。</p>
-<h3 id="3-2-真实系统需要解决的问题"><a href="#3-2-真实系统需要解决的问题" class="headerlink" title="3.2 真实系统需要解决的问题"></a>3.2 真实系统需要解决的问题</h3><p>真实系统首先需要组织模型调用流程。不同任务可能需要不同链路：有的只需要一次生成，有的需要先检索再生成，有的需要多次工具调用，有的需要人类确认后继续执行。</p>
-<p>其次需要接入工具和外部系统。工具不是简单的函数列表，还涉及参数校验、权限控制、错误处理和返回结果整理。</p>
-<p>再次需要处理失败和重试。模型可能生成不符合格式的结果，工具可能超时，外部 API 可能失败，检索结果可能为空。系统需要判断哪些失败可以重试，哪些失败需要降级，哪些失败必须交给用户确认。</p>
-<p>系统还需要评估输出质量。没有评估，就很难知道 Prompt 或上下文调整到底是变好了还是变差了。尤其是当 AI 应用进入长期迭代后，评估和回归测试会变得非常重要。</p>
-<p>最后，系统需要记录日志和复盘。AI 应用的问题往往不是单点错误，而是上下文、模型、工具和控制流程共同作用的结果。没有 Trace 和日志，就很难定位问题发生在哪一步。</p>
-<h2 id="四、Harness-Engineering"><a href="#四、Harness-Engineering" class="headerlink" title="四、Harness Engineering"></a>四、Harness Engineering</h2><h3 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h3><p>Harness Engineering 关注的是 AI 应用的整体运行框架。它把 Prompt、Context、Model、Tool、Evaluation、Observation 这些部分组织起来，让它们形成一个可维护的系统。</p>
-<p>如果说提示工程偏向“语言层面的控制”，上下文工程偏向“信息层面的控制”，那么 Harness 工程更偏向“系统层面的控制”。它关心的不只是模型能不能生成答案，还关心这个答案是在什么输入下生成的，经过了哪些工具，是否通过校验，失败时如何恢复，下一次如何改进。</p>
-<p>在工程实践中，Harness 可以很简单，也可以很复杂。简单的 Harness 可能只是一个脚本：读取输入、拼接 Prompt、调用模型、检查输出格式。复杂的 Harness 可能包含任务队列、工具编排、自动评测、日志系统、权限系统和人工反馈闭环。</p>
-<h3 id="4-2-输入层"><a href="#4-2-输入层" class="headerlink" title="4.2 输入层"></a>4.2 输入层</h3><p>输入层负责把用户请求转化成系统可以处理的任务。用户的自然语言输入往往是不完整、不规范甚至有歧义的，系统需要先进行请求规范化。</p>
-<p>例如，用户说“帮我写一篇博客”，系统需要进一步识别主题、目标读者、文章风格、输出格式和是否需要引用资料。对于接口型任务，还需要做参数校验，确保必要字段存在，类型正确，取值范围合理。</p>
-<p>输入层还可以承担意图识别的工作。不同意图对应不同流程：写文章、改文章、查资料、生成代码、运行测试、总结错误，这些任务的上下文和工具需求都不一样。</p>
-<p>任务边界确认也很重要。AI 系统应该知道哪些动作可以直接执行，哪些动作需要用户确认，哪些动作超出了当前能力范围。</p>
-<h3 id="4-3-Prompt-与-Context-组装层"><a href="#4-3-Prompt-与-Context-组装层" class="headerlink" title="4.3 Prompt 与 Context 组装层"></a>4.3 Prompt 与 Context 组装层</h3><p>这一层负责把系统提示、任务提示、检索内容、工具结果、记忆与状态、输出格式要求组织成模型输入。</p>
-<p>系统提示通常比较稳定，用来定义模型的角色、行为边界和全局规则。任务提示更贴近当前请求，用来说明本次要完成什么。检索内容提供外部知识，工具结果提供真实观察，记忆与状态保证任务连续性，输出格式要求则让结果更容易被后续程序处理。</p>
-<p>这一层的关键不是简单拼接，而是有意识地组织信息。例如把“任务目标”“已知事实”“约束条件”“当前状态”“可用资料”“输出要求”分开，让模型能清楚地区分不同信息的作用。</p>
-<p>如果这一层设计得不好，模型可能会忽略关键约束，误用过期信息，或者把工具错误当成最终结论。很多 AI 应用看似是模型能力问题，实际上是上下文组装问题。</p>
-<h3 id="4-4-执行层"><a href="#4-4-执行层" class="headerlink" title="4.4 执行层"></a>4.4 执行层</h3><p>执行层负责真正推动任务运行。它可能只调用一次模型，也可能包含多步骤工作流、工具调用和 Agent loop。</p>
-<p>在简单任务中，执行层的流程可能是：构造输入、调用模型、返回结果。在复杂任务中，流程可能变成：先分析任务，再选择工具，执行工具后读取结果，然后根据结果继续规划下一步。</p>
-<p>Agent loop 是执行层中比较典型的形态。模型不断根据当前状态做出行动决策，系统执行行动并返回观察结果，模型再基于观察结果继续推理和行动。</p>
-<p>执行层还需要维护中间状态。比如当前步骤是否完成、工具调用是否成功、已经产生了哪些文件、还有哪些待办事项。这些状态不仅服务于模型，也服务于系统恢复和调试。</p>
-<h3 id="4-5-控制层"><a href="#4-5-控制层" class="headerlink" title="4.5 控制层"></a>4.5 控制层</h3><p>控制层负责让系统不要失控。大模型应用天然具有不确定性，所以需要在外部建立约束。</p>
-<p>超时控制可以避免任务无限运行。重试机制可以处理临时失败，但重试必须有边界，不能无休止循环。安全约束用于限制高风险行为，例如删除文件、访问敏感数据、执行危险命令。</p>
-<p>权限边界也很重要。不同工具应该有不同权限，不同任务也应该有不同执行范围。模型可以提出行动建议，但系统应该决定哪些行动允许执行。</p>
-<p>输出格式校验是控制层中非常实用的一部分。比如要求模型输出 JSON，就应该在程序里解析并校验，而不是只相信模型“应该会按格式输出”。当格式不符合预期时，系统可以要求模型修复，或者直接返回错误。</p>
-<h3 id="4-6-评估层"><a href="#4-6-评估层" class="headerlink" title="4.6 评估层"></a>4.6 评估层</h3><p>评估层负责回答一个关键问题：系统到底有没有变好。</p>
-<p>自动评测适合用于格式、事实一致性、覆盖率、分类准确率等相对明确的指标。人工反馈适合用于可读性、解释质量、风格一致性等更主观的维度。</p>
-<p>回归测试对 AI 应用尤其重要。每次修改 Prompt、上下文策略或工具链后，都可能影响已有任务表现。如果没有测试集，很难判断这次修改是整体提升，还是只是在某个样例上变好。</p>
-<p>测试集构建可以从真实失败样例开始。每一次模型答错、工具调用失败、输出格式不符合要求，都是值得沉淀的评估数据。长期来看，失败样例库会成为 AI 应用迭代中非常有价值的资产。</p>
-<h3 id="4-7-观测层"><a href="#4-7-观测层" class="headerlink" title="4.7 观测层"></a>4.7 观测层</h3><p>观测层负责让系统可调试、可复盘。AI 应用的错误往往不是一句报错就能解释清楚的，而是发生在一个链路中。</p>
-<p>日志可以记录输入、输出、工具调用、错误信息和关键状态变化。Trace 可以展示一次任务从开始到结束经过了哪些步骤，每一步的输入输出是什么。</p>
-<p>成本统计和延迟统计也很重要。大模型调用通常有成本，复杂 Agent 任务还可能多次调用模型和工具。如果不观测成本和延迟，系统很容易在效果还不错的同时变得昂贵且缓慢。</p>
-<p>失败案例分析则用于反向改进系统。一次失败可能来自 Prompt 表述不清，也可能来自检索质量差、上下文污染、工具返回结果太乱、输出校验缺失。观测层的价值，就是帮助我们找到真正的问题位置。</p>
-<h2 id="五、提示工程、上下文工程、Harness-工程之间的关系"><a href="#五、提示工程、上下文工程、Harness-工程之间的关系" class="headerlink" title="五、提示工程、上下文工程、Harness 工程之间的关系"></a>五、提示工程、上下文工程、Harness 工程之间的关系</h2><h3 id="5-1-三者的递进关系"><a href="#5-1-三者的递进关系" class="headerlink" title="5.1 三者的递进关系"></a>5.1 三者的递进关系</h3><p>三者可以看作 AI 应用工程化的三个层次：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Prompt Engineering</span><br><span class="line">关注：如何写好一次模型输入</span><br><span class="line">解决：让模型更好地理解任务</span><br><span class="line"></span><br><span class="line">Context Engineering</span><br><span class="line">关注：如何组织模型所需的信息环境</span><br><span class="line">解决：让模型在正确的信息中工作</span><br><span class="line"></span><br><span class="line">Harness Engineering</span><br><span class="line">关注：如何把模型能力变成稳定系统</span><br><span class="line">解决：让 AI 应用可运行、可测试、可迭代</span><br></pre></td></tr></table></figure>
-
-<p>提示工程关注的是一次调用中“怎么表达任务”。上下文工程关注的是一次调用前“应该给模型什么信息”。Harness 工程关注的是整个系统“如何持续可靠地运行”。</p>
-<p>从这个角度看，三者的关注范围逐渐扩大：从语言表达，到信息组织，再到系统工程。</p>
-<h3 id="5-2-三者不是替代关系"><a href="#5-2-三者不是替代关系" class="headerlink" title="5.2 三者不是替代关系"></a>5.2 三者不是替代关系</h3><p>需要注意的是，三者不是替代关系。并不是有了上下文工程就不需要提示工程，也不是有了 Harness 工程就不需要上下文工程。</p>
-<p>Prompt Engineering 仍然是入口。模型需要清晰的任务描述、角色边界和输出要求。</p>
-<p>Context Engineering 是能力放大的关键。模型是否能做出正确判断，往往取决于它是否获得了正确、足够、干净的上下文。</p>
-<p>Harness Engineering 是生产化和长期维护的基础。只有把模型调用放进可运行、可测试、可观测的框架中，AI 应用才有机会从 Demo 走向真实系统。</p>
-<p>三者合在一起，才构成比较完整的 AI 应用工程方法。</p>
-<h2 id="六、用一个例子理解三者差异"><a href="#六、用一个例子理解三者差异" class="headerlink" title="六、用一个例子理解三者差异"></a>六、用一个例子理解三者差异</h2><h3 id="6-1-案例：构建一个技术博客写作助手"><a href="#6-1-案例：构建一个技术博客写作助手" class="headerlink" title="6.1 案例：构建一个技术博客写作助手"></a>6.1 案例：构建一个技术博客写作助手</h3><p>假设我们要构建一个技术博客写作助手，目标是根据主题生成一篇符合个人博客风格的技术文章。</p>
-<p>这个任务看起来很简单：给模型一个主题，让它生成 Markdown。但如果真正想把它做成稳定工具，就会发现里面包含很多工程细节。</p>
-<p>文章需要有合适的标题、清晰的结构、正确的 front-matter、统一的标签和分类，还要符合已有博客的写作风格。如果需要结合资料，还要处理资料检索、引用整理和内容筛选。如果生成后要进入发布流程，还要检查 Hexo 构建是否通过。</p>
-<h3 id="6-2-提示工程阶段"><a href="#6-2-提示工程阶段" class="headerlink" title="6.2 提示工程阶段"></a>6.2 提示工程阶段</h3><p>在提示工程阶段，我们主要关注如何让模型生成一篇文章。比如编写 Prompt，明确文章主题，约束输出格式，并要求生成 Markdown。</p>
-<p>一个简单的 Prompt 可能是：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">请写一篇关于提示工程、上下文工程和 Harness 工程的技术博客，</span><br><span class="line">使用中文，输出 Markdown，结构清晰，适合开发者阅读。</span><br></pre></td></tr></table></figure>
-
-<p>这个阶段的重点是让模型理解写作任务。如果任务比较简单，这样已经能得到一篇看起来不错的文章。但它还不一定符合个人博客的风格，也不一定有正确的 front-matter 和分类规范。</p>
-<h3 id="6-3-上下文工程阶段"><a href="#6-3-上下文工程阶段" class="headerlink" title="6.3 上下文工程阶段"></a>6.3 上下文工程阶段</h3><p>进入上下文工程阶段后，我们会开始考虑：为了让模型写得更像“我的博客”，应该给它哪些上下文。</p>
-<p>例如加入已有博客文章风格，让模型了解平时的表达方式；加入文章分类和标签规范，避免生成不一致的元信息；加入用户历史写作偏好，让文章更符合长期风格；加入相关资料和参考文章，减少空泛表达；加入 Hexo front-matter 规范，保证文章可以被站点正确解析。</p>
-<p>这时，模型输入不再只有一句写作要求，而是包含了任务目标、博客规范、已有风格、参考资料和输出约束。模型生成结果的质量，取决于这些上下文是否准确、干净、结构清晰。</p>
-<h3 id="6-4-Harness-工程阶段"><a href="#6-4-Harness-工程阶段" class="headerlink" title="6.4 Harness 工程阶段"></a>6.4 Harness 工程阶段</h3><p>到了 Harness 工程阶段，我们考虑的已经不只是“生成文章”，而是“构建一个博客写作流程”。</p>
-<p>这个流程可以先自动生成大纲，再根据大纲生成 Markdown 文件。生成后检查 front-matter 是否完整，标签和分类是否符合规范。接着可以运行 Hexo 构建，检查文章是否破坏站点生成。如果构建失败，系统读取错误信息，并尝试自动修复。</p>
-<p>同时，Harness 还可以保留生成过程和修改记录。比如本次使用了哪些上下文，模型输出了什么，哪些地方经过人工修改，构建是否通过。这样下一次写类似文章时，就可以复用经验，而不是从零开始。</p>
-<p>从这个例子可以看出，提示工程解决的是“怎么让模型写”，上下文工程解决的是“给模型哪些写作资料和规范”，Harness 工程解决的是“如何把写作变成一个可重复、可检查、可改进的流程”。</p>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>提示工程是在学习如何和模型说话。它通过角色、任务、示例和格式约束，让模型更好地理解当前请求。</p>
-<p>上下文工程是在学习如何给模型布置工作环境。它决定模型在执行任务时能看到哪些信息、如何看到这些信息，以及哪些信息应该被过滤、压缩或保留。</p>
-<p>Harness 工程是在学习如何把模型变成可靠的软件组件。它通过输入处理、上下文组装、执行控制、评估反馈和观测日志，让 AI 应用具备持续运行和持续迭代的能力。</p>
-<p>AI 工程的重点正在从“会不会问模型”转向“能不能构建一个稳定的模型运行系统”。Prompt 仍然重要，但真正决定 AI 应用能走多远的，往往是 Prompt 之外的上下文管理和系统工程能力。</p>
-]]></content>
-      <categories>
-        <category>AI</category>
-        <category>Agent</category>
-      </categories>
-      <tags>
-        <tag>Agent</tag>
-        <tag>Prompt Engineering</tag>
-        <tag>Context Engineering</tag>
-        <tag>LLM</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Skill 学习</title>
     <url>/2026/05/19/Skill%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="一、为什么需要-Skill"><a href="#一、为什么需要-Skill" class="headerlink" title="一、为什么需要 Skill"></a>一、为什么需要 Skill</h2><h3 id="1-1-从重复-Prompt-到可复用能力包"><a href="#1-1-从重复-Prompt-到可复用能力包" class="headerlink" title="1.1 从重复 Prompt 到可复用能力包"></a>1.1 从重复 Prompt 到可复用能力包</h3><ul>
@@ -4022,37 +3897,129 @@
       </tags>
   </entry>
   <entry>
-    <title>后端八股：Java 线程池与 Redis</title>
-    <url>/2026/08/27/%E5%90%8E%E7%AB%AF%E5%85%AB%E8%82%A1/</url>
-    <content><![CDATA[<h2 id="Java-线程池"><a href="#Java-线程池" class="headerlink" title="Java 线程池"></a>Java 线程池</h2><h2 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h2><ul>
-<li>AbortPolicy：拒绝处理新任务并抛出RejectExecutionException</li>
-<li>CallerRunPolicy：调用 <strong>执行execute()方法的线程</strong> 来运行被拒绝的新任务。</li>
-<li>DiscardPolicy：不处理新任务，直接丢弃</li>
-<li>DiscardOldestPolicy：丢弃最早未被处理的任务（等待时间最长的任务）</li>
-</ul>
-<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="过期删除策略"><a href="#过期删除策略" class="headerlink" title="过期删除策略"></a>过期删除策略</h2><p>惰性删除：只在访问数据时进行过期检查，缺点：太多过期key没有被删除</p>
-<p>定期删除：周期性随机抽查一批设置了过期时间的key，如果过期就删除。对内存友好，对CPU不友好</p>
-<p>延迟队列：设置了过期时间的加入到延迟队列，过期就删除（类似定时任务）</p>
-<p>定时删除：每个设置了过期时间的key一过期就删除，需要每个键单独设置定时器</p>
-<p>Redis采用 <strong>定期删除+惰性&#x2F;懒汉式删除</strong> 相结合的策略。</p>
-<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><h3 id="不淘汰（默认策略，noeviction）"><a href="#不淘汰（默认策略，noeviction）" class="headerlink" title="不淘汰（默认策略，noeviction）"></a>不淘汰（默认策略，noeviction）</h3><p>noeviction：不删除任何 key，写操作直接返回 OOM 错误。读请求正常。</p>
-<h3 id="volatile-设置了过期时间的key"><a href="#volatile-设置了过期时间的key" class="headerlink" title="volatile-设置了过期时间的key"></a>volatile-设置了过期时间的key</h3><p>只看设置了 <code>expire</code> 的键，永不过期的 key 完全不动。</p>
-<ol>
-<li><code>volatile‑lru</code>：过期 key 里，淘汰<strong>最近最少使用 LRU</strong></li>
-<li><code>volatile‑lfu</code>：过期 key 里，淘汰<strong>访问频次最低 LFU</strong></li>
-<li><code>volatile‑ttl</code>：过期 key 里，淘汰<strong>剩余存活时间最短</strong>（TTL 最小，马上要过期）</li>
-<li><code>volatile‑random</code>：过期 key 里，<strong>随机删除</strong></li>
-</ol>
-<blockquote>
-<p>如果所有带过期的 key 删完，内存还不够 → 退化成 <code>noeviction</code>，写报错。</p>
-</blockquote>
-<h3 id="Allkey"><a href="#Allkey" class="headerlink" title="Allkey"></a>Allkey</h3><p>所有 key，不管有没有设置过期时间，都参与淘汰。</p>
-<ol>
-<li><code>allkeys‑lru</code>：全部 key，淘汰最近最少使用</li>
-<li><code>allkeys‑lfu</code>：全部 key，淘汰访问频次最低</li>
-<li><code>allkeys‑random</code>：全部 key，随机删除</li>
-</ol>
+    <title>从提示工程到上下文工程，再到 Harness 工程：AI 应用的工程化演进</title>
+    <url>/2026/05/16/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%8B-%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B-Harness%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="文章定位"><a href="#文章定位" class="headerlink" title="文章定位"></a>文章定位</h2><p>这篇文章面向已经了解大模型、Agent、RAG 基础概念的开发者。它想讨论的问题不是“怎么写出一个更漂亮的 Prompt”，而是 AI 应用在真正落地时，为什么会从提示工程逐渐走向上下文工程，再进一步走向 Harness 工程。</p>
+<p>我的理解是：提示工程解决的是“怎么问”的问题，上下文工程解决的是“给模型什么信息”的问题，而 Harness 工程解决的是“如何把模型能力变成稳定、可测试、可迭代的系统”的问题。</p>
+<p>如果只看一次模型调用，Prompt 似乎就是全部。但只要任务稍微复杂一点，比如需要读取资料、调用工具、修改代码、执行命令、处理异常、保存中间状态，单纯优化提示词就会变得不够用。AI 应用的重心也会从“写好一段输入”转向“设计一个能持续运行的工程系统”。</p>
+<h2 id="一、提示工程"><a href="#一、提示工程" class="headerlink" title="一、提示工程"></a>一、提示工程</h2><h3 id="1-1-出现背景"><a href="#1-1-出现背景" class="headerlink" title="1.1 出现背景"></a>1.1 出现背景</h3><p>大模型应用早期最常见的开发方式，就是围绕 Prompt 做优化。因为 Prompt 是开发者和模型之间最直接的交互接口，我们无法像传统程序那样逐行控制模型内部的计算过程，只能通过输入文本来影响模型的行为。</p>
+<p>在这个阶段，很多问题看起来都可以通过“把话说清楚一点”来改善。例如让模型扮演某个角色，告诉它输出格式，给它几个示例，或者要求它一步一步思考。对于摘要、分类、信息抽取、文本改写、简单问答这类任务，提示工程确实能带来非常明显的效果。</p>
+<p>所以提示工程的价值并不低。它是大模型应用最早的工程入口，也是开发者理解模型行为的重要方式。只不过，当任务从单轮生成走向复杂流程时，Prompt 本身承载的东西会越来越多，维护难度也会随之上升。</p>
+<h3 id="1-2-核心目标"><a href="#1-2-核心目标" class="headerlink" title="1.2 核心目标"></a>1.2 核心目标</h3><p>提示工程的第一个目标，是让模型理解任务目标。模型需要知道当前要完成什么事情，最终交付物是什么，哪些内容是重点，哪些内容应该避免。</p>
+<p>第二个目标，是约束输出格式。很多 AI 应用并不是只需要一段自然语言回答，而是需要 JSON、Markdown、SQL、代码片段、表格或者固定结构的报告。如果输出格式不稳定，后续程序就很难继续处理。</p>
+<p>第三个目标，是降低回答的不确定性。大模型本身具有生成式特征，同一个问题可能产生不同表达。好的 Prompt 会尽量减少歧义，让模型的输出更接近预期范围。</p>
+<p>第四个目标，是通过示例引导模型学习任务模式。Few-shot 示例的作用不是给模型灌输新知识，而是让模型在当前上下文中模仿一种输入输出关系。对于格式复杂或者标准比较隐含的任务，示例往往比抽象描述更有效。</p>
+<h3 id="1-3-常见提示方法"><a href="#1-3-常见提示方法" class="headerlink" title="1.3 常见提示方法"></a>1.3 常见提示方法</h3><p>常见的提示方法包括角色设定、任务拆解、Few-shot 示例、输出格式约束、分步推理引导、反思与自检提示等。</p>
+<p>角色设定可以帮助模型进入某种回答风格。例如让模型以“资深后端工程师”的方式分析问题，通常会比单纯说“帮我看看代码”更容易得到结构化的技术回答。</p>
+<p>任务拆解适用于复杂问题。与其让模型一次性完成所有步骤，不如把目标拆成若干阶段，例如先分析需求，再设计方案，最后生成代码或文档。</p>
+<p>Few-shot 示例适合用来稳定输出模式。比如希望模型把一段文本转换成固定字段，就可以给出几组输入和输出，让模型模仿格式。</p>
+<p>输出格式约束则更偏工程化。很多时候我们会要求模型只输出 JSON，或者按照固定 Markdown 标题组织内容，这样后续程序可以继续解析和处理。</p>
+<p>分步推理引导和反思提示可以提升复杂任务的质量，但也需要谨慎使用。并不是所有任务都需要长推理，过度要求模型展开思考可能会增加成本，也可能引入无关内容。</p>
+<h3 id="1-4-提示工程的局限"><a href="#1-4-提示工程的局限" class="headerlink" title="1.4 提示工程的局限"></a>1.4 提示工程的局限</h3><p>提示工程最大的问题，是它对上下文质量高度敏感。同一段 Prompt，在不同上下文中可能表现完全不同。如果输入资料本身混乱、缺失或者相互矛盾，再精巧的提示词也很难让模型稳定输出高质量结果。</p>
+<p>第二个问题是难以长期维护。随着业务规则变多，Prompt 很容易变成一大段混杂了角色、规则、示例、格式、异常处理和补充说明的文本。它看起来像配置，实际却承担了代码、文档和策略的多重职责。</p>
+<p>第三个问题是对复杂任务的稳定性不足。复杂任务通常不是一次回答就结束，而是需要多轮交互、工具调用、状态更新和结果校验。Prompt 可以影响模型当前这一轮的行为，但很难单独管理整个任务生命周期。</p>
+<p>第四个问题是无法单独解决系统问题。例如工具调用失败后如何重试，长任务中如何保留关键状态，输出结果如何自动评估，失败样例如何沉淀，这些都已经超出了提示词本身的范围。</p>
+<p>因此，提示工程是必要的，但不是 AI 应用工程化的终点。</p>
+<h2 id="二、上下文工程"><a href="#二、上下文工程" class="headerlink" title="二、上下文工程"></a>二、上下文工程</h2><h3 id="2-1-出现背景"><a href="#2-1-出现背景" class="headerlink" title="2.1 出现背景"></a>2.1 出现背景</h3><p>当 AI 应用从单轮问答走向多轮协作时，开发者会发现：真正影响模型表现的，不只是 Prompt 写得好不好，还有模型在每一轮调用时“看见了什么”。</p>
+<p>模型需要处理越来越多的外部信息。比如用户的历史需求、系统规则、检索到的文档、工具返回结果、代码仓库结构、运行错误、任务计划和中间状态。这些信息共同组成了模型的上下文。</p>
+<p>Agent、RAG 和工具调用进一步放大了这个问题。RAG 会把外部知识注入上下文，工具调用会把外部系统的返回结果注入上下文，Agent loop 会不断产生新的观察、计划和执行结果。上下文不再是一段静态输入，而是一个动态变化的信息环境。</p>
+<p>这时，工程重点就从“如何写 Prompt”扩展为“如何管理上下文”。</p>
+<h3 id="2-2-什么是上下文"><a href="#2-2-什么是上下文" class="headerlink" title="2.2 什么是上下文"></a>2.2 什么是上下文</h3><p>上下文可以理解为模型在一次调用中能够看到的全部信息。它不仅包括用户当前输入，也包括系统指令、历史对话、检索文档、工具返回结果、任务状态、用户偏好和约束条件。</p>
+<p>用户输入告诉模型当前要做什么。系统指令定义模型的角色、边界和行为规范。历史对话提供任务连续性。检索文档提供外部知识。工具返回结果提供来自真实系统的观察。任务状态记录当前进展。用户偏好帮助模型保持长期一致性。约束条件则用于限制模型的行为范围。</p>
+<p>这些内容如果组织得好，模型就更容易做出正确判断。如果组织得不好，模型可能会被无关信息干扰，忽略关键事实，甚至把过期信息当成当前状态。</p>
+<p>所以，上下文不是简单地“塞更多信息”。上下文工程的重点是选择、组织、压缩和更新信息。</p>
+<h3 id="2-3-关注的问题"><a href="#2-3-关注的问题" class="headerlink" title="2.3 关注的问题"></a>2.3 关注的问题</h3><p>上下文工程首先要回答：给模型什么信息。不是所有信息都应该进入上下文。相关性低、重复、过期或者噪声很大的内容，会消耗上下文窗口，也会稀释模型注意力。</p>
+<p>其次是：什么时候给。某些信息只在任务开始时需要，例如总体目标和输出规范；某些信息只在特定阶段需要，例如检索结果、工具错误、代码片段；还有一些信息需要持续保留，例如用户明确提出的约束。</p>
+<p>第三是：给多少。大模型上下文窗口虽然越来越长，但长上下文不等于好上下文。上下文越长，成本越高，延迟越大，模型也越可能遗漏细节。工程上需要在完整性和简洁性之间取平衡。</p>
+<p>第四是：以什么结构给。结构化上下文通常比随意拼接文本更稳定。例如把任务目标、已知事实、约束条件、当前状态、可用工具、输出要求分块组织，模型更容易理解每类信息的作用。</p>
+<p>最后是：如何过滤噪声、避免上下文污染，并在长任务中保留关键状态。上下文污染常见于多轮对话和工具调用场景，例如早期错误结论没有被清理，过期计划仍然留在上下文里，工具返回的大量日志遮蔽了真正重要的错误信息。</p>
+<h3 id="2-4-上下文工程和-RAG、Agent-的关系"><a href="#2-4-上下文工程和-RAG、Agent-的关系" class="headerlink" title="2.4 上下文工程和 RAG、Agent 的关系"></a>2.4 上下文工程和 RAG、Agent 的关系</h3><p>RAG 是上下文工程的一种典型方式。它的核心不是让模型“记住”所有知识，而是在用户提问时，从外部知识库检索相关内容，再把这些内容作为上下文提供给模型。</p>
+<p>从这个角度看，RAG 的文档切分、索引构建、查询改写、召回、重排、上下文拼装，本质上都在服务于上下文质量。检索到的信息越准确、越结构化，模型生成答案的基础就越可靠。</p>
+<p>Agent 对上下文工程的要求更高。因为 Agent 不只是回答问题，还会规划任务、调用工具、观察结果、修正计划并继续执行。每一步都会产生新的上下文，也可能带来新的噪声。</p>
+<p>长任务尤其依赖上下文压缩、记忆、状态管理和工具结果整理。否则任务执行到后半段时，模型可能已经忘记最初目标，或者被大量中间日志淹没，导致行为漂移。</p>
+<p>所以，RAG 关注的是如何把外部知识变成上下文，Agent 关注的是如何在动态过程中持续管理上下文。二者都离不开上下文工程。</p>
+<h3 id="2-5-上下文工程的典型策略"><a href="#2-5-上下文工程的典型策略" class="headerlink" title="2.5 上下文工程的典型策略"></a>2.5 上下文工程的典型策略</h3><p>第一种策略是信息筛选。进入上下文的信息应该和当前任务直接相关，必要时需要先对检索结果或工具结果做摘要和过滤。</p>
+<p>第二种策略是上下文分层。可以把上下文分为长期稳定信息、当前任务信息、临时工具结果和输出约束。不同层级的内容采用不同的保留策略。</p>
+<p>第三种策略是历史摘要。多轮对话不能无限追加，应该定期把历史压缩成任务摘要，保留目标、决策、约束、待办事项和关键事实。</p>
+<p>第四种策略是工具结果结构化。工具返回内容往往很长，尤其是搜索结果、命令行日志和网页内容。直接塞给模型容易造成噪声，最好提取关键信息、错误原因和下一步可用线索。</p>
+<p>第五种策略是任务状态显式化。复杂任务中，模型需要知道当前做到哪一步、哪些步骤完成了、哪些步骤失败了、接下来要做什么。显式状态比让模型从历史对话里自行推断更可靠。</p>
+<p>第六种策略是失败信息保留。失败不是无用信息。工具调用失败、测试失败、构建失败都能帮助模型修正方案。关键是保留失败的核心原因，而不是保留全部冗余日志。</p>
+<p>第七种策略是长上下文压缩。随着任务推进，旧信息需要被总结、归档或移出当前上下文，只留下对后续决策仍然有价值的部分。</p>
+<h2 id="三、为什么需要-Harness-Engineering"><a href="#三、为什么需要-Harness-Engineering" class="headerlink" title="三、为什么需要 Harness Engineering"></a>三、为什么需要 Harness Engineering</h2><h3 id="3-1-AI-应用不只是一次模型调用"><a href="#3-1-AI-应用不只是一次模型调用" class="headerlink" title="3.1 AI 应用不只是一次模型调用"></a>3.1 AI 应用不只是一次模型调用</h3><p>上下文工程解决了模型“看见什么”的问题，但真实 AI 应用还不只是一次模型调用。一个可用的 AI 系统通常包含输入处理、上下文构造、模型调用、工具调用、结果校验、错误恢复、日志记录和效果评估等多个环节。</p>
+<p>也就是说，模型只是系统中的一个能力组件。它负责理解、生成、推理和决策，但它不应该独自承担所有工程责任。输入是否合法、工具是否可用、输出是否符合格式、失败是否需要重试、成本是否超限，这些都需要系统层面的设计。</p>
+<p>如果没有这一层工程外壳，AI 应用很容易停留在 Demo 阶段：单次演示效果不错，但一旦面对真实用户、复杂输入和持续运行，就会出现不稳定、不可复现、难调试的问题。</p>
+<h3 id="3-2-真实系统需要解决的问题"><a href="#3-2-真实系统需要解决的问题" class="headerlink" title="3.2 真实系统需要解决的问题"></a>3.2 真实系统需要解决的问题</h3><p>真实系统首先需要组织模型调用流程。不同任务可能需要不同链路：有的只需要一次生成，有的需要先检索再生成，有的需要多次工具调用，有的需要人类确认后继续执行。</p>
+<p>其次需要接入工具和外部系统。工具不是简单的函数列表，还涉及参数校验、权限控制、错误处理和返回结果整理。</p>
+<p>再次需要处理失败和重试。模型可能生成不符合格式的结果，工具可能超时，外部 API 可能失败，检索结果可能为空。系统需要判断哪些失败可以重试，哪些失败需要降级，哪些失败必须交给用户确认。</p>
+<p>系统还需要评估输出质量。没有评估，就很难知道 Prompt 或上下文调整到底是变好了还是变差了。尤其是当 AI 应用进入长期迭代后，评估和回归测试会变得非常重要。</p>
+<p>最后，系统需要记录日志和复盘。AI 应用的问题往往不是单点错误，而是上下文、模型、工具和控制流程共同作用的结果。没有 Trace 和日志，就很难定位问题发生在哪一步。</p>
+<h2 id="四、Harness-Engineering"><a href="#四、Harness-Engineering" class="headerlink" title="四、Harness Engineering"></a>四、Harness Engineering</h2><h3 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h3><p>Harness Engineering 关注的是 AI 应用的整体运行框架。它把 Prompt、Context、Model、Tool、Evaluation、Observation 这些部分组织起来，让它们形成一个可维护的系统。</p>
+<p>如果说提示工程偏向“语言层面的控制”，上下文工程偏向“信息层面的控制”，那么 Harness 工程更偏向“系统层面的控制”。它关心的不只是模型能不能生成答案，还关心这个答案是在什么输入下生成的，经过了哪些工具，是否通过校验，失败时如何恢复，下一次如何改进。</p>
+<p>在工程实践中，Harness 可以很简单，也可以很复杂。简单的 Harness 可能只是一个脚本：读取输入、拼接 Prompt、调用模型、检查输出格式。复杂的 Harness 可能包含任务队列、工具编排、自动评测、日志系统、权限系统和人工反馈闭环。</p>
+<h3 id="4-2-输入层"><a href="#4-2-输入层" class="headerlink" title="4.2 输入层"></a>4.2 输入层</h3><p>输入层负责把用户请求转化成系统可以处理的任务。用户的自然语言输入往往是不完整、不规范甚至有歧义的，系统需要先进行请求规范化。</p>
+<p>例如，用户说“帮我写一篇博客”，系统需要进一步识别主题、目标读者、文章风格、输出格式和是否需要引用资料。对于接口型任务，还需要做参数校验，确保必要字段存在，类型正确，取值范围合理。</p>
+<p>输入层还可以承担意图识别的工作。不同意图对应不同流程：写文章、改文章、查资料、生成代码、运行测试、总结错误，这些任务的上下文和工具需求都不一样。</p>
+<p>任务边界确认也很重要。AI 系统应该知道哪些动作可以直接执行，哪些动作需要用户确认，哪些动作超出了当前能力范围。</p>
+<h3 id="4-3-Prompt-与-Context-组装层"><a href="#4-3-Prompt-与-Context-组装层" class="headerlink" title="4.3 Prompt 与 Context 组装层"></a>4.3 Prompt 与 Context 组装层</h3><p>这一层负责把系统提示、任务提示、检索内容、工具结果、记忆与状态、输出格式要求组织成模型输入。</p>
+<p>系统提示通常比较稳定，用来定义模型的角色、行为边界和全局规则。任务提示更贴近当前请求，用来说明本次要完成什么。检索内容提供外部知识，工具结果提供真实观察，记忆与状态保证任务连续性，输出格式要求则让结果更容易被后续程序处理。</p>
+<p>这一层的关键不是简单拼接，而是有意识地组织信息。例如把“任务目标”“已知事实”“约束条件”“当前状态”“可用资料”“输出要求”分开，让模型能清楚地区分不同信息的作用。</p>
+<p>如果这一层设计得不好，模型可能会忽略关键约束，误用过期信息，或者把工具错误当成最终结论。很多 AI 应用看似是模型能力问题，实际上是上下文组装问题。</p>
+<h3 id="4-4-执行层"><a href="#4-4-执行层" class="headerlink" title="4.4 执行层"></a>4.4 执行层</h3><p>执行层负责真正推动任务运行。它可能只调用一次模型，也可能包含多步骤工作流、工具调用和 Agent loop。</p>
+<p>在简单任务中，执行层的流程可能是：构造输入、调用模型、返回结果。在复杂任务中，流程可能变成：先分析任务，再选择工具，执行工具后读取结果，然后根据结果继续规划下一步。</p>
+<p>Agent loop 是执行层中比较典型的形态。模型不断根据当前状态做出行动决策，系统执行行动并返回观察结果，模型再基于观察结果继续推理和行动。</p>
+<p>执行层还需要维护中间状态。比如当前步骤是否完成、工具调用是否成功、已经产生了哪些文件、还有哪些待办事项。这些状态不仅服务于模型，也服务于系统恢复和调试。</p>
+<h3 id="4-5-控制层"><a href="#4-5-控制层" class="headerlink" title="4.5 控制层"></a>4.5 控制层</h3><p>控制层负责让系统不要失控。大模型应用天然具有不确定性，所以需要在外部建立约束。</p>
+<p>超时控制可以避免任务无限运行。重试机制可以处理临时失败，但重试必须有边界，不能无休止循环。安全约束用于限制高风险行为，例如删除文件、访问敏感数据、执行危险命令。</p>
+<p>权限边界也很重要。不同工具应该有不同权限，不同任务也应该有不同执行范围。模型可以提出行动建议，但系统应该决定哪些行动允许执行。</p>
+<p>输出格式校验是控制层中非常实用的一部分。比如要求模型输出 JSON，就应该在程序里解析并校验，而不是只相信模型“应该会按格式输出”。当格式不符合预期时，系统可以要求模型修复，或者直接返回错误。</p>
+<h3 id="4-6-评估层"><a href="#4-6-评估层" class="headerlink" title="4.6 评估层"></a>4.6 评估层</h3><p>评估层负责回答一个关键问题：系统到底有没有变好。</p>
+<p>自动评测适合用于格式、事实一致性、覆盖率、分类准确率等相对明确的指标。人工反馈适合用于可读性、解释质量、风格一致性等更主观的维度。</p>
+<p>回归测试对 AI 应用尤其重要。每次修改 Prompt、上下文策略或工具链后，都可能影响已有任务表现。如果没有测试集，很难判断这次修改是整体提升，还是只是在某个样例上变好。</p>
+<p>测试集构建可以从真实失败样例开始。每一次模型答错、工具调用失败、输出格式不符合要求，都是值得沉淀的评估数据。长期来看，失败样例库会成为 AI 应用迭代中非常有价值的资产。</p>
+<h3 id="4-7-观测层"><a href="#4-7-观测层" class="headerlink" title="4.7 观测层"></a>4.7 观测层</h3><p>观测层负责让系统可调试、可复盘。AI 应用的错误往往不是一句报错就能解释清楚的，而是发生在一个链路中。</p>
+<p>日志可以记录输入、输出、工具调用、错误信息和关键状态变化。Trace 可以展示一次任务从开始到结束经过了哪些步骤，每一步的输入输出是什么。</p>
+<p>成本统计和延迟统计也很重要。大模型调用通常有成本，复杂 Agent 任务还可能多次调用模型和工具。如果不观测成本和延迟，系统很容易在效果还不错的同时变得昂贵且缓慢。</p>
+<p>失败案例分析则用于反向改进系统。一次失败可能来自 Prompt 表述不清，也可能来自检索质量差、上下文污染、工具返回结果太乱、输出校验缺失。观测层的价值，就是帮助我们找到真正的问题位置。</p>
+<h2 id="五、提示工程、上下文工程、Harness-工程之间的关系"><a href="#五、提示工程、上下文工程、Harness-工程之间的关系" class="headerlink" title="五、提示工程、上下文工程、Harness 工程之间的关系"></a>五、提示工程、上下文工程、Harness 工程之间的关系</h2><h3 id="5-1-三者的递进关系"><a href="#5-1-三者的递进关系" class="headerlink" title="5.1 三者的递进关系"></a>5.1 三者的递进关系</h3><p>三者可以看作 AI 应用工程化的三个层次：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Prompt Engineering</span><br><span class="line">关注：如何写好一次模型输入</span><br><span class="line">解决：让模型更好地理解任务</span><br><span class="line"></span><br><span class="line">Context Engineering</span><br><span class="line">关注：如何组织模型所需的信息环境</span><br><span class="line">解决：让模型在正确的信息中工作</span><br><span class="line"></span><br><span class="line">Harness Engineering</span><br><span class="line">关注：如何把模型能力变成稳定系统</span><br><span class="line">解决：让 AI 应用可运行、可测试、可迭代</span><br></pre></td></tr></table></figure>
+
+<p>提示工程关注的是一次调用中“怎么表达任务”。上下文工程关注的是一次调用前“应该给模型什么信息”。Harness 工程关注的是整个系统“如何持续可靠地运行”。</p>
+<p>从这个角度看，三者的关注范围逐渐扩大：从语言表达，到信息组织，再到系统工程。</p>
+<h3 id="5-2-三者不是替代关系"><a href="#5-2-三者不是替代关系" class="headerlink" title="5.2 三者不是替代关系"></a>5.2 三者不是替代关系</h3><p>需要注意的是，三者不是替代关系。并不是有了上下文工程就不需要提示工程，也不是有了 Harness 工程就不需要上下文工程。</p>
+<p>Prompt Engineering 仍然是入口。模型需要清晰的任务描述、角色边界和输出要求。</p>
+<p>Context Engineering 是能力放大的关键。模型是否能做出正确判断，往往取决于它是否获得了正确、足够、干净的上下文。</p>
+<p>Harness Engineering 是生产化和长期维护的基础。只有把模型调用放进可运行、可测试、可观测的框架中，AI 应用才有机会从 Demo 走向真实系统。</p>
+<p>三者合在一起，才构成比较完整的 AI 应用工程方法。</p>
+<h2 id="六、用一个例子理解三者差异"><a href="#六、用一个例子理解三者差异" class="headerlink" title="六、用一个例子理解三者差异"></a>六、用一个例子理解三者差异</h2><h3 id="6-1-案例：构建一个技术博客写作助手"><a href="#6-1-案例：构建一个技术博客写作助手" class="headerlink" title="6.1 案例：构建一个技术博客写作助手"></a>6.1 案例：构建一个技术博客写作助手</h3><p>假设我们要构建一个技术博客写作助手，目标是根据主题生成一篇符合个人博客风格的技术文章。</p>
+<p>这个任务看起来很简单：给模型一个主题，让它生成 Markdown。但如果真正想把它做成稳定工具，就会发现里面包含很多工程细节。</p>
+<p>文章需要有合适的标题、清晰的结构、正确的 front-matter、统一的标签和分类，还要符合已有博客的写作风格。如果需要结合资料，还要处理资料检索、引用整理和内容筛选。如果生成后要进入发布流程，还要检查 Hexo 构建是否通过。</p>
+<h3 id="6-2-提示工程阶段"><a href="#6-2-提示工程阶段" class="headerlink" title="6.2 提示工程阶段"></a>6.2 提示工程阶段</h3><p>在提示工程阶段，我们主要关注如何让模型生成一篇文章。比如编写 Prompt，明确文章主题，约束输出格式，并要求生成 Markdown。</p>
+<p>一个简单的 Prompt 可能是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">请写一篇关于提示工程、上下文工程和 Harness 工程的技术博客，</span><br><span class="line">使用中文，输出 Markdown，结构清晰，适合开发者阅读。</span><br></pre></td></tr></table></figure>
+
+<p>这个阶段的重点是让模型理解写作任务。如果任务比较简单，这样已经能得到一篇看起来不错的文章。但它还不一定符合个人博客的风格，也不一定有正确的 front-matter 和分类规范。</p>
+<h3 id="6-3-上下文工程阶段"><a href="#6-3-上下文工程阶段" class="headerlink" title="6.3 上下文工程阶段"></a>6.3 上下文工程阶段</h3><p>进入上下文工程阶段后，我们会开始考虑：为了让模型写得更像“我的博客”，应该给它哪些上下文。</p>
+<p>例如加入已有博客文章风格，让模型了解平时的表达方式；加入文章分类和标签规范，避免生成不一致的元信息；加入用户历史写作偏好，让文章更符合长期风格；加入相关资料和参考文章，减少空泛表达；加入 Hexo front-matter 规范，保证文章可以被站点正确解析。</p>
+<p>这时，模型输入不再只有一句写作要求，而是包含了任务目标、博客规范、已有风格、参考资料和输出约束。模型生成结果的质量，取决于这些上下文是否准确、干净、结构清晰。</p>
+<h3 id="6-4-Harness-工程阶段"><a href="#6-4-Harness-工程阶段" class="headerlink" title="6.4 Harness 工程阶段"></a>6.4 Harness 工程阶段</h3><p>到了 Harness 工程阶段，我们考虑的已经不只是“生成文章”，而是“构建一个博客写作流程”。</p>
+<p>这个流程可以先自动生成大纲，再根据大纲生成 Markdown 文件。生成后检查 front-matter 是否完整，标签和分类是否符合规范。接着可以运行 Hexo 构建，检查文章是否破坏站点生成。如果构建失败，系统读取错误信息，并尝试自动修复。</p>
+<p>同时，Harness 还可以保留生成过程和修改记录。比如本次使用了哪些上下文，模型输出了什么，哪些地方经过人工修改，构建是否通过。这样下一次写类似文章时，就可以复用经验，而不是从零开始。</p>
+<p>从这个例子可以看出，提示工程解决的是“怎么让模型写”，上下文工程解决的是“给模型哪些写作资料和规范”，Harness 工程解决的是“如何把写作变成一个可重复、可检查、可改进的流程”。</p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>提示工程是在学习如何和模型说话。它通过角色、任务、示例和格式约束，让模型更好地理解当前请求。</p>
+<p>上下文工程是在学习如何给模型布置工作环境。它决定模型在执行任务时能看到哪些信息、如何看到这些信息，以及哪些信息应该被过滤、压缩或保留。</p>
+<p>Harness 工程是在学习如何把模型变成可靠的软件组件。它通过输入处理、上下文组装、执行控制、评估反馈和观测日志，让 AI 应用具备持续运行和持续迭代的能力。</p>
+<p>AI 工程的重点正在从“会不会问模型”转向“能不能构建一个稳定的模型运行系统”。Prompt 仍然重要，但真正决定 AI 应用能走多远的，往往是 Prompt 之外的上下文管理和系统工程能力。</p>
 ]]></content>
+      <categories>
+        <category>AI</category>
+        <category>Agent</category>
+      </categories>
+      <tags>
+        <tag>Agent</tag>
+        <tag>Prompt Engineering</tag>
+        <tag>Context Engineering</tag>
+        <tag>LLM</tag>
+      </tags>
   </entry>
   <entry>
     <title>操作系统内存管理方式：从连续分配到虚拟内存</title>
@@ -4295,6 +4262,71 @@
       </tags>
   </entry>
   <entry>
+    <title>后端八股：Java 线程池与 Redis</title>
+    <url>/2026/08/27/%E5%90%8E%E7%AB%AF%E5%85%AB%E8%82%A1/</url>
+    <content><![CDATA[<h2 id="Java-线程池"><a href="#Java-线程池" class="headerlink" title="Java 线程池"></a>Java 线程池</h2><h2 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h2><ul>
+<li>AbortPolicy：拒绝处理新任务并抛出RejectExecutionException</li>
+<li>CallerRunPolicy：调用 <strong>执行execute()方法的线程</strong> 来运行被拒绝的新任务。</li>
+<li>DiscardPolicy：不处理新任务，直接丢弃</li>
+<li>DiscardOldestPolicy：丢弃最早未被处理的任务（等待时间最长的任务）</li>
+</ul>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="过期删除策略"><a href="#过期删除策略" class="headerlink" title="过期删除策略"></a>过期删除策略</h2><p>惰性删除：只在访问数据时进行过期检查，缺点：太多过期key没有被删除</p>
+<p>定期删除：周期性随机抽查一批设置了过期时间的key，如果过期就删除。对内存友好，对CPU不友好</p>
+<p>延迟队列：设置了过期时间的加入到延迟队列，过期就删除（类似定时任务）</p>
+<p>定时删除：每个设置了过期时间的key一过期就删除，需要每个键单独设置定时器</p>
+<p>Redis采用 <strong>定期删除+惰性&#x2F;懒汉式删除</strong> 相结合的策略。</p>
+<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><h3 id="不淘汰（默认策略，noeviction）"><a href="#不淘汰（默认策略，noeviction）" class="headerlink" title="不淘汰（默认策略，noeviction）"></a>不淘汰（默认策略，noeviction）</h3><p>noeviction：不删除任何 key，写操作直接返回 OOM 错误。读请求正常。</p>
+<h3 id="volatile-设置了过期时间的key"><a href="#volatile-设置了过期时间的key" class="headerlink" title="volatile-设置了过期时间的key"></a>volatile-设置了过期时间的key</h3><p>只看设置了 <code>expire</code> 的键，永不过期的 key 完全不动。</p>
+<ol>
+<li><code>volatile‑lru</code>：过期 key 里，淘汰<strong>最近最少使用 LRU</strong></li>
+<li><code>volatile‑lfu</code>：过期 key 里，淘汰<strong>访问频次最低 LFU</strong></li>
+<li><code>volatile‑ttl</code>：过期 key 里，淘汰<strong>剩余存活时间最短</strong>（TTL 最小，马上要过期）</li>
+<li><code>volatile‑random</code>：过期 key 里，<strong>随机删除</strong></li>
+</ol>
+<blockquote>
+<p>如果所有带过期的 key 删完，内存还不够 → 退化成 <code>noeviction</code>，写报错。</p>
+</blockquote>
+<h3 id="Allkey"><a href="#Allkey" class="headerlink" title="Allkey"></a>Allkey</h3><p>所有 key，不管有没有设置过期时间，都参与淘汰。</p>
+<ol>
+<li><code>allkeys‑lru</code>：全部 key，淘汰最近最少使用</li>
+<li><code>allkeys‑lfu</code>：全部 key，淘汰访问频次最低</li>
+<li><code>allkeys‑random</code>：全部 key，随机删除</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>C++面经</title>
+    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
+    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
+<ul>
+<li><p>函数未被使用：编译和链接时都不报错</p>
+</li>
+<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
+</li>
+<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
+</li>
+</ul>
+<p>2.头文件循环包含问题</p>
+<ul>
+<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但在源文件中需要包含具体头文件</p>
+<ul>
+<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>解决依赖扩散问题：使用Pimpl解决</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AI Agent 评测：从任务集到长期维护</title>
     <url>/2026/05/24/AI-Agent%E8%AF%84%E6%B5%8B/</url>
     <content><![CDATA[<blockquote>
@@ -4458,38 +4490,6 @@
         <tag>LLM</tag>
         <tag>Eval</tag>
         <tag>AI Engineering</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>C++面经</title>
-    <url>/2025/12/20/C-%E9%9D%A2%E7%BB%8F/</url>
-    <content><![CDATA[<p>1.头文件创建一个函数但源文件未实现该函数，会出现bug吗？</p>
-<ul>
-<li><p>函数未被使用：编译和链接时都不报错</p>
-</li>
-<li><p>函数被使用：编译不报错，链接时报错（特殊情况：函数为内联函数时，编译和链接都报错）</p>
-</li>
-<li><p>若为模板函数（需要在头文件中声明和定义），需要在编译期进行模板实例化，会在编译期报错</p>
-</li>
-</ul>
-<p>2.头文件循环包含问题</p>
-<ul>
-<li>当类&#x2F;结构体仅被用作指针和引用时，不用包含完整定义，用前置声明替代头文件包含，示例如下：</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>;<span class="comment">// 前置声明</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    B* b;<span class="comment">// 或B &amp;b;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//class A;</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">    A* a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但在源文件中需要包含具体头文件</p>
-<ul>
-<li>解决重复包含问题：使用 头文件保护宏 或 #pragma once</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//A.h</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> A_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> A_H</span></span><br><span class="line">···</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决依赖扩散问题：使用Pimpl解决</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>C++</tag>
       </tags>
   </entry>
 </search>
