@@ -170,20 +170,25 @@ main { min-height: calc(100vh - 120px); }
 .homepage-copy { max-width: 720px; margin: 0 auto; color: var(--ink); font-family: var(--serif); font-size: 15px; line-height: 1.9; }
 .homepage-copy-secondary { margin-top: 2px; color: var(--muted); }
 .homepage-latest { max-width: 900px; margin: 0 auto; }
-.home-profile-rail { position: fixed; top: 88px; right: 24px; bottom: 20px; z-index: 20; width: 190px; padding: 22px 18px 16px; background: var(--paper); text-align: center; }
+.home-profile-rail { --profile-font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", "Noto Serif SC", "Songti SC", SimSun, serif; position: fixed; top: 88px; right: 24px; bottom: 20px; z-index: 20; width: 190px; padding: 22px 18px 16px; background: var(--paper); font-family: var(--profile-font-family); text-align: center; }
+.home-profile-rail.profile-font-typography { --profile-font-family: "HiraMinProN-W6", "Source Han Serif CN", "Source Han Serif SC", "Source Han Serif TC", "Noto Serif SC", "Songti SC", SimSun, serif; }
+.home-profile-rail.profile-font-noto-serif { --profile-font-family: "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", SimSun, serif; }
+.home-profile-rail.profile-font-songti { --profile-font-family: "Songti SC", STSong, SimSun, "STFangsong", serif; }
+.home-profile-rail.profile-font-system-serif { --profile-font-family: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", SimSun, serif; }
+.home-profile-rail.profile-font-system-sans { --profile-font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; }
 .home-profile-rail::before { position: absolute; top: 26px; left: 0; width: 1px; height: 112px; background: var(--accent-strong); content: ''; opacity: .8; }
 .home-profile-inner { display: flex; flex-direction: column; align-items: center; height: 100%; }
 .home-profile-avatar { flex: 0 0 auto; width: 76px; height: 76px; border: 3px solid var(--paper-raised); border-radius: 50%; object-fit: cover; box-shadow: 0 6px 16px rgba(66, 135, 190, .16); }
-.home-profile-name { margin: 12px 0 4px; color: var(--ink); font-family: var(--serif); font-size: 23px; font-weight: 600; }
-.home-profile-bio { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 12px; line-height: 1.65; }
-.home-profile-slogan { display: grid; place-items: center; min-height: 218px; margin: 20px 0 18px; padding: 8px 12px; color: var(--ink); font-family: var(--serif); font-size: 24px; letter-spacing: .12em; line-height: 1.35; writing-mode: vertical-rl; }
+.home-profile-name { margin: 12px 0 4px; color: var(--ink); font-family: var(--profile-font-family); font-size: 23px; font-weight: 600; }
+.home-profile-bio { margin: 0; color: var(--muted); font-family: var(--profile-font-family); font-size: 12px; line-height: 1.65; }
+.home-profile-slogan { display: grid; place-items: center; min-height: 218px; margin: 20px 0 18px; padding: 8px 12px; color: var(--ink); font-family: var(--profile-font-family); font-size: 24px; letter-spacing: .12em; line-height: 1.35; writing-mode: vertical-rl; }
 .home-profile-links { display: flex; flex-direction: column; align-self: stretch; margin: 0 0 10px; text-align: left; }
-.home-profile-links a { padding: 4px 0; color: var(--ink); font-family: var(--serif); font-size: 13px; text-decoration: none; }
+.home-profile-links a { padding: 4px 0; color: var(--ink); font-family: var(--profile-font-family); font-size: 13px; text-decoration: none; }
 .home-profile-links a:hover { color: var(--accent-strong); }
 .home-profile-social { display: flex; justify-content: center; gap: 15px; margin-top: auto; padding-top: 12px; }
 .home-profile-social a { display: grid; place-items: center; width: 30px; height: 30px; color: var(--ink); border: 1px solid var(--line); border-radius: 50%; text-decoration: none; }
 .home-profile-social a:hover { color: var(--accent-strong); border-color: var(--accent); background: var(--accent-soft); }
-.home-profile-meta { margin-top: 13px; color: var(--muted); font-family: var(--serif); font-size: 10px; line-height: 1.65; }
+.home-profile-meta { margin-top: 13px; color: var(--muted); font-family: var(--profile-font-family); font-size: 10px; line-height: 1.65; }
 .home-profile-meta p { margin: 2px 0; }
 
 @media (min-width: 901px) {
