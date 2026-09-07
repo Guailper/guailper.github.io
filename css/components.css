@@ -66,6 +66,17 @@
 .toc-link.active { font-weight: 600; }
 
 .empty-state { padding: 34px 0; color: var(--muted); text-align: center; }
+.taxonomy-page { color: var(--ink); }
+.page-intro { margin: 0 0 24px; color: var(--muted); font-size: 14px; }
+.taxonomy-list { display: grid; gap: 10px; }
+.taxonomy-list .category-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.taxonomy-list .category-list-item { margin: 0; }
+.taxonomy-list .category-list-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 16px; color: var(--ink); border: 1px solid var(--line); border-radius: 9px; background: var(--paper-raised); text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.taxonomy-list .category-list-link:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateX(3px); }
+.taxonomy-list .category-list-count { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+.tag-cloud-list { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.tag-cloud-list a { display: inline-flex; align-items: center; min-height: 34px; padding: 5px 12px; color: var(--accent-strong); border: 1px solid var(--line); border-radius: 999px; background: var(--accent-soft); text-decoration: none; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.tag-cloud-list a:hover { border-color: var(--accent); background: var(--paper-raised); transform: translateY(-2px); }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: #fff; border-radius: 8px; background: var(--accent); text-decoration: none; }
 .button:hover { background: var(--accent-strong); }
 .button-ghost { color: var(--accent-strong); border: 1px solid var(--line); background: transparent; }

@@ -1,6 +1,11 @@
 @media (max-width: 900px) {
   .post-copyright { display: block; }
   .post-copyright span { display: block; margin-top: 3px; }
+  .home-layout { padding: 0 18px 56px; }
+  .home-profile-rail { position: static; width: auto; margin: 20px 0 0; padding: 24px 18px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-raised); }
+  .home-profile-inner { height: auto; }
+  .home-profile-slogan { min-height: 150px; margin: 18px 0; }
+  .home-profile-social { margin-top: 0; }
 }
 
 @media (max-width: 700px) {
@@ -9,4 +14,8 @@
   .post-nav { grid-template-columns: 1fr; }
   .post-nav-item.is-next { text-align: left; }
   .error-page { padding: 80px 18px; }
+  .homepage-intro { padding: 24px 0 38px; }
+  .homepage-mosaic img { aspect-ratio: 1.65 / 1; }
+  .homepage-motto { font-size: 17px; }
+  .homepage-copy { font-size: 14px; }
 }
