@@ -177,6 +177,9 @@ main { min-height: calc(100vh - 120px); }
 .home-profile-name { margin: 12px 0 4px; color: var(--ink); font-family: var(--serif); font-size: 23px; font-weight: 600; }
 .home-profile-bio { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 12px; line-height: 1.65; }
 .home-profile-slogan { display: grid; place-items: center; min-height: 218px; margin: 20px 0 18px; padding: 8px 12px; color: var(--ink); font-family: var(--serif); font-size: 24px; letter-spacing: .12em; line-height: 1.35; writing-mode: vertical-rl; }
+.home-profile-links { display: flex; flex-direction: column; align-self: stretch; margin: 0 0 10px; text-align: left; }
+.home-profile-links a { padding: 4px 0; color: var(--ink); font-family: var(--serif); font-size: 13px; text-decoration: none; }
+.home-profile-links a:hover { color: var(--accent-strong); }
 .home-profile-social { display: flex; justify-content: center; gap: 15px; margin-top: auto; padding-top: 12px; }
 .home-profile-social a { display: grid; place-items: center; width: 30px; height: 30px; color: var(--ink); border: 1px solid var(--line); border-radius: 50%; text-decoration: none; }
 .home-profile-social a:hover { color: var(--accent-strong); border-color: var(--accent); background: var(--accent-soft); }
