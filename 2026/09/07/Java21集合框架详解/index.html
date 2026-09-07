@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><meta name="generator" content="Hexo"><meta name="author" content="Guailper"><meta name="description" content="记录 AI、后端与计算机基础的学习路径"><title>Java 21 集合框架详解：常用集合、底层原理与选型 | Guailper 的博客</title><link rel="icon" href="/img/blog-logo-guailper.png"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="stylesheet" href="/css/tokens.css"><link rel="stylesheet" href="/css/guailper.css"><link rel="stylesheet" href="/css/components.css"><link rel="stylesheet" href="/css/responsive.css"></head><body class="page-post profile-rail-page" style="--accent:#5798df;--accent-strong:#3f83c5;--accent-soft:#dcedfb;--paper:#edf7ff;--paper-raised:#f9fcff;--ink:#173555;--muted:#637d97;"><header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="Guailper 的博客"><img class="brand-logo" src="/img/blog-logo-guailper.png" alt="" aria-hidden="true"><span class="brand-title">Guailper 的博客</span></a><button class="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="site-navigation"><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span><span class="nav-toggle-line"></span></button><nav class="site-nav" id="site-navigation" aria-label="主导航"><a class="site-nav-link" href="/"><i class="fas fa-home" aria-hidden="true"></i>首页</a><a class="site-nav-link" href="/categories/"><i class="fas fa-layer-group" aria-hidden="true"></i>专题</a><a class="site-nav-link" href="/archives/"><i class="fas fa-archive" aria-hidden="true"></i>归档</a><a class="site-nav-link" href="/about/"><i class="fas fa-user-astronaut" aria-hidden="true"></i>关于</a><details class="nav-more"><summary>更多<i class="fas fa-angle-down" aria-hidden="true"></i></summary><div class="nav-submenu"><a href="/tags/"><i class="fas fa-tags" aria-hidden="true"></i>标签</a><a href="/link/"><i class="fas fa-link" aria-hidden="true"></i>友链</a><a href="/music/"><i class="fas fa-music" aria-hidden="true"></i>音乐</a><a href="/movies/"><i class="fas fa-video" aria-hidden="true"></i>电影</a></div></details></nav></div></header><main id="main-content"><div class="page-shell article-shell"><article class="content-column article"><header class="article-header"><p class="eyebrow">ARTICLE</p><h1>Java 21 集合框架详解：常用集合、底层原理与选型</h1><div class="post-meta post-meta-detail"><time datetime="2026-09-07T15:00:00.000Z">发布于 2026-09-07</time><span class="meta-separator">·</span><a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>，<a href="/categories/%E5%90%8E%E7%AB%AF/Java/">Java</a></div></header><img class="article-cover" src="/img/blog-cover.svg" alt="" onerror="this.onerror=null;this.style.display='none';"><div class="article-content" id="article-container"><p>在 Java 后端开发中，集合几乎无处不在：查询结果通常放在 <code>List</code> 中，缓存和对象索引经常使用 <code>Map</code>，去重会使用 <code>Set</code>，任务调度和生产者—消费者模型则离不开队列。</p>
+<p>集合类的难点并不只是记住 API。真正重要的是理解不同集合的底层结构、时间复杂度、线程安全特性和适用场景。本文以 Java 21 为版本基准，重点整理日常开发和面试中最常用、最重要的集合类型。</p>
+<h2 id="一、集合框架整体结构"><a href="#一、集合框架整体结构" class="headerlink" title="一、集合框架整体结构"></a>一、集合框架整体结构</h2><h3 id="1-Collection-体系"><a href="#1-Collection-体系" class="headerlink" title="1. Collection 体系"></a>1. <code>Collection</code> 体系</h3><p><code>Collection</code> 表示一组独立的元素，主要分为三类：</p>
+<ul>
+<li><code>List</code>：有序、可重复，例如 <code>ArrayList</code>。</li>
+<li><code>Set</code>：通常不允许重复，例如 <code>HashSet</code>。</li>
+<li><code>Queue</code> 和 <code>Deque</code>：面向队列或双端队列的操作，例如 <code>ArrayDeque</code>。</li>
+</ul>
+<p>常见继承关系可以简化为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Iterable</span><br><span class="line">└── Collection</span><br><span class="line">    ├── List</span><br><span class="line">    ├── Set</span><br><span class="line">    └── Queue</span><br><span class="line">        └── Deque</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Map-体系"><a href="#2-Map-体系" class="headerlink" title="2. Map 体系"></a>2. <code>Map</code> 体系</h3><p><code>Map</code> 不属于 <code>Collection</code>，因为它存储的是键值对，而不是单独的元素。一个键最多对应一个值，常用实现包括：</p>
+<ul>
+<li><code>HashMap</code>：按哈希值快速查找。</li>
+<li><code>LinkedHashMap</code>：在哈希表基础上维护顺序。</li>
+<li><code>TreeMap</code>：按照键排序。</li>
+<li><code>ConcurrentHashMap</code>：支持并发访问。</li>
+</ul>
+<h3 id="3-集合选择的基本思路"><a href="#3-集合选择的基本思路" class="headerlink" title="3. 集合选择的基本思路"></a>3. 集合选择的基本思路</h3><p>选择集合时，可以依次考虑以下问题：</p>
+<ol>
+<li>是否需要键值映射？需要就考虑 <code>Map</code>。</li>
+<li>是否允许重复？不允许就考虑 <code>Set</code>。</li>
+<li>是否需要按索引访问？需要就优先考虑 <code>ArrayList</code>。</li>
+<li>是否需要首尾进出？考虑 <code>ArrayDeque</code>。</li>
+<li>是否需要自动排序？考虑 <code>TreeMap</code> 或 <code>TreeSet</code>。</li>
+<li>是否存在并发访问？选择并发集合，而不是简单地给普通集合加一个“线程安全”的想象。</li>
+</ol>
+<h2 id="二、List：优先掌握-ArrayList"><a href="#二、List：优先掌握-ArrayList" class="headerlink" title="二、List：优先掌握 ArrayList"></a>二、List：优先掌握 ArrayList</h2><h3 id="1-ArrayList-的特点"><a href="#1-ArrayList-的特点" class="headerlink" title="1. ArrayList 的特点"></a>1. ArrayList 的特点</h3><p><code>ArrayList</code> 是开发中最常用的 <code>List</code> 实现，底层使用一个可扩容的数组保存元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; names = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">names.add(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">names.add(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> names.get(<span class="number">0</span>);</span><br><span class="line">names.set(<span class="number">1</span>, <span class="string">&quot;Charlie&quot;</span>);</span><br><span class="line">names.remove(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>它的主要特点是：</p>
+<ul>
+<li>支持按索引快速访问。</li>
+<li>允许重复元素和 <code>null</code>。</li>
+<li>保持元素的插入顺序。</li>
+<li>尾部添加通常很快，但扩容时需要复制数组。</li>
+<li>中间插入和删除需要移动后续元素。</li>
+</ul>
+<h3 id="2-扩容机制"><a href="#2-扩容机制" class="headerlink" title="2. 扩容机制"></a>2. 扩容机制</h3><p><code>ArrayList</code> 内部维护一个数组。当数组容量不足时，会创建更大的数组并复制原有元素。Java 21 中，空的 <code>ArrayList</code> 通常不会在构造时立即分配完整数组，而是在第一次添加元素时分配容量。</p>
+<p>因此，如果能够预估数据规模，可以指定初始容量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; values = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">10_000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样可以减少多次扩容和数组复制，但也不应该为了“保险”而盲目设置一个特别大的容量，否则会浪费内存。</p>
+<h3 id="3-ArrayList-的复杂度"><a href="#3-ArrayList-的复杂度" class="headerlink" title="3. ArrayList 的复杂度"></a>3. ArrayList 的复杂度</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th align="right">平均复杂度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get(index)</code></td>
+<td align="right">O(1)</td>
+<td>数组随机访问</td>
+</tr>
+<tr>
+<td><code>set(index, value)</code></td>
+<td align="right">O(1)</td>
+<td>直接修改数组位置</td>
+</tr>
+<tr>
+<td>尾部 <code>add()</code></td>
+<td align="right">均摊 O(1)</td>
+<td>扩容时会暂时变慢</td>
+</tr>
+<tr>
+<td>中间 <code>add()</code></td>
+<td align="right">O(n)</td>
+<td>需要移动元素</td>
+</tr>
+<tr>
+<td>按索引 <code>remove()</code></td>
+<td align="right">O(n)</td>
+<td>需要移动元素</td>
+</tr>
+<tr>
+<td><code>contains()</code></td>
+<td align="right">O(n)</td>
+<td>需要线性查找</td>
+</tr>
+</tbody></table>
+<h3 id="4-remove-的重载陷阱"><a href="#4-remove-的重载陷阱" class="headerlink" title="4. remove() 的重载陷阱"></a>4. <code>remove()</code> 的重载陷阱</h3><p>对 <code>List&lt;Integer&gt;</code> 调用 <code>remove()</code> 时，传入整数默认会匹配按索引删除的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(List.of(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>));</span><br><span class="line"></span><br><span class="line">numbers.remove(<span class="number">1</span>);                  <span class="comment">// 删除索引为 1 的元素，即 20</span></span><br><span class="line">numbers.remove(Integer.valueOf(<span class="number">30</span>)); <span class="comment">// 删除值为 30 的元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-LinkedList-是否值得使用"><a href="#5-LinkedList-是否值得使用" class="headerlink" title="5. LinkedList 是否值得使用"></a>5. LinkedList 是否值得使用</h3><p><code>LinkedList</code> 底层是双向链表，节点中保存前驱、元素和后继引用。</p>
+<p>它在已经定位到节点时，插入和删除可以是 O(1)，但按索引访问需要先从头部或尾部查找节点，复杂度为 O(n)。此外，每个节点都是独立对象，会带来额外的引用和对象开销，CPU 缓存局部性也不如数组。</p>
+<p>因此，在普通的列表场景中通常优先使用 <code>ArrayList</code>。如果需要高效地从两端插入、删除或进行栈操作，优先考虑 <code>ArrayDeque</code>。</p>
+<h2 id="三、Map：HashMap-是核心"><a href="#三、Map：HashMap-是核心" class="headerlink" title="三、Map：HashMap 是核心"></a>三、Map：HashMap 是核心</h2><h3 id="1-HashMap-的基本使用"><a href="#1-HashMap-的基本使用" class="headerlink" title="1. HashMap 的基本使用"></a>1. HashMap 的基本使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Long, String&gt; users = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">users.put(<span class="number">1L</span>, <span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">users.put(<span class="number">2L</span>, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> users.get(<span class="number">1L</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">defaultName</span> <span class="operator">=</span> users.getOrDefault(<span class="number">3L</span>, <span class="string">&quot;Unknown&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>HashMap</code> 的主要特点是：</p>
+<ul>
+<li>通过键的哈希值定位元素。</li>
+<li>平均情况下查询、插入和删除接近 O(1)。</li>
+<li>允许一个 <code>null</code> 键和多个 <code>null</code> 值。</li>
+<li>不保证遍历顺序。</li>
+<li>不是线程安全的。</li>
+</ul>
+<h3 id="2-put-的大致过程"><a href="#2-put-的大致过程" class="headerlink" title="2. put 的大致过程"></a>2. put 的大致过程</h3><p>执行 <code>put(key, value)</code> 时，可以抽象为以下步骤：</p>
+<ol>
+<li>计算键的哈希值。</li>
+<li>根据哈希值定位数组下标。</li>
+<li>如果当前位置为空，直接放入节点。</li>
+<li>如果发生冲突，比较键是否相等。</li>
+<li>键相同则覆盖旧值，键不同则挂到链表或红黑树中。</li>
+<li>元素数量超过阈值时扩容。</li>
+</ol>
+<h3 id="3-哈希冲突与红黑树"><a href="#3-哈希冲突与红黑树" class="headerlink" title="3. 哈希冲突与红黑树"></a>3. 哈希冲突与红黑树</h3><p><code>HashMap</code> 的桶中可能保存链表。当同一个桶中的节点较多时，链表查询会退化为 O(n)。为了降低极端冲突下的查询成本，<code>HashMap</code> 在满足条件时会将链表转换成红黑树。</p>
+<p>源码中常见的相关阈值包括：</p>
+<ul>
+<li>链表长度达到 8 左右时，可能触发树化。</li>
+<li>数组容量不足 64 时，通常优先扩容而不是树化。</li>
+<li>红黑树节点数量减少到较小规模时，可能退化回链表。</li>
+</ul>
+<p>这些阈值是实现细节，实际使用时不应依赖它们编写业务逻辑，但理解它们有助于理解 <code>HashMap</code> 的性能设计。</p>
+<h3 id="4-负载因子与扩容"><a href="#4-负载因子与扩容" class="headerlink" title="4. 负载因子与扩容"></a>4. 负载因子与扩容</h3><p>默认负载因子通常为 <code>0.75</code>。当元素数量超过“容量 × 负载因子”计算出的阈值后，哈希表会扩容并重新分布节点。</p>
+<p>负载因子越小，桶中的冲突通常越少，但会占用更多空间；负载因子越大，空间利用率较高，但冲突可能增加。<code>0.75</code> 是时间和空间之间的折中。</p>
+<h3 id="5-equals-与-hashCode"><a href="#5-equals-与-hashCode" class="headerlink" title="5. equals 与 hashCode"></a>5. equals 与 hashCode</h3><p>作为 <code>HashMap</code> 键的类必须正确实现 <code>equals()</code> 和 <code>hashCode()</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">UserId</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">long</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserId</span><span class="params">(<span class="type">long</span> value)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> obj <span class="keyword">instanceof</span> UserId other &amp;&amp; value == other.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Long.hashCode(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>必须满足：如果两个对象的 <code>equals()</code> 返回 <code>true</code>，它们的 <code>hashCode()</code> 必须相同。否则，集合可能把逻辑上相同的对象放入不同的桶中，导致查找失败或出现重复数据。</p>
+<p>键对象还应该尽量不可变。若对象放入 Map 后参与哈希计算的字段发生变化，之后可能无法通过原对象找到对应的值。</p>
+<h3 id="6-常用-Map-方法"><a href="#6-常用-Map-方法" class="headerlink" title="6. 常用 Map 方法"></a>6. 常用 Map 方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; counter = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">counter.merge(<span class="string">&quot;Java&quot;</span>, <span class="number">1</span>, Integer::sum);</span><br><span class="line">counter.putIfAbsent(<span class="string">&quot;Python&quot;</span>, <span class="number">1</span>);</span><br><span class="line">counter.computeIfAbsent(<span class="string">&quot;Go&quot;</span>, key -&gt; key.length());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>putIfAbsent()</code>：键不存在时才写入。</li>
+<li><code>computeIfAbsent()</code>：键不存在时计算值。</li>
+<li><code>merge()</code>：适合计数和合并值。</li>
+<li><code>getOrDefault()</code>：查询不到时返回默认值。</li>
+</ul>
+<h2 id="四、LinkedHashMap-与-TreeMap"><a href="#四、LinkedHashMap-与-TreeMap" class="headerlink" title="四、LinkedHashMap 与 TreeMap"></a>四、LinkedHashMap 与 TreeMap</h2><h3 id="1-LinkedHashMap"><a href="#1-LinkedHashMap" class="headerlink" title="1. LinkedHashMap"></a>1. LinkedHashMap</h3><p><code>LinkedHashMap</code> 在 <code>HashMap</code> 的基础上增加了双向链表，用来维护遍历顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; scores = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">scores.put(<span class="string">&quot;Alice&quot;</span>, <span class="number">90</span>);</span><br><span class="line">scores.put(<span class="string">&quot;Bob&quot;</span>, <span class="number">85</span>);</span><br><span class="line">scores.put(<span class="string">&quot;Charlie&quot;</span>, <span class="number">95</span>);</span><br></pre></td></tr></table></figure>
+
+<p>它可以维护插入顺序，也可以配置为访问顺序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; cache = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;(<span class="number">16</span>, <span class="number">0.75f</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>配合 <code>removeEldestEntry()</code>，可以实现一个简单的 LRU 缓存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LruCache</span>&lt;K, V&gt; <span class="keyword">extends</span> <span class="title class_">LinkedHashMap</span>&lt;K, V&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> capacity;</span><br><span class="line"></span><br><span class="line">    LruCache(<span class="type">int</span> capacity) &#123;</span><br><span class="line">        <span class="built_in">super</span>(capacity, <span class="number">0.75f</span>, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">removeEldestEntry</span><span class="params">(Map.Entry&lt;K, V&gt; eldest)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size() &gt; capacity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个实现适合学习和简单场景。生产环境中的缓存通常还需要考虑并发、过期、淘汰策略和持久化等问题。</p>
+<h3 id="2-TreeMap"><a href="#2-TreeMap" class="headerlink" title="2. TreeMap"></a>2. TreeMap</h3><p><code>TreeMap</code> 基于红黑树，按照键的自然顺序或指定比较器维护元素顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NavigableMap&lt;Integer, String&gt; levels = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();</span><br><span class="line">levels.put(<span class="number">10</span>, <span class="string">&quot;normal&quot;</span>);</span><br><span class="line">levels.put(<span class="number">20</span>, <span class="string">&quot;important&quot;</span>);</span><br><span class="line">levels.put(<span class="number">30</span>, <span class="string">&quot;urgent&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">Integer</span> <span class="variable">key</span> <span class="operator">=</span> levels.floorKey(<span class="number">25</span>);   <span class="comment">// 小于等于 25 的最大键</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">next</span> <span class="operator">=</span> levels.ceilingKey(<span class="number">25</span>); <span class="comment">// 大于等于 25 的最小键</span></span><br></pre></td></tr></table></figure>
+
+<p><code>TreeMap</code> 的查询、插入和删除复杂度通常为 O(log n)，适合需要排序或范围查询的场景。如果只需要根据键快速查找，并不需要顺序，应优先选择 <code>HashMap</code>。</p>
+<h2 id="五、Set：HashSet-与-TreeSet"><a href="#五、Set：HashSet-与-TreeSet" class="headerlink" title="五、Set：HashSet 与 TreeSet"></a>五、Set：HashSet 与 TreeSet</h2><h3 id="1-HashSet"><a href="#1-HashSet" class="headerlink" title="1. HashSet"></a>1. HashSet</h3><p><code>HashSet</code> 底层基于 <code>HashMap</code> 实现，集合元素会作为 Map 的键保存。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; tags = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">tags.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">tags.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(tags.size()); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>元素是否重复，取决于 <code>equals()</code> 和 <code>hashCode()</code>。因此，自定义对象放入 <code>HashSet</code> 时，同样必须正确实现这两个方法。</p>
+<p><code>HashSet</code> 适合快速判断元素是否存在，但不保证遍历顺序。如果既要去重，又要保持插入顺序，可以使用 <code>LinkedHashSet</code>。</p>
+<h3 id="2-TreeSet"><a href="#2-TreeSet" class="headerlink" title="2. TreeSet"></a>2. TreeSet</h3><p><code>TreeSet</code> 基于红黑树，能够在去重的同时维护排序结果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(List.of(<span class="number">30</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">10</span>));</span><br><span class="line">System.out.println(numbers); <span class="comment">// [10, 20, 30]</span></span><br></pre></td></tr></table></figure>
+
+<p>需要特别注意，<code>TreeSet</code> 判断重复主要依赖比较结果。如果比较器对两个对象返回 <code>0</code>，它们就可能被认为是同一个元素，即使 <code>equals()</code> 返回 <code>false</code>。</p>
+<h2 id="六、ArrayDeque-与-PriorityQueue"><a href="#六、ArrayDeque-与-PriorityQueue" class="headerlink" title="六、ArrayDeque 与 PriorityQueue"></a>六、ArrayDeque 与 PriorityQueue</h2><h3 id="1-ArrayDeque"><a href="#1-ArrayDeque" class="headerlink" title="1. ArrayDeque"></a>1. ArrayDeque</h3><p><code>ArrayDeque</code> 是基于循环数组的双端队列，支持从头部和尾部高效添加、删除元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;String&gt; deque = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">deque.addLast(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">deque.addLast(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">deque.addFirst(<span class="string">&quot;Start&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> deque.removeFirst();</span><br><span class="line"><span class="type">String</span> <span class="variable">last</span> <span class="operator">=</span> deque.removeLast();</span><br></pre></td></tr></table></figure>
+
+<p>它既可以作为队列：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;String&gt; queue = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">queue.offer(<span class="string">&quot;task-1&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;task-2&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">task</span> <span class="operator">=</span> queue.poll();</span><br></pre></td></tr></table></figure>
+
+<p>也可以作为栈：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;String&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">stack.push(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">stack.push(<span class="string">&quot;second&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> stack.pop(); <span class="comment">// second</span></span><br></pre></td></tr></table></figure>
+
+<p>相比历史上的 <code>Stack</code>，<code>ArrayDeque</code> 的 API 更现代，通常也更适合作为栈使用。<code>ArrayDeque</code> 不允许存储 <code>null</code>，并且不是线程安全的。</p>
+<h3 id="2-PriorityQueue"><a href="#2-PriorityQueue" class="headerlink" title="2. PriorityQueue"></a>2. PriorityQueue</h3><p><code>PriorityQueue</code> 底层是堆，默认情况下堆顶是最小元素：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Integer&gt; minHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">minHeap.offer(<span class="number">30</span>);</span><br><span class="line">minHeap.offer(<span class="number">10</span>);</span><br><span class="line">minHeap.offer(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(minHeap.poll()); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p>创建大顶堆可以提供反向比较器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(Comparator.reverseOrder());</span><br></pre></td></tr></table></figure>
+
+<p>需要注意，<code>PriorityQueue</code> 只保证堆顶元素具有最高优先级，不保证迭代顺序完全有序。若要依次得到排序结果，应不断调用 <code>poll()</code>，或者直接使用排序集合。</p>
+<h2 id="七、并发集合"><a href="#七、并发集合" class="headerlink" title="七、并发集合"></a>七、并发集合</h2><h3 id="1-为什么不能直接在线程间共享-HashMap"><a href="#1-为什么不能直接在线程间共享-HashMap" class="headerlink" title="1. 为什么不能直接在线程间共享 HashMap"></a>1. 为什么不能直接在线程间共享 HashMap</h3><p><code>HashMap</code> 没有提供并发控制。多个线程同时执行写入、扩容或复合操作时，可能出现数据覆盖、结果不一致等问题。</p>
+<p>如果需要并发访问，应根据读写特征选择并发集合，而不是简单地把所有操作都包上一层锁。</p>
+<h3 id="2-ConcurrentHashMap"><a href="#2-ConcurrentHashMap" class="headerlink" title="2. ConcurrentHashMap"></a>2. ConcurrentHashMap</h3><p><code>ConcurrentHashMap</code> 是高并发场景下最常用的 Map。它通过 CAS 和局部同步减少锁竞争，不会像对整个 Map 加一把大锁那样限制所有线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ConcurrentMap&lt;String, Long&gt; counters = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">counters.merge(<span class="string">&quot;request&quot;</span>, <span class="number">1L</span>, Long::sum);</span><br></pre></td></tr></table></figure>
+
+<p>主要特点：</p>
+<ul>
+<li>支持多个线程并发读写。</li>
+<li>不允许 <code>null</code> 键和 <code>null</code> 值。</li>
+<li>迭代器具有弱一致性，不会简单地因为并发修改就抛出异常。</li>
+<li>适合缓存、索引、计数器和共享状态表。</li>
+</ul>
+<p>它不允许 <code>null</code> 的主要原因是：当 <code>get(key)</code> 返回 <code>null</code> 时，无法区分“键不存在”和“键存在但值为 null”。</p>
+<h3 id="3-CopyOnWriteArrayList"><a href="#3-CopyOnWriteArrayList" class="headerlink" title="3. CopyOnWriteArrayList"></a>3. CopyOnWriteArrayList</h3><p><code>CopyOnWriteArrayList</code> 修改数据时会复制底层数组，读操作则可以直接读取当前快照。</p>
+<p>它适合：</p>
+<ul>
+<li>读操作远多于写操作。</li>
+<li>集合规模不会特别大。</li>
+<li>遍历期间希望看到稳定快照。</li>
+</ul>
+<p>它不适合高频写入，因为每次修改都可能复制整个数组，并产生额外内存压力。</p>
+<h3 id="4-BlockingQueue"><a href="#4-BlockingQueue" class="headerlink" title="4. BlockingQueue"></a>4. BlockingQueue</h3><p><code>BlockingQueue</code> 适合生产者—消费者模型。队列满时，生产者可以等待；队列为空时，消费者可以等待。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BlockingQueue&lt;String&gt; tasks = <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者</span></span><br><span class="line">tasks.put(<span class="string">&quot;task-1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者</span></span><br><span class="line"><span class="type">String</span> <span class="variable">task</span> <span class="operator">=</span> tasks.take();</span><br></pre></td></tr></table></figure>
+
+<p>常用实现：</p>
+<ul>
+<li><code>ArrayBlockingQueue</code>：基于数组的有界阻塞队列。</li>
+<li><code>LinkedBlockingQueue</code>：基于链表，可配置容量。</li>
+</ul>
+<p><code>offer()</code>、<code>poll()</code> 通常是立即返回；<code>put()</code>、<code>take()</code> 则可能阻塞等待。在使用阻塞方法时，需要结合线程中断和超时机制设计退出逻辑。</p>
+<h2 id="八、Java-21：Sequenced-Collections"><a href="#八、Java-21：Sequenced-Collections" class="headerlink" title="八、Java 21：Sequenced Collections"></a>八、Java 21：Sequenced Collections</h2><p>Java 21 引入了有序集合的新抽象，用于统一表示具有明确遍历顺序的集合和 Map。相关接口包括：</p>
+<ul>
+<li><code>SequencedCollection</code></li>
+<li><code>SequencedSet</code></li>
+<li><code>SequencedMap</code></li>
+</ul>
+<p>它们统一了首尾元素和反向访问操作。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SequencedCollection&lt;String&gt; items = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">items.addLast(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">items.addLast(<span class="string">&quot;B&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(items.getFirst()); <span class="comment">// A</span></span><br><span class="line">System.out.println(items.getLast());  <span class="comment">// B</span></span><br><span class="line">System.out.println(items.reversed()); <span class="comment">// [B, A]</span></span><br></pre></td></tr></table></figure>
+
+<p>对 Map，可以使用首尾 Entry：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SequencedMap&lt;String, Integer&gt; scores = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">scores.putLast(<span class="string">&quot;Alice&quot;</span>, <span class="number">90</span>);</span><br><span class="line">scores.putLast(<span class="string">&quot;Bob&quot;</span>, <span class="number">85</span>);</span><br><span class="line"></span><br><span class="line">Map.Entry&lt;String, Integer&gt; first = scores.firstEntry();</span><br><span class="line">Map.Entry&lt;String, Integer&gt; last = scores.lastEntry();</span><br></pre></td></tr></table></figure>
+
+<p><code>reversed()</code> 通常返回反向视图，而不是立即创建一个新的集合副本。因此，使用时要注意原集合和反向视图之间的关系。这个特性对于 <code>LinkedHashMap</code>、有序 Set 和双端队列的统一操作尤其有用。</p>
+<h2 id="九、常用集合选型"><a href="#九、常用集合选型" class="headerlink" title="九、常用集合选型"></a>九、常用集合选型</h2><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>推荐类型</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按索引访问列表</td>
+<td><code>ArrayList</code></td>
+<td>随机访问快，缓存局部性好</td>
+</tr>
+<tr>
+<td>普通键值查询</td>
+<td><code>HashMap</code></td>
+<td>平均查找复杂度接近 O(1)</td>
+</tr>
+<tr>
+<td>去重</td>
+<td><code>HashSet</code></td>
+<td>基于哈希快速判断存在性</td>
+</tr>
+<tr>
+<td>去重并保持插入顺序</td>
+<td><code>LinkedHashSet</code></td>
+<td>哈希表加链表维护顺序</td>
+</tr>
+<tr>
+<td>键值按顺序排列</td>
+<td><code>TreeMap</code></td>
+<td>红黑树维护键的顺序</td>
+</tr>
+<tr>
+<td>元素自动排序并去重</td>
+<td><code>TreeSet</code></td>
+<td>红黑树维护唯一有序元素</td>
+</tr>
+<tr>
+<td>栈或双端队列</td>
+<td><code>ArrayDeque</code></td>
+<td>两端操作高效</td>
+</tr>
+<tr>
+<td>优先级处理</td>
+<td><code>PriorityQueue</code></td>
+<td>堆顶始终是最高优先级元素</td>
+</tr>
+<tr>
+<td>并发键值存储</td>
+<td><code>ConcurrentHashMap</code></td>
+<td>支持高并发读写</td>
+</tr>
+<tr>
+<td>生产者—消费者</td>
+<td><code>BlockingQueue</code></td>
+<td>支持阻塞式生产和消费</td>
+</tr>
+<tr>
+<td>读多写少的共享列表</td>
+<td><code>CopyOnWriteArrayList</code></td>
+<td>读操作无需加锁</td>
+</tr>
+</tbody></table>
+<h2 id="十、常见陷阱"><a href="#十、常见陷阱" class="headerlink" title="十、常见陷阱"></a>十、常见陷阱</h2><h3 id="1-遍历时直接删除"><a href="#1-遍历时直接删除" class="headerlink" title="1. 遍历时直接删除"></a>1. 遍历时直接删除</h3><p>下面的代码可能抛出 <code>ConcurrentModificationException</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String item : items) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.isBlank()) &#123;</span><br><span class="line">        items.remove(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 <code>Iterator.remove()</code> 或 <code>removeIf()</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">items.removeIf(String::isBlank);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-把-HashMap-当作有序-Map"><a href="#2-把-HashMap-当作有序-Map" class="headerlink" title="2. 把 HashMap 当作有序 Map"></a>2. 把 HashMap 当作有序 Map</h3><p><code>HashMap</code> 不保证插入顺序，也不应该根据某次运行得到的遍历顺序编写业务逻辑。需要顺序时，应明确使用 <code>LinkedHashMap</code> 或 <code>TreeMap</code>。</p>
+<h3 id="3-把同步包装集合当成并发集合"><a href="#3-把同步包装集合当成并发集合" class="headerlink" title="3. 把同步包装集合当成并发集合"></a>3. 把同步包装集合当成并发集合</h3><p><code>Collections.synchronizedList()</code> 能为单次操作提供同步，但复合操作和遍历仍然需要额外同步。高并发场景应优先评估 <code>ConcurrentHashMap</code>、<code>CopyOnWriteArrayList</code> 或阻塞队列。</p>
+<h3 id="4-使用可变对象作为-HashMap-的键"><a href="#4-使用可变对象作为-HashMap-的键" class="headerlink" title="4. 使用可变对象作为 HashMap 的键"></a>4. 使用可变对象作为 HashMap 的键</h3><p>如果键参与 <code>equals()</code> 或 <code>hashCode()</code> 的字段发生变化，Map 可能无法再定位到原来的桶。作为键的对象最好设计为不可变对象。</p>
+<h3 id="5-误用不可变集合工厂方法"><a href="#5-误用不可变集合工厂方法" class="headerlink" title="5. 误用不可变集合工厂方法"></a>5. 误用不可变集合工厂方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; names = List.of(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">names.add(<span class="string">&quot;Charlie&quot;</span>); <span class="comment">// UnsupportedOperationException</span></span><br></pre></td></tr></table></figure>
+
+<p>如果确实需要修改，应显式创建可变集合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; mutableNames = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(List.of(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h2><p>Java 集合的学习重点不是记住所有实现类，而是建立“需求—接口—实现—底层结构”的对应关系：</p>
+<ul>
+<li>需要列表和随机访问，优先使用 <code>ArrayList</code>。</li>
+<li>需要键值快速查询，优先使用 <code>HashMap</code>。</li>
+<li>需要去重，使用 <code>HashSet</code>。</li>
+<li>需要顺序，使用 <code>LinkedHashMap</code> 或 <code>LinkedHashSet</code>。</li>
+<li>需要排序和范围查询，使用 <code>TreeMap</code> 或 <code>TreeSet</code>。</li>
+<li>需要栈、队列或双端操作，使用 <code>ArrayDeque</code>。</li>
+<li>需要优先级调度，使用 <code>PriorityQueue</code>。</li>
+<li>需要并发键值访问，使用 <code>ConcurrentHashMap</code>。</li>
+<li>需要线程间传递任务，使用 <code>BlockingQueue</code>。</li>
+</ul>
+<p>Java 21 的 <code>Sequenced Collections</code> 进一步统一了有序集合的首尾操作和反向访问。掌握这些核心类型及其使用边界，已经能够覆盖绝大多数 Java 后端开发中的集合场景。</p>
+</div><div class="post-copyright"><span>本文由 Guailper 撰写</span><span>CC BY-NC-SA 4.0</span></div><div class="post-tags"><a class="tag" href="/tags/Java/"><i class="fas fa-tag" aria-hidden="true"></i>Java</a><a class="tag" href="/tags/Java-21/"><i class="fas fa-tag" aria-hidden="true"></i>Java 21</a><a class="tag" href="/tags/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/"><i class="fas fa-tag" aria-hidden="true"></i>集合框架</a><a class="tag" href="/tags/%E5%90%8E%E7%AB%AF/"><i class="fas fa-tag" aria-hidden="true"></i>后端</a></div><nav class="post-nav" aria-label="文章导航"><a class="post-nav-item is-next" href="/2026/09/07/Redis%E4%B8%8EMySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/"><span class="nav-label">下一篇 →</span><strong>Redis 与 MySQL 数据库面试题整理：缓存、索引与事务</strong></a></nav></article><aside class="article-aside"><div class="toc-card" id="card-toc"><div class="item-headline"><span class="toc-title"><i class="fas fa-stream" aria-hidden="true"></i>文章目录</span><span class="toc-percentage">0%</span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-text">一、集合框架整体结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Collection-%E4%BD%93%E7%B3%BB"><span class="toc-text">1. Collection 体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Map-%E4%BD%93%E7%B3%BB"><span class="toc-text">2. Map 体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%9B%86%E5%90%88%E9%80%89%E6%8B%A9%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF"><span class="toc-text">3. 集合选择的基本思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81List%EF%BC%9A%E4%BC%98%E5%85%88%E6%8E%8C%E6%8F%A1-ArrayList"><span class="toc-text">二、List：优先掌握 ArrayList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ArrayList-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">1. ArrayList 的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="toc-text">2. 扩容机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ArrayList-%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">3. ArrayList 的复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-remove-%E7%9A%84%E9%87%8D%E8%BD%BD%E9%99%B7%E9%98%B1"><span class="toc-text">4. remove() 的重载陷阱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-LinkedList-%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E4%BD%BF%E7%94%A8"><span class="toc-text">5. LinkedList 是否值得使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Map%EF%BC%9AHashMap-%E6%98%AF%E6%A0%B8%E5%BF%83"><span class="toc-text">三、Map：HashMap 是核心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HashMap-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">1. HashMap 的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-put-%E7%9A%84%E5%A4%A7%E8%87%B4%E8%BF%87%E7%A8%8B"><span class="toc-text">2. put 的大致过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81%E4%B8%8E%E7%BA%A2%E9%BB%91%E6%A0%91"><span class="toc-text">3. 哈希冲突与红黑树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E4%B8%8E%E6%89%A9%E5%AE%B9"><span class="toc-text">4. 负载因子与扩容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-equals-%E4%B8%8E-hashCode"><span class="toc-text">5. equals 与 hashCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%B8%B8%E7%94%A8-Map-%E6%96%B9%E6%B3%95"><span class="toc-text">6. 常用 Map 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81LinkedHashMap-%E4%B8%8E-TreeMap"><span class="toc-text">四、LinkedHashMap 与 TreeMap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-LinkedHashMap"><span class="toc-text">1. LinkedHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-TreeMap"><span class="toc-text">2. TreeMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Set%EF%BC%9AHashSet-%E4%B8%8E-TreeSet"><span class="toc-text">五、Set：HashSet 与 TreeSet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-HashSet"><span class="toc-text">1. HashSet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-TreeSet"><span class="toc-text">2. TreeSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81ArrayDeque-%E4%B8%8E-PriorityQueue"><span class="toc-text">六、ArrayDeque 与 PriorityQueue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-ArrayDeque"><span class="toc-text">1. ArrayDeque</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-PriorityQueue"><span class="toc-text">2. PriorityQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88"><span class="toc-text">七、并发集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E5%9C%A8%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%85%B1%E4%BA%AB-HashMap"><span class="toc-text">1. 为什么不能直接在线程间共享 HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-ConcurrentHashMap"><span class="toc-text">2. ConcurrentHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CopyOnWriteArrayList"><span class="toc-text">3. CopyOnWriteArrayList</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-BlockingQueue"><span class="toc-text">4. BlockingQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81Java-21%EF%BC%9ASequenced-Collections"><span class="toc-text">八、Java 21：Sequenced Collections</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%B8%B8%E7%94%A8%E9%9B%86%E5%90%88%E9%80%89%E5%9E%8B"><span class="toc-text">九、常用集合选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1"><span class="toc-text">十、常见陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%81%8D%E5%8E%86%E6%97%B6%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4"><span class="toc-text">1. 遍历时直接删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%8A-HashMap-%E5%BD%93%E4%BD%9C%E6%9C%89%E5%BA%8F-Map"><span class="toc-text">2. 把 HashMap 当作有序 Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8A%8A%E5%90%8C%E6%AD%A5%E5%8C%85%E8%A3%85%E9%9B%86%E5%90%88%E5%BD%93%E6%88%90%E5%B9%B6%E5%8F%91%E9%9B%86%E5%90%88"><span class="toc-text">3. 把同步包装集合当成并发集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E4%BD%9C%E4%B8%BA-HashMap-%E7%9A%84%E9%94%AE"><span class="toc-text">4. 使用可变对象作为 HashMap 的键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AF%AF%E7%94%A8%E4%B8%8D%E5%8F%AF%E5%8F%98%E9%9B%86%E5%90%88%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95"><span class="toc-text">5. 误用不可变集合工厂方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">十一、总结</span></a></li></ol></div></div></aside><button class="mobile-toc-button" id="mobile-toc-button" type="button" aria-label="打开文章目录" aria-expanded="false"><i class="fas fa-stream" aria-hidden="true"></i></button></div></main><aside class="home-profile-rail profile-font-typography" aria-label="个人信息"><div class="home-profile-inner"><img class="home-profile-avatar" src="/img/blog-logo-guailper.png" alt="Guailper"><h2 class="home-profile-name">Guailper</h2><p class="home-profile-bio">记录 AI、后端与计算机基础的学习路径</p><div class="home-profile-slogan" aria-label="记录学习持续前行"><span class="home-profile-slogan-column is-leading"><span class="home-profile-slogan-char">记</span><span class="home-profile-slogan-char">录</span><span class="home-profile-slogan-char">学</span><span class="home-profile-slogan-char">习</span></span><span class="home-profile-slogan-column is-trailing"><span class="home-profile-slogan-char">持</span><span class="home-profile-slogan-char">续</span><span class="home-profile-slogan-char">前</span><span class="home-profile-slogan-char">行</span></span></div><nav class="home-profile-links" aria-label="博客索引"><a href="/categories/">专题</a><a href="/tags/">标签</a><a href="/archives/">归档</a></nav><div class="home-profile-social" aria-label="社交链接"><a href="https://github.com/guailper" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a><a href="mailto:3031975593@qq.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a></div><div class="home-profile-meta"><p>© 2026 Guailper</p><p>Powered by Hexo · Guailper</p></div></div></aside><script src="/js/main.js" defer></script><script src="/js/toc.js" defer></script></body></html>

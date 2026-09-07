@@ -53,7 +53,7 @@
 <p>生成密码后，在C盘找到 .ssh 文件（文件内包含两个文件：id_rsa和id_rsa.pub）</p>
 <p>打开id_rsa.pub文件，复制其中的密钥。</p>
 <p>打开github，进入seeting，找到 SSH and GPG keys, 点击 new SSH key，将密钥粘贴到Key中（Title建议写用户名）</p>
-<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a>(注意看出现的信息是否连接成功)</p>
+<p>检测是否连接成功：shh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>(注意看出现的信息是否连接成功)</p>
 ]]></content>
       <tags>
         <tag>git</tag>
@@ -121,6 +121,47 @@
       </tags>
   </entry>
   <entry>
+    <title>二进制数补码</title>
+    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
+    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
+
+<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
+<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
+<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>0</strong> 000 0011</p>
+<p>这是一个正数的原码表示，表示 3。</p>
+<p>这里我们看一下模运算求正数补码的公式：</p>
+<p>[X]  &#x3D; X + M ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
+<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，正数补码与原码相同，即补码即原码</p>
+<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
+<p>X &#x3D; <strong>1</strong> 000 0011</p>
+<p>这是一个负数的原码表示，表示 -3。</p>
+<p>这里我们看一下模运算求负数补码的公式：</p>
+<p>[X]  &#x3D; M + X ( mod M)</p>
+<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
+<p>对比一下 X 与 [X]:</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>我们可以看到原码与补码的变化。</p>
+<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p><strong>补码→原码：</strong></p>
+<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
+<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
+<p>除此之外，还有其他方法吗？❤❤❤</p>
+<p>对比一下 [X] 与 X:</p>
+<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
+<p>  X &#x3D; <strong>1</strong> 000 0011</p>
+<p>是不是似曾相识呢？</p>
+<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+]]></content>
+      <tags>
+        <tag>二进制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>栈的定义及实现(C语言)</title>
     <url>/2021/11/01/%E6%A0%88/</url>
     <content><![CDATA[<h1 id="栈的定义及实现-C语言"><a href="#栈的定义及实现-C语言" class="headerlink" title="栈的定义及实现(C语言)"></a>栈的定义及实现(C语言)</h1><h3 id="1-1-栈的定义和特点"><a href="#1-1-栈的定义和特点" class="headerlink" title="1.1 栈的定义和特点"></a>1.1 栈的定义和特点</h3><p>栈：只能在表尾插入或删除元素的线性表</p>
@@ -170,44 +211,26 @@
       </tags>
   </entry>
   <entry>
-    <title>二进制数补码</title>
-    <url>/2021/11/23/%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[<!--mod 为模运算，M 为一个二进制数的模（有一个n位二进制数，则M = 2^n）-->
-
-<h2 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h2><p>计算机中，使用二进制的补码形式表示带符号整数</p>
-<h2 id="1-2原码与补码之间的转换"><a href="#1-2原码与补码之间的转换" class="headerlink" title="1.2原码与补码之间的转换"></a>1.2原码与补码之间的转换</h2><p>一个二进制数如何转换为它的补码形式</p>
-<h3 id="1-2-1-正数原码与补码"><a href="#1-2-1-正数原码与补码" class="headerlink" title="1.2.1 正数原码与补码"></a>1.2.1 正数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>0</strong> 000 0011</p>
-<p>这是一个正数的原码表示，表示 3。</p>
-<p>这里我们看一下模运算求正数补码的公式：</p>
-<p>[X]  &#x3D; X + M ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>0</strong> 000 0011。可以看出正数的原码与补码一样。</p>
-<p>所以，一个正数的补码表示的<strong>符号位为 0</strong>。以后求正数的补码可以直接将其原码写上。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，正数补码与原码相同，即补码即原码</p>
-<h3 id="1-2-2-负数原码与补码"><a href="#1-2-2-负数原码与补码" class="headerlink" title="1.2.2 负数原码与补码"></a>1.2.2 负数原码与补码</h3><p><strong>原码→补码：</strong></p>
-<p>X &#x3D; <strong>1</strong> 000 0011</p>
-<p>这是一个负数的原码表示，表示 -3。</p>
-<p>这里我们看一下模运算求负数补码的公式：</p>
-<p>[X]  &#x3D; M + X ( mod M)</p>
-<p>转换为补码后，[X] &#x3D; <strong>1</strong> 111 1101。</p>
-<p>对比一下 X 与 [X]:</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>我们可以看到原码与补码的变化。</p>
-<p>原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p><strong>补码→原码：</strong></p>
-<p>由上可知，原码的 <strong>符号位为1不变，数值部分取反加1</strong> 后，得到补码。</p>
-<p>那么，将思路逆转一下，将补码 <strong>符号位为1不变，数值部分减一取反</strong> 后，得到原码。</p>
-<p>除此之外，还有其他方法吗？❤❤❤</p>
-<p>对比一下 [X] 与 X:</p>
-<p>[X] &#x3D; <strong>1</strong> 111 1101</p>
-<p>  X &#x3D; <strong>1</strong> 000 0011</p>
-<p>是不是似曾相识呢？</p>
-<p>没错，补码的 <strong>符号位为1不变，数值部分取反加一</strong> 后，得到原码。</p>
+    <title>PicGo图床配置</title>
+    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
+<p>进入主页后点击New进入创建界面</p>
+<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
+<p>然后点击Create repository创建。</p>
+<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
+<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
+<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
+<p>复制生成的token（后面会用到）</p>
+<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
+<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
+<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
+<p>上传服务选择PicGo。路径选择你的安装路径。</p>
+<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
 ]]></content>
       <tags>
-        <tag>二进制</tag>
+        <tag>图床</tag>
       </tags>
   </entry>
   <entry>
@@ -339,63 +362,57 @@
 ]]></content>
   </entry>
   <entry>
-    <title>PicGo图床配置</title>
-    <url>/2021/11/28/%E5%9B%BE%E5%BA%8A%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="1-github上创建仓库"><a href="#1-github上创建仓库" class="headerlink" title="1.github上创建仓库"></a>1.github上创建仓库</h2><p>当然，这要先注册一个github账号😁😁😁</p>
-<p>进入主页后点击New进入创建界面</p>
-<p>填好仓库名字，选择public类型（即开放仓库），勾选add a REAMDE file</p>
-<p>然后点击Create repository创建。</p>
-<p>然后，点击个人头像，找到设置（Setting），点击Developer setting（开发人员设置）。</p>
-<p>进入Personal access tokens（个人访问令牌），点击Generate new token（生成新令牌）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/202111282055068.png" alt="img"></p>
-<p>在Note下方输入令牌名字，勾选repo后生成即可。</p>
-<p>复制生成的token（后面会用到）</p>
-<h2 id="2-PicGo设置"><a href="#2-PicGo设置" class="headerlink" title="2.PicGo设置"></a>2.PicGo设置</h2><p>找到图床设置下的<strong>Github图床</strong>，输入好对应信息，确定。</p>
-<p>点击PicGo设置中的 <strong>设置Server</strong> 设置监听地址为 127.0.0.1，监听端口为36677。（这个一般都设置好了）</p>
-<h2 id="3-Typora"><a href="#3-Typora" class="headerlink" title="3.Typora"></a>3.Typora</h2><p>Ctrl + ，进入设置，选择图像</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/Typora%E5%9B%BE%E5%BA%8A%E8%AE%BE%E7%BD%AE.png" alt="img"></p>
-<p>上传服务选择PicGo。路径选择你的安装路径。</p>
-<h2 id="4-上传失败"><a href="#4-上传失败" class="headerlink" title="4.上传失败"></a>4.上传失败</h2><p>重启PicGo。</p>
+    <title>静态路由和动态路由的配置</title>
+    <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
+<p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p>
+<p>将各个组件相连（使用自动选择连接）</p>
+<p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p>
+<p>为各个路由器的接口配置IP地址如下：</p>
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure>
+
+<p>Router0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+<p>Router2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
+
+<p>此时开始在一台主机ping目的主机。</p>
+<h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure>
+
+<p>每个路由器都是如此。</p>
+<p>Router0的邻居网络为10.1.1.0、20.1.1.0</p>
+<p>Router1的邻居网络为20.1.1.0、30.1.1.0</p>
+<p>Router2的邻居网络为30.1.1.0、40.1.1.0</p>
+<p>则配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure>
+
+<p>3.2 ospf配置</p>
+<p>格式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure>
+
+<p>配置如下：</p>
+<p>Router0</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
+<p>Router2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <tags>
-        <tag>图床</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机系统概述</title>
-    <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
-<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
-<p>③控制器：自动执行指令</p>
-<p>​	运算器：进行算术运算和逻辑运算</p>
-<p>​	存储器：存放数据和指令（都是二进制形式）</p>
-<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
-<p>④指令和数据：二进制形式</p>
-<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
-<p>​	程序：一串指令组成</p>
-<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
-<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
-<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
-<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
-<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
-<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
-<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
-<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
-<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
-<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
-<p>​							2. 取数</p>
-<p>​							3. 存数</p>
-<p>​							4. ALU运算</p>
-<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
-<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
-<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
-<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
-<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
-<p>汇编指令：机器指令对应的符号表示</p>
-<p>汇编语言程序：使用汇编语言编写的程序</p>
-<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
-<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
-<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
     <title>软件测试</title>
@@ -506,69 +523,40 @@
 ]]></content>
   </entry>
   <entry>
-    <title>静态路由和动态路由的配置</title>
-    <url>/2021/12/24/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E5%92%8C%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><p>首先，选择三个2811型号的路由器和两个主机。</p>
-<p>对三个路由器分别添加 WIC-2T 模块（添加前先将路由器关机，添加后开机）</p>
-<p>将各个组件相连（使用自动选择连接）</p>
-<p>为PC0、PC1分配IP地址，分别为10.1.1.2、40.1.1.2，子网掩码均改为255.255.255.0</p>
-<p>为各个路由器的接口配置IP地址如下：</p>
-<p>Router0:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int f0/0</span><br><span class="line">ip addr 10.1.1.1</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-<p>Router1:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 20.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int s0/0/1</span><br><span class="line">ip addr 30.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-<p>Router2:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int s0/0/0</span><br><span class="line">ip addr 30.1.1.2</span><br><span class="line">no shutdown</span><br><span class="line">int f0/0</span><br><span class="line">ip addr 40.1.1.1</span><br><span class="line">no shutdown</span><br></pre></td></tr></table></figure>
-
-<h2 id="2、静态路由配置"><a href="#2、静态路由配置" class="headerlink" title="2、静态路由配置"></a>2、静态路由配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 目标IP地址 目标IP地址子网掩码 下一跳IP地址（可使用接口代替）距离x（可选）</span><br></pre></td></tr></table></figure>
-
-<p>Router0:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-<p>Router1:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 40.1.1.0 255.255.255.0 s0/0/1 180</span><br><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-<p>Router2:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ip route 10.1.1.0 255.255.255.0 s0/0/0 180</span><br></pre></td></tr></table></figure>
-
-<p>此时开始在一台主机ping目的主机。</p>
-<h2 id="3、动态路由配置"><a href="#3、动态路由配置" class="headerlink" title="3、动态路由配置"></a>3、动态路由配置</h2><h3 id="3-1-rip配置"><a href="#3-1-rip配置" class="headerlink" title="3.1 rip配置"></a>3.1 rip配置</h3><p>格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip//选择需要配置的协议</span><br><span class="line">version 2//选择协议版本</span><br><span class="line">net 邻居网络//选择邻居之一</span><br><span class="line">net 邻居网络</span><br></pre></td></tr></table></figure>
-
-<p>每个路由器都是如此。</p>
-<p>Router0的邻居网络为10.1.1.0、20.1.1.0</p>
-<p>Router1的邻居网络为20.1.1.0、30.1.1.0</p>
-<p>Router2的邻居网络为30.1.1.0、40.1.1.0</p>
-<p>则配置如下：</p>
-<p>Router0</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 10.1.1.0</span><br><span class="line">net 20.1.1.0</span><br></pre></td></tr></table></figure>
-<p>Router1</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 20.1.1.0</span><br><span class="line">net 30.1.1.0</span><br></pre></td></tr></table></figure>
-<p>Router2</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route rip</span><br><span class="line">ver 2</span><br><span class="line">net 30.1.1.0</span><br><span class="line">net 40.1.1.0</span><br></pre></td></tr></table></figure>
-
-<p>3.2 ospf配置</p>
-<p>格式</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">router ospf 1//选择协议和版本</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br><span class="line">net 邻居网络 该网络子网掩码的反码 网络所属区域</span><br></pre></td></tr></table></figure>
-
-<p>配置如下：</p>
-<p>Router0</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 10.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
-<p>Router1</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 20.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
-<p>Router2</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">route ospf 1</span><br><span class="line">net 30.1.1.0 0.0.0.255 area 0</span><br><span class="line">net 40.1.1.0 0.0.0.255 area 0</span><br></pre></td></tr></table></figure>
-]]></content>
-  </entry>
-  <entry>
-    <title>Linux 下 GDB 调试</title>
-    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
+    <title>计算机系统概述</title>
+    <url>/2021/12/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h2 id="1-计算机系统概述"><a href="#1-计算机系统概述" class="headerlink" title="1.计算机系统概述"></a>1.计算机系统概述</h2><h3 id="1-1计算机基本工作原理"><a href="#1-1计算机基本工作原理" class="headerlink" title="1.1计算机基本工作原理"></a>1.1计算机基本工作原理</h3><h4 id="1-1-1-冯诺依曼结构思想"><a href="#1-1-1-冯诺依曼结构思想" class="headerlink" title="1.1.1 冯诺依曼结构思想"></a>1.1.1 冯诺依曼结构思想</h4><p>①采用“存储程序”工作方式</p>
+<p>②五个基本部件：控制器、运算器、存储器、输入设备、输出设备</p>
+<p>③控制器：自动执行指令</p>
+<p>​	运算器：进行算术运算和逻辑运算</p>
+<p>​	存储器：存放数据和指令（都是二进制形式）</p>
+<p>​	输入输出设备：操作人员通过输入输出设备使用计算机</p>
+<p>④指令和数据：二进制形式</p>
+<p>​	指令组成：操作码（操作类型）和地址码（操作数地址）</p>
+<p>​	程序：一串指令组成</p>
+<h4 id="1-1-2冯诺依曼机基本结构"><a href="#1-1-2冯诺依曼机基本结构" class="headerlink" title="1.1.2冯诺依曼机基本结构"></a>1.1.2冯诺依曼机基本结构</h4><p>主存（内存）：存放指令和数据的主存储器</p>
+<p>算术逻辑部件（Arithmetic Logic Unit，ALU）：进行算数逻辑运算的部件</p>
+<p>控制部件（控制器，Control Unit，CU）：自动逐条取出指令并进行译码的部件</p>
+<p>指令寄存器（Instruction Register，IR）：暂时存放从主存中取出的指令</p>
+<p>程序计数器（Program Count，PC）：存放下一条指令的存放地址，实现按序读取主存中的指令</p>
+<p>中央处理器（Central Processing Unit，CPU）：控制部件、运算部件和各类寄存器互连组成的电路</p>
+<p>总线：连接不同部件进行信息传输的介质。包含 地址线、控制线、数据线。</p>
+<p>主存地址寄存器（Memory Address Register，MAR）：存放CPU送到地址线的注册地址</p>
+<p>主存数据寄存器（Memory Data Register，MDR）：存放发送到或从数据线取来的信息</p>
+<h4 id="1-1-3程序和指令的执行过程"><a href="#1-1-3程序和指令的执行过程" class="headerlink" title="1.1.3程序和指令的执行过程"></a>1.1.3程序和指令的执行过程</h4><p>指令执行过程： 1. 取指令</p>
+<p>​							2. 取数</p>
+<p>​							3. 存数</p>
+<p>​							4. ALU运算</p>
+<p>一条指令的执行时间包含一个时钟周期或多个时钟周期</p>
+<h3 id="1-2程序的开发与运行"><a href="#1-2程序的开发与运行" class="headerlink" title="1.2程序的开发与运行"></a>1.2程序的开发与运行</h3><h4 id="1-2-1程序设计语言和翻译程序"><a href="#1-2-1程序设计语言和翻译程序" class="headerlink" title="1.2.1程序设计语言和翻译程序"></a>1.2.1程序设计语言和翻译程序</h4><p>机器语言：使用计算机规定的指令格式而形成的0&#x2F;1序列（即二进制序列）</p>
+<p>机器代码（机器语言程序）：计算机能够理解并执行的程序</p>
+<p>机器指令：机器程序中的指令由0&#x2F;1序列组成</p>
+<p>汇编语言：机器语言的符号表示，简短英文符号与机器指令建立一一对应关系</p>
+<p>汇编指令：机器指令对应的符号表示</p>
+<p>汇编语言程序：使用汇编语言编写的程序</p>
+<p>机器级语言：由与特定的机器结构相关的指令构成的语言（如机器语言、汇编语言）</p>
+<p><img src="https://raw.githubusercontent.com/MgL02/MyPicGo/main/images/%E8%AE%A1%E7%BB%84%E7%A8%8B%E5%BA%8F%E8%BD%AC%E6%8D%A2.jpg"></p>
+<h2 id="2-数据的机器级表示与处理"><a href="#2-数据的机器级表示与处理" class="headerlink" title="2.数据的机器级表示与处理"></a>2.数据的机器级表示与处理</h2><h2 id="3-程序的转换及机器级表示"><a href="#3-程序的转换及机器级表示" class="headerlink" title="3.程序的转换及机器级表示"></a>3.程序的转换及机器级表示</h2><h2 id="4-程序的链接"><a href="#4-程序的链接" class="headerlink" title="4.程序的链接"></a>4.程序的链接</h2>]]></content>
   </entry>
   <entry>
     <title>C++学习笔记</title>
@@ -721,6 +709,18 @@
 <h2 id="容器"><a href="#容器" class="headerlink" title="容器"></a>容器</h2><h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3>]]></content>
       <tags>
         <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux 下 GDB 调试</title>
+    <url>/2022/08/16/2022-8-16-Linux%E4%B8%8Bgdb%E8%B0%83%E8%AF%95/</url>
+    <content><![CDATA[<p>使用<code>gcc infile -o outfile -g</code>可以使得在进行gdb调试时查看源代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gdb 可执行文件名 //进入gdb调试</span><br><span class="line">quit //退出gdb</span><br><span class="line"></span><br><span class="line">set args xxx //设置参数</span><br><span class="line">show args //获取设置参数</span><br><span class="line"></span><br><span class="line">help //获取gdb使用帮助</span><br><span class="line"></span><br><span class="line">//运行gdb程序</span><br><span class="line">start //转到程序第一行</span><br><span class="line">run //执行代码直到遇上断点</span><br><span class="line"></span><br><span class="line">//显示代码</span><br><span class="line">l/list //</span><br><span class="line">l/list 行号/函数名 //</span><br><span class="line">l/list 外部源文件:行号/函数名 //</span><br><span class="line">show list/listsize //显示使用list显示的代码行数</span><br><span class="line">set list/listsize 数字 //设置行数</span><br><span class="line"></span><br><span class="line">//断点</span><br><span class="line">b/break 行号</span><br><span class="line">b/break 函数名</span><br><span class="line">b/break 外部源文件:行号/函数名</span><br><span class="line"></span><br><span class="line">//调试</span><br><span class="line">c/continue //遇上断点时使用，至下一个断点处停</span><br><span class="line">n/next //向下执行一行代码，不会进入函数体</span><br><span class="line">s/step //向下单步调试，会进入函数体</span><br><span class="line">finish //跳出函数体</span><br><span class="line"></span><br><span class="line">//变量操作</span><br><span class="line">p/print 变量名 //打印变量值</span><br><span class="line">ptype 变量名 //打印变量类型</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自动变量操作</span><br><span class="line">display 变量名 //自动打印指定变量值（回车后）</span><br><span class="line">i/info display //显示display详细信息</span><br><span class="line">undisplay 编号 //删除相关编号的display</span><br><span class="line"></span><br><span class="line">//其他</span><br><span class="line">set var 变量名=变量值 //</span><br><span class="line">until //跳出循环</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2051,339 +2051,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RAG-检索优化</title>
-    <url>/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
-<h2 id="稀疏向量"><a href="#稀疏向量" class="headerlink" title="稀疏向量"></a>稀疏向量</h2><p>稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下：</p>
-<p>$$<br>Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_1+1)}<br>$$<br>其中：</p>
-<ul>
-<li>$IDF(q_i)$: 查询词 $q_i$的逆文档频率，用于衡量一个词的普遍程度。越常见的词，IDF值越低。</li>
-<li>$f(q_i,D)$: 查询词 $q_i$在文档 D<em>D</em> 中的词频。</li>
-<li>$∣D∣$: 文档 D的长度。</li>
-<li>$avgdl$: 集合中所有文档的平均长度。</li>
-<li>$k_1,b$: 可调节的超参数。 $k_i$ 用于控制词频饱和度（一个词在文档中出现10次和100次，其重要性增长并非线性）， $b$用于控制文档长度归一化的程度。</li>
-</ul>
-<p>这种方法的优点是可解释性极强（每个维度都代表一个确切的词），无需训练，能够实现关键词的精确匹配，对于专业术语和特定名词的检索效果好。主要缺点是无法理解语义，例如它无法识别“汽车”和“轿车”是同义词，存在“词汇鸿沟”。</p>
-<p><strong>稀疏向量表示:</strong></p>
-<p>稀疏向量的核心思想是只存储非零值。例如，一个8维的向量 <code>[0, 0, 0, 5, 0, 0, 0, 9]</code>，其大部分元素都是零。用稀疏格式表示，可以极大地节约空间。常见的稀疏表示法有两种：</p>
-<ol>
-<li><p><strong>字典 &#x2F; 键值对 (Dictionary &#x2F; Key-Value):</strong> 这种方式将非零元素的 <code>索引</code> (0-based) 作为键，<code>值</code> 作为值。上面的向量可以表示为：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 值&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;3&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;7&quot;</span><span class="punctuation">:</span> <span class="number">9</span></span><br><span class="line"><span class="punctuation">&#125;</span>Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>坐标列表 (Coordinate list - COO):</strong> 这种方式通常用一个元组 <code>(维度, [索引列表], [值列表])</code> 来表示。上面的向量可以表示为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(8, [3, 7], [5, 9])Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
-
-<p>这种格式在 <code>SciPy</code> 等科学计算库中非常常见。</p>
-</li>
-</ol>
-<p>假设在一个包含5万个词的词汇表中，“西红柿”在第88位，“炒”在第666位，“蛋”在第999位，它们的BM25权重分别是1.2、0.8、1.5。那么它的稀疏表示（采用字典格式）就是：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 权重&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;88&quot;</span><span class="punctuation">:</span> <span class="number">1.2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;666&quot;</span><span class="punctuation">:</span> <span class="number">0.8</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;999&quot;</span><span class="punctuation">:</span> <span class="number">1.5</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果采用坐标列表（COO）格式，它会是这样：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(50000, [88, 666, 999], [1.2, 0.8, 1.5])</span><br></pre></td></tr></table></figure>
-
-<p>这两种格式都清晰地记录了文档的关键信息，但它们的局限性也很明显：如果我们搜索“番茄炒鸡蛋”，由于“番茄”和“西红柿”是不同的词条（索引不同），模型将无法理解它们的语义相似性。</p>
-<h2 id="密集向量"><a href="#密集向量" class="headerlink" title="密集向量"></a>密集向量</h2><p>密集向量，也常被称为“语义向量”，是通过深度学习模型学习到的数据（如文本、图像）的<strong>低维、稠密</strong>的浮点数表示。这些向量旨在将原始数据映射到一个连续的、充满意义的“语义空间”中来捕捉“语义”或“概念”。在理想的语义空间中，向量之间的距离和方向代表了它们所表示概念之间的关系。一个经典的例子是 <code>vector(&#39;国王&#39;) - vector(&#39;男人&#39;) + vector(&#39;女人&#39;)</code> 的计算结果在向量空间中非常接近 <code>vector(&#39;女王&#39;)</code>，这表明模型学会了“性别”和“皇室”这两个维度的抽象概念。它的代表包括 Word2Vec、GloVe、以及所有基于 Transformer 的模型（如 BERT、GPT）生成的嵌入（Embeddings）。</p>
-<p>其主要优点是能够理解同义词、近义词和上下文关系，泛化能力强，在语义搜索任务中表现卓越。但缺点也同样明显：可解释性差（向量中的每个维度通常没有具体的物理意义），需要大量数据和算力进行模型训练，且对于未登录词（OOV）的处理相对困难。</p>
-<p><strong>密集向量表示:</strong></p>
-<p>与稀疏向量不同，密集向量的所有维度都有值，因此使用<strong>数组 <code>[]</code></strong> 来表示是最直接的方式。一个预训练好的语义模型在读取“西红柿炒蛋”后，会输出一个低维的密集向量：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是一个低维（比如1024维）的浮点数向量</span></span><br><span class="line"><span class="comment">// 向量的每个维度没有直接的、可解释的含义</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">0.89</span><span class="punctuation">,</span> <span class="number">-0.12</span><span class="punctuation">,</span> <span class="number">0.77</span><span class="punctuation">,</span> ...<span class="punctuation">,</span> <span class="number">-0.45</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>这个向量本身难以解读，但它在语义空间中的位置可能与“番茄鸡蛋面”、“洋葱炒鸡蛋”等菜肴的向量非常接近，因为模型理解了它们共享“鸡蛋类菜肴”、“家常菜”、“酸甜口味”等核心概念。因此，当我们搜索“蛋白质丰富的家常菜”时，即使查询中没有出现任何原文关键词，密集向量也很有可能成功匹配到这份菜谱。</p>
-<blockquote>
-<p>[!NOTE]</p>
-<p><strong>OOV（Out-of-Vocabulary）未登录词</strong>：指在模型训练时没有出现在词汇表中，但在实际使用时遇到的新词汇。传统的稀疏向量方法（如BM25）对OOV词汇会完全忽略，而现代的密集向量方法通过子词分割（如BPE、WordPiece）可以更好地处理OOV问题。</p>
-</blockquote>
-<h2 id="混合检索-1"><a href="#混合检索-1" class="headerlink" title="混合检索"></a>混合检索</h2><p>稀疏向量和密集向量各有千秋，那么将它们结合起来，实现优势互补，就成了一个不错的选择。混合检索便是基于这个思路，通过结合多种搜索算法（最常见的是稀疏与密集检索）来提升搜索结果相关性和召回率。</p>
-<ul>
-<li><strong>主要目标</strong>：解决单一检索技术的局限性。例如，关键词检索无法理解语义，而向量检索则可能忽略掉必须精确匹配的关键词（如产品型号、函数名等）。混合检索旨在同时利用稀疏向量的<strong>精确性</strong>和密集向量的<strong>泛化性</strong>，以应对复杂多变的搜索需求。</li>
-</ul>
-<h3 id="技术原理与融合方法"><a href="#技术原理与融合方法" class="headerlink" title="技术原理与融合方法"></a>技术原理与融合方法</h3><p>混合检索通常并行执行两种检索算法，然后将两组异构的结果集融合成一个统一的排序列表。以下是两种主流的融合策略：</p>
-<h4 id="倒数排序融合-Reciprocal-Rank-Fusion-RRF"><a href="#倒数排序融合-Reciprocal-Rank-Fusion-RRF" class="headerlink" title="倒数排序融合 (Reciprocal Rank Fusion, RRF)"></a>倒数排序融合 (Reciprocal Rank Fusion, RRF)</h4><p>RRF 不关心不同检索系统的原始得分，只关心每个文档在各自结果集中的<strong>排名</strong>。其思想是：一个文档在不同检索系统中的排名越靠前，它的最终得分就越高。</p>
-<p>其计分公式为：<br>$$<br>RRF_{score}(d) &#x3D; \sum_{i&#x3D;1}^k \frac{1}{rank_i(d) + c}<br>$$<br>其中：</p>
-<ul>
-<li>$d$ 是待评分的文档。</li>
-<li>$k$ 是检索系统的数量（这里是2，即稀疏和密集）。</li>
-<li>$rank_i(d)$是文档 d<em>d</em> 在第 $i$ 个检索系统中的排名。</li>
-<li>$c$是一个常数（通常设为60），用于降低排名靠前文档的相对权重，实现更稳健的排名融合。</li>
-</ul>
-<h4 id="加权线性组合"><a href="#加权线性组合" class="headerlink" title="加权线性组合"></a>加权线性组合</h4><p>这种方法需要先将不同检索系统的得分进行归一化（例如，统一到 0-1 区间），然后通过一个权重参数 $\alpha$ 来进行线性组合。<br>$$<br>Hybrid_{score} &#x3D; \alpha \cdot Dense_{score} + (1 - \alpha) \cdot Sparse_{score}<br>$$<br>通过调整 $\alpha$ 的值，可以灵活地控制语义相似性与关键词匹配在最终排序中的贡献比例。例如，在电商搜索中，可以调高关键词的权重；而在智能问答中，则可以侧重于语义。</p>
-<h3 id="优势与局限"><a href="#优势与局限" class="headerlink" title="优势与局限"></a>优势与局限</h3><table>
-<thead>
-<tr>
-<th align="left">优势</th>
-<th align="left">局限</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>召回率与准确率高</strong>：能同时捕获关键词和语义，显著优于单一检索。</td>
-<td align="left"><strong>计算资源消耗大</strong>：需要同时维护和查询两套索引。</td>
-</tr>
-<tr>
-<td align="left"><strong>灵活性强</strong>：可通过融合策略和权重调整，适应不同业务场景。</td>
-<td align="left"><strong>参数调试复杂</strong>：融合权重等超参数需要反复实验调优。</td>
-</tr>
-<tr>
-<td align="left"><strong>容错性好</strong>：关键词检索可部分弥补向量模型对拼写错误或罕见词的敏感性。</td>
-<td align="left"><strong>可解释性仍是挑战</strong>：融合后的结果排序理由难以直观分析。</td>
-</tr>
-</tbody></table>
-<h1 id="查询构建"><a href="#查询构建" class="headerlink" title="查询构建"></a>查询构建</h1><p>在实际应用中，我们常常需要处理更加复杂和多样化的数据，包括结构化数据（如SQL数据库）、半结构化数据（如带有元数据的文档）以及图数据。用户的查询也可能不仅仅是简单的语义匹配，而是包含复杂的过滤条件、聚合操作或关系查询。</p>
-<p><strong>查询构建（Query Construction）</strong><a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a> 正是应对这一挑战的关键技术。它利用大语言模型（LLM）的强大理解能力，将用户的自然语言查询“翻译”成针对特定数据源的结构化查询语言或带有过滤条件的请求。这使得RAG系统能够无缝地连接和利用各种类型的数据，从而极大地扩展了其应用场景和能力。</p>
-<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418122703299.png?token=AR3LVDCJZ4IEMTVPL3AOZHDJ4MEFG" alt="image-20260418122648264"></p>
-<h2 id="文本到元数据过滤器"><a href="#文本到元数据过滤器" class="headerlink" title="文本到元数据过滤器"></a>文本到元数据过滤器</h2><p>在构建向量索引时，常常会为文档块（Chunks）附加元数据（Metadata），例如文档来源、发布日期、作者、章节、类别等。这些元数据为我们提供了在语义搜索之外进行精确过滤的可能。</p>
-<p><strong>自查询检索器（Self-Query Retriever）</strong> 是LangChain中实现这一功能的核心组件。它的工作流程如下：</p>
-<ol>
-<li><strong>定义元数据结构</strong>：首先，需要向LLM清晰地描述文档内容和每个元数据字段的含义及类型。</li>
-<li><strong>查询解析</strong>：当用户输入一个自然语言查询时，自查询检索器会调用LLM，将查询分解为两部分：<ul>
-<li><strong>查询字符串（Query String）</strong>：用于进行语义搜索的部分。</li>
-<li><strong>元数据过滤器（Metadata Filter）</strong>：从查询中提取出的结构化过滤条件。</li>
-</ul>
-</li>
-<li><strong>执行查询</strong>：检索器将解析出的查询字符串和元数据过滤器发送给向量数据库，执行一次同时包含语义搜索和元数据过滤的查询。</li>
-</ol>
-<p>例如，对于查询“关于2022年发布的机器学习的论文”，自查询检索器会将其解析为：</p>
-<ul>
-<li><strong>查询字符串</strong>: “机器学习的论文”</li>
-<li><strong>元数据过滤器</strong>: <code>year == 2022</code></li>
-</ul>
-<h2 id="文本到Cypher"><a href="#文本到Cypher" class="headerlink" title="文本到Cypher"></a>文本到Cypher</h2><p>除了处理扁平化的元数据，查询构建技术还能应用于更复杂的数据结构，如图数据库。</p>
-<h3 id="什么是-Cypher？"><a href="#什么是-Cypher？" class="headerlink" title="什么是 Cypher？"></a>什么是 Cypher？</h3><p>Cypher 是图数据库（如 Neo4j）中最常用的查询语言，其地位类似于 SQL 之于关系数据库。它采用一种直观的方式来匹配图中的模式和关系，例如 <code>(:Person &#123;name:&quot;Tomaz&quot;&#125;)-[:LIVES_IN]-&gt;(:Country &#123;name:&quot;Slovenia&quot;&#125;)</code> 描述了一个人和一个国家以及他们之间的“居住在”关系。</p>
-<h3 id="文本到Cypher”的原理"><a href="#文本到Cypher”的原理" class="headerlink" title="文本到Cypher”的原理"></a>文本到Cypher”的原理</h3><p>与“文本到元数据过滤器”类似，“文本到Cypher”技术利用大语言模型（LLM）将用户的自然语言问题直接翻译成一句精准的 Cypher 查询语句。LangChain 提供了相应的工具链（如 <code>GraphCypherQAChain</code>），其工作流程通常是：</p>
-<ol>
-<li>接收用户的自然语言问题。</li>
-<li>LLM 根据预先提供的图谱模式（Schema），将问题转换为 Cypher 查询。</li>
-<li>在图数据库上执行该查询，获取精确的结构化数据。</li>
-<li>(可选)将查询结果再次交由 LLM，生成通顺的自然语言答案。</li>
-</ol>
-<p>由于生成有效的 Cypher 查询是一项复杂的任务，通常使用性能较强的 LLM 来确保转换的准确性。通过这种方式，用户可以用最自然的方式与高度结构化的图数据进行交互，极大地降低了数据查询的门槛。</p>
-<h1 id="文本到SQL"><a href="#文本到SQL" class="headerlink" title="文本到SQL"></a>文本到SQL</h1><p>在数据世界中，除了向量数据库能够处理的非结构化数据，关系型数据库（如 MySQL, PostgreSQL, SQLite）同样是存储和管理结构化数据的重点。<strong>文本到SQL（Text-to-SQL）</strong>正是为了打破人与结构化数据之间的语言障碍而生。它利用大语言模型（LLM）将用户的自然语言问题，直接翻译成可以在数据库上执行的SQL查询语句。</p>
-<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418130229381.png?token=AR3LVDCDOH4T4V2OVC3SPU3J4MIKA" alt="image-20260418130227803"></p>
-<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><ul>
-<li><strong>“幻觉”问题</strong>：LLM 可能会“想象”出数据库中不存在的表或字段，导致生成的SQL语句无效。</li>
-<li><strong>对数据库结构理解不足</strong>：LLM 需要准确理解表的结构、字段的含义以及表与表之间的关联关系，才能生成正确的 <code>JOIN</code> 和 <code>WHERE</code> 子句。</li>
-<li><strong>处理用户输入的模糊性</strong>：用户的提问可能存在拼写错误或不规范的表达（例如，“上个月的销售冠军是谁？”），模型需要具备一定的容错和推理能力。</li>
-</ul>
-<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><ol>
-<li><strong>提供精确的数据库模式</strong>：这是最基础也是最关键的一步。我们需要向LLM提供数据库中相关表的 <code>CREATE TABLE</code> 语句。这就像是给了LLM一张地图，让它了解数据库的结构，包括表名、列名、数据类型和外键关系。</li>
-<li><strong>提供少量高质量的示例</strong>：在提示（Prompt）中加入一些“问题-SQL”的示例对，可以极大地提升LLM生成查询的准确性。这相当于给了LLM几个范例，让它学习如何根据相似的问题构建查询。</li>
-<li><strong>利用RAG增强上下文</strong>：这是更进一步的策略。我们可以像RAGFlow一样，为数据库构建一个专门的“知识库”<a href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>，其中不仅包含表的DDL（数据定义语言），还可以包含：<ul>
-<li><strong>表和字段的详细描述</strong>：用自然语言解释每个表是做什么的，每个字段代表什么业务含义。</li>
-<li><strong>同义词和业务术语</strong>：例如，将用户的“花费”映射到数据库的 <code>cost</code> 字段。</li>
-<li><strong>复杂的查询示例</strong>：提供一些包含 <code>JOIN</code>、<code>GROUP BY</code> 或子查询的复杂问答对。 当用户提问时，系统首先从这个知识库中检索最相关的信息（如相关的表结构、字段描述、相似的Q&amp;A），然后将这些信息和用户的问题一起组合成一个内容更丰富的提示，交给LLM生成最终的SQL查询。这种方式极大地降低了“幻觉”的风险，提高了查询的准确度。</li>
-</ul>
-</li>
-<li>**错误修正与反思 (Error Correction and Reflection)**：在生成SQL后，系统会尝试执行它。如果数据库返回错误，可以将错误信息反馈给LLM，让它“反思”并修正SQL语句，然后重试。这个迭代过程可以显著提高查询的成功率。</li>
-</ol>
-<h1 id="查询重构与分发"><a href="#查询重构与分发" class="headerlink" title="查询重构与分发"></a>查询重构与分发</h1><p>用户的原始问题往往不是最优的检索输入。它可能过于复杂、包含歧义，或者与文档的实际措辞存在偏差。为了解决这些问题，需要在检索之前对用户的查询进行“预处理”，这就是<strong>查询重构与分发</strong>。</p>
-<p>两个关键技术：</p>
-<ol>
-<li><strong>查询翻译（Query Translation）</strong>：将用户的原始问题转换成一个或多个更适合检索的形式。</li>
-<li><strong>查询路由（Query Routing）</strong>：根据问题的性质，将其智能地分发到最合适的数据源或检索器。</li>
-</ol>
-<h2 id="查询翻译"><a href="#查询翻译" class="headerlink" title="查询翻译"></a>查询翻译</h2><p>减弱用户自然语言提问与文档库中存储信息之间的“语义差距”。通过<strong>重写、分解或扩展</strong>查询，我们可以显著提升检索的准确率。</p>
-<h3 id="提示工程"><a href="#提示工程" class="headerlink" title="提示工程"></a>提示工程</h3><p>最直接的查询重构方法。通过精心设计的提示词（Prompt），引导 LLM 将用户的原始查询改写得更清晰、更具体，或者转换成一种更利于检索的叙述风格。</p>
-<p>在第二节查询构建的代码示例中，我们发现 <code>SelfQueryRetriever</code> 无法正确处理“时间最短的视频”这类需要排序或进行比较的查询。</p>
-<p>为了解决这个问题，可以采用一种更高级的提示工程技巧：<strong>让 LLM 直接构建出查询指令</strong>。</p>
-<p>这种方法的思路是，要求 LLM 直接分析用户的意图，并生成一个结构化（例如 JSON 格式）的指令，告诉我们的代码应该如何操作。对于“时间最短的视频”这个问题，我们期望 LLM 能直接告诉我们：“请按‘时长’字段进行升序排序，并返回第一条结果”。</p>
-<p>下面，来看看如何修改代码来实现这一思路。我们不再使用 <code>SelfQueryRetriever</code>，而是直接与 LLM 交互，并根据其返回的指令在代码中执行排序逻辑。</p>
-<h3 id="多查询分解-Multi-query"><a href="#多查询分解-Multi-query" class="headerlink" title="多查询分解 (Multi-query)"></a>多查询分解 (Multi-query)</h3><p>当用户提出一个复杂的问题时，直接用整个问题去检索可能效果不佳，因为它可能包含多个子主题或意图。分解技术的核心思想是将这个复杂问题拆分成多个更简单、更具体的子问题。然后，系统分别对每个子问题进行检索，最后将所有检索到的结果合并、去重，形成一个更全面的上下文，再交给 LLM 生成最终答案。</p>
-<p><strong>示例</strong>：</p>
-<ul>
-<li><strong>原始问题</strong>：“在《流浪地球》中，刘慈欣对人工智能和未来社会结构有何看法？”</li>
-<li><strong>分解后的子问题</strong>：<ul>
-<li>“《流浪地球》中描述的人工智能技术有哪些？”</li>
-<li>“《流浪地球》中描绘的未来社会是怎样的？”</li>
-<li>“刘慈欣关于人工智能的观点是什么？”</li>
-</ul>
-</li>
-</ul>
-<h3 id="退步提示（Step-Back-Prompting）"><a href="#退步提示（Step-Back-Prompting）" class="headerlink" title="退步提示（Step-Back Prompting）"></a>退步提示（Step-Back Prompting）</h3><p>退步提示是由 Google DeepMind 团队提出的一种旨在提升大语言模型推理能力的提示工程技巧<a href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>。当面对一个细节繁多或过于具体的问题时，模型直接作答（即便是使用思维链）也容易出错。退步提示通过引导模型“退后一步”来解决这个问题。</p>
-<p>其核心流程分为两步：</p>
-<p>（1）<strong>抽象化</strong>：首先，引导 LLM 从用户的原始具体问题中，生成一个更高层次、更概括的“退步问题”（Step-back Question）。这个退步问题旨在探寻原始问题背后的通用原理或核心概念。</p>
-<p>（2）<strong>推理</strong>：接着，系统会先获取“退步问题”的答案（例如，一个物理定律、一段历史背景等），然后将这个通用原理作为上下文，再结合原始的具体问题，进行推理并生成最终答案。</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_1.webp" alt="“退步提示”与“思维链”对比图"></p>
-<p><strong>示例</strong>：</p>
-<ul>
-<li><strong>原始问题</strong>：“如果理想气体的温度增加2倍，体积增加8倍，其压力会如何变化？”</li>
-<li><strong>退步问题</strong>：“这个问题背后的物理原理是什么？”</li>
-<li><strong>推理过程</strong>：首先回答退步问题，得到“理想气体定律 PV&#x3D;nRT”。然后基于这个定律，代入具体数值进行计算，最终得出压力变为原来的1&#x2F;4。</li>
-</ul>
-<p>通过先检索或生成高层知识，再进行具体推理，退步提示能够帮助模型构建一个更坚实的逻辑基础，从而提高在复杂问答场景下的准确性。</p>
-<h3 id="假设性文档嵌入-HyDE"><a href="#假设性文档嵌入-HyDE" class="headerlink" title="假设性文档嵌入 (HyDE)"></a>假设性文档嵌入 (HyDE)</h3><p>假设性文档嵌入（Hypothetical Document Embeddings, HyDE）是一种无需微调即可显著提升向量检索质量的查询改写技术，由 Luyu Gao 等人在其论文中首次提出<a href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。其核心是解决一个普遍存在于检索任务中的难题：用户的查询（Query）通常简短、关键词有限，而数据库中存储的文档则内容详实、上下文丰富，两者在语义向量空间中可能存在“鸿沟”，导致直接用查询向量进行搜索效果不佳。Zilliz 的一篇技术博客<a href="https://datawhalechina.github.io/all-in-rag/#fn-4">4</a>也对该技术进行了深入浅出的解读。</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_2.webp" alt="HyDE"></p>
-<p>HyDE 通过一种巧妙的方式来“绕过”这个问题：它不直接使用用户的原始查询，而是先利用一个生成式大语言模型（LLM）来生成一个“假设性”的、能够完美回答该查询的文档。然后，HyDE 将这个内容详实的假设性文档进行向量化，用其生成的向量去数据库中寻找与之最相似的真实文档。HyDE 的工作流程可以分为三个步骤：</p>
-<p>（1）<strong>生成</strong>：当接收到用户查询时，首先调用一个生成式 LLM（例如，GPT-3.5）。提示该模型根据查询生成一个详细的、可能是理想答案的文档。这个文档不必完全符合事实，但它必须在语义上与一个好的答案高度相关。</p>
-<p>（2）<strong>编码</strong>：将上一步生成的假设性文档输入到一个对比编码器（如 Contriever）中，将其转换为一个高维向量嵌入。这个向量在语义上代表了一个“理想答案”的位置。</p>
-<p>（3）<strong>检索</strong>：使用这个假设性文档的向量，在向量数据库中执行相似性搜索，找出与这个“理想答案”最接近的真实文档。这些被检索出的文档将作为最终的上下文信息。</p>
-<p>通过这种方式，HyDE 将困难的“查询到文档”的匹配问题，转化为了一个相对容易的“文档到文档”的匹配问题，从而提升检索的准确率。</p>
-<h2 id="查询路由"><a href="#查询路由" class="headerlink" title="查询路由"></a>查询路由</h2><p><strong>查询路由（Query Routing）</strong> 是用于优化复杂 RAG 系统的一项关键技术。当系统接入了多个不同的数据源或具备多种处理能力时，就需要一个“智能调度中心”来分析用户的查询，并动态选择最合适的处理路径。其本质是替代硬编码规则，通过语义理解将查询分发至最匹配的数据源、处理组件或提示模板，从而提升系统的效率与答案的准确性。</p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>查询路由的应用场景十分广泛。</p>
-<ol>
-<li><strong>数据源路由</strong>：这是最常见的场景。根据查询意图，将其路由到不同的知识库。例如：<ul>
-<li>查询“最新的 iPhone 有什么功能？” -&gt; 路由到<strong>产品文档向量数据库</strong>。</li>
-<li>查询“我上次订购了什么？” -&gt; 路由到<strong>用户历史SQL数据库</strong>（执行Text-to-SQL）。</li>
-<li>查询“A公司和B公司的投资关系是怎样的？” -&gt; 路由到<strong>企业知识图谱数据库</strong>。</li>
-</ul>
-</li>
-<li><strong>组件路由</strong>：根据问题的复杂性，将其分配给不同的处理组件，以平衡成本和效果。<ul>
-<li>简单FAQ → 直接进行向量检索，速度快、成本低。</li>
-<li>复杂操作或需要与外部API交互 → 调用 Agent 来执行任务。</li>
-</ul>
-</li>
-<li><strong>提示模板路由</strong>：为不同类型的任务动态选择最优的提示词模板，以优化生成效果。<ul>
-<li>数学问题 → 选用包含分步思考（Step-by-Step）逻辑的提示模板。</li>
-<li>代码生成 → 选用专门为代码优化过的提示模板。</li>
-</ul>
-</li>
-</ol>
-<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><h4 id="基于LLM的意图识别"><a href="#基于LLM的意图识别" class="headerlink" title="基于LLM的意图识别"></a>基于LLM的意图识别</h4><p>通过设计一个包含路由选项的提示词，让大模型直接对用户的查询进行分类，并输出一个代表路由选择的标签。</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_3.webp" alt="逻辑路由"></p>
-<ul>
-<li><strong>实现流程</strong>：<ol>
-<li>定义清晰的路由选项（例如，数据源名称、功能分类）。</li>
-<li>LLM 分析查询并输出决策标签。</li>
-<li>代码根据标签调用相应的检索器或工具。</li>
-</ol>
-</li>
-</ul>
-<p>该方法的核心在于构建一个“分类-分发”的流水线。这里以一个菜谱问答为例，系统需要根据用户提问的菜系（川菜、粤菜或其他）调用不同的专家模型。</p>
-<h4 id="嵌入相似性路由"><a href="#嵌入相似性路由" class="headerlink" title="嵌入相似性路由"></a>嵌入相似性路由</h4><p>这种方法不依赖 LLM 进行分类，延迟更低。它通过计算用户查询与预设的“路由示例语句”之间的向量嵌入相似度来做出决策。</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_4.webp" alt="语义路由"></p>
-<p><strong>第一步：定义路由描述并向量化</strong></p>
-<p>为每个路由创建一个详细的文本描述，并使用嵌入模型将其转换为向量，供后续相似度计算使用。</p>
-<p><strong>第二步：定义目标链</strong></p>
-<p>创建路由最终要分发到的目标处理链，并用一个字典route_map将路由名称和链对应起来。</p>
-<p>第三步：定义路由函数</p>
-<p>定义一个route函数，接收用户问题，计算与各路由描述的相似度，选择最相似的路由并调用相应的处理链。</p>
-<p>第四步：组合并调用</p>
-<p>最后，将route函数包装成一个RunnableLambda，形成一个完整的、可执行的路由链。</p>
-<h1 id="检索进阶"><a href="#检索进阶" class="headerlink" title="检索进阶"></a>检索进阶</h1><p>在基础的 RAG 流程中，依赖向量相似度从知识库中检索信息。不过，这种方法存在一些固有的局限性，例如最相关的文档不总是在检索结果的顶端，以及语义理解的偏差等。为了构建更强大、更精准的生产级 RAG 应用，需要引入更高级的检索技术。</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_1.webp" alt="retrieval"></p>
-<h2 id="重排序-Re-ranking"><a href="#重排序-Re-ranking" class="headerlink" title="重排序(Re-ranking)"></a>重排序(Re-ranking)</h2><h3 id="RRF"><a href="#RRF" class="headerlink" title="RRF"></a>RRF</h3><p>一种简单而有效的零样本重排方法，不依赖于任何模型训练，而是纯粹基于文档在多个检索器（例如，一个稀疏检索器和一个密集检索器）结果列表中的排名俩计算最终分数。</p>
-<p>如果文档在多个检索器结果中都排名靠前，那它可能更重要。RRF通过计算排名的倒数（$\frac1{rank}$）来为文档打分，有效融合了不同检索策略的优势。但如果只考虑排名信息，会忽略原始的相似度分数。</p>
-<h3 id="RankLLM-LLM-based-Reranker"><a href="#RankLLM-LLM-based-Reranker" class="headerlink" title="RankLLM &#x2F; LLM-based Reranker"></a>RankLLM &#x2F; LLM-based Reranker</h3><p>ankLLM 代表了一类直接利用大型语言模型本身来进行重排的方法<a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>。其基本逻辑非常直观：既然 LLM 最终要负责根据上下文来生成答案，那么为什么不直接让它来判断哪些上下文最相关呢？</p>
-<p>这种方法通过一个精心设计的提示词来实现。该提示词会包含用户的查询和一系列候选文档（通常是文档的摘要或关键部分），然后要求 LLM 以特定格式（如 JSON）输出一个排序后的文档列表，并给出每个文档的相关性分数。</p>
-<p>提示词示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以下是一个文档列表，每个文档都有一个编号和摘要。同时提供一个问题。请根据问题，按相关性顺序列出您认为需要查阅的文档编号，并给出相关性分数（1-10分）。请不要包含与问题无关的文档。</span><br><span class="line"></span><br><span class="line">示例格式:</span><br><span class="line">文档 1: &lt;文档1的摘要&gt;</span><br><span class="line">文档 2: &lt;文档2的摘要&gt;</span><br><span class="line">...</span><br><span class="line">文档 10: &lt;文档10的摘要&gt;</span><br><span class="line"></span><br><span class="line">问题: &lt;用户的问题&gt;</span><br><span class="line"></span><br><span class="line">回答:</span><br><span class="line">Doc: 9, Relevance: 7</span><br><span class="line">Doc: 3, Relevance: 4</span><br><span class="line">Doc: 7, Relevance: 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="Cross-Encoder-重排"><a href="#Cross-Encoder-重排" class="headerlink" title="Cross-Encoder 重排"></a>Cross-Encoder 重排</h3><p>交叉编码器能提供出色的重排精度。工作原理是将查询（Query）和每个候选文档（Document）<strong>拼接</strong>成一个单一的输入（例如，<code>[CLS] query [SEP] document [SEP]</code>），然后将这个整体输入到一个预训练的 Transformer 模型（如 BERT）中，模型最终会输出一个单一的分数（通常在 0 到 1 之间），这个分数直接代表了文档与查询的<strong>相关性</strong>。</p>
-<blockquote>
-<p>[!NOTE]</p>
-<p>交叉编码器会将两个输入句子拼接后一起编码&amp;]，直接输出一个相关性或分类分数，而不是分别生成独立的向量再计算相似度。这种方式能捕捉句子间的细粒度交互，因此在分类、重排序等高精度任务中表现更好，但推理速度较慢、计算成本高。</p>
-<p><strong>[SEP]</strong> 是在 BERT 这类基于 Transformer 架构的模型中，用于分隔不同文本片段（如查询和文档）的特殊标记。</p>
-</blockquote>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_3.svg" alt="cross-encoder"></p>
-<p>上图清晰地展示了 Cross-Encoder 的工作流程：</p>
-<ol>
-<li><strong>初步检索</strong>：搜索引擎首先从知识库中召回一个初始的文档列表（例如，前 50 篇）。</li>
-<li><strong>逐一评分</strong>：对于列表中的<strong>每一篇</strong>文档，系统都将其与原始查询<strong>配对</strong>，然后发送给 Cross-Encoder 模型。</li>
-<li><strong>独立推理</strong>：模型对每个“查询-文档”对进行一次完整的、独立的推理计算，得出一个精确的相关性分数。</li>
-<li><strong>返回重排结果</strong>：系统根据这些新的分数对文档列表进行重新排序，并将最终结果返回给用户。</li>
-</ol>
-<p>这个流程凸显了其高精度的来源（同时分析查询和文档），也解释了其高延迟的原因（需要N次独立的模型推理）。</p>
-<p>常见的 Cross-Encoder 模型包括 <code>ms-marco-MiniLM-L-12-v2</code>、<code>ms-marco-TinyBERT-L-2-v2</code> 等。</p>
-<h3 id="ColBERT-重排"><a href="#ColBERT-重排" class="headerlink" title="ColBERT 重排"></a>ColBERT 重排</h3><p>ColBERT（Contextualized Late Interaction over BERT）是一种创新的重排模型，它在 Cross-Encoder 的高精度和双编码器（Bi-Encoder）的高效率之间取得了平衡<a href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。采用了一种“<strong>后期交互</strong>”机制。</p>
-<p>其工作流程如下：</p>
-<ol>
-<li><strong>独立编码</strong>：ColBERT 分别为查询（Query）和文档（Document）中的每个 Token 生成上下文相关的嵌入向量。这一步是独立完成的，可以预先计算并存储文档的向量，从而加快查询速度。</li>
-<li><strong>后期交互</strong>：在查询时，模型会计算查询中每个 Token 的向量与文档中每个 Token 向量之间的最大相似度（MaxSim）。</li>
-<li><strong>分数聚合</strong>：最后，将查询中所有 Token 得到的最大相似度分数相加，得到最终的相关性总分。</li>
-</ol>
-<p>通过这种方式，ColBERT 避免了将查询和文档拼接在一起进行昂贵的联合编码，同时又比单纯比较单个 <code>[CLS]</code> 向量的双编码器模型捕捉了更细粒度的词汇级交互信息。</p>
-<h3 id="重排方法对比"><a href="#重排方法对比" class="headerlink" title="重排方法对比"></a>重排方法对比</h3><p>为了更直观地理解不同重排方法的特点和适用场景，下表对讨论过的几种主流方法进行了总结：</p>
-<table>
-<thead>
-<tr>
-<th>特性</th>
-<th>RRF</th>
-<th>RankLLM</th>
-<th>Cross-Encoder</th>
-<th>ColBERT</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>核心机制</strong></td>
-<td>融合多个排名</td>
-<td>LLM 推理，生成排序列表</td>
-<td>联合编码查询与文档，计算单一相关分</td>
-<td>独立编码，后期交互</td>
-</tr>
-<tr>
-<td><strong>计算成本</strong></td>
-<td>低（简单数学计算）</td>
-<td>中 (API 费用与延迟)</td>
-<td>高（N次模型推理）</td>
-<td>中（向量点积计算）</td>
-</tr>
-<tr>
-<td><strong>交互粒度</strong></td>
-<td>无（仅排名）</td>
-<td>概念&#x2F;语义级</td>
-<td>句子级（Query-Doc Pair）</td>
-<td>Token 级</td>
-</tr>
-<tr>
-<td><strong>适用场景</strong></td>
-<td>多路召回结果融合</td>
-<td>高价值语义理解场景</td>
-<td>Top-K 精排</td>
-<td>Top-K 重排</td>
-</tr>
-</tbody></table>
-<h2 id="压缩-Compression"><a href="#压缩-Compression" class="headerlink" title="压缩(Compression)"></a>压缩(Compression)</h2><p>“压缩”技术旨在解决一个常见问题：初步检索到的文档块（Chunks）虽然整体上与查询相关，但可能包含大量无关的“噪音”文本。将这些未经处理的、冗长的上下文直接提供给 LLM，不仅会增加 API 调用的成本和延迟，还可能因为信息过载而降低最终生成答案的质量。</p>
-<p>压缩的目标就是对检索到的内容进行“压缩”和“提炼”，只保留与用户查询最直接相关的信息。这可以通过两种主要方式实现：</p>
-<ol>
-<li><strong>内容提取</strong>：从文档中只抽出与查询相关的句子或段落。</li>
-<li><strong>文档过滤</strong>：完全丢弃那些虽然被初步召回，但经过更精细判断后认为不相关的整个文档。</li>
-</ol>
-<h3 id="LangChain-的-ContextualCompressionRetriever"><a href="#LangChain-的-ContextualCompressionRetriever" class="headerlink" title="LangChain 的 ContextualCompressionRetriever"></a>LangChain 的 ContextualCompressionRetriever</h3><p>LangChain 提供了一个强大的组件 <code>ContextualCompressionRetriever</code> 来实现上下文压缩<a href="https://datawhalechina.github.io/all-in-rag/#fn-4">4</a>。它像一个包装器，包裹在基础的检索器（如 <code>FAISS.as_retriever()</code>）之上。当基础检索器返回文档后，<code>ContextualCompressionRetriever</code> 会使用一个指定的 <code>DocumentCompressor</code> 对这些文档进行处理，然后再返回给调用者。</p>
-<p>LangChain 内置了多种 <code>DocumentCompressor</code>：</p>
-<ul>
-<li><code>LLMChainExtractor</code>: 这是最直接的压缩方式。它会遍历每个文档，并利用一个 LLM Chain 来判断并提取出其中与查询相关的部分。这是一种“内容提取”。</li>
-<li><code>LLMChainFilter</code>: 这种压缩器同样使用 LLM，但它做的是“文档过滤”。它会判断整个文档是否与查询相关，如果相关，则保留整个文档；如果不相关，则直接丢弃。</li>
-<li><code>EmbeddingsFilter</code>: 这是一种更快速、成本更低的过滤方法。它会计算查询和每个文档的嵌入向量之间的相似度，只保留那些相似度超过预设阈值的文档。</li>
-</ul>
-<h3 id="自定义重排器与压缩管道"><a href="#自定义重排器与压缩管道" class="headerlink" title="自定义重排器与压缩管道"></a>自定义重排器与压缩管道</h3><p>在前面我们就提到根据实际应用，需要自己进行一些功能的实现。这里以 ColBERT 为例，展示如何集成未被官方支持的功能。</p>
-<p>整个探索和实现过程如下：</p>
-<ol>
-<li><strong>从官方文档出发</strong>：首先，通过 LangChain 官方文档，了解到可以通过 <code>DocumentCompressorPipeline</code> 来组合多个压缩器和文档转换器。</li>
-<li><strong>需求缺口</strong>：希望使用 ColBERT 模型进行重排，但发现 LangChain 并没有内置的 <code>ColBERT</code> 重排器。</li>
-<li><strong>分析示例与源码</strong>：回头分析 <code>ContextualCompressionRetriever</code> 的用法和源码。我们发现，其处理逻辑分为两步：首先使用 <code>base_retriever</code> 获取原始文档，然后将这些文档交给 <code>base_compressor</code> 进行压缩或重排。这说明，实现自定义后处理（如重排）功能的关键在于 <code>base_compressor</code>。</li>
-<li><strong>定位核心基类</strong>：通过f12查看源码，确定 <code>base_compressor</code> 参数接收的是 <code>BaseDocumentCompressor</code> 类型的对象。这就是实现自定义功能的核心切入点。</li>
-<li><strong>参考与实现</strong>：最后，参考 LangChain 中其他重排器的实现方式，通过继承 <code>BaseDocumentCompressor</code> 基类并实现其关键方法，创建自己的 <code>ColBERTReranker</code> 类。</li>
-</ol>
-<blockquote>
-<p>PS：如果代码基础薄弱，想借助大模型帮你完成 <code>ColBERTReranker</code> ，需要提供给大模型的关键信息：<code>BaseDocumentCompressor</code> 的源码和 <code>ContextualCompressionRetriever</code> 的源码及其使用示例、你的明确目标（实现 ColBERT 重排逻辑）、以及 LangChain 中其他重排器的代码作为参考。信息越充分，模型生成的代码越准确。</p>
-</blockquote>
-<h3 id="LlamaIndex-中的检索压缩"><a href="#LlamaIndex-中的检索压缩" class="headerlink" title="LlamaIndex 中的检索压缩"></a>LlamaIndex 中的检索压缩</h3><p>LlamaIndex 同样提供了封装好的压缩功能，其代表是 <code>SentenceEmbeddingOptimizer</code><a href="https://datawhalechina.github.io/all-in-rag/#fn-5">5</a>。它也是一个后处理器（Node Postprocessor），工作在检索之后。</p>
-<p>它的工作原理是，对于每个检索到的文档，将其分解成句子。然后计算每个句子与用户查询的嵌入相似度，最后只保留那些相似度最高的句子，从而“优化”文档，去除无关信息。</p>
-<h2 id="校正-Correcting"><a href="#校正-Correcting" class="headerlink" title="校正(Correcting)"></a>校正(Correcting)</h2><p>传统的 RAG 流程有一个隐含的假设：检索到的文档总是与问题相关且包含正确答案。然而在现实世界中，检索系统可能会失败，返回不相关、过时或甚至完全错误的文档。如果将这些“有毒”的上下文直接喂给 LLM，就可能导致幻觉（Hallucination）或产生错误的回答。</p>
-<p><strong>校正检索（Corrective-RAG, C-RAG）</strong> 正是为解决这一问题而提出的一种策略<a href="https://datawhalechina.github.io/all-in-rag/#fn-6">6</a>。思路是引入一个“自我反思”或“自我修正”的循环，在生成答案之前，对检索到的文档质量进行评估，并根据评估结果采取不同的行动。</p>
-<p>C-RAG 的工作流程可以概括为 <strong>“检索-评估-行动”</strong> 三个阶段：</p>
-<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_4.webp" alt="C-RAG"></p>
-<ol>
-<li><strong>检索 (Retrieve)</strong> ：与标准 RAG 一样，首先根据用户查询从知识库中检索一组文档。</li>
-<li><strong>评估 (Assess)</strong> ：这是 C-RAG 的关键步骤。如图所示，一个“检索评估器 (Retrieval Evaluator)”会判断每个文档与查询的相关性，并给出“正确 (Correct)”、“不正确 (Incorrect)”或“模糊 (Ambiguous)”的标签。</li>
-<li><strong>行动 (Act)</strong> ：根据评估结果，系统会进入不同的知识修正与获取流程：<ul>
-<li><strong>如果评估为“正确”</strong>：系统会进入“知识精炼 (Knowledge Refinement)”环节。如图，它会将原始文档分解成更小的知识片段 (strips)，过滤掉无关部分，然后重新组合成更精准、更聚焦的上下文，再送给大模型生成答案。</li>
-<li><strong>如果评估为“不正确”</strong>：系统认为内部知识库无法回答问题，此时会触发“知识搜索 (Knowledge Searching)”。它会先对原始查询进行“查询重写 (Query Rewriting)”，生成一个更适合搜索引擎的查询，然后进行 Web 搜索，用外部信息来回答问题。</li>
-<li><strong>如果评估为“模糊”</strong>：同样会触发“知识搜索”，但通常会直接使用原始查询进行 Web 搜索，以获取额外信息来辅助生成答案。</li>
-</ul>
-</li>
-</ol>
-<p>通过这种方式，C-RAG 极大地增强了 RAG 系统的鲁棒性。不再盲目信任检索结果，而是增加了一个“事实核查”层，能够在检索失败时主动寻求外部帮助，从而有效减少幻觉，提升答案的准确性和可靠性。</p>
-<p>在 LangChain 的 <code>langgraph</code> 库中，可以利用其图结构来灵活地构建这种带有条件判断和循环的复杂 RAG 流程。</p>
-]]></content>
-      <categories>
-        <category>RAG</category>
-        <category>检索优化</category>
-      </categories>
-      <tags>
-        <tag>RAG</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RAG-索引构建</title>
     <url>/2026/04/14/RAG%E5%AD%A6%E4%B9%A0-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="向量嵌入"><a href="#向量嵌入" class="headerlink" title="向量嵌入"></a>向量嵌入</h1><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="什么是-Embedding"><a href="#什么是-Embedding" class="headerlink" title="什么是 Embedding"></a>什么是 Embedding</h3><p>向量嵌入（Embedding）是一种将真实世界中复杂、高维的数据对象（如文本、图像、音频、视频等）转换为数学上易于处理的、低维、稠密的连续数值向量的技术。</p>
@@ -2834,6 +2501,339 @@
       </categories>
   </entry>
   <entry>
+    <title>RAG-检索优化</title>
+    <url>/2026/04/16/RAG-%E6%A3%80%E7%B4%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="混合检索"><a href="#混合检索" class="headerlink" title="混合检索"></a>混合检索</h1><p>混合检索（Hybrid Search）是一种结合了 <strong>稀疏向量（Sparse Vectors）</strong> 和 <strong>密集向量（Dense Vectors）</strong> 优势的先进搜索技术。旨在同时利用稀疏向量的关键词精确匹配能力和密集向量的语义理解能力，以克服单一向量检索的局限性，从而在各种搜索场景下提供更准确、更鲁棒的检索结果。</p>
+<h2 id="稀疏向量"><a href="#稀疏向量" class="headerlink" title="稀疏向量"></a>稀疏向量</h2><p>稀疏向量，也常被称为“词法向量”，是基于词频统计的传统信息检索方法的数学表示。它通常是一个维度极高（与词汇表大小相当）但绝大多数元素为零的向量。它采用精准的“词袋”匹配模型，将文档视为一堆词的集合，不考虑其顺序和语法，其中向量的每一个维度都直接对应一个具体的词，非零值则代表该词在文档中的重要性（权重）。这类向量的经典权重计算方法是 TF-IDF。在信息检索领域，BM25 则是基于这种稀疏表示的成功且应用广泛的排序算法之一，其核心公式如下：</p>
+<p>$$<br>Score(Q,D)&#x3D;\sum_{i&#x3D;1}^n IDF(q_i)\cdot\frac{f(q_i,D)+k_1⋅(1−b+b\cdot\frac{avgdl}{∣D∣})}{f(q_i,D)\cdot(k_1+1)}<br>$$<br>其中：</p>
+<ul>
+<li>$IDF(q_i)$: 查询词 $q_i$的逆文档频率，用于衡量一个词的普遍程度。越常见的词，IDF值越低。</li>
+<li>$f(q_i,D)$: 查询词 $q_i$在文档 D<em>D</em> 中的词频。</li>
+<li>$∣D∣$: 文档 D的长度。</li>
+<li>$avgdl$: 集合中所有文档的平均长度。</li>
+<li>$k_1,b$: 可调节的超参数。 $k_i$ 用于控制词频饱和度（一个词在文档中出现10次和100次，其重要性增长并非线性）， $b$用于控制文档长度归一化的程度。</li>
+</ul>
+<p>这种方法的优点是可解释性极强（每个维度都代表一个确切的词），无需训练，能够实现关键词的精确匹配，对于专业术语和特定名词的检索效果好。主要缺点是无法理解语义，例如它无法识别“汽车”和“轿车”是同义词，存在“词汇鸿沟”。</p>
+<p><strong>稀疏向量表示:</strong></p>
+<p>稀疏向量的核心思想是只存储非零值。例如，一个8维的向量 <code>[0, 0, 0, 5, 0, 0, 0, 9]</code>，其大部分元素都是零。用稀疏格式表示，可以极大地节约空间。常见的稀疏表示法有两种：</p>
+<ol>
+<li><p><strong>字典 &#x2F; 键值对 (Dictionary &#x2F; Key-Value):</strong> 这种方式将非零元素的 <code>索引</code> (0-based) 作为键，<code>值</code> 作为值。上面的向量可以表示为：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 值&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;3&quot;</span><span class="punctuation">:</span> <span class="number">5</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;7&quot;</span><span class="punctuation">:</span> <span class="number">9</span></span><br><span class="line"><span class="punctuation">&#125;</span>Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>坐标列表 (Coordinate list - COO):</strong> 这种方式通常用一个元组 <code>(维度, [索引列表], [值列表])</code> 来表示。上面的向量可以表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(8, [3, 7], [5, 9])Copy to clipboardErrorCopied</span><br></pre></td></tr></table></figure>
+
+<p>这种格式在 <code>SciPy</code> 等科学计算库中非常常见。</p>
+</li>
+</ol>
+<p>假设在一个包含5万个词的词汇表中，“西红柿”在第88位，“炒”在第666位，“蛋”在第999位，它们的BM25权重分别是1.2、0.8、1.5。那么它的稀疏表示（采用字典格式）就是：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// &#123;索引: 权重&#125;</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;88&quot;</span><span class="punctuation">:</span> <span class="number">1.2</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;666&quot;</span><span class="punctuation">:</span> <span class="number">0.8</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;999&quot;</span><span class="punctuation">:</span> <span class="number">1.5</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果采用坐标列表（COO）格式，它会是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(50000, [88, 666, 999], [1.2, 0.8, 1.5])</span><br></pre></td></tr></table></figure>
+
+<p>这两种格式都清晰地记录了文档的关键信息，但它们的局限性也很明显：如果我们搜索“番茄炒鸡蛋”，由于“番茄”和“西红柿”是不同的词条（索引不同），模型将无法理解它们的语义相似性。</p>
+<h2 id="密集向量"><a href="#密集向量" class="headerlink" title="密集向量"></a>密集向量</h2><p>密集向量，也常被称为“语义向量”，是通过深度学习模型学习到的数据（如文本、图像）的<strong>低维、稠密</strong>的浮点数表示。这些向量旨在将原始数据映射到一个连续的、充满意义的“语义空间”中来捕捉“语义”或“概念”。在理想的语义空间中，向量之间的距离和方向代表了它们所表示概念之间的关系。一个经典的例子是 <code>vector(&#39;国王&#39;) - vector(&#39;男人&#39;) + vector(&#39;女人&#39;)</code> 的计算结果在向量空间中非常接近 <code>vector(&#39;女王&#39;)</code>，这表明模型学会了“性别”和“皇室”这两个维度的抽象概念。它的代表包括 Word2Vec、GloVe、以及所有基于 Transformer 的模型（如 BERT、GPT）生成的嵌入（Embeddings）。</p>
+<p>其主要优点是能够理解同义词、近义词和上下文关系，泛化能力强，在语义搜索任务中表现卓越。但缺点也同样明显：可解释性差（向量中的每个维度通常没有具体的物理意义），需要大量数据和算力进行模型训练，且对于未登录词（OOV）的处理相对困难。</p>
+<p><strong>密集向量表示:</strong></p>
+<p>与稀疏向量不同，密集向量的所有维度都有值，因此使用<strong>数组 <code>[]</code></strong> 来表示是最直接的方式。一个预训练好的语义模型在读取“西红柿炒蛋”后，会输出一个低维的密集向量：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 这是一个低维（比如1024维）的浮点数向量</span></span><br><span class="line"><span class="comment">// 向量的每个维度没有直接的、可解释的含义</span></span><br><span class="line"><span class="punctuation">[</span><span class="number">0.89</span><span class="punctuation">,</span> <span class="number">-0.12</span><span class="punctuation">,</span> <span class="number">0.77</span><span class="punctuation">,</span> ...<span class="punctuation">,</span> <span class="number">-0.45</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这个向量本身难以解读，但它在语义空间中的位置可能与“番茄鸡蛋面”、“洋葱炒鸡蛋”等菜肴的向量非常接近，因为模型理解了它们共享“鸡蛋类菜肴”、“家常菜”、“酸甜口味”等核心概念。因此，当我们搜索“蛋白质丰富的家常菜”时，即使查询中没有出现任何原文关键词，密集向量也很有可能成功匹配到这份菜谱。</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p><strong>OOV（Out-of-Vocabulary）未登录词</strong>：指在模型训练时没有出现在词汇表中，但在实际使用时遇到的新词汇。传统的稀疏向量方法（如BM25）对OOV词汇会完全忽略，而现代的密集向量方法通过子词分割（如BPE、WordPiece）可以更好地处理OOV问题。</p>
+</blockquote>
+<h2 id="混合检索-1"><a href="#混合检索-1" class="headerlink" title="混合检索"></a>混合检索</h2><p>稀疏向量和密集向量各有千秋，那么将它们结合起来，实现优势互补，就成了一个不错的选择。混合检索便是基于这个思路，通过结合多种搜索算法（最常见的是稀疏与密集检索）来提升搜索结果相关性和召回率。</p>
+<ul>
+<li><strong>主要目标</strong>：解决单一检索技术的局限性。例如，关键词检索无法理解语义，而向量检索则可能忽略掉必须精确匹配的关键词（如产品型号、函数名等）。混合检索旨在同时利用稀疏向量的<strong>精确性</strong>和密集向量的<strong>泛化性</strong>，以应对复杂多变的搜索需求。</li>
+</ul>
+<h3 id="技术原理与融合方法"><a href="#技术原理与融合方法" class="headerlink" title="技术原理与融合方法"></a>技术原理与融合方法</h3><p>混合检索通常并行执行两种检索算法，然后将两组异构的结果集融合成一个统一的排序列表。以下是两种主流的融合策略：</p>
+<h4 id="倒数排序融合-Reciprocal-Rank-Fusion-RRF"><a href="#倒数排序融合-Reciprocal-Rank-Fusion-RRF" class="headerlink" title="倒数排序融合 (Reciprocal Rank Fusion, RRF)"></a>倒数排序融合 (Reciprocal Rank Fusion, RRF)</h4><p>RRF 不关心不同检索系统的原始得分，只关心每个文档在各自结果集中的<strong>排名</strong>。其思想是：一个文档在不同检索系统中的排名越靠前，它的最终得分就越高。</p>
+<p>其计分公式为：<br>$$<br>RRF_{score}(d) &#x3D; \sum_{i&#x3D;1}^k \frac{1}{rank_i(d) + c}<br>$$<br>其中：</p>
+<ul>
+<li>$d$ 是待评分的文档。</li>
+<li>$k$ 是检索系统的数量（这里是2，即稀疏和密集）。</li>
+<li>$rank_i(d)$是文档 d<em>d</em> 在第 $i$ 个检索系统中的排名。</li>
+<li>$c$是一个常数（通常设为60），用于降低排名靠前文档的相对权重，实现更稳健的排名融合。</li>
+</ul>
+<h4 id="加权线性组合"><a href="#加权线性组合" class="headerlink" title="加权线性组合"></a>加权线性组合</h4><p>这种方法需要先将不同检索系统的得分进行归一化（例如，统一到 0-1 区间），然后通过一个权重参数 $\alpha$ 来进行线性组合。<br>$$<br>Hybrid_{score} &#x3D; \alpha \cdot Dense_{score} + (1 - \alpha) \cdot Sparse_{score}<br>$$<br>通过调整 $\alpha$ 的值，可以灵活地控制语义相似性与关键词匹配在最终排序中的贡献比例。例如，在电商搜索中，可以调高关键词的权重；而在智能问答中，则可以侧重于语义。</p>
+<h3 id="优势与局限"><a href="#优势与局限" class="headerlink" title="优势与局限"></a>优势与局限</h3><table>
+<thead>
+<tr>
+<th align="left">优势</th>
+<th align="left">局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>召回率与准确率高</strong>：能同时捕获关键词和语义，显著优于单一检索。</td>
+<td align="left"><strong>计算资源消耗大</strong>：需要同时维护和查询两套索引。</td>
+</tr>
+<tr>
+<td align="left"><strong>灵活性强</strong>：可通过融合策略和权重调整，适应不同业务场景。</td>
+<td align="left"><strong>参数调试复杂</strong>：融合权重等超参数需要反复实验调优。</td>
+</tr>
+<tr>
+<td align="left"><strong>容错性好</strong>：关键词检索可部分弥补向量模型对拼写错误或罕见词的敏感性。</td>
+<td align="left"><strong>可解释性仍是挑战</strong>：融合后的结果排序理由难以直观分析。</td>
+</tr>
+</tbody></table>
+<h1 id="查询构建"><a href="#查询构建" class="headerlink" title="查询构建"></a>查询构建</h1><p>在实际应用中，我们常常需要处理更加复杂和多样化的数据，包括结构化数据（如SQL数据库）、半结构化数据（如带有元数据的文档）以及图数据。用户的查询也可能不仅仅是简单的语义匹配，而是包含复杂的过滤条件、聚合操作或关系查询。</p>
+<p><strong>查询构建（Query Construction）</strong><a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a> 正是应对这一挑战的关键技术。它利用大语言模型（LLM）的强大理解能力，将用户的自然语言查询“翻译”成针对特定数据源的结构化查询语言或带有过滤条件的请求。这使得RAG系统能够无缝地连接和利用各种类型的数据，从而极大地扩展了其应用场景和能力。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418122703299.png?token=AR3LVDCJZ4IEMTVPL3AOZHDJ4MEFG" alt="image-20260418122648264"></p>
+<h2 id="文本到元数据过滤器"><a href="#文本到元数据过滤器" class="headerlink" title="文本到元数据过滤器"></a>文本到元数据过滤器</h2><p>在构建向量索引时，常常会为文档块（Chunks）附加元数据（Metadata），例如文档来源、发布日期、作者、章节、类别等。这些元数据为我们提供了在语义搜索之外进行精确过滤的可能。</p>
+<p><strong>自查询检索器（Self-Query Retriever）</strong> 是LangChain中实现这一功能的核心组件。它的工作流程如下：</p>
+<ol>
+<li><strong>定义元数据结构</strong>：首先，需要向LLM清晰地描述文档内容和每个元数据字段的含义及类型。</li>
+<li><strong>查询解析</strong>：当用户输入一个自然语言查询时，自查询检索器会调用LLM，将查询分解为两部分：<ul>
+<li><strong>查询字符串（Query String）</strong>：用于进行语义搜索的部分。</li>
+<li><strong>元数据过滤器（Metadata Filter）</strong>：从查询中提取出的结构化过滤条件。</li>
+</ul>
+</li>
+<li><strong>执行查询</strong>：检索器将解析出的查询字符串和元数据过滤器发送给向量数据库，执行一次同时包含语义搜索和元数据过滤的查询。</li>
+</ol>
+<p>例如，对于查询“关于2022年发布的机器学习的论文”，自查询检索器会将其解析为：</p>
+<ul>
+<li><strong>查询字符串</strong>: “机器学习的论文”</li>
+<li><strong>元数据过滤器</strong>: <code>year == 2022</code></li>
+</ul>
+<h2 id="文本到Cypher"><a href="#文本到Cypher" class="headerlink" title="文本到Cypher"></a>文本到Cypher</h2><p>除了处理扁平化的元数据，查询构建技术还能应用于更复杂的数据结构，如图数据库。</p>
+<h3 id="什么是-Cypher？"><a href="#什么是-Cypher？" class="headerlink" title="什么是 Cypher？"></a>什么是 Cypher？</h3><p>Cypher 是图数据库（如 Neo4j）中最常用的查询语言，其地位类似于 SQL 之于关系数据库。它采用一种直观的方式来匹配图中的模式和关系，例如 <code>(:Person &#123;name:&quot;Tomaz&quot;&#125;)-[:LIVES_IN]-&gt;(:Country &#123;name:&quot;Slovenia&quot;&#125;)</code> 描述了一个人和一个国家以及他们之间的“居住在”关系。</p>
+<h3 id="文本到Cypher”的原理"><a href="#文本到Cypher”的原理" class="headerlink" title="文本到Cypher”的原理"></a>文本到Cypher”的原理</h3><p>与“文本到元数据过滤器”类似，“文本到Cypher”技术利用大语言模型（LLM）将用户的自然语言问题直接翻译成一句精准的 Cypher 查询语句。LangChain 提供了相应的工具链（如 <code>GraphCypherQAChain</code>），其工作流程通常是：</p>
+<ol>
+<li>接收用户的自然语言问题。</li>
+<li>LLM 根据预先提供的图谱模式（Schema），将问题转换为 Cypher 查询。</li>
+<li>在图数据库上执行该查询，获取精确的结构化数据。</li>
+<li>(可选)将查询结果再次交由 LLM，生成通顺的自然语言答案。</li>
+</ol>
+<p>由于生成有效的 Cypher 查询是一项复杂的任务，通常使用性能较强的 LLM 来确保转换的准确性。通过这种方式，用户可以用最自然的方式与高度结构化的图数据进行交互，极大地降低了数据查询的门槛。</p>
+<h1 id="文本到SQL"><a href="#文本到SQL" class="headerlink" title="文本到SQL"></a>文本到SQL</h1><p>在数据世界中，除了向量数据库能够处理的非结构化数据，关系型数据库（如 MySQL, PostgreSQL, SQLite）同样是存储和管理结构化数据的重点。<strong>文本到SQL（Text-to-SQL）</strong>正是为了打破人与结构化数据之间的语言障碍而生。它利用大语言模型（LLM）将用户的自然语言问题，直接翻译成可以在数据库上执行的SQL查询语句。</p>
+<p><img src="https://raw.githubusercontent.com/Guailper/MyPicGo/master/images/20260418130229381.png?token=AR3LVDCDOH4T4V2OVC3SPU3J4MIKA" alt="image-20260418130227803"></p>
+<h2 id="挑战"><a href="#挑战" class="headerlink" title="挑战"></a>挑战</h2><ul>
+<li><strong>“幻觉”问题</strong>：LLM 可能会“想象”出数据库中不存在的表或字段，导致生成的SQL语句无效。</li>
+<li><strong>对数据库结构理解不足</strong>：LLM 需要准确理解表的结构、字段的含义以及表与表之间的关联关系，才能生成正确的 <code>JOIN</code> 和 <code>WHERE</code> 子句。</li>
+<li><strong>处理用户输入的模糊性</strong>：用户的提问可能存在拼写错误或不规范的表达（例如，“上个月的销售冠军是谁？”），模型需要具备一定的容错和推理能力。</li>
+</ul>
+<h2 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略"></a>优化策略</h2><ol>
+<li><strong>提供精确的数据库模式</strong>：这是最基础也是最关键的一步。我们需要向LLM提供数据库中相关表的 <code>CREATE TABLE</code> 语句。这就像是给了LLM一张地图，让它了解数据库的结构，包括表名、列名、数据类型和外键关系。</li>
+<li><strong>提供少量高质量的示例</strong>：在提示（Prompt）中加入一些“问题-SQL”的示例对，可以极大地提升LLM生成查询的准确性。这相当于给了LLM几个范例，让它学习如何根据相似的问题构建查询。</li>
+<li><strong>利用RAG增强上下文</strong>：这是更进一步的策略。我们可以像RAGFlow一样，为数据库构建一个专门的“知识库”<a href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>，其中不仅包含表的DDL（数据定义语言），还可以包含：<ul>
+<li><strong>表和字段的详细描述</strong>：用自然语言解释每个表是做什么的，每个字段代表什么业务含义。</li>
+<li><strong>同义词和业务术语</strong>：例如，将用户的“花费”映射到数据库的 <code>cost</code> 字段。</li>
+<li><strong>复杂的查询示例</strong>：提供一些包含 <code>JOIN</code>、<code>GROUP BY</code> 或子查询的复杂问答对。 当用户提问时，系统首先从这个知识库中检索最相关的信息（如相关的表结构、字段描述、相似的Q&amp;A），然后将这些信息和用户的问题一起组合成一个内容更丰富的提示，交给LLM生成最终的SQL查询。这种方式极大地降低了“幻觉”的风险，提高了查询的准确度。</li>
+</ul>
+</li>
+<li>**错误修正与反思 (Error Correction and Reflection)**：在生成SQL后，系统会尝试执行它。如果数据库返回错误，可以将错误信息反馈给LLM，让它“反思”并修正SQL语句，然后重试。这个迭代过程可以显著提高查询的成功率。</li>
+</ol>
+<h1 id="查询重构与分发"><a href="#查询重构与分发" class="headerlink" title="查询重构与分发"></a>查询重构与分发</h1><p>用户的原始问题往往不是最优的检索输入。它可能过于复杂、包含歧义，或者与文档的实际措辞存在偏差。为了解决这些问题，需要在检索之前对用户的查询进行“预处理”，这就是<strong>查询重构与分发</strong>。</p>
+<p>两个关键技术：</p>
+<ol>
+<li><strong>查询翻译（Query Translation）</strong>：将用户的原始问题转换成一个或多个更适合检索的形式。</li>
+<li><strong>查询路由（Query Routing）</strong>：根据问题的性质，将其智能地分发到最合适的数据源或检索器。</li>
+</ol>
+<h2 id="查询翻译"><a href="#查询翻译" class="headerlink" title="查询翻译"></a>查询翻译</h2><p>减弱用户自然语言提问与文档库中存储信息之间的“语义差距”。通过<strong>重写、分解或扩展</strong>查询，我们可以显著提升检索的准确率。</p>
+<h3 id="提示工程"><a href="#提示工程" class="headerlink" title="提示工程"></a>提示工程</h3><p>最直接的查询重构方法。通过精心设计的提示词（Prompt），引导 LLM 将用户的原始查询改写得更清晰、更具体，或者转换成一种更利于检索的叙述风格。</p>
+<p>在第二节查询构建的代码示例中，我们发现 <code>SelfQueryRetriever</code> 无法正确处理“时间最短的视频”这类需要排序或进行比较的查询。</p>
+<p>为了解决这个问题，可以采用一种更高级的提示工程技巧：<strong>让 LLM 直接构建出查询指令</strong>。</p>
+<p>这种方法的思路是，要求 LLM 直接分析用户的意图，并生成一个结构化（例如 JSON 格式）的指令，告诉我们的代码应该如何操作。对于“时间最短的视频”这个问题，我们期望 LLM 能直接告诉我们：“请按‘时长’字段进行升序排序，并返回第一条结果”。</p>
+<p>下面，来看看如何修改代码来实现这一思路。我们不再使用 <code>SelfQueryRetriever</code>，而是直接与 LLM 交互，并根据其返回的指令在代码中执行排序逻辑。</p>
+<h3 id="多查询分解-Multi-query"><a href="#多查询分解-Multi-query" class="headerlink" title="多查询分解 (Multi-query)"></a>多查询分解 (Multi-query)</h3><p>当用户提出一个复杂的问题时，直接用整个问题去检索可能效果不佳，因为它可能包含多个子主题或意图。分解技术的核心思想是将这个复杂问题拆分成多个更简单、更具体的子问题。然后，系统分别对每个子问题进行检索，最后将所有检索到的结果合并、去重，形成一个更全面的上下文，再交给 LLM 生成最终答案。</p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li><strong>原始问题</strong>：“在《流浪地球》中，刘慈欣对人工智能和未来社会结构有何看法？”</li>
+<li><strong>分解后的子问题</strong>：<ul>
+<li>“《流浪地球》中描述的人工智能技术有哪些？”</li>
+<li>“《流浪地球》中描绘的未来社会是怎样的？”</li>
+<li>“刘慈欣关于人工智能的观点是什么？”</li>
+</ul>
+</li>
+</ul>
+<h3 id="退步提示（Step-Back-Prompting）"><a href="#退步提示（Step-Back-Prompting）" class="headerlink" title="退步提示（Step-Back Prompting）"></a>退步提示（Step-Back Prompting）</h3><p>退步提示是由 Google DeepMind 团队提出的一种旨在提升大语言模型推理能力的提示工程技巧<a href="https://datawhalechina.github.io/all-in-rag/#fn-2">2</a>。当面对一个细节繁多或过于具体的问题时，模型直接作答（即便是使用思维链）也容易出错。退步提示通过引导模型“退后一步”来解决这个问题。</p>
+<p>其核心流程分为两步：</p>
+<p>（1）<strong>抽象化</strong>：首先，引导 LLM 从用户的原始具体问题中，生成一个更高层次、更概括的“退步问题”（Step-back Question）。这个退步问题旨在探寻原始问题背后的通用原理或核心概念。</p>
+<p>（2）<strong>推理</strong>：接着，系统会先获取“退步问题”的答案（例如，一个物理定律、一段历史背景等），然后将这个通用原理作为上下文，再结合原始的具体问题，进行推理并生成最终答案。</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_1.webp" alt="“退步提示”与“思维链”对比图"></p>
+<p><strong>示例</strong>：</p>
+<ul>
+<li><strong>原始问题</strong>：“如果理想气体的温度增加2倍，体积增加8倍，其压力会如何变化？”</li>
+<li><strong>退步问题</strong>：“这个问题背后的物理原理是什么？”</li>
+<li><strong>推理过程</strong>：首先回答退步问题，得到“理想气体定律 PV&#x3D;nRT”。然后基于这个定律，代入具体数值进行计算，最终得出压力变为原来的1&#x2F;4。</li>
+</ul>
+<p>通过先检索或生成高层知识，再进行具体推理，退步提示能够帮助模型构建一个更坚实的逻辑基础，从而提高在复杂问答场景下的准确性。</p>
+<h3 id="假设性文档嵌入-HyDE"><a href="#假设性文档嵌入-HyDE" class="headerlink" title="假设性文档嵌入 (HyDE)"></a>假设性文档嵌入 (HyDE)</h3><p>假设性文档嵌入（Hypothetical Document Embeddings, HyDE）是一种无需微调即可显著提升向量检索质量的查询改写技术，由 Luyu Gao 等人在其论文中首次提出<a href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。其核心是解决一个普遍存在于检索任务中的难题：用户的查询（Query）通常简短、关键词有限，而数据库中存储的文档则内容详实、上下文丰富，两者在语义向量空间中可能存在“鸿沟”，导致直接用查询向量进行搜索效果不佳。Zilliz 的一篇技术博客<a href="https://datawhalechina.github.io/all-in-rag/#fn-4">4</a>也对该技术进行了深入浅出的解读。</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_2.webp" alt="HyDE"></p>
+<p>HyDE 通过一种巧妙的方式来“绕过”这个问题：它不直接使用用户的原始查询，而是先利用一个生成式大语言模型（LLM）来生成一个“假设性”的、能够完美回答该查询的文档。然后，HyDE 将这个内容详实的假设性文档进行向量化，用其生成的向量去数据库中寻找与之最相似的真实文档。HyDE 的工作流程可以分为三个步骤：</p>
+<p>（1）<strong>生成</strong>：当接收到用户查询时，首先调用一个生成式 LLM（例如，GPT-3.5）。提示该模型根据查询生成一个详细的、可能是理想答案的文档。这个文档不必完全符合事实，但它必须在语义上与一个好的答案高度相关。</p>
+<p>（2）<strong>编码</strong>：将上一步生成的假设性文档输入到一个对比编码器（如 Contriever）中，将其转换为一个高维向量嵌入。这个向量在语义上代表了一个“理想答案”的位置。</p>
+<p>（3）<strong>检索</strong>：使用这个假设性文档的向量，在向量数据库中执行相似性搜索，找出与这个“理想答案”最接近的真实文档。这些被检索出的文档将作为最终的上下文信息。</p>
+<p>通过这种方式，HyDE 将困难的“查询到文档”的匹配问题，转化为了一个相对容易的“文档到文档”的匹配问题，从而提升检索的准确率。</p>
+<h2 id="查询路由"><a href="#查询路由" class="headerlink" title="查询路由"></a>查询路由</h2><p><strong>查询路由（Query Routing）</strong> 是用于优化复杂 RAG 系统的一项关键技术。当系统接入了多个不同的数据源或具备多种处理能力时，就需要一个“智能调度中心”来分析用户的查询，并动态选择最合适的处理路径。其本质是替代硬编码规则，通过语义理解将查询分发至最匹配的数据源、处理组件或提示模板，从而提升系统的效率与答案的准确性。</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>查询路由的应用场景十分广泛。</p>
+<ol>
+<li><strong>数据源路由</strong>：这是最常见的场景。根据查询意图，将其路由到不同的知识库。例如：<ul>
+<li>查询“最新的 iPhone 有什么功能？” -&gt; 路由到<strong>产品文档向量数据库</strong>。</li>
+<li>查询“我上次订购了什么？” -&gt; 路由到<strong>用户历史SQL数据库</strong>（执行Text-to-SQL）。</li>
+<li>查询“A公司和B公司的投资关系是怎样的？” -&gt; 路由到<strong>企业知识图谱数据库</strong>。</li>
+</ul>
+</li>
+<li><strong>组件路由</strong>：根据问题的复杂性，将其分配给不同的处理组件，以平衡成本和效果。<ul>
+<li>简单FAQ → 直接进行向量检索，速度快、成本低。</li>
+<li>复杂操作或需要与外部API交互 → 调用 Agent 来执行任务。</li>
+</ul>
+</li>
+<li><strong>提示模板路由</strong>：为不同类型的任务动态选择最优的提示词模板，以优化生成效果。<ul>
+<li>数学问题 → 选用包含分步思考（Step-by-Step）逻辑的提示模板。</li>
+<li>代码生成 → 选用专门为代码优化过的提示模板。</li>
+</ul>
+</li>
+</ol>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><h4 id="基于LLM的意图识别"><a href="#基于LLM的意图识别" class="headerlink" title="基于LLM的意图识别"></a>基于LLM的意图识别</h4><p>通过设计一个包含路由选项的提示词，让大模型直接对用户的查询进行分类，并输出一个代表路由选择的标签。</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_3.webp" alt="逻辑路由"></p>
+<ul>
+<li><strong>实现流程</strong>：<ol>
+<li>定义清晰的路由选项（例如，数据源名称、功能分类）。</li>
+<li>LLM 分析查询并输出决策标签。</li>
+<li>代码根据标签调用相应的检索器或工具。</li>
+</ol>
+</li>
+</ul>
+<p>该方法的核心在于构建一个“分类-分发”的流水线。这里以一个菜谱问答为例，系统需要根据用户提问的菜系（川菜、粤菜或其他）调用不同的专家模型。</p>
+<h4 id="嵌入相似性路由"><a href="#嵌入相似性路由" class="headerlink" title="嵌入相似性路由"></a>嵌入相似性路由</h4><p>这种方法不依赖 LLM 进行分类，延迟更低。它通过计算用户查询与预设的“路由示例语句”之间的向量嵌入相似度来做出决策。</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_4_4.webp" alt="语义路由"></p>
+<p><strong>第一步：定义路由描述并向量化</strong></p>
+<p>为每个路由创建一个详细的文本描述，并使用嵌入模型将其转换为向量，供后续相似度计算使用。</p>
+<p><strong>第二步：定义目标链</strong></p>
+<p>创建路由最终要分发到的目标处理链，并用一个字典route_map将路由名称和链对应起来。</p>
+<p>第三步：定义路由函数</p>
+<p>定义一个route函数，接收用户问题，计算与各路由描述的相似度，选择最相似的路由并调用相应的处理链。</p>
+<p>第四步：组合并调用</p>
+<p>最后，将route函数包装成一个RunnableLambda，形成一个完整的、可执行的路由链。</p>
+<h1 id="检索进阶"><a href="#检索进阶" class="headerlink" title="检索进阶"></a>检索进阶</h1><p>在基础的 RAG 流程中，依赖向量相似度从知识库中检索信息。不过，这种方法存在一些固有的局限性，例如最相关的文档不总是在检索结果的顶端，以及语义理解的偏差等。为了构建更强大、更精准的生产级 RAG 应用，需要引入更高级的检索技术。</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_1.webp" alt="retrieval"></p>
+<h2 id="重排序-Re-ranking"><a href="#重排序-Re-ranking" class="headerlink" title="重排序(Re-ranking)"></a>重排序(Re-ranking)</h2><h3 id="RRF"><a href="#RRF" class="headerlink" title="RRF"></a>RRF</h3><p>一种简单而有效的零样本重排方法，不依赖于任何模型训练，而是纯粹基于文档在多个检索器（例如，一个稀疏检索器和一个密集检索器）结果列表中的排名俩计算最终分数。</p>
+<p>如果文档在多个检索器结果中都排名靠前，那它可能更重要。RRF通过计算排名的倒数（$\frac1{rank}$）来为文档打分，有效融合了不同检索策略的优势。但如果只考虑排名信息，会忽略原始的相似度分数。</p>
+<h3 id="RankLLM-LLM-based-Reranker"><a href="#RankLLM-LLM-based-Reranker" class="headerlink" title="RankLLM &#x2F; LLM-based Reranker"></a>RankLLM &#x2F; LLM-based Reranker</h3><p>ankLLM 代表了一类直接利用大型语言模型本身来进行重排的方法<a href="https://datawhalechina.github.io/all-in-rag/#fn-1">1</a>。其基本逻辑非常直观：既然 LLM 最终要负责根据上下文来生成答案，那么为什么不直接让它来判断哪些上下文最相关呢？</p>
+<p>这种方法通过一个精心设计的提示词来实现。该提示词会包含用户的查询和一系列候选文档（通常是文档的摘要或关键部分），然后要求 LLM 以特定格式（如 JSON）输出一个排序后的文档列表，并给出每个文档的相关性分数。</p>
+<p>提示词示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">以下是一个文档列表，每个文档都有一个编号和摘要。同时提供一个问题。请根据问题，按相关性顺序列出您认为需要查阅的文档编号，并给出相关性分数（1-10分）。请不要包含与问题无关的文档。</span><br><span class="line"></span><br><span class="line">示例格式:</span><br><span class="line">文档 1: &lt;文档1的摘要&gt;</span><br><span class="line">文档 2: &lt;文档2的摘要&gt;</span><br><span class="line">...</span><br><span class="line">文档 10: &lt;文档10的摘要&gt;</span><br><span class="line"></span><br><span class="line">问题: &lt;用户的问题&gt;</span><br><span class="line"></span><br><span class="line">回答:</span><br><span class="line">Doc: 9, Relevance: 7</span><br><span class="line">Doc: 3, Relevance: 4</span><br><span class="line">Doc: 7, Relevance: 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cross-Encoder-重排"><a href="#Cross-Encoder-重排" class="headerlink" title="Cross-Encoder 重排"></a>Cross-Encoder 重排</h3><p>交叉编码器能提供出色的重排精度。工作原理是将查询（Query）和每个候选文档（Document）<strong>拼接</strong>成一个单一的输入（例如，<code>[CLS] query [SEP] document [SEP]</code>），然后将这个整体输入到一个预训练的 Transformer 模型（如 BERT）中，模型最终会输出一个单一的分数（通常在 0 到 1 之间），这个分数直接代表了文档与查询的<strong>相关性</strong>。</p>
+<blockquote>
+<p>[!NOTE]</p>
+<p>交叉编码器会将两个输入句子拼接后一起编码&amp;]，直接输出一个相关性或分类分数，而不是分别生成独立的向量再计算相似度。这种方式能捕捉句子间的细粒度交互，因此在分类、重排序等高精度任务中表现更好，但推理速度较慢、计算成本高。</p>
+<p><strong>[SEP]</strong> 是在 BERT 这类基于 Transformer 架构的模型中，用于分隔不同文本片段（如查询和文档）的特殊标记。</p>
+</blockquote>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_3.svg" alt="cross-encoder"></p>
+<p>上图清晰地展示了 Cross-Encoder 的工作流程：</p>
+<ol>
+<li><strong>初步检索</strong>：搜索引擎首先从知识库中召回一个初始的文档列表（例如，前 50 篇）。</li>
+<li><strong>逐一评分</strong>：对于列表中的<strong>每一篇</strong>文档，系统都将其与原始查询<strong>配对</strong>，然后发送给 Cross-Encoder 模型。</li>
+<li><strong>独立推理</strong>：模型对每个“查询-文档”对进行一次完整的、独立的推理计算，得出一个精确的相关性分数。</li>
+<li><strong>返回重排结果</strong>：系统根据这些新的分数对文档列表进行重新排序，并将最终结果返回给用户。</li>
+</ol>
+<p>这个流程凸显了其高精度的来源（同时分析查询和文档），也解释了其高延迟的原因（需要N次独立的模型推理）。</p>
+<p>常见的 Cross-Encoder 模型包括 <code>ms-marco-MiniLM-L-12-v2</code>、<code>ms-marco-TinyBERT-L-2-v2</code> 等。</p>
+<h3 id="ColBERT-重排"><a href="#ColBERT-重排" class="headerlink" title="ColBERT 重排"></a>ColBERT 重排</h3><p>ColBERT（Contextualized Late Interaction over BERT）是一种创新的重排模型，它在 Cross-Encoder 的高精度和双编码器（Bi-Encoder）的高效率之间取得了平衡<a href="https://datawhalechina.github.io/all-in-rag/#fn-3">3</a>。采用了一种“<strong>后期交互</strong>”机制。</p>
+<p>其工作流程如下：</p>
+<ol>
+<li><strong>独立编码</strong>：ColBERT 分别为查询（Query）和文档（Document）中的每个 Token 生成上下文相关的嵌入向量。这一步是独立完成的，可以预先计算并存储文档的向量，从而加快查询速度。</li>
+<li><strong>后期交互</strong>：在查询时，模型会计算查询中每个 Token 的向量与文档中每个 Token 向量之间的最大相似度（MaxSim）。</li>
+<li><strong>分数聚合</strong>：最后，将查询中所有 Token 得到的最大相似度分数相加，得到最终的相关性总分。</li>
+</ol>
+<p>通过这种方式，ColBERT 避免了将查询和文档拼接在一起进行昂贵的联合编码，同时又比单纯比较单个 <code>[CLS]</code> 向量的双编码器模型捕捉了更细粒度的词汇级交互信息。</p>
+<h3 id="重排方法对比"><a href="#重排方法对比" class="headerlink" title="重排方法对比"></a>重排方法对比</h3><p>为了更直观地理解不同重排方法的特点和适用场景，下表对讨论过的几种主流方法进行了总结：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>RRF</th>
+<th>RankLLM</th>
+<th>Cross-Encoder</th>
+<th>ColBERT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>核心机制</strong></td>
+<td>融合多个排名</td>
+<td>LLM 推理，生成排序列表</td>
+<td>联合编码查询与文档，计算单一相关分</td>
+<td>独立编码，后期交互</td>
+</tr>
+<tr>
+<td><strong>计算成本</strong></td>
+<td>低（简单数学计算）</td>
+<td>中 (API 费用与延迟)</td>
+<td>高（N次模型推理）</td>
+<td>中（向量点积计算）</td>
+</tr>
+<tr>
+<td><strong>交互粒度</strong></td>
+<td>无（仅排名）</td>
+<td>概念&#x2F;语义级</td>
+<td>句子级（Query-Doc Pair）</td>
+<td>Token 级</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>多路召回结果融合</td>
+<td>高价值语义理解场景</td>
+<td>Top-K 精排</td>
+<td>Top-K 重排</td>
+</tr>
+</tbody></table>
+<h2 id="压缩-Compression"><a href="#压缩-Compression" class="headerlink" title="压缩(Compression)"></a>压缩(Compression)</h2><p>“压缩”技术旨在解决一个常见问题：初步检索到的文档块（Chunks）虽然整体上与查询相关，但可能包含大量无关的“噪音”文本。将这些未经处理的、冗长的上下文直接提供给 LLM，不仅会增加 API 调用的成本和延迟，还可能因为信息过载而降低最终生成答案的质量。</p>
+<p>压缩的目标就是对检索到的内容进行“压缩”和“提炼”，只保留与用户查询最直接相关的信息。这可以通过两种主要方式实现：</p>
+<ol>
+<li><strong>内容提取</strong>：从文档中只抽出与查询相关的句子或段落。</li>
+<li><strong>文档过滤</strong>：完全丢弃那些虽然被初步召回，但经过更精细判断后认为不相关的整个文档。</li>
+</ol>
+<h3 id="LangChain-的-ContextualCompressionRetriever"><a href="#LangChain-的-ContextualCompressionRetriever" class="headerlink" title="LangChain 的 ContextualCompressionRetriever"></a>LangChain 的 ContextualCompressionRetriever</h3><p>LangChain 提供了一个强大的组件 <code>ContextualCompressionRetriever</code> 来实现上下文压缩<a href="https://datawhalechina.github.io/all-in-rag/#fn-4">4</a>。它像一个包装器，包裹在基础的检索器（如 <code>FAISS.as_retriever()</code>）之上。当基础检索器返回文档后，<code>ContextualCompressionRetriever</code> 会使用一个指定的 <code>DocumentCompressor</code> 对这些文档进行处理，然后再返回给调用者。</p>
+<p>LangChain 内置了多种 <code>DocumentCompressor</code>：</p>
+<ul>
+<li><code>LLMChainExtractor</code>: 这是最直接的压缩方式。它会遍历每个文档，并利用一个 LLM Chain 来判断并提取出其中与查询相关的部分。这是一种“内容提取”。</li>
+<li><code>LLMChainFilter</code>: 这种压缩器同样使用 LLM，但它做的是“文档过滤”。它会判断整个文档是否与查询相关，如果相关，则保留整个文档；如果不相关，则直接丢弃。</li>
+<li><code>EmbeddingsFilter</code>: 这是一种更快速、成本更低的过滤方法。它会计算查询和每个文档的嵌入向量之间的相似度，只保留那些相似度超过预设阈值的文档。</li>
+</ul>
+<h3 id="自定义重排器与压缩管道"><a href="#自定义重排器与压缩管道" class="headerlink" title="自定义重排器与压缩管道"></a>自定义重排器与压缩管道</h3><p>在前面我们就提到根据实际应用，需要自己进行一些功能的实现。这里以 ColBERT 为例，展示如何集成未被官方支持的功能。</p>
+<p>整个探索和实现过程如下：</p>
+<ol>
+<li><strong>从官方文档出发</strong>：首先，通过 LangChain 官方文档，了解到可以通过 <code>DocumentCompressorPipeline</code> 来组合多个压缩器和文档转换器。</li>
+<li><strong>需求缺口</strong>：希望使用 ColBERT 模型进行重排，但发现 LangChain 并没有内置的 <code>ColBERT</code> 重排器。</li>
+<li><strong>分析示例与源码</strong>：回头分析 <code>ContextualCompressionRetriever</code> 的用法和源码。我们发现，其处理逻辑分为两步：首先使用 <code>base_retriever</code> 获取原始文档，然后将这些文档交给 <code>base_compressor</code> 进行压缩或重排。这说明，实现自定义后处理（如重排）功能的关键在于 <code>base_compressor</code>。</li>
+<li><strong>定位核心基类</strong>：通过f12查看源码，确定 <code>base_compressor</code> 参数接收的是 <code>BaseDocumentCompressor</code> 类型的对象。这就是实现自定义功能的核心切入点。</li>
+<li><strong>参考与实现</strong>：最后，参考 LangChain 中其他重排器的实现方式，通过继承 <code>BaseDocumentCompressor</code> 基类并实现其关键方法，创建自己的 <code>ColBERTReranker</code> 类。</li>
+</ol>
+<blockquote>
+<p>PS：如果代码基础薄弱，想借助大模型帮你完成 <code>ColBERTReranker</code> ，需要提供给大模型的关键信息：<code>BaseDocumentCompressor</code> 的源码和 <code>ContextualCompressionRetriever</code> 的源码及其使用示例、你的明确目标（实现 ColBERT 重排逻辑）、以及 LangChain 中其他重排器的代码作为参考。信息越充分，模型生成的代码越准确。</p>
+</blockquote>
+<h3 id="LlamaIndex-中的检索压缩"><a href="#LlamaIndex-中的检索压缩" class="headerlink" title="LlamaIndex 中的检索压缩"></a>LlamaIndex 中的检索压缩</h3><p>LlamaIndex 同样提供了封装好的压缩功能，其代表是 <code>SentenceEmbeddingOptimizer</code><a href="https://datawhalechina.github.io/all-in-rag/#fn-5">5</a>。它也是一个后处理器（Node Postprocessor），工作在检索之后。</p>
+<p>它的工作原理是，对于每个检索到的文档，将其分解成句子。然后计算每个句子与用户查询的嵌入相似度，最后只保留那些相似度最高的句子，从而“优化”文档，去除无关信息。</p>
+<h2 id="校正-Correcting"><a href="#校正-Correcting" class="headerlink" title="校正(Correcting)"></a>校正(Correcting)</h2><p>传统的 RAG 流程有一个隐含的假设：检索到的文档总是与问题相关且包含正确答案。然而在现实世界中，检索系统可能会失败，返回不相关、过时或甚至完全错误的文档。如果将这些“有毒”的上下文直接喂给 LLM，就可能导致幻觉（Hallucination）或产生错误的回答。</p>
+<p><strong>校正检索（Corrective-RAG, C-RAG）</strong> 正是为解决这一问题而提出的一种策略<a href="https://datawhalechina.github.io/all-in-rag/#fn-6">6</a>。思路是引入一个“自我反思”或“自我修正”的循环，在生成答案之前，对检索到的文档质量进行评估，并根据评估结果采取不同的行动。</p>
+<p>C-RAG 的工作流程可以概括为 <strong>“检索-评估-行动”</strong> 三个阶段：</p>
+<p><img src="https://datawhalechina.github.io/all-in-rag/chapter4/images/4_5_4.webp" alt="C-RAG"></p>
+<ol>
+<li><strong>检索 (Retrieve)</strong> ：与标准 RAG 一样，首先根据用户查询从知识库中检索一组文档。</li>
+<li><strong>评估 (Assess)</strong> ：这是 C-RAG 的关键步骤。如图所示，一个“检索评估器 (Retrieval Evaluator)”会判断每个文档与查询的相关性，并给出“正确 (Correct)”、“不正确 (Incorrect)”或“模糊 (Ambiguous)”的标签。</li>
+<li><strong>行动 (Act)</strong> ：根据评估结果，系统会进入不同的知识修正与获取流程：<ul>
+<li><strong>如果评估为“正确”</strong>：系统会进入“知识精炼 (Knowledge Refinement)”环节。如图，它会将原始文档分解成更小的知识片段 (strips)，过滤掉无关部分，然后重新组合成更精准、更聚焦的上下文，再送给大模型生成答案。</li>
+<li><strong>如果评估为“不正确”</strong>：系统认为内部知识库无法回答问题，此时会触发“知识搜索 (Knowledge Searching)”。它会先对原始查询进行“查询重写 (Query Rewriting)”，生成一个更适合搜索引擎的查询，然后进行 Web 搜索，用外部信息来回答问题。</li>
+<li><strong>如果评估为“模糊”</strong>：同样会触发“知识搜索”，但通常会直接使用原始查询进行 Web 搜索，以获取额外信息来辅助生成答案。</li>
+</ul>
+</li>
+</ol>
+<p>通过这种方式，C-RAG 极大地增强了 RAG 系统的鲁棒性。不再盲目信任检索结果，而是增加了一个“事实核查”层，能够在检索失败时主动寻求外部帮助，从而有效减少幻觉，提升答案的准确性和可靠性。</p>
+<p>在 LangChain 的 <code>langgraph</code> 库中，可以利用其图结构来灵活地构建这种带有条件判断和循环的复杂 RAG 流程。</p>
+]]></content>
+      <categories>
+        <category>RAG</category>
+        <category>检索优化</category>
+      </categories>
+      <tags>
+        <tag>RAG</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RAG-系统评估</title>
     <url>/2026/04/16/RAG-%E7%B3%BB%E7%BB%9F%E8%AF%84%E4%BC%B0/</url>
     <content><![CDATA[<h1 id="RAG评估"><a href="#RAG评估" class="headerlink" title="RAG评估"></a>RAG评估</h1><p>构建好一个RAG系统后，应该如何评判这个系统的好坏？如何快速定位问题根源？</p>
@@ -2993,6 +2993,65 @@
       </tags>
   </entry>
   <entry>
+    <title>智能体通信协议</title>
+    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
+<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
+<ul>
+<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
+<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
+<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
+</ul>
+<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
+<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
+<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
+<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
+<p><strong>（2）A2A：智能体间的对话</strong></p>
+<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
+<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
+<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
+<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
+<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
+<p>图 10.3 ANP 设计思想</p>
+<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
+<p>表 10.1 三种协议对比</p>
+<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
+<p><strong>（4）如何选择合适的协议？</strong></p>
+<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
+<p>选择协议的关键在于理解你的需求：</p>
+<ul>
+<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
+<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
+<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
+</ul>
+<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MCP (模型上下文协议) 是一个用于将 AI 应用程序与外部系统连接的开源标准。</p>
+<p>通过 MCP，诸如 Claude 或 ChatGPT 之类的 AI 应用程序可以连接到数据源（resource如本地文件、数据库）、工具（tool如搜索引擎、计算器）和工作流（workflow如专业提示词）—— 使其能够访问关键信息并执行任务。</p>
+<p>可以将 MCP 想象成 AI 应用程序的 USB-C 接口。正如 USB-C 提供了一种连接电子设备的标准化方式，MCP 提供了一种将 AI 应用程序连接到外部系统的标准化方式。</p>
+<p>MCP 架构中的关键参与者包括：</p>
+<ul>
+<li>**MCP 宿主 (Host)**：协调和管理一个或多个 MCP 客户端的 AI 应用；</li>
+<li>**MCP 客户端 (Client)**：维持与 MCP 服务端连接并获取上下文供 MCP 宿主使用的组件，由host创建得到；</li>
+<li>**MCP 服务端 (Server)**：为 MCP 客户端提供上下文的程序。</li>
+</ul>
+<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>MCP可分为两层：</p>
+<ul>
+<li><strong>数据层</strong>：定义基于 JSON-RPC 的客户端-服务端通信协议，包括生命周期管理以及工具、资源、提示词和通知等核心原语。</li>
+<li><strong>传输层</strong>：定义支持客户端和服务端之间数据交换的通信机制和通道，包括特定传输方式的连接建立、消息分帧、授权</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Agent</category>
+        <category>通信协议</category>
+        <category>MCP A2A ANP</category>
+      </categories>
+      <tags>
+        <tag>Agent</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>FastAPI学习</title>
     <url>/2026/04/25/FastAPI%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h2 id="常见项目结构"><a href="#常见项目结构" class="headerlink" title="常见项目结构"></a>常见项目结构</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fastapi-project/</span><br><span class="line">├── app</span><br><span class="line">│   ├── main.py                 # 项目全局入口</span><br><span class="line">│   ├── core                    # 核心配置模块</span><br><span class="line">│   │   ├── config.py           # 全局配置、环境变量读取</span><br><span class="line">│   │   └── security.py         # JWT令牌、密码加密</span><br><span class="line">│   ├── api                     # 路由控制层</span><br><span class="line">│   │   └── v1</span><br><span class="line">│   │       └── user.py         # 用户相关接口</span><br><span class="line">│   ├── schemas                 # Pydantic数据校验、序列化层</span><br><span class="line">│   ├── crud                    # 业务逻辑层</span><br><span class="line">│   ├── models                  # ORM数据库模型层</span><br><span class="line">│   ├── db                      # 数据库连接层</span><br><span class="line">│   └── utils                   # 公共工具类</span><br><span class="line">├── .env                        # 环境变量配置文件</span><br><span class="line">└── requirements.txt             # 项目依赖包</span><br></pre></td></tr></table></figure>
@@ -3118,65 +3177,6 @@
       </categories>
       <tags>
         <tag>fastapi</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能体通信协议</title>
-    <url>/2026/04/26/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<p><strong>如何让智能体与外部世界高效交互？如何让多个智能体相互协作？</strong>这就需要使用到智能体通信协议了。</p>
-<p>目前主要有三种通信协议，这三种协议共同构成了智能体通信的基础设施层。</p>
-<ul>
-<li><strong>MCP（Model Context Protocol）</strong>用于智能体与工具的标准化通信；</li>
-<li><strong>A2A（Agent-to-Agent Protocol）</strong>用于智能体间的点对点协作；</li>
-<li><strong>ANP（Agent Network Protocol）</strong>用于构建大规模智能体网络。</li>
-</ul>
-<h1 id="设计理念比较"><a href="#设计理念比较" class="headerlink" title="设计理念比较"></a>设计理念比较</h1><p>智能体通信协议并非单一的解决方案，而是针对不同通信场景设计的一系列标准。在本章以目前业界主流的三种协议 MCP、A2A 和 ANP 为例进行实践，下面是一个总览的比较。</p>
-<p><strong>（1）MCP：智能体与工具的桥梁</strong></p>
-<p>MCP（Model Context Protocol）由 Anthropic 团队提出[1]，其核心设计理念是<strong>标准化智能体与外部工具&#x2F;资源的通信方式</strong>。想象一下，你的智能体需要访问文件系统、数据库、GitHub、Slack 等各种服务。传统做法是为每个服务编写专门的适配器，这不仅工作量大，而且难以维护。MCP 通过定义统一的协议规范，让所有服务都能以相同的方式被访问。</p>
-<p>MCP 的设计哲学是”上下文共享”。它不仅仅是一个 RPC（远程过程调用）协议，更重要的是它允许智能体和工具之间共享丰富的上下文信息。如图 10.1 所示，当智能体访问一个代码仓库时，MCP 服务器不仅能提供文件内容，还能提供代码结构、依赖关系、提交历史等上下文信息，让智能体能够做出更智能的决策。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-1.png" alt="img"></p>
-<p><strong>（2）A2A：智能体间的对话</strong></p>
-<p>A2A（Agent-to-Agent Protocol）协议由 Google 团队提出2，其核心设计理念是<strong>实现智能体之间的点对点通信</strong>。与 MCP 关注智能体与工具的通信不同，A2A 关注的是智能体之间如何相互协作。这种设计让智能体能够像人类团队一样进行对话、协商和协作。</p>
-<p>A2A 的设计哲学是”对等通信”。如图 10.2 所示，在 A2A 网络中，每个智能体既是服务提供者，也是服务消费者。智能体可以主动发起请求，也可以响应其他智能体的请求。这种对等的设计避免了中心化协调器的瓶颈，让智能体网络更加灵活和可扩展。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-2.png" alt="img"></p>
-<p><strong>（3）ANP：智能体网络的基础设施</strong></p>
-<p>ANP（Agent Network Protocol）是一个概念性的协议框架3，目前由开源社区维护，还没有成熟的生态，其核心设计理念是<strong>构建大规模智能体网络的基础设施</strong>。如果说 MCP 解决的是”如何访问工具”，A2A 解决的是”如何与其他智能体对话”，那么 ANP 解决的是”如何在大规模网络中发现和连接智能体”。</p>
-<p>ANP 的设计哲学是”去中心化服务发现”。在一个包含成百上千个智能体的网络中，如何让智能体能够找到它需要的服务？如图 10.3 所示，ANP 提供了服务注册、发现和路由机制，让智能体能够动态地发现网络中的其他服务，而不需要预先配置所有的连接关系。</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-3.png" alt="img"></p>
-<p>图 10.3 ANP 设计思想</p>
-<p>最后在表 10.1 中，让我们通过一个对比表格来更清晰地理解这三种协议的差异：</p>
-<p>表 10.1 三种协议对比</p>
-<p><img src="https://raw.githubusercontent.com/datawhalechina/Hello-Agents/main/docs/images/10-figures/10-table-1.png" alt="img"></p>
-<p><strong>（4）如何选择合适的协议？</strong></p>
-<p>目前的协议还处于发展早期，MCP 的生态相对成熟，不过各种工具的时效性取决于维护者，更推荐选择大公司背书的 MCP 工具。</p>
-<p>选择协议的关键在于理解你的需求：</p>
-<ul>
-<li>如果你的智能体需要访问外部服务（文件、数据库、API），选择<strong>MCP</strong></li>
-<li>如果你需要多个智能体相互协作完成任务，选择<strong>A2A</strong></li>
-<li>如果你要构建大规模的智能体生态系统，考虑<strong>ANP</strong></li>
-</ul>
-<h1 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MCP (模型上下文协议) 是一个用于将 AI 应用程序与外部系统连接的开源标准。</p>
-<p>通过 MCP，诸如 Claude 或 ChatGPT 之类的 AI 应用程序可以连接到数据源（resource如本地文件、数据库）、工具（tool如搜索引擎、计算器）和工作流（workflow如专业提示词）—— 使其能够访问关键信息并执行任务。</p>
-<p>可以将 MCP 想象成 AI 应用程序的 USB-C 接口。正如 USB-C 提供了一种连接电子设备的标准化方式，MCP 提供了一种将 AI 应用程序连接到外部系统的标准化方式。</p>
-<p>MCP 架构中的关键参与者包括：</p>
-<ul>
-<li>**MCP 宿主 (Host)**：协调和管理一个或多个 MCP 客户端的 AI 应用；</li>
-<li>**MCP 客户端 (Client)**：维持与 MCP 服务端连接并获取上下文供 MCP 宿主使用的组件，由host创建得到；</li>
-<li>**MCP 服务端 (Server)**：为 MCP 客户端提供上下文的程序。</li>
-</ul>
-<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>MCP可分为两层：</p>
-<ul>
-<li><strong>数据层</strong>：定义基于 JSON-RPC 的客户端-服务端通信协议，包括生命周期管理以及工具、资源、提示词和通知等核心原语。</li>
-<li><strong>传输层</strong>：定义支持客户端和服务端之间数据交换的通信机制和通道，包括特定传输方式的连接建立、消息分帧、授权</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Agent</category>
-        <category>通信协议</category>
-        <category>MCP A2A ANP</category>
-      </categories>
-      <tags>
-        <tag>Agent</tag>
       </tags>
   </entry>
   <entry>
@@ -4262,6 +4262,358 @@
       </tags>
   </entry>
   <entry>
+    <title>后端八股：Java 线程池与 Redis</title>
+    <url>/2026/08/27/%E5%90%8E%E7%AB%AF%E5%85%AB%E8%82%A1/</url>
+    <content><![CDATA[<h2 id="Java-线程池"><a href="#Java-线程池" class="headerlink" title="Java 线程池"></a>Java 线程池</h2><h2 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h2><ul>
+<li>AbortPolicy：拒绝处理新任务并抛出RejectExecutionException</li>
+<li>CallerRunPolicy：调用 <strong>执行execute()方法的线程</strong> 来运行被拒绝的新任务。</li>
+<li>DiscardPolicy：不处理新任务，直接丢弃</li>
+<li>DiscardOldestPolicy：丢弃最早未被处理的任务（等待时间最长的任务）</li>
+</ul>
+<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="过期删除策略"><a href="#过期删除策略" class="headerlink" title="过期删除策略"></a>过期删除策略</h2><p>惰性删除：只在访问数据时进行过期检查，缺点：太多过期key没有被删除</p>
+<p>定期删除：周期性随机抽查一批设置了过期时间的key，如果过期就删除。对内存友好，对CPU不友好</p>
+<p>延迟队列：设置了过期时间的加入到延迟队列，过期就删除（类似定时任务）</p>
+<p>定时删除：每个设置了过期时间的key一过期就删除，需要每个键单独设置定时器</p>
+<p>Redis采用 <strong>定期删除+惰性&#x2F;懒汉式删除</strong> 相结合的策略。</p>
+<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><h3 id="不淘汰（默认策略，noeviction）"><a href="#不淘汰（默认策略，noeviction）" class="headerlink" title="不淘汰（默认策略，noeviction）"></a>不淘汰（默认策略，noeviction）</h3><p>noeviction：不删除任何 key，写操作直接返回 OOM 错误。读请求正常。</p>
+<h3 id="volatile-设置了过期时间的key"><a href="#volatile-设置了过期时间的key" class="headerlink" title="volatile-设置了过期时间的key"></a>volatile-设置了过期时间的key</h3><p>只看设置了 <code>expire</code> 的键，永不过期的 key 完全不动。</p>
+<ol>
+<li><code>volatile‑lru</code>：过期 key 里，淘汰<strong>最近最少使用 LRU</strong></li>
+<li><code>volatile‑lfu</code>：过期 key 里，淘汰<strong>访问频次最低 LFU</strong></li>
+<li><code>volatile‑ttl</code>：过期 key 里，淘汰<strong>剩余存活时间最短</strong>（TTL 最小，马上要过期）</li>
+<li><code>volatile‑random</code>：过期 key 里，<strong>随机删除</strong></li>
+</ol>
+<blockquote>
+<p>如果所有带过期的 key 删完，内存还不够 → 退化成 <code>noeviction</code>，写报错。</p>
+</blockquote>
+<h3 id="Allkey"><a href="#Allkey" class="headerlink" title="Allkey"></a>Allkey</h3><p>所有 key，不管有没有设置过期时间，都参与淘汰。</p>
+<ol>
+<li><code>allkeys‑lru</code>：全部 key，淘汰最近最少使用</li>
+<li><code>allkeys‑lfu</code>：全部 key，淘汰访问频次最低</li>
+<li><code>allkeys‑random</code>：全部 key，随机删除</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java 21 集合框架详解：常用集合、底层原理与选型</title>
+    <url>/2026/09/07/Java21%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>在 Java 后端开发中，集合几乎无处不在：查询结果通常放在 <code>List</code> 中，缓存和对象索引经常使用 <code>Map</code>，去重会使用 <code>Set</code>，任务调度和生产者—消费者模型则离不开队列。</p>
+<p>集合类的难点并不只是记住 API。真正重要的是理解不同集合的底层结构、时间复杂度、线程安全特性和适用场景。本文以 Java 21 为版本基准，重点整理日常开发和面试中最常用、最重要的集合类型。</p>
+<h2 id="一、集合框架整体结构"><a href="#一、集合框架整体结构" class="headerlink" title="一、集合框架整体结构"></a>一、集合框架整体结构</h2><h3 id="1-Collection-体系"><a href="#1-Collection-体系" class="headerlink" title="1. Collection 体系"></a>1. <code>Collection</code> 体系</h3><p><code>Collection</code> 表示一组独立的元素，主要分为三类：</p>
+<ul>
+<li><code>List</code>：有序、可重复，例如 <code>ArrayList</code>。</li>
+<li><code>Set</code>：通常不允许重复，例如 <code>HashSet</code>。</li>
+<li><code>Queue</code> 和 <code>Deque</code>：面向队列或双端队列的操作，例如 <code>ArrayDeque</code>。</li>
+</ul>
+<p>常见继承关系可以简化为：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">Iterable</span><br><span class="line">└── Collection</span><br><span class="line">    ├── List</span><br><span class="line">    ├── Set</span><br><span class="line">    └── Queue</span><br><span class="line">        └── Deque</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Map-体系"><a href="#2-Map-体系" class="headerlink" title="2. Map 体系"></a>2. <code>Map</code> 体系</h3><p><code>Map</code> 不属于 <code>Collection</code>，因为它存储的是键值对，而不是单独的元素。一个键最多对应一个值，常用实现包括：</p>
+<ul>
+<li><code>HashMap</code>：按哈希值快速查找。</li>
+<li><code>LinkedHashMap</code>：在哈希表基础上维护顺序。</li>
+<li><code>TreeMap</code>：按照键排序。</li>
+<li><code>ConcurrentHashMap</code>：支持并发访问。</li>
+</ul>
+<h3 id="3-集合选择的基本思路"><a href="#3-集合选择的基本思路" class="headerlink" title="3. 集合选择的基本思路"></a>3. 集合选择的基本思路</h3><p>选择集合时，可以依次考虑以下问题：</p>
+<ol>
+<li>是否需要键值映射？需要就考虑 <code>Map</code>。</li>
+<li>是否允许重复？不允许就考虑 <code>Set</code>。</li>
+<li>是否需要按索引访问？需要就优先考虑 <code>ArrayList</code>。</li>
+<li>是否需要首尾进出？考虑 <code>ArrayDeque</code>。</li>
+<li>是否需要自动排序？考虑 <code>TreeMap</code> 或 <code>TreeSet</code>。</li>
+<li>是否存在并发访问？选择并发集合，而不是简单地给普通集合加一个“线程安全”的想象。</li>
+</ol>
+<h2 id="二、List：优先掌握-ArrayList"><a href="#二、List：优先掌握-ArrayList" class="headerlink" title="二、List：优先掌握 ArrayList"></a>二、List：优先掌握 ArrayList</h2><h3 id="1-ArrayList-的特点"><a href="#1-ArrayList-的特点" class="headerlink" title="1. ArrayList 的特点"></a>1. ArrayList 的特点</h3><p><code>ArrayList</code> 是开发中最常用的 <code>List</code> 实现，底层使用一个可扩容的数组保存元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; names = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">names.add(<span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">names.add(<span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> names.get(<span class="number">0</span>);</span><br><span class="line">names.set(<span class="number">1</span>, <span class="string">&quot;Charlie&quot;</span>);</span><br><span class="line">names.remove(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>它的主要特点是：</p>
+<ul>
+<li>支持按索引快速访问。</li>
+<li>允许重复元素和 <code>null</code>。</li>
+<li>保持元素的插入顺序。</li>
+<li>尾部添加通常很快，但扩容时需要复制数组。</li>
+<li>中间插入和删除需要移动后续元素。</li>
+</ul>
+<h3 id="2-扩容机制"><a href="#2-扩容机制" class="headerlink" title="2. 扩容机制"></a>2. 扩容机制</h3><p><code>ArrayList</code> 内部维护一个数组。当数组容量不足时，会创建更大的数组并复制原有元素。Java 21 中，空的 <code>ArrayList</code> 通常不会在构造时立即分配完整数组，而是在第一次添加元素时分配容量。</p>
+<p>因此，如果能够预估数据规模，可以指定初始容量：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Integer&gt; values = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">10_000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样可以减少多次扩容和数组复制，但也不应该为了“保险”而盲目设置一个特别大的容量，否则会浪费内存。</p>
+<h3 id="3-ArrayList-的复杂度"><a href="#3-ArrayList-的复杂度" class="headerlink" title="3. ArrayList 的复杂度"></a>3. ArrayList 的复杂度</h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th align="right">平均复杂度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>get(index)</code></td>
+<td align="right">O(1)</td>
+<td>数组随机访问</td>
+</tr>
+<tr>
+<td><code>set(index, value)</code></td>
+<td align="right">O(1)</td>
+<td>直接修改数组位置</td>
+</tr>
+<tr>
+<td>尾部 <code>add()</code></td>
+<td align="right">均摊 O(1)</td>
+<td>扩容时会暂时变慢</td>
+</tr>
+<tr>
+<td>中间 <code>add()</code></td>
+<td align="right">O(n)</td>
+<td>需要移动元素</td>
+</tr>
+<tr>
+<td>按索引 <code>remove()</code></td>
+<td align="right">O(n)</td>
+<td>需要移动元素</td>
+</tr>
+<tr>
+<td><code>contains()</code></td>
+<td align="right">O(n)</td>
+<td>需要线性查找</td>
+</tr>
+</tbody></table>
+<h3 id="4-remove-的重载陷阱"><a href="#4-remove-的重载陷阱" class="headerlink" title="4. remove() 的重载陷阱"></a>4. <code>remove()</code> 的重载陷阱</h3><p>对 <code>List&lt;Integer&gt;</code> 调用 <code>remove()</code> 时，传入整数默认会匹配按索引删除的方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(List.of(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>));</span><br><span class="line"></span><br><span class="line">numbers.remove(<span class="number">1</span>);                  <span class="comment">// 删除索引为 1 的元素，即 20</span></span><br><span class="line">numbers.remove(Integer.valueOf(<span class="number">30</span>)); <span class="comment">// 删除值为 30 的元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-LinkedList-是否值得使用"><a href="#5-LinkedList-是否值得使用" class="headerlink" title="5. LinkedList 是否值得使用"></a>5. LinkedList 是否值得使用</h3><p><code>LinkedList</code> 底层是双向链表，节点中保存前驱、元素和后继引用。</p>
+<p>它在已经定位到节点时，插入和删除可以是 O(1)，但按索引访问需要先从头部或尾部查找节点，复杂度为 O(n)。此外，每个节点都是独立对象，会带来额外的引用和对象开销，CPU 缓存局部性也不如数组。</p>
+<p>因此，在普通的列表场景中通常优先使用 <code>ArrayList</code>。如果需要高效地从两端插入、删除或进行栈操作，优先考虑 <code>ArrayDeque</code>。</p>
+<h2 id="三、Map：HashMap-是核心"><a href="#三、Map：HashMap-是核心" class="headerlink" title="三、Map：HashMap 是核心"></a>三、Map：HashMap 是核心</h2><h3 id="1-HashMap-的基本使用"><a href="#1-HashMap-的基本使用" class="headerlink" title="1. HashMap 的基本使用"></a>1. HashMap 的基本使用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;Long, String&gt; users = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">users.put(<span class="number">1L</span>, <span class="string">&quot;Alice&quot;</span>);</span><br><span class="line">users.put(<span class="number">2L</span>, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> users.get(<span class="number">1L</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">defaultName</span> <span class="operator">=</span> users.getOrDefault(<span class="number">3L</span>, <span class="string">&quot;Unknown&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>HashMap</code> 的主要特点是：</p>
+<ul>
+<li>通过键的哈希值定位元素。</li>
+<li>平均情况下查询、插入和删除接近 O(1)。</li>
+<li>允许一个 <code>null</code> 键和多个 <code>null</code> 值。</li>
+<li>不保证遍历顺序。</li>
+<li>不是线程安全的。</li>
+</ul>
+<h3 id="2-put-的大致过程"><a href="#2-put-的大致过程" class="headerlink" title="2. put 的大致过程"></a>2. put 的大致过程</h3><p>执行 <code>put(key, value)</code> 时，可以抽象为以下步骤：</p>
+<ol>
+<li>计算键的哈希值。</li>
+<li>根据哈希值定位数组下标。</li>
+<li>如果当前位置为空，直接放入节点。</li>
+<li>如果发生冲突，比较键是否相等。</li>
+<li>键相同则覆盖旧值，键不同则挂到链表或红黑树中。</li>
+<li>元素数量超过阈值时扩容。</li>
+</ol>
+<h3 id="3-哈希冲突与红黑树"><a href="#3-哈希冲突与红黑树" class="headerlink" title="3. 哈希冲突与红黑树"></a>3. 哈希冲突与红黑树</h3><p><code>HashMap</code> 的桶中可能保存链表。当同一个桶中的节点较多时，链表查询会退化为 O(n)。为了降低极端冲突下的查询成本，<code>HashMap</code> 在满足条件时会将链表转换成红黑树。</p>
+<p>源码中常见的相关阈值包括：</p>
+<ul>
+<li>链表长度达到 8 左右时，可能触发树化。</li>
+<li>数组容量不足 64 时，通常优先扩容而不是树化。</li>
+<li>红黑树节点数量减少到较小规模时，可能退化回链表。</li>
+</ul>
+<p>这些阈值是实现细节，实际使用时不应依赖它们编写业务逻辑，但理解它们有助于理解 <code>HashMap</code> 的性能设计。</p>
+<h3 id="4-负载因子与扩容"><a href="#4-负载因子与扩容" class="headerlink" title="4. 负载因子与扩容"></a>4. 负载因子与扩容</h3><p>默认负载因子通常为 <code>0.75</code>。当元素数量超过“容量 × 负载因子”计算出的阈值后，哈希表会扩容并重新分布节点。</p>
+<p>负载因子越小，桶中的冲突通常越少，但会占用更多空间；负载因子越大，空间利用率较高，但冲突可能增加。<code>0.75</code> 是时间和空间之间的折中。</p>
+<h3 id="5-equals-与-hashCode"><a href="#5-equals-与-hashCode" class="headerlink" title="5. equals 与 hashCode"></a>5. equals 与 hashCode</h3><p>作为 <code>HashMap</code> 键的类必须正确实现 <code>equals()</code> 和 <code>hashCode()</code>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">UserId</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">long</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserId</span><span class="params">(<span class="type">long</span> value)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> obj <span class="keyword">instanceof</span> UserId other &amp;&amp; value == other.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">hashCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Long.hashCode(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>必须满足：如果两个对象的 <code>equals()</code> 返回 <code>true</code>，它们的 <code>hashCode()</code> 必须相同。否则，集合可能把逻辑上相同的对象放入不同的桶中，导致查找失败或出现重复数据。</p>
+<p>键对象还应该尽量不可变。若对象放入 Map 后参与哈希计算的字段发生变化，之后可能无法通过原对象找到对应的值。</p>
+<h3 id="6-常用-Map-方法"><a href="#6-常用-Map-方法" class="headerlink" title="6. 常用 Map 方法"></a>6. 常用 Map 方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; counter = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">counter.merge(<span class="string">&quot;Java&quot;</span>, <span class="number">1</span>, Integer::sum);</span><br><span class="line">counter.putIfAbsent(<span class="string">&quot;Python&quot;</span>, <span class="number">1</span>);</span><br><span class="line">counter.computeIfAbsent(<span class="string">&quot;Go&quot;</span>, key -&gt; key.length());</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>putIfAbsent()</code>：键不存在时才写入。</li>
+<li><code>computeIfAbsent()</code>：键不存在时计算值。</li>
+<li><code>merge()</code>：适合计数和合并值。</li>
+<li><code>getOrDefault()</code>：查询不到时返回默认值。</li>
+</ul>
+<h2 id="四、LinkedHashMap-与-TreeMap"><a href="#四、LinkedHashMap-与-TreeMap" class="headerlink" title="四、LinkedHashMap 与 TreeMap"></a>四、LinkedHashMap 与 TreeMap</h2><h3 id="1-LinkedHashMap"><a href="#1-LinkedHashMap" class="headerlink" title="1. LinkedHashMap"></a>1. LinkedHashMap</h3><p><code>LinkedHashMap</code> 在 <code>HashMap</code> 的基础上增加了双向链表，用来维护遍历顺序。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; scores = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">scores.put(<span class="string">&quot;Alice&quot;</span>, <span class="number">90</span>);</span><br><span class="line">scores.put(<span class="string">&quot;Bob&quot;</span>, <span class="number">85</span>);</span><br><span class="line">scores.put(<span class="string">&quot;Charlie&quot;</span>, <span class="number">95</span>);</span><br></pre></td></tr></table></figure>
+
+<p>它可以维护插入顺序，也可以配置为访问顺序：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, String&gt; cache = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;(<span class="number">16</span>, <span class="number">0.75f</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>配合 <code>removeEldestEntry()</code>，可以实现一个简单的 LRU 缓存：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LruCache</span>&lt;K, V&gt; <span class="keyword">extends</span> <span class="title class_">LinkedHashMap</span>&lt;K, V&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> capacity;</span><br><span class="line"></span><br><span class="line">    LruCache(<span class="type">int</span> capacity) &#123;</span><br><span class="line">        <span class="built_in">super</span>(capacity, <span class="number">0.75f</span>, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">this</span>.capacity = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">boolean</span> <span class="title function_">removeEldestEntry</span><span class="params">(Map.Entry&lt;K, V&gt; eldest)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size() &gt; capacity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个实现适合学习和简单场景。生产环境中的缓存通常还需要考虑并发、过期、淘汰策略和持久化等问题。</p>
+<h3 id="2-TreeMap"><a href="#2-TreeMap" class="headerlink" title="2. TreeMap"></a>2. TreeMap</h3><p><code>TreeMap</code> 基于红黑树，按照键的自然顺序或指定比较器维护元素顺序。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">NavigableMap&lt;Integer, String&gt; levels = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();</span><br><span class="line">levels.put(<span class="number">10</span>, <span class="string">&quot;normal&quot;</span>);</span><br><span class="line">levels.put(<span class="number">20</span>, <span class="string">&quot;important&quot;</span>);</span><br><span class="line">levels.put(<span class="number">30</span>, <span class="string">&quot;urgent&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">Integer</span> <span class="variable">key</span> <span class="operator">=</span> levels.floorKey(<span class="number">25</span>);   <span class="comment">// 小于等于 25 的最大键</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">next</span> <span class="operator">=</span> levels.ceilingKey(<span class="number">25</span>); <span class="comment">// 大于等于 25 的最小键</span></span><br></pre></td></tr></table></figure>
+
+<p><code>TreeMap</code> 的查询、插入和删除复杂度通常为 O(log n)，适合需要排序或范围查询的场景。如果只需要根据键快速查找，并不需要顺序，应优先选择 <code>HashMap</code>。</p>
+<h2 id="五、Set：HashSet-与-TreeSet"><a href="#五、Set：HashSet-与-TreeSet" class="headerlink" title="五、Set：HashSet 与 TreeSet"></a>五、Set：HashSet 与 TreeSet</h2><h3 id="1-HashSet"><a href="#1-HashSet" class="headerlink" title="1. HashSet"></a>1. HashSet</h3><p><code>HashSet</code> 底层基于 <code>HashMap</code> 实现，集合元素会作为 Map 的键保存。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Set&lt;String&gt; tags = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">tags.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line">tags.add(<span class="string">&quot;Java&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(tags.size()); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<p>元素是否重复，取决于 <code>equals()</code> 和 <code>hashCode()</code>。因此，自定义对象放入 <code>HashSet</code> 时，同样必须正确实现这两个方法。</p>
+<p><code>HashSet</code> 适合快速判断元素是否存在，但不保证遍历顺序。如果既要去重，又要保持插入顺序，可以使用 <code>LinkedHashSet</code>。</p>
+<h3 id="2-TreeSet"><a href="#2-TreeSet" class="headerlink" title="2. TreeSet"></a>2. TreeSet</h3><p><code>TreeSet</code> 基于红黑树，能够在去重的同时维护排序结果：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Set&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(List.of(<span class="number">30</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">10</span>));</span><br><span class="line">System.out.println(numbers); <span class="comment">// [10, 20, 30]</span></span><br></pre></td></tr></table></figure>
+
+<p>需要特别注意，<code>TreeSet</code> 判断重复主要依赖比较结果。如果比较器对两个对象返回 <code>0</code>，它们就可能被认为是同一个元素，即使 <code>equals()</code> 返回 <code>false</code>。</p>
+<h2 id="六、ArrayDeque-与-PriorityQueue"><a href="#六、ArrayDeque-与-PriorityQueue" class="headerlink" title="六、ArrayDeque 与 PriorityQueue"></a>六、ArrayDeque 与 PriorityQueue</h2><h3 id="1-ArrayDeque"><a href="#1-ArrayDeque" class="headerlink" title="1. ArrayDeque"></a>1. ArrayDeque</h3><p><code>ArrayDeque</code> 是基于循环数组的双端队列，支持从头部和尾部高效添加、删除元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Deque&lt;String&gt; deque = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">deque.addLast(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">deque.addLast(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">deque.addFirst(<span class="string">&quot;Start&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">first</span> <span class="operator">=</span> deque.removeFirst();</span><br><span class="line"><span class="type">String</span> <span class="variable">last</span> <span class="operator">=</span> deque.removeLast();</span><br></pre></td></tr></table></figure>
+
+<p>它既可以作为队列：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;String&gt; queue = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">queue.offer(<span class="string">&quot;task-1&quot;</span>);</span><br><span class="line">queue.offer(<span class="string">&quot;task-2&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">task</span> <span class="operator">=</span> queue.poll();</span><br></pre></td></tr></table></figure>
+
+<p>也可以作为栈：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Deque&lt;String&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">stack.push(<span class="string">&quot;first&quot;</span>);</span><br><span class="line">stack.push(<span class="string">&quot;second&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> stack.pop(); <span class="comment">// second</span></span><br></pre></td></tr></table></figure>
+
+<p>相比历史上的 <code>Stack</code>，<code>ArrayDeque</code> 的 API 更现代，通常也更适合作为栈使用。<code>ArrayDeque</code> 不允许存储 <code>null</code>，并且不是线程安全的。</p>
+<h3 id="2-PriorityQueue"><a href="#2-PriorityQueue" class="headerlink" title="2. PriorityQueue"></a>2. PriorityQueue</h3><p><code>PriorityQueue</code> 底层是堆，默认情况下堆顶是最小元素：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; minHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;();</span><br><span class="line">minHeap.offer(<span class="number">30</span>);</span><br><span class="line">minHeap.offer(<span class="number">10</span>);</span><br><span class="line">minHeap.offer(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(minHeap.poll()); <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+
+<p>创建大顶堆可以提供反向比较器：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; maxHeap = <span class="keyword">new</span> <span class="title class_">PriorityQueue</span>&lt;&gt;(Comparator.reverseOrder());</span><br></pre></td></tr></table></figure>
+
+<p>需要注意，<code>PriorityQueue</code> 只保证堆顶元素具有最高优先级，不保证迭代顺序完全有序。若要依次得到排序结果，应不断调用 <code>poll()</code>，或者直接使用排序集合。</p>
+<h2 id="七、并发集合"><a href="#七、并发集合" class="headerlink" title="七、并发集合"></a>七、并发集合</h2><h3 id="1-为什么不能直接在线程间共享-HashMap"><a href="#1-为什么不能直接在线程间共享-HashMap" class="headerlink" title="1. 为什么不能直接在线程间共享 HashMap"></a>1. 为什么不能直接在线程间共享 HashMap</h3><p><code>HashMap</code> 没有提供并发控制。多个线程同时执行写入、扩容或复合操作时，可能出现数据覆盖、结果不一致等问题。</p>
+<p>如果需要并发访问，应根据读写特征选择并发集合，而不是简单地把所有操作都包上一层锁。</p>
+<h3 id="2-ConcurrentHashMap"><a href="#2-ConcurrentHashMap" class="headerlink" title="2. ConcurrentHashMap"></a>2. ConcurrentHashMap</h3><p><code>ConcurrentHashMap</code> 是高并发场景下最常用的 Map。它通过 CAS 和局部同步减少锁竞争，不会像对整个 Map 加一把大锁那样限制所有线程。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ConcurrentMap&lt;String, Long&gt; counters = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>&lt;&gt;();</span><br><span class="line">counters.merge(<span class="string">&quot;request&quot;</span>, <span class="number">1L</span>, Long::sum);</span><br></pre></td></tr></table></figure>
+
+<p>主要特点：</p>
+<ul>
+<li>支持多个线程并发读写。</li>
+<li>不允许 <code>null</code> 键和 <code>null</code> 值。</li>
+<li>迭代器具有弱一致性，不会简单地因为并发修改就抛出异常。</li>
+<li>适合缓存、索引、计数器和共享状态表。</li>
+</ul>
+<p>它不允许 <code>null</code> 的主要原因是：当 <code>get(key)</code> 返回 <code>null</code> 时，无法区分“键不存在”和“键存在但值为 null”。</p>
+<h3 id="3-CopyOnWriteArrayList"><a href="#3-CopyOnWriteArrayList" class="headerlink" title="3. CopyOnWriteArrayList"></a>3. CopyOnWriteArrayList</h3><p><code>CopyOnWriteArrayList</code> 修改数据时会复制底层数组，读操作则可以直接读取当前快照。</p>
+<p>它适合：</p>
+<ul>
+<li>读操作远多于写操作。</li>
+<li>集合规模不会特别大。</li>
+<li>遍历期间希望看到稳定快照。</li>
+</ul>
+<p>它不适合高频写入，因为每次修改都可能复制整个数组，并产生额外内存压力。</p>
+<h3 id="4-BlockingQueue"><a href="#4-BlockingQueue" class="headerlink" title="4. BlockingQueue"></a>4. BlockingQueue</h3><p><code>BlockingQueue</code> 适合生产者—消费者模型。队列满时，生产者可以等待；队列为空时，消费者可以等待。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BlockingQueue&lt;String&gt; tasks = <span class="keyword">new</span> <span class="title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生产者</span></span><br><span class="line">tasks.put(<span class="string">&quot;task-1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者</span></span><br><span class="line"><span class="type">String</span> <span class="variable">task</span> <span class="operator">=</span> tasks.take();</span><br></pre></td></tr></table></figure>
+
+<p>常用实现：</p>
+<ul>
+<li><code>ArrayBlockingQueue</code>：基于数组的有界阻塞队列。</li>
+<li><code>LinkedBlockingQueue</code>：基于链表，可配置容量。</li>
+</ul>
+<p><code>offer()</code>、<code>poll()</code> 通常是立即返回；<code>put()</code>、<code>take()</code> 则可能阻塞等待。在使用阻塞方法时，需要结合线程中断和超时机制设计退出逻辑。</p>
+<h2 id="八、Java-21：Sequenced-Collections"><a href="#八、Java-21：Sequenced-Collections" class="headerlink" title="八、Java 21：Sequenced Collections"></a>八、Java 21：Sequenced Collections</h2><p>Java 21 引入了有序集合的新抽象，用于统一表示具有明确遍历顺序的集合和 Map。相关接口包括：</p>
+<ul>
+<li><code>SequencedCollection</code></li>
+<li><code>SequencedSet</code></li>
+<li><code>SequencedMap</code></li>
+</ul>
+<p>它们统一了首尾元素和反向访问操作。例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">SequencedCollection&lt;String&gt; items = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">items.addLast(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">items.addLast(<span class="string">&quot;B&quot;</span>);</span><br><span class="line"></span><br><span class="line">System.out.println(items.getFirst()); <span class="comment">// A</span></span><br><span class="line">System.out.println(items.getLast());  <span class="comment">// B</span></span><br><span class="line">System.out.println(items.reversed()); <span class="comment">// [B, A]</span></span><br></pre></td></tr></table></figure>
+
+<p>对 Map，可以使用首尾 Entry：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">SequencedMap&lt;String, Integer&gt; scores = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;&gt;();</span><br><span class="line">scores.putLast(<span class="string">&quot;Alice&quot;</span>, <span class="number">90</span>);</span><br><span class="line">scores.putLast(<span class="string">&quot;Bob&quot;</span>, <span class="number">85</span>);</span><br><span class="line"></span><br><span class="line">Map.Entry&lt;String, Integer&gt; first = scores.firstEntry();</span><br><span class="line">Map.Entry&lt;String, Integer&gt; last = scores.lastEntry();</span><br></pre></td></tr></table></figure>
+
+<p><code>reversed()</code> 通常返回反向视图，而不是立即创建一个新的集合副本。因此，使用时要注意原集合和反向视图之间的关系。这个特性对于 <code>LinkedHashMap</code>、有序 Set 和双端队列的统一操作尤其有用。</p>
+<h2 id="九、常用集合选型"><a href="#九、常用集合选型" class="headerlink" title="九、常用集合选型"></a>九、常用集合选型</h2><table>
+<thead>
+<tr>
+<th>需求</th>
+<th>推荐类型</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按索引访问列表</td>
+<td><code>ArrayList</code></td>
+<td>随机访问快，缓存局部性好</td>
+</tr>
+<tr>
+<td>普通键值查询</td>
+<td><code>HashMap</code></td>
+<td>平均查找复杂度接近 O(1)</td>
+</tr>
+<tr>
+<td>去重</td>
+<td><code>HashSet</code></td>
+<td>基于哈希快速判断存在性</td>
+</tr>
+<tr>
+<td>去重并保持插入顺序</td>
+<td><code>LinkedHashSet</code></td>
+<td>哈希表加链表维护顺序</td>
+</tr>
+<tr>
+<td>键值按顺序排列</td>
+<td><code>TreeMap</code></td>
+<td>红黑树维护键的顺序</td>
+</tr>
+<tr>
+<td>元素自动排序并去重</td>
+<td><code>TreeSet</code></td>
+<td>红黑树维护唯一有序元素</td>
+</tr>
+<tr>
+<td>栈或双端队列</td>
+<td><code>ArrayDeque</code></td>
+<td>两端操作高效</td>
+</tr>
+<tr>
+<td>优先级处理</td>
+<td><code>PriorityQueue</code></td>
+<td>堆顶始终是最高优先级元素</td>
+</tr>
+<tr>
+<td>并发键值存储</td>
+<td><code>ConcurrentHashMap</code></td>
+<td>支持高并发读写</td>
+</tr>
+<tr>
+<td>生产者—消费者</td>
+<td><code>BlockingQueue</code></td>
+<td>支持阻塞式生产和消费</td>
+</tr>
+<tr>
+<td>读多写少的共享列表</td>
+<td><code>CopyOnWriteArrayList</code></td>
+<td>读操作无需加锁</td>
+</tr>
+</tbody></table>
+<h2 id="十、常见陷阱"><a href="#十、常见陷阱" class="headerlink" title="十、常见陷阱"></a>十、常见陷阱</h2><h3 id="1-遍历时直接删除"><a href="#1-遍历时直接删除" class="headerlink" title="1. 遍历时直接删除"></a>1. 遍历时直接删除</h3><p>下面的代码可能抛出 <code>ConcurrentModificationException</code>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (String item : items) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.isBlank()) &#123;</span><br><span class="line">        items.remove(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 <code>Iterator.remove()</code> 或 <code>removeIf()</code>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">items.removeIf(String::isBlank);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-把-HashMap-当作有序-Map"><a href="#2-把-HashMap-当作有序-Map" class="headerlink" title="2. 把 HashMap 当作有序 Map"></a>2. 把 HashMap 当作有序 Map</h3><p><code>HashMap</code> 不保证插入顺序，也不应该根据某次运行得到的遍历顺序编写业务逻辑。需要顺序时，应明确使用 <code>LinkedHashMap</code> 或 <code>TreeMap</code>。</p>
+<h3 id="3-把同步包装集合当成并发集合"><a href="#3-把同步包装集合当成并发集合" class="headerlink" title="3. 把同步包装集合当成并发集合"></a>3. 把同步包装集合当成并发集合</h3><p><code>Collections.synchronizedList()</code> 能为单次操作提供同步，但复合操作和遍历仍然需要额外同步。高并发场景应优先评估 <code>ConcurrentHashMap</code>、<code>CopyOnWriteArrayList</code> 或阻塞队列。</p>
+<h3 id="4-使用可变对象作为-HashMap-的键"><a href="#4-使用可变对象作为-HashMap-的键" class="headerlink" title="4. 使用可变对象作为 HashMap 的键"></a>4. 使用可变对象作为 HashMap 的键</h3><p>如果键参与 <code>equals()</code> 或 <code>hashCode()</code> 的字段发生变化，Map 可能无法再定位到原来的桶。作为键的对象最好设计为不可变对象。</p>
+<h3 id="5-误用不可变集合工厂方法"><a href="#5-误用不可变集合工厂方法" class="headerlink" title="5. 误用不可变集合工厂方法"></a>5. 误用不可变集合工厂方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; names = List.of(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>);</span><br><span class="line">names.add(<span class="string">&quot;Charlie&quot;</span>); <span class="comment">// UnsupportedOperationException</span></span><br></pre></td></tr></table></figure>
+
+<p>如果确实需要修改，应显式创建可变集合：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; mutableNames = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(List.of(<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="十一、总结"><a href="#十一、总结" class="headerlink" title="十一、总结"></a>十一、总结</h2><p>Java 集合的学习重点不是记住所有实现类，而是建立“需求—接口—实现—底层结构”的对应关系：</p>
+<ul>
+<li>需要列表和随机访问，优先使用 <code>ArrayList</code>。</li>
+<li>需要键值快速查询，优先使用 <code>HashMap</code>。</li>
+<li>需要去重，使用 <code>HashSet</code>。</li>
+<li>需要顺序，使用 <code>LinkedHashMap</code> 或 <code>LinkedHashSet</code>。</li>
+<li>需要排序和范围查询，使用 <code>TreeMap</code> 或 <code>TreeSet</code>。</li>
+<li>需要栈、队列或双端操作，使用 <code>ArrayDeque</code>。</li>
+<li>需要优先级调度，使用 <code>PriorityQueue</code>。</li>
+<li>需要并发键值访问，使用 <code>ConcurrentHashMap</code>。</li>
+<li>需要线程间传递任务，使用 <code>BlockingQueue</code>。</li>
+</ul>
+<p>Java 21 的 <code>Sequenced Collections</code> 进一步统一了有序集合的首尾操作和反向访问。掌握这些核心类型及其使用边界，已经能够覆盖绝大多数 Java 后端开发中的集合场景。</p>
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Java 21</tag>
+        <tag>集合框架</tag>
+        <tag>后端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AI Agent 评测：从任务集到长期维护</title>
     <url>/2026/05/24/AI-Agent%E8%AF%84%E6%B5%8B/</url>
     <content><![CDATA[<blockquote>
@@ -4426,39 +4778,6 @@
         <tag>Eval</tag>
         <tag>AI Engineering</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>后端八股：Java 线程池与 Redis</title>
-    <url>/2026/08/27/%E5%90%8E%E7%AB%AF%E5%85%AB%E8%82%A1/</url>
-    <content><![CDATA[<h2 id="Java-线程池"><a href="#Java-线程池" class="headerlink" title="Java 线程池"></a>Java 线程池</h2><h2 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h2><ul>
-<li>AbortPolicy：拒绝处理新任务并抛出RejectExecutionException</li>
-<li>CallerRunPolicy：调用 <strong>执行execute()方法的线程</strong> 来运行被拒绝的新任务。</li>
-<li>DiscardPolicy：不处理新任务，直接丢弃</li>
-<li>DiscardOldestPolicy：丢弃最早未被处理的任务（等待时间最长的任务）</li>
-</ul>
-<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="过期删除策略"><a href="#过期删除策略" class="headerlink" title="过期删除策略"></a>过期删除策略</h2><p>惰性删除：只在访问数据时进行过期检查，缺点：太多过期key没有被删除</p>
-<p>定期删除：周期性随机抽查一批设置了过期时间的key，如果过期就删除。对内存友好，对CPU不友好</p>
-<p>延迟队列：设置了过期时间的加入到延迟队列，过期就删除（类似定时任务）</p>
-<p>定时删除：每个设置了过期时间的key一过期就删除，需要每个键单独设置定时器</p>
-<p>Redis采用 <strong>定期删除+惰性&#x2F;懒汉式删除</strong> 相结合的策略。</p>
-<h2 id="淘汰策略"><a href="#淘汰策略" class="headerlink" title="淘汰策略"></a>淘汰策略</h2><h3 id="不淘汰（默认策略，noeviction）"><a href="#不淘汰（默认策略，noeviction）" class="headerlink" title="不淘汰（默认策略，noeviction）"></a>不淘汰（默认策略，noeviction）</h3><p>noeviction：不删除任何 key，写操作直接返回 OOM 错误。读请求正常。</p>
-<h3 id="volatile-设置了过期时间的key"><a href="#volatile-设置了过期时间的key" class="headerlink" title="volatile-设置了过期时间的key"></a>volatile-设置了过期时间的key</h3><p>只看设置了 <code>expire</code> 的键，永不过期的 key 完全不动。</p>
-<ol>
-<li><code>volatile‑lru</code>：过期 key 里，淘汰<strong>最近最少使用 LRU</strong></li>
-<li><code>volatile‑lfu</code>：过期 key 里，淘汰<strong>访问频次最低 LFU</strong></li>
-<li><code>volatile‑ttl</code>：过期 key 里，淘汰<strong>剩余存活时间最短</strong>（TTL 最小，马上要过期）</li>
-<li><code>volatile‑random</code>：过期 key 里，<strong>随机删除</strong></li>
-</ol>
-<blockquote>
-<p>如果所有带过期的 key 删完，内存还不够 → 退化成 <code>noeviction</code>，写报错。</p>
-</blockquote>
-<h3 id="Allkey"><a href="#Allkey" class="headerlink" title="Allkey"></a>Allkey</h3><p>所有 key，不管有没有设置过期时间，都参与淘汰。</p>
-<ol>
-<li><code>allkeys‑lru</code>：全部 key，淘汰最近最少使用</li>
-<li><code>allkeys‑lfu</code>：全部 key，淘汰访问频次最低</li>
-<li><code>allkeys‑random</code>：全部 key，随机删除</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>Java 后端面试题整理：基础、并发、JVM 与 Spring</title>
